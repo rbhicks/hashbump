@@ -1305,34 +1305,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _dec, _class; // ----------------------
-// IMPORTS
-
-// React
-
-
-// GraphQL
-
-
-// Routing
-
-
-// <Helmet> component for setting the page title
-
-
-// Helper to merge expected React PropTypes to Apollo-enabled component
-
-
-// NotFound 404 handler for unknown routes
-
-
-// Styles
-
-
-// Get the ReactQL logo.  This is a local .svg file, which will be made
-// available as a string relative to [root]/dist/assets/img/
-
-
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -1388,6 +1360,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 // ----------------------
 
 // We'll display this <Home> component when we're on the / route
+
+
+// NotFound 404 handler for unknown routes
+
+
+// <Helmet> component for setting the page title
+
+
+// GraphQL
+// ----------------------
+// IMPORTS
+
+// React
 const Home = () => _react2.default.createElement(
   'h1',
   null,
@@ -1396,6 +1381,19 @@ const Home = () => _react2.default.createElement(
 
 // Helper component that will be conditionally shown when the route matches.
 // This gives you an idea how React Router v4 works
+
+
+// Get the ReactQL logo.  This is a local .svg file, which will be made
+// available as a string relative to [root]/dist/assets/img/
+
+
+// Styles
+
+
+// Helper to merge expected React PropTypes to Apollo-enabled component
+
+
+// Routing
 const Page = ({ match }) => _react2.default.createElement(
   'h1',
   null,
@@ -1510,7 +1508,7 @@ const Styles = () => _react2.default.createElement(
 // Export a simple component that allows clicking on list items to change
 // the route, along with a <Route> 'listener' that will conditionally display
 // the <Page> component based on the route name
-let App = (_dec = (0, _reactRedux.connect)(state => ({ currentHashtag: state.currentHashtag })), _dec(_class = class App extends _react.Component {
+let App = class App extends _react.Component {
 
   render() {
 
@@ -1549,7 +1547,7 @@ let App = (_dec = (0, _reactRedux.connect)(state => ({ currentHashtag: state.cur
       _react2.default.createElement('hr', null)
     );
   }
-}) || _class);
+};
 exports.default = App;
 
 /***/ }),

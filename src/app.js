@@ -138,7 +138,6 @@ const Styles = () => (
 // Export a simple component that allows clicking on list items to change
 // the route, along with a <Route> 'listener' that will conditionally display
 // the <Page> component based on the route name
-@connect(state => ({ currentHashtag: state.currentHashtag }))
 class App extends Component {
 
     render() {

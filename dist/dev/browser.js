@@ -553,8 +553,6 @@ Redirect.defaultProps = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_hashtagAutocomplete_js__ = __webpack_require__(187);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _class;
-
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -741,9 +739,8 @@ var Styles = function Styles() {
 // Export a simple component that allows clicking on list items to change
 // the route, along with a <Route> 'listener' that will conditionally display
 // the <Page> component based on the route name
-var App = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_12_react_redux__["a" /* connect */])(function (state) {
-  return { currentHashtag: state.currentHashtag };
-}), _dec(_class = function (_Component) {
+
+var App = function (_Component) {
   _inherits(App, _Component);
 
   function App() {
@@ -794,8 +791,7 @@ var App = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_12_react_redux
   }]);
 
   return App;
-}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"])) || _class);
-
+}(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = (App);
 
