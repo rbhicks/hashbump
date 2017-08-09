@@ -3,3 +3,10 @@ $background: #ffc107;
 .example {
   background-color: $background;
 }
+
+
+.hashtag {
+}
+.hashtag::before {
+  content: "#";
+}

@@ -93,7 +93,7 @@ const Query = new GraphQLObjectType({
                 // side just gives a parse error (presumably)
                 // from the same object.
                 // see client side comment for other details
-                const suggestionsUrl = `http://localhost:8983/solr/hashbump/suggest?suggest=true&suggest.dictionary=analyzedSuggestion&wt=json&suggest.q=%23${args.partialHashtag}`;
+                const suggestionsUrl = `http://localhost:8983/solr/hashbump/suggest?suggest=true&suggest.dictionary=analyzedSuggestion&wt=json&suggest.q=${args.partialHashtag}`;
                 const suggestions = fetch(suggestionsUrl).then(res => res.text());
 
                 return [suggestions];
@@ -132,7 +132,6 @@ const Mutation = new GraphQLObjectType({
           }
         },
         resolve (source, args) {
-
             return Db.models.hashtag.findOne({ where: {name: args.name} }).then( hashtag => {
             return hashtag.increment([`${args.bump}Count`], { by: 1 })
           });

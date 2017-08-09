@@ -135,7 +135,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactApollo = __webpack_require__(1);
 
-var _project = __webpack_require__(13);
+var _project = __webpack_require__(14);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -293,42 +293,51 @@ function getURL() {
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = require("chalk");
+module.exports = {
+	"example": "example-3q0nqQ9ZKcBd8-DB7rcoyt",
+	"hashtag": "hashtag-1Dm1gOm7e37k27bIcRcehj"
+};
 
 /***/ }),
 /* 8 */
 /***/ (function(module, exports) {
 
-module.exports = require("graphql-tag");
+module.exports = require("chalk");
 
 /***/ }),
 /* 9 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-helmet");
+module.exports = require("graphql-tag");
 
 /***/ }),
 /* 10 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router-dom");
+module.exports = require("react-helmet");
 
 /***/ }),
 /* 11 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-dom");
+
+/***/ }),
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _chalk = __webpack_require__(7);
+var _chalk = __webpack_require__(8);
 
 var _chalk2 = _interopRequireDefault(_chalk);
 
 var _env = __webpack_require__(6);
 
-var _console = __webpack_require__(15);
+var _console = __webpack_require__(16);
 
-var _server = __webpack_require__(14);
+var _server = __webpack_require__(15);
 
 var _server2 = _interopRequireDefault(_server);
 
@@ -384,7 +393,7 @@ _server2.default.then(({ router, app }) => {
 });
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -437,7 +446,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -462,7 +471,7 @@ const APOLLO = exports.APOLLO = {
 /* Local */
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -508,7 +517,7 @@ var _microseconds2 = _interopRequireDefault(_microseconds);
 
 var _reactRouter = __webpack_require__(47);
 
-var _reactHelmet = __webpack_require__(9);
+var _reactHelmet = __webpack_require__(10);
 
 var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
@@ -522,25 +531,25 @@ var _koaBodyparser2 = _interopRequireDefault(_koaBodyparser);
 
 var _graphqlServerKoa = __webpack_require__(33);
 
-var _schema = __webpack_require__(19);
+var _schema = __webpack_require__(20);
 
 var _schema2 = _interopRequireDefault(_schema);
 
 var _apollo = __webpack_require__(5);
 
-var _redux = __webpack_require__(17);
+var _redux = __webpack_require__(18);
 
 var _redux2 = _interopRequireDefault(_redux);
 
-var _ssr = __webpack_require__(20);
+var _ssr = __webpack_require__(21);
 
 var _ssr2 = _interopRequireDefault(_ssr);
 
-var _app = __webpack_require__(21);
+var _app = __webpack_require__(22);
 
 var _app2 = _interopRequireDefault(_app);
 
-var _paths = __webpack_require__(12);
+var _paths = __webpack_require__(13);
 
 var _paths2 = _interopRequireDefault(_paths);
 
@@ -775,7 +784,7 @@ exports.default = async function server() {
 }();
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -790,7 +799,7 @@ var _boxen = __webpack_require__(30);
 
 var _boxen2 = _interopRequireDefault(_boxen);
 
-var _chalk = __webpack_require__(7);
+var _chalk = __webpack_require__(8);
 
 var _chalk2 = _interopRequireDefault(_chalk);
 
@@ -832,7 +841,7 @@ function logServerStarted(opt = {}) {
 // Display a border around a message
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -891,7 +900,7 @@ const Hashtag = Conn.define('hashtag', {
 // Conn.sync({ force: true }).then(()=> {
 //   _.times(1000, ()=> {
 //     return Hashtag.create({
-//       name: `#${Faker.commerce.productName()}`.replace(/ /g, "").toLowerCase(),
+//       name: `${Faker.commerce.productName()}`.replace(/ /g, "").toLowerCase(),
 //       yayCount: 0,
 //       grrrCount: 0,
 //       dunnoCount: 0,
@@ -903,7 +912,7 @@ const Hashtag = Conn.define('hashtag', {
 exports.default = Conn;
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -916,7 +925,7 @@ exports.default = createNewStore;
 
 var _redux = __webpack_require__(48);
 
-var _reducers = __webpack_require__(24);
+var _reducers = __webpack_require__(25);
 
 // ----------------------
 
@@ -950,7 +959,7 @@ function createNewStore(apolloClient) {
 }
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -969,7 +978,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(11);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1053,7 +1062,7 @@ Redirect.defaultProps = {
 };
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1065,7 +1074,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _graphql = __webpack_require__(32);
 
-var _db = __webpack_require__(16);
+var _db = __webpack_require__(17);
 
 var _db2 = _interopRequireDefault(_db);
 
@@ -1156,7 +1165,7 @@ const Query = new _graphql.GraphQLObjectType({
           // side just gives a parse error (presumably)
           // from the same object.
           // see client side comment for other details
-          const suggestionsUrl = `http://localhost:8983/solr/hashbump/suggest?suggest=true&suggest.dictionary=analyzedSuggestion&wt=json&suggest.q=%23${args.partialHashtag}`;
+          const suggestionsUrl = `http://localhost:8983/solr/hashbump/suggest?suggest=true&suggest.dictionary=analyzedSuggestion&wt=json&suggest.q=${args.partialHashtag}`;
           const suggestions = fetch(suggestionsUrl).then(res => res.text());
 
           return [suggestions];
@@ -1195,7 +1204,6 @@ const Mutation = new _graphql.GraphQLObjectType({
           }
         },
         resolve(source, args) {
-
           return _db2.default.models.hashtag.findOne({ where: { name: args.name } }).then(hashtag => {
             return hashtag.increment([`${args.bump}Count`], { by: 1 });
           });
@@ -1213,7 +1221,7 @@ const Schema = new _graphql.GraphQLSchema({
 exports.default = Schema;
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1280,7 +1288,7 @@ Html.propTypes = {
 exports.default = Html;
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1328,23 +1336,23 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactApollo = __webpack_require__(1);
 
-var _reactRouterDom = __webpack_require__(10);
+var _reactRouterDom = __webpack_require__(11);
 
-var _reactHelmet = __webpack_require__(9);
+var _reactHelmet = __webpack_require__(10);
 
 var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
 var _apollo = __webpack_require__(5);
 
-var _routing = __webpack_require__(18);
+var _routing = __webpack_require__(19);
 
-__webpack_require__(26);
+__webpack_require__(27);
 
-var _styles = __webpack_require__(25);
+var _styles = __webpack_require__(26);
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _styles3 = __webpack_require__(27);
+var _styles3 = __webpack_require__(7);
 
 var _styles4 = _interopRequireDefault(_styles3);
 
@@ -1360,11 +1368,11 @@ var _reactRedux = __webpack_require__(4);
 
 var _actions = __webpack_require__(3);
 
-var _bumpButton = __webpack_require__(22);
+var _bumpButton = __webpack_require__(23);
 
 var _bumpButton2 = _interopRequireDefault(_bumpButton);
 
-var _hashtagForm = __webpack_require__(23);
+var _hashtagForm = __webpack_require__(24);
 
 var _hashtagForm2 = _interopRequireDefault(_hashtagForm);
 
@@ -1531,7 +1539,7 @@ let App = (_dec = (0, _reactRedux.connect)(state => ({ currentHashtag: state.cur
           _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(_hashtagForm2.default, null)
+            _react2.default.createElement(_hashtagForm2.default, { className: _styles4.default.hashtag })
           ),
           _react2.default.createElement(_bumpButton2.default, { bump: 'yay' }),
           _react2.default.createElement(_bumpButton2.default, { bump: 'grrr' }),
@@ -1546,7 +1554,7 @@ let App = (_dec = (0, _reactRedux.connect)(state => ({ currentHashtag: state.cur
 exports.default = App;
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1562,7 +1570,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _graphqlTag = __webpack_require__(8);
+var _graphqlTag = __webpack_require__(9);
 
 var _graphqlTag2 = _interopRequireDefault(_graphqlTag);
 
@@ -1615,7 +1623,7 @@ let BumpButton = (_dec = (0, _reactRedux.connect)(state => ({ currentHashtag: st
 exports.default = BumpButton;
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1631,7 +1639,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _graphqlTag = __webpack_require__(8);
+var _graphqlTag = __webpack_require__(9);
 
 var _graphqlTag2 = _interopRequireDefault(_graphqlTag);
 
@@ -1644,6 +1652,10 @@ var _actions = __webpack_require__(3);
 var _reactAutocomplete = __webpack_require__(45);
 
 var _reactAutocomplete2 = _interopRequireDefault(_reactAutocomplete);
+
+var _styles = __webpack_require__(7);
+
+var _styles2 = _interopRequireDefault(_styles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1660,12 +1672,12 @@ const query = _graphqlTag2.default`
   }
 `;
 
-let HashtagForm = (_dec = (0, _reactRedux.connect)(state => ({ currentHashtag: state.currentHashtag })), _dec2 = (0, _reactApollo.graphql)(query, { options: { variables: { partialHashtag: "!" } } }), _dec(_class = _dec2(_class = class HashtagForm extends _react2.default.Component {
+let HashtagForm = (_dec = (0, _reactRedux.connect)(), _dec2 = (0, _reactApollo.graphql)(query, { options: { variables: { partialHashtag: "!" } } }), _dec(_class = _dec2(_class = class HashtagForm extends _react2.default.Component {
     constructor(props) {
         super(props);
         this.state = { value: '', items: [] };
 
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleGetItemValue = this.handleGetItemValue.bind(this);
         this.handleRenderItem = this.handleRenderItem.bind(this);
@@ -1684,9 +1696,10 @@ let HashtagForm = (_dec = (0, _reactRedux.connect)(state => ({ currentHashtag: s
     }
 
     handleChange(event) {
-        let data = this.props.data;
+        let graphqlData = this.props.data;
         const currentHashtagValue = event.target.value;
 
+        this.props.dispatch((0, _actions.setCurrentHashtag)(currentHashtagValue));
         this.setState({ value: currentHashtagValue, items: this.state.items });
 
         // this value is strange:
@@ -1696,38 +1709,38 @@ let HashtagForm = (_dec = (0, _reactRedux.connect)(state => ({ currentHashtag: s
         // this then has to be parsed on this side within the promise
         // handler. it seems like the promise mechanism isn't quite
         // working with refetch and apollo
-        data.refetch({ partialHashtag: currentHashtagValue }).then(dataObject => {
-            const suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion[`#${currentHashtagValue}`].suggestions;
+        graphqlData.refetch({ partialHashtag: currentHashtagValue }).then(dataObject => {
+            const suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion[`${currentHashtagValue}`].suggestions;
             this.setState({ value: this.state.value, items: suggestions });
+            this.props.dispatch((0, _actions.setCurrentHashtag)(currentHashtagValue));
         });
     }
 
-    handleSubmit(event) {
-        this.props.dispatch(this.state.value);
-        event.preventDefault();
+    handleSelect(val) {
+        this.props.dispatch((0, _actions.setCurrentHashtag)(val));
+        this.setState({ value: val });
     }
+
     render() {
 
-        //                        <input type="text" onChange={this.handleChange} />
-        // ****************************************************************
-        // ****************************************************************
-        // add # via content style!
-        // ****************************************************************
-        // ****************************************************************
-        return _react2.default.createElement(_reactAutocomplete2.default, {
-            getItemValue: this.handleGetItemValue,
-            renderItem: this.handleRenderItem,
-            items: this.state.items,
-            value: this.state.value,
-            onChange: this.handleChange,
-            onSelect: val => value = val
-        });
+        return _react2.default.createElement(
+            'span',
+            { className: _styles2.default.hashtag },
+            _react2.default.createElement(_reactAutocomplete2.default, {
+                getItemValue: this.handleGetItemValue,
+                renderItem: this.handleRenderItem,
+                items: this.state.items,
+                value: this.state.value,
+                onChange: this.handleChange, t: true,
+                onSelect: this.handleSelect
+            })
+        );
     }
 }) || _class) || _class);
 exports.default = HashtagForm;
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1756,7 +1769,7 @@ function currentHashtag(state = "buffalo", action) {
 // }
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -1768,18 +1781,10 @@ module.exports = {
 };
 
 /***/ }),
-/* 26 */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
 /* 27 */
 /***/ (function(module, exports) {
 
-module.exports = {
-	"example": "example-3q0nqQ9ZKcBd8-DB7rcoyt"
-};
+
 
 /***/ }),
 /* 28 */
@@ -1919,7 +1924,7 @@ module.exports = require("sequelize");
 /* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(11);
+module.exports = __webpack_require__(12);
 
 
 /***/ })

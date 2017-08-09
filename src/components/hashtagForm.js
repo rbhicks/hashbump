@@ -6,6 +6,8 @@ import { setCurrentHashtag } from '../store/actions';
 import Autocomplete from 'react-autocomplete';
 
 
+import sass from '../styles.scss';
+
 ///////////////////////////////
 ///////////////////////////////
 //add hashtag creation handling
@@ -20,14 +22,14 @@ const query = gql`
   }
 `;
 
-@connect(state => ({ currentHashtag: state.currentHashtag }))
+@connect()
 @graphql(query, {options: {variables: {partialHashtag: "!"}}})
 class HashtagForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {value: '', items: []};
 
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSelect = this.handleSelect.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleGetItemValue = this.handleGetItemValue.bind(this);
         this.handleRenderItem = this.handleRenderItem.bind(this);
@@ -46,10 +48,10 @@ class HashtagForm extends React.Component {
     }
     
     handleChange(event) {
-        let data = this.props.data;
+        let graphqlData = this.props.data;
         const currentHashtagValue = event.target.value;
 
-
+        this.props.dispatch(setCurrentHashtag(currentHashtagValue));
         this.setState({value: currentHashtagValue, items: this.state.items});
 
         // this value is strange:
@@ -59,39 +61,39 @@ class HashtagForm extends React.Component {
         // this then has to be parsed on this side within the promise
         // handler. it seems like the promise mechanism isn't quite
         // working with refetch and apollo
-        data.refetch({partialHashtag: currentHashtagValue})
+        graphqlData.refetch({partialHashtag: currentHashtagValue})
             .then(dataObject => {
                 const suggestions = JSON.parse(dataObject.data.suggestions[0])
                           .suggest
-                          .analyzedSuggestion[`#${currentHashtagValue}`]
+                          .analyzedSuggestion[`${currentHashtagValue}`]
                           .suggestions;
                 this.setState({value: this.state.value, items: suggestions});
+                this.props.dispatch(setCurrentHashtag(currentHashtagValue));
             }
                  );
+        
+        
     }
 
-    handleSubmit(event) {
-        this.props.dispatch(this.state.value);
-        event.preventDefault();
-    }    
+    handleSelect(val) {
+        this.props.dispatch(setCurrentHashtag(val));
+        this.setState({value: val})
+    }
+
     render() {
 
-
-//                        <input type="text" onChange={this.handleChange} />
-// ****************************************************************
-// ****************************************************************
-// add # via content style!
-// ****************************************************************
-// ****************************************************************
         return (
+
+            <span className={sass.hashtag}>
                 <Autocomplete 
             getItemValue={this.handleGetItemValue}
             renderItem={this.handleRenderItem}
             items={this.state.items}
             value={this.state.value}
-            onChange={this.handleChange}
-            onSelect={(val) => value = val}
+            onChange={this.handleChange}t
+            onSelect={this.handleSelect}            
                 />
+                </span>
         );
     }
 }

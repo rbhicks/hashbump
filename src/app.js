@@ -164,7 +164,7 @@ class App extends Component {
                 </div>
                 <hr />
                 <div>
-            <center><div><HashtagForm /></div>
+                <center><div><HashtagForm className={sass.hashtag}/></div>
             <BumpButton bump="yay"/>
             <BumpButton bump="grrr"/>
             <BumpButton bump="dunno"/>

@@ -16,7 +16,6 @@ const mutation = gql`
   }
 `;
 
-
 @connect(state => ({ currentHashtag: state.currentHashtag }))
 @graphql(mutation)
 class BumpButton extends React.PureComponent {

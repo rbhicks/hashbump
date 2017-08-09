@@ -43,7 +43,7 @@ const Hashtag = Conn.define('hashtag', {
 // Conn.sync({ force: true }).then(()=> {
 //   _.times(1000, ()=> {
 //     return Hashtag.create({
-//       name: `#${Faker.commerce.productName()}`.replace(/ /g, "").toLowerCase(),
+//       name: `${Faker.commerce.productName()}`.replace(/ /g, "").toLowerCase(),
 //       yayCount: 0,
 //       grrrCount: 0,
 //       dunnoCount: 0,
