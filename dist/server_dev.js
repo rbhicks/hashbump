@@ -1205,7 +1205,14 @@ const Mutation = new _graphql.GraphQLObjectType({
         },
         resolve(source, args) {
           return _db2.default.models.hashtag.findOne({ where: { name: args.name } }).then(hashtag => {
-            return hashtag.increment([`${args.bump}Count`], { by: 1 });
+
+            if (!hashtag) {
+              _db2.default.models.hashtag.create({ name: args.name }).then(hashtag => {
+                return hashtag.increment([`${args.bump}Count`], { by: 1 });
+              });
+            } else {
+              return hashtag.increment([`${args.bump}Count`], { by: 1 });
+            }
           });
         }
       }

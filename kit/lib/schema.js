@@ -133,7 +133,16 @@ const Mutation = new GraphQLObjectType({
         },
         resolve (source, args) {
             return Db.models.hashtag.findOne({ where: {name: args.name} }).then( hashtag => {
-            return hashtag.increment([`${args.bump}Count`], { by: 1 })
+
+                if (!hashtag) {
+                    Db.models.hashtag.create({name: args.name})
+                        .then(hashtag => {
+                            return hashtag.increment([`${args.bump}Count`], { by: 1 })
+                        });
+                }
+                else {
+                    return hashtag.increment([`${args.bump}Count`], { by: 1 });
+                }
           });
         }
       }
