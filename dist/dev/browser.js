@@ -550,7 +550,7 @@ Redirect.defaultProps = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_redux__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__store_actions_js__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_bumpButton_js__ = __webpack_require__(186);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_hashtagForm_js__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_hashtagAutocomplete_js__ = __webpack_require__(187);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _dec, _class;
@@ -636,14 +636,6 @@ var WhenNotFound = function WhenNotFound() {
     )
   );
 };
-
-// !@#$!@#$!#$$@#%^^&$%^&$%^&#%^@$%!#$%#^$%&*%^*$#@%!@#$
-// !@#$!@#$!#$$@#%^^&$%^&$%^&#%^@$%!#$%#^$%&*%^*$#@%!@#$
-// is this propTypes merge thing used to prevent the
-// problem where the redux stuff bleamed the refetch
-// call in the hashtag form?
-// !@#$!@#$!#$$@#%^^&$%^&$%^&#%^@$%!#$%#^$%&*%^*$#@%!@#$
-// !@#$!@#$!#$$@#%^^&$%^&$%^&#%^@$%!#$%#^$%&*%^*$#@%!@#$
 
 // Specify PropTypes if the `match` object, which is injected to props by
 // the <Route> component
@@ -788,7 +780,7 @@ var App = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_12_react_redux
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
               'div',
               null,
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_15__components_hashtagForm_js__["a" /* default */], { className: __WEBPACK_IMPORTED_MODULE_9__styles_scss___default.a.hashtag })
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_15__components_hashtagAutocomplete_js__["a" /* default */], { className: __WEBPACK_IMPORTED_MODULE_9__styles_scss___default.a.hashtag })
             ),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_14__components_bumpButton_js__["a" /* default */], { bump: 'yay' }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_14__components_bumpButton_js__["a" /* default */], { bump: 'grrr' }),
@@ -936,13 +928,13 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var query = __WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject);
 
-var HashtagForm = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react_redux__["a" /* connect */])(), _dec2 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(query, { options: { variables: { partialHashtag: "!" } } }), _dec(_class = _dec2(_class = function (_React$Component) {
-    _inherits(HashtagForm, _React$Component);
+var HashtagAutocomplete = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react_redux__["a" /* connect */])(), _dec2 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(query, { options: { variables: { partialHashtag: "!" } } }), _dec(_class = _dec2(_class = function (_React$Component) {
+    _inherits(HashtagAutocomplete, _React$Component);
 
-    function HashtagForm(props) {
-        _classCallCheck(this, HashtagForm);
+    function HashtagAutocomplete(props) {
+        _classCallCheck(this, HashtagAutocomplete);
 
-        var _this = _possibleConstructorReturn(this, (HashtagForm.__proto__ || Object.getPrototypeOf(HashtagForm)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (HashtagAutocomplete.__proto__ || Object.getPrototypeOf(HashtagAutocomplete)).call(this, props));
 
         _this.state = { value: '', items: [] };
 
@@ -953,7 +945,7 @@ var HashtagForm = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_reac
         return _this;
     }
 
-    _createClass(HashtagForm, [{
+    _createClass(HashtagAutocomplete, [{
         key: 'handleRenderItem',
         value: function handleRenderItem(item, isHighlighted) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -1016,11 +1008,11 @@ var HashtagForm = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_reac
         }
     }]);
 
-    return HashtagForm;
+    return HashtagAutocomplete;
 }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component)) || _class) || _class);
 
 
-/* harmony default export */ __webpack_exports__["a"] = (HashtagForm);
+/* harmony default export */ __webpack_exports__["a"] = (HashtagAutocomplete);
 
 /***/ }),
 

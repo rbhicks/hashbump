@@ -38,7 +38,7 @@ import { connect } from 'react-redux';
 import { setCurrentHashtag } from './store/actions.js';
 
 import BumpButton  from './components/bumpButton.js';
-import HashtagForm from './components/hashtagForm.js';
+import HashtagAutocomplete from './components/hashtagAutocomplete.js';
 
 // ----------------------
 
@@ -59,14 +59,6 @@ const WhenNotFound = () => (
     <h1>Unknown route - the 404 handler was triggered!</h1>
   </NotFound>
 );
-
-// !@#$!@#$!#$$@#%^^&$%^&$%^&#%^@$%!#$%#^$%&*%^*$#@%!@#$
-// !@#$!@#$!#$$@#%^^&$%^&$%^&#%^@$%!#$%#^$%&*%^*$#@%!@#$
-// is this propTypes merge thing used to prevent the
-// problem where the redux stuff bleamed the refetch
-// call in the hashtag form?
-// !@#$!@#$!#$$@#%^^&$%^&$%^&#%^@$%!#$%#^$%&*%^*$#@%!@#$
-// !@#$!@#$!#$$@#%^^&$%^&$%^&#%^@$%!#$%#^$%&*%^*$#@%!@#$
 
 // Specify PropTypes if the `match` object, which is injected to props by
 // the <Route> component
@@ -164,7 +156,7 @@ class App extends Component {
                 </div>
                 <hr />
                 <div>
-                <center><div><HashtagForm className={sass.hashtag}/></div>
+                <center><div><HashtagAutocomplete className={sass.hashtag}/></div>
             <BumpButton bump="yay"/>
             <BumpButton bump="grrr"/>
             <BumpButton bump="dunno"/>

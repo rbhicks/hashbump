@@ -1372,9 +1372,9 @@ var _bumpButton = __webpack_require__(23);
 
 var _bumpButton2 = _interopRequireDefault(_bumpButton);
 
-var _hashtagForm = __webpack_require__(24);
+var _hashtagAutocomplete = __webpack_require__(24);
 
-var _hashtagForm2 = _interopRequireDefault(_hashtagForm);
+var _hashtagAutocomplete2 = _interopRequireDefault(_hashtagAutocomplete);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1406,14 +1406,6 @@ const WhenNotFound = () => _react2.default.createElement(
     'Unknown route - the 404 handler was triggered!'
   )
 );
-
-// !@#$!@#$!#$$@#%^^&$%^&$%^&#%^@$%!#$%#^$%&*%^*$#@%!@#$
-// !@#$!@#$!#$$@#%^^&$%^&$%^&#%^@$%!#$%#^$%&*%^*$#@%!@#$
-// is this propTypes merge thing used to prevent the
-// problem where the redux stuff bleamed the refetch
-// call in the hashtag form?
-// !@#$!@#$!#$$@#%^^&$%^&$%^&#%^@$%!#$%#^$%&*%^*$#@%!@#$
-// !@#$!@#$!#$$@#%^^&$%^&$%^&#%^@$%!#$%#^$%&*%^*$#@%!@#$
 
 // Specify PropTypes if the `match` object, which is injected to props by
 // the <Route> component
@@ -1539,7 +1531,7 @@ let App = (_dec = (0, _reactRedux.connect)(state => ({ currentHashtag: state.cur
           _react2.default.createElement(
             'div',
             null,
-            _react2.default.createElement(_hashtagForm2.default, { className: _styles4.default.hashtag })
+            _react2.default.createElement(_hashtagAutocomplete2.default, { className: _styles4.default.hashtag })
           ),
           _react2.default.createElement(_bumpButton2.default, { bump: 'yay' }),
           _react2.default.createElement(_bumpButton2.default, { bump: 'grrr' }),
@@ -1672,7 +1664,7 @@ const query = _graphqlTag2.default`
   }
 `;
 
-let HashtagForm = (_dec = (0, _reactRedux.connect)(), _dec2 = (0, _reactApollo.graphql)(query, { options: { variables: { partialHashtag: "!" } } }), _dec(_class = _dec2(_class = class HashtagForm extends _react2.default.Component {
+let HashtagAutocomplete = (_dec = (0, _reactRedux.connect)(), _dec2 = (0, _reactApollo.graphql)(query, { options: { variables: { partialHashtag: "!" } } }), _dec(_class = _dec2(_class = class HashtagAutocomplete extends _react2.default.Component {
     constructor(props) {
         super(props);
         this.state = { value: '', items: [] };
@@ -1737,7 +1729,7 @@ let HashtagForm = (_dec = (0, _reactRedux.connect)(), _dec2 = (0, _reactApollo.g
         );
     }
 }) || _class) || _class);
-exports.default = HashtagForm;
+exports.default = HashtagAutocomplete;
 
 /***/ }),
 /* 25 */
