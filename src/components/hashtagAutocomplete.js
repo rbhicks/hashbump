@@ -8,14 +8,6 @@ import Autocomplete from 'react-autocomplete';
 
 import sass from '../styles.scss';
 
-///////////////////////////////
-///////////////////////////////
-//add hashtag creation handling
-///////////////////////////////
-///////////////////////////////
-
-
-
 const query = gql`
   query suggestions($partialHashtag: String!) {
     suggestions(partialHashtag: $partialHashtag)
