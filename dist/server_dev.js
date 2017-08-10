@@ -1565,8 +1565,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _dec, _dec2, _class;
-
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -1583,7 +1581,7 @@ var _actions = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const mutation = _graphqlTag2.default`
+const bumpHashtagMutation = (0, _reactApollo.graphql)(_graphqlTag2.default`
   mutation bumpHashtag($currentHashtag: String!, $bump: String!) {
     bumpHashtag(name: $currentHashtag, bump: $bump) {
       name
@@ -1593,9 +1591,9 @@ const mutation = _graphqlTag2.default`
       mehCount
     }
   }
-`;
+`);
 
-let BumpButton = (_dec = (0, _reactRedux.connect)(state => ({ currentHashtag: state.currentHashtag })), _dec2 = (0, _reactApollo.graphql)(mutation), _dec(_class = _dec2(_class = class BumpButton extends _react2.default.PureComponent {
+let BumpButton = class BumpButton extends _react2.default.PureComponent {
 
     constructor() {
         super();
@@ -1618,8 +1616,8 @@ let BumpButton = (_dec = (0, _reactRedux.connect)(state => ({ currentHashtag: st
             _react2.default.createElement('img', { src: this.imageLookup[this.props.bump], onClick: this.handleClick })
         );
     }
-}) || _class) || _class);
-exports.default = BumpButton;
+};
+exports.default = (0, _reactApollo.compose)((0, _reactRedux.connect)(state => ({ currentHashtag: state.currentHashtag })), bumpHashtagMutation)(BumpButton);
 
 /***/ }),
 /* 24 */

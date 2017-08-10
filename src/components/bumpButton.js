@@ -1,10 +1,10 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 import { connect } from 'react-redux';
 import { setCurrentHashtag } from '../store/actions';
 
-const mutation = gql`
+const bumpHashtagMutation = graphql(gql`
   mutation bumpHashtag($currentHashtag: String!, $bump: String!) {
     bumpHashtag(name: $currentHashtag, bump: $bump) {
       name
@@ -14,10 +14,8 @@ const mutation = gql`
       mehCount
     }
   }
-`;
+`);
 
-@connect(state => ({ currentHashtag: state.currentHashtag }))
-@graphql(mutation)
 class BumpButton extends React.PureComponent {
 
     constructor() {
@@ -41,4 +39,7 @@ class BumpButton extends React.PureComponent {
     }
 }
 
-export default BumpButton;
+export default compose(
+    connect(state => ({ currentHashtag: state.currentHashtag })),
+    bumpHashtagMutation,
+)(BumpButton);

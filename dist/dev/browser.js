@@ -811,8 +811,6 @@ var App = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_actions__ = __webpack_require__(66);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _class;
-
 var _templateObject = _taggedTemplateLiteral(['\n  mutation bumpHashtag($currentHashtag: String!, $bump: String!) {\n    bumpHashtag(name: $currentHashtag, bump: $bump) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n'], ['\n  mutation bumpHashtag($currentHashtag: String!, $bump: String!) {\n    bumpHashtag(name: $currentHashtag, bump: $bump) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -829,11 +827,9 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 
 
-var mutation = __WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject);
+var bumpHashtagMutation = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject));
 
-var BumpButton = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react_redux__["a" /* connect */])(function (state) {
-    return { currentHashtag: state.currentHashtag };
-}), _dec2 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(mutation), _dec(_class = _dec2(_class = function (_React$PureComponent) {
+var BumpButton = function (_React$PureComponent) {
     _inherits(BumpButton, _React$PureComponent);
 
     function BumpButton() {
@@ -867,10 +863,11 @@ var BumpButton = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react
     }]);
 
     return BumpButton;
-}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.PureComponent)) || _class) || _class);
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.PureComponent);
 
-
-/* harmony default export */ __webpack_exports__["a"] = (BumpButton);
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react_redux__["a" /* connect */])(function (state) {
+    return { currentHashtag: state.currentHashtag };
+}), bumpHashtagMutation)(BumpButton));
 
 /***/ }),
 
