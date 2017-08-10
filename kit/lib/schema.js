@@ -78,6 +78,17 @@ const Query = new GraphQLObjectType({
                 return Db.models.hashtag.findAll({ where: args });
             }
         },
+        hashtag: {
+            type: Hashtag,
+            args: {
+                name: {
+                    type: GraphQLString
+                }
+            },
+            resolve (root, args) {
+                return Db.models.hashtag.findOne({ where: args });
+            }
+        },
         suggestions: {
             type: new GraphQLList(GraphQLString),
             args: {
@@ -86,13 +97,8 @@ const Query = new GraphQLObjectType({
                 }
             },
             resolve (root, args) {
-                // this seems to be all jacked up:
-                // returning res.json() or the result of fetch
-                // just sends a string of "Object object" to
-                // the client. Trying to parse the JSON on this
-                // side just gives a parse error (presumably)
-                // from the same object.
-                // see client side comment for other details
+                // !!!!!!
+                // ugly kludge: fix this so it has a proper type defined
                 const suggestionsUrl = `http://localhost:8983/solr/hashbump/suggest?suggest=true&suggest.dictionary=analyzedSuggestion&wt=json&suggest.q=${args.partialHashtag}`;
                 const suggestions = fetch(suggestionsUrl).then(res => res.text());
 

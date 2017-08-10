@@ -894,9 +894,8 @@ var BumpButton = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__styles_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__styles_scss__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _dec, _dec2, _class;
-
-var _templateObject = _taggedTemplateLiteral(['\n  query suggestions($partialHashtag: String!) {\n    suggestions(partialHashtag: $partialHashtag)\n  }\n'], ['\n  query suggestions($partialHashtag: String!) {\n    suggestions(partialHashtag: $partialHashtag)\n  }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  query suggestions($partialHashtag: String!) {\n    suggestions(partialHashtag: $partialHashtag)\n  }\n'], ['\n  query suggestions($partialHashtag: String!) {\n    suggestions(partialHashtag: $partialHashtag)\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  query hashtag($name: String!) {\n    hashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n'], ['\n  query hashtag($name: String!) {\n    hashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -915,16 +914,25 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 
 
-///////////////////////////////
-///////////////////////////////
-//add hashtag creation handling
-///////////////////////////////
-///////////////////////////////
+var suggestionsQuery = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject), {
+    name: "suggestionsQuery",
+    options: function options(props) {
+        return {
+            variables: { partialHashtag: "!" }
+        };
+    }
+});
 
+var hashtagQuery = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject2), {
+    name: "hashtagQuery",
+    options: function options(props) {
+        return {
+            variables: { name: "buffalo" }
+        };
+    }
+});
 
-var query = __WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject);
-
-var HashtagAutocomplete = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react_redux__["a" /* connect */])(), _dec2 = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(query, { options: { variables: { partialHashtag: "!" } } }), _dec(_class = _dec2(_class = function (_React$Component) {
+var HashtagAutocomplete = function (_React$Component) {
     _inherits(HashtagAutocomplete, _React$Component);
 
     function HashtagAutocomplete(props) {
@@ -960,20 +968,16 @@ var HashtagAutocomplete = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODUL
         value: function handleChange(event) {
             var _this2 = this;
 
-            var graphqlData = this.props.data;
+            var suggestionsQueryData = this.props.suggestionsQuery;
+            var hashtagQueryData = this.props.hashtagQuery;
             var currentHashtagValue = event.target.value;
 
             this.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(currentHashtagValue));
             this.setState({ value: currentHashtagValue, items: this.state.items });
 
-            // this value is strange:
-            // returning the promise directly doesn't work
-            // only returning the text string inside a promise
-            // works
-            // this then has to be parsed on this side within the promise
-            // handler. it seems like the promise mechanism isn't quite
-            // working with refetch and apollo
-            graphqlData.refetch({ partialHashtag: currentHashtagValue }).then(function (dataObject) {
+            // !!!!!!
+            // ugly kludge: fix this so it has a proper type defined in the schema
+            suggestionsQueryData.refetch({ partialHashtag: currentHashtagValue }, { name: currentHashtagValue }).then(function (dataObject) {
                 var suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion['' + currentHashtagValue].suggestions;
                 _this2.setState({ value: _this2.state.value, items: suggestions });
                 _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(currentHashtagValue));
@@ -1005,10 +1009,9 @@ var HashtagAutocomplete = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODUL
     }]);
 
     return HashtagAutocomplete;
-}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component)) || _class) || _class);
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
 
-
-/* harmony default export */ __webpack_exports__["a"] = (HashtagAutocomplete);
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react_redux__["a" /* connect */])(), hashtagQuery, suggestionsQuery)(HashtagAutocomplete));
 
 /***/ }),
 

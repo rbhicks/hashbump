@@ -1,6 +1,6 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import { graphql } from 'react-apollo';
+import { graphql, compose, withApollo } from 'react-apollo';
 import { connect } from 'react-redux';
 import { setCurrentHashtag } from '../store/actions';
 import Autocomplete from 'react-autocomplete';
@@ -8,14 +8,34 @@ import Autocomplete from 'react-autocomplete';
 
 import sass from '../styles.scss';
 
-const query = gql`
+const suggestionsQuery = graphql(gql`
   query suggestions($partialHashtag: String!) {
     suggestions(partialHashtag: $partialHashtag)
   }
-`;
+`, {
+    name: "suggestionsQuery",
+    options: (props) => ({
+        variables: {partialHashtag: "!"}
+    }),
+});
 
-@connect()
-@graphql(query, {options: {variables: {partialHashtag: "!"}}})
+const hashtagQuery = graphql(gql`
+  query hashtag($name: String!) {
+    hashtag(name: $name) {
+      name
+      yayCount
+      grrrCount
+      dunnoCount
+      mehCount
+    }
+  }
+`, {
+    name: "hashtagQuery",
+    options: (props) => ({
+        variables: {name: "buffalo"}
+    }),
+});
+
 class HashtagAutocomplete extends React.Component {
     constructor(props) {
         super(props);
@@ -40,20 +60,16 @@ class HashtagAutocomplete extends React.Component {
     }
     
     handleChange(event) {
-        let graphqlData = this.props.data;
+        const suggestionsQueryData = this.props.suggestionsQuery;
+        const hashtagQueryData = this.props.hashtagQuery;
         const currentHashtagValue = event.target.value;
 
         this.props.dispatch(setCurrentHashtag(currentHashtagValue));
         this.setState({value: currentHashtagValue, items: this.state.items});
 
-        // this value is strange:
-        // returning the promise directly doesn't work
-        // only returning the text string inside a promise
-        // works
-        // this then has to be parsed on this side within the promise
-        // handler. it seems like the promise mechanism isn't quite
-        // working with refetch and apollo
-        graphqlData.refetch({partialHashtag: currentHashtagValue})
+        // !!!!!!
+        // ugly kludge: fix this so it has a proper type defined in the schema
+        suggestionsQueryData.refetch({partialHashtag: currentHashtagValue},{name: currentHashtagValue})
             .then(dataObject => {
                 const suggestions = JSON.parse(dataObject.data.suggestions[0])
                           .suggest
@@ -62,9 +78,7 @@ class HashtagAutocomplete extends React.Component {
                 this.setState({value: this.state.value, items: suggestions});
                 this.props.dispatch(setCurrentHashtag(currentHashtagValue));
             }
-                 );
-        
-        
+        );                
     }
 
     handleSelect(val) {
@@ -90,4 +104,8 @@ class HashtagAutocomplete extends React.Component {
     }
 }
 
-export default HashtagAutocomplete;
+export default compose(
+    connect(),
+    hashtagQuery,
+    suggestionsQuery,
+)(HashtagAutocomplete);

@@ -1150,6 +1150,17 @@ const Query = new _graphql.GraphQLObjectType({
           return _db2.default.models.hashtag.findAll({ where: args });
         }
       },
+      hashtag: {
+        type: Hashtag,
+        args: {
+          name: {
+            type: _graphql.GraphQLString
+          }
+        },
+        resolve(root, args) {
+          return _db2.default.models.hashtag.findOne({ where: args });
+        }
+      },
       suggestions: {
         type: new _graphql.GraphQLList(_graphql.GraphQLString),
         args: {
@@ -1158,13 +1169,8 @@ const Query = new _graphql.GraphQLObjectType({
           }
         },
         resolve(root, args) {
-          // this seems to be all jacked up:
-          // returning res.json() or the result of fetch
-          // just sends a string of "Object object" to
-          // the client. Trying to parse the JSON on this
-          // side just gives a parse error (presumably)
-          // from the same object.
-          // see client side comment for other details
+          // !!!!!!
+          // ugly kludge: fix this so it has a proper type defined
           const suggestionsUrl = `http://localhost:8983/solr/hashbump/suggest?suggest=true&suggest.dictionary=analyzedSuggestion&wt=json&suggest.q=${args.partialHashtag}`;
           const suggestions = fetch(suggestionsUrl).then(res => res.text());
 
@@ -1630,8 +1636,6 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _dec, _dec2, _class;
-
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -1656,20 +1660,35 @@ var _styles2 = _interopRequireDefault(_styles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-///////////////////////////////
-///////////////////////////////
-//add hashtag creation handling
-///////////////////////////////
-///////////////////////////////
-
-
-const query = _graphqlTag2.default`
+const suggestionsQuery = (0, _reactApollo.graphql)(_graphqlTag2.default`
   query suggestions($partialHashtag: String!) {
     suggestions(partialHashtag: $partialHashtag)
   }
-`;
+`, {
+    name: "suggestionsQuery",
+    options: props => ({
+        variables: { partialHashtag: "!" }
+    })
+});
 
-let HashtagAutocomplete = (_dec = (0, _reactRedux.connect)(), _dec2 = (0, _reactApollo.graphql)(query, { options: { variables: { partialHashtag: "!" } } }), _dec(_class = _dec2(_class = class HashtagAutocomplete extends _react2.default.Component {
+const hashtagQuery = (0, _reactApollo.graphql)(_graphqlTag2.default`
+  query hashtag($name: String!) {
+    hashtag(name: $name) {
+      name
+      yayCount
+      grrrCount
+      dunnoCount
+      mehCount
+    }
+  }
+`, {
+    name: "hashtagQuery",
+    options: props => ({
+        variables: { name: "buffalo" }
+    })
+});
+
+let HashtagAutocomplete = class HashtagAutocomplete extends _react2.default.Component {
     constructor(props) {
         super(props);
         this.state = { value: '', items: [] };
@@ -1693,20 +1712,16 @@ let HashtagAutocomplete = (_dec = (0, _reactRedux.connect)(), _dec2 = (0, _react
     }
 
     handleChange(event) {
-        let graphqlData = this.props.data;
+        const suggestionsQueryData = this.props.suggestionsQuery;
+        const hashtagQueryData = this.props.hashtagQuery;
         const currentHashtagValue = event.target.value;
 
         this.props.dispatch((0, _actions.setCurrentHashtag)(currentHashtagValue));
         this.setState({ value: currentHashtagValue, items: this.state.items });
 
-        // this value is strange:
-        // returning the promise directly doesn't work
-        // only returning the text string inside a promise
-        // works
-        // this then has to be parsed on this side within the promise
-        // handler. it seems like the promise mechanism isn't quite
-        // working with refetch and apollo
-        graphqlData.refetch({ partialHashtag: currentHashtagValue }).then(dataObject => {
+        // !!!!!!
+        // ugly kludge: fix this so it has a proper type defined in the schema
+        suggestionsQueryData.refetch({ partialHashtag: currentHashtagValue }, { name: currentHashtagValue }).then(dataObject => {
             const suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion[`${currentHashtagValue}`].suggestions;
             this.setState({ value: this.state.value, items: suggestions });
             this.props.dispatch((0, _actions.setCurrentHashtag)(currentHashtagValue));
@@ -1733,8 +1748,8 @@ let HashtagAutocomplete = (_dec = (0, _reactRedux.connect)(), _dec2 = (0, _react
             })
         );
     }
-}) || _class) || _class);
-exports.default = HashtagAutocomplete;
+};
+exports.default = (0, _reactApollo.compose)((0, _reactRedux.connect)(), hashtagQuery, suggestionsQuery)(HashtagAutocomplete);
 
 /***/ }),
 /* 25 */
