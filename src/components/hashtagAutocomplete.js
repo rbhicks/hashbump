@@ -78,7 +78,7 @@ class HashtagAutocomplete extends React.Component {
 
                 hashtagQueryData.refetch({name: currentHashtagValue})
                     .then(dataObject => {
-                        if (dataObject) {
+                        if (dataObject.data.hashtag) {
                             this.props.dispatch(setCurrentHashtag(dataObject.data.hashtag));
                         }
                         else {
@@ -99,7 +99,7 @@ class HashtagAutocomplete extends React.Component {
         
         hashtagQueryData.refetch({name: val})
             .then(dataObject => {
-                if (dataObject) {
+                if (dataObject.data.hashtag) {                    
                     this.props.dispatch(setCurrentHashtag(dataObject.data.hashtag));
                 }
                 else {

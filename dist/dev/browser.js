@@ -979,7 +979,7 @@ var HashtagAutocomplete = function (_React$Component) {
                 var suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion['' + currentHashtagValue].suggestions;
 
                 hashtagQueryData.refetch({ name: currentHashtagValue }).then(function (dataObject) {
-                    if (dataObject) {
+                    if (dataObject.data.hashtag) {
                         _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(dataObject.data.hashtag));
                     } else {
                         _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])({ name: currentHashtagValue,
@@ -1000,7 +1000,7 @@ var HashtagAutocomplete = function (_React$Component) {
             var hashtagQueryData = this.props.hashtagQuery;
 
             hashtagQueryData.refetch({ name: val }).then(function (dataObject) {
-                if (dataObject) {
+                if (dataObject.data.hashtag) {
                     _this3.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(dataObject.data.hashtag));
                 } else {
                     _this3.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])({ name: val,

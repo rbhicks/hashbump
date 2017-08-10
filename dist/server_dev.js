@@ -1723,7 +1723,7 @@ let HashtagAutocomplete = class HashtagAutocomplete extends _react2.default.Comp
             const suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion[`${currentHashtagValue}`].suggestions;
 
             hashtagQueryData.refetch({ name: currentHashtagValue }).then(dataObject => {
-                if (dataObject) {
+                if (dataObject.data.hashtag) {
                     this.props.dispatch((0, _actions.setCurrentHashtag)(dataObject.data.hashtag));
                 } else {
                     this.props.dispatch((0, _actions.setCurrentHashtag)({ name: currentHashtagValue,
@@ -1741,7 +1741,7 @@ let HashtagAutocomplete = class HashtagAutocomplete extends _react2.default.Comp
         const hashtagQueryData = this.props.hashtagQuery;
 
         hashtagQueryData.refetch({ name: val }).then(dataObject => {
-            if (dataObject) {
+            if (dataObject.data.hashtag) {
                 this.props.dispatch((0, _actions.setCurrentHashtag)(dataObject.data.hashtag));
             } else {
                 this.props.dispatch((0, _actions.setCurrentHashtag)({ name: val,
