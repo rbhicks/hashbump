@@ -853,9 +853,7 @@ var BumpButton = (_dec = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react
     _createClass(BumpButton, [{
         key: 'handleClick',
         value: function handleClick() {
-            var count = this.props.bump + 'Count';
-
-            this.props.mutate(this.props.currentHashtag, count);
+            this.props.mutate({ variables: { currentHashtag: this.props.currentHashtag.name, bump: this.props.bump } });
         }
     }, {
         key: 'render',
@@ -927,7 +925,7 @@ var hashtagQuery = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apoll
     name: "hashtagQuery",
     options: function options(props) {
         return {
-            variables: { name: "buffalo" }
+            variables: { name: "" }
         };
     }
 });
@@ -975,18 +973,43 @@ var HashtagAutocomplete = function (_React$Component) {
             this.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(currentHashtagValue));
             this.setState({ value: currentHashtagValue, items: this.state.items });
 
-            // !!!!!!
-            // ugly kludge: fix this so it has a proper type defined in the schema
             suggestionsQueryData.refetch({ partialHashtag: currentHashtagValue }).then(function (dataObject) {
+                // !!!!!!
+                // ugly kludge: fix this so it has a proper type defined in the schema
                 var suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion['' + currentHashtagValue].suggestions;
-                _this2.setState({ items: suggestions });
-                _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(currentHashtagValue));
+
+                hashtagQueryData.refetch({ name: currentHashtagValue }).then(function (dataObject) {
+                    if (dataObject) {
+                        _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(dataObject.data.hashtag));
+                    } else {
+                        _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])({ name: currentHashtagValue,
+                            yayCount: 0,
+                            grrrCount: 0,
+                            dunnoCount: 0,
+                            mehCount: 0 }));
+                    }
+                    _this2.setState({ items: suggestions });
+                });
             });
         }
     }, {
         key: 'handleSelect',
         value: function handleSelect(val) {
-            this.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(val));
+            var _this3 = this;
+
+            var hashtagQueryData = this.props.hashtagQuery;
+
+            hashtagQueryData.refetch({ name: val }).then(function (dataObject) {
+                if (dataObject) {
+                    _this3.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(dataObject.data.hashtag));
+                } else {
+                    _this3.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])({ name: val,
+                        yayCount: 0,
+                        grrrCount: 0,
+                        dunnoCount: 0,
+                        mehCount: 0 }));
+                }
+            });
             this.setState({ value: val });
         }
     }, {

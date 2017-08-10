@@ -32,7 +32,7 @@ const hashtagQuery = graphql(gql`
 `, {
     name: "hashtagQuery",
     options: (props) => ({
-        variables: {name: "buffalo"}
+        variables: {name: ""}
     }),
 });
 
@@ -75,14 +75,41 @@ class HashtagAutocomplete extends React.Component {
                           .suggest
                           .analyzedSuggestion[`${currentHashtagValue}`]
                           .suggestions;
-                this.setState({items: suggestions});
-                this.props.dispatch(setCurrentHashtag(currentHashtagValue));
+
+                hashtagQueryData.refetch({name: currentHashtagValue})
+                    .then(dataObject => {
+                        if (dataObject) {
+                            this.props.dispatch(setCurrentHashtag(dataObject.data.hashtag));
+                        }
+                        else {
+                            this.props.dispatch(setCurrentHashtag({name: currentHashtagValue,
+                                                                   yayCount: 0,
+                                                                   grrrCount: 0,
+                                                                   dunnoCount: 0,
+                                                                   mehCount: 0}));
+                        }
+                        this.setState({items: suggestions});
+                    });
             }
-        );                
+        );        
     }
 
     handleSelect(val) {
-        this.props.dispatch(setCurrentHashtag(val));
+        const hashtagQueryData = this.props.hashtagQuery;
+        
+        hashtagQueryData.refetch({name: val})
+            .then(dataObject => {
+                if (dataObject) {
+                    this.props.dispatch(setCurrentHashtag(dataObject.data.hashtag));
+                }
+                else {
+                    this.props.dispatch(setCurrentHashtag({name: val,
+                                                           yayCount: 0,
+                                                           grrrCount: 0,
+                                                           dunnoCount: 0,
+                                                           mehCount: 0}));
+                }
+            });
         this.setState({value: val})
     }
 

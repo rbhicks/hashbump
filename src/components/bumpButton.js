@@ -31,9 +31,7 @@ class BumpButton extends React.PureComponent {
     }
     
     handleClick() {
-        const count = `${this.props.bump}Count`;
-
-        this.props.mutate(this.props.currentHashtag, count);
+        this.props.mutate({variables: {currentHashtag: this.props.currentHashtag.name, bump: this.props.bump}});
     }
 
     render() {

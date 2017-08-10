@@ -137,7 +137,7 @@ const Mutation = new GraphQLObjectType({
             type: new GraphQLNonNull(GraphQLString)
           }
         },
-        resolve (source, args) {
+          resolve (source, args) {
             return Db.models.hashtag.findOne({ where: {name: args.name} }).then( hashtag => {
 
                 if (!hashtag) {

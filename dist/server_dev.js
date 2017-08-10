@@ -1610,9 +1610,7 @@ let BumpButton = (_dec = (0, _reactRedux.connect)(state => ({ currentHashtag: st
     }
 
     handleClick() {
-        const count = `${this.props.bump}Count`;
-
-        this.props.mutate(this.props.currentHashtag, count);
+        this.props.mutate({ variables: { currentHashtag: this.props.currentHashtag.name, bump: this.props.bump } });
     }
 
     render() {
@@ -1684,7 +1682,7 @@ const hashtagQuery = (0, _reactApollo.graphql)(_graphqlTag2.default`
 `, {
     name: "hashtagQuery",
     options: props => ({
-        variables: { name: "buffalo" }
+        variables: { name: "" }
     })
 });
 
@@ -1719,17 +1717,40 @@ let HashtagAutocomplete = class HashtagAutocomplete extends _react2.default.Comp
         this.props.dispatch((0, _actions.setCurrentHashtag)(currentHashtagValue));
         this.setState({ value: currentHashtagValue, items: this.state.items });
 
-        // !!!!!!
-        // ugly kludge: fix this so it has a proper type defined in the schema
         suggestionsQueryData.refetch({ partialHashtag: currentHashtagValue }).then(dataObject => {
+            // !!!!!!
+            // ugly kludge: fix this so it has a proper type defined in the schema
             const suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion[`${currentHashtagValue}`].suggestions;
-            this.setState({ items: suggestions });
-            this.props.dispatch((0, _actions.setCurrentHashtag)(currentHashtagValue));
+
+            hashtagQueryData.refetch({ name: currentHashtagValue }).then(dataObject => {
+                if (dataObject) {
+                    this.props.dispatch((0, _actions.setCurrentHashtag)(dataObject.data.hashtag));
+                } else {
+                    this.props.dispatch((0, _actions.setCurrentHashtag)({ name: currentHashtagValue,
+                        yayCount: 0,
+                        grrrCount: 0,
+                        dunnoCount: 0,
+                        mehCount: 0 }));
+                }
+                this.setState({ items: suggestions });
+            });
         });
     }
 
     handleSelect(val) {
-        this.props.dispatch((0, _actions.setCurrentHashtag)(val));
+        const hashtagQueryData = this.props.hashtagQuery;
+
+        hashtagQueryData.refetch({ name: val }).then(dataObject => {
+            if (dataObject) {
+                this.props.dispatch((0, _actions.setCurrentHashtag)(dataObject.data.hashtag));
+            } else {
+                this.props.dispatch((0, _actions.setCurrentHashtag)({ name: val,
+                    yayCount: 0,
+                    grrrCount: 0,
+                    dunnoCount: 0,
+                    mehCount: 0 }));
+            }
+        });
         this.setState({ value: val });
     }
 
