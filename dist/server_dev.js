@@ -1723,7 +1723,7 @@ let HashtagAutocomplete = class HashtagAutocomplete extends _react2.default.Comp
         // ugly kludge: fix this so it has a proper type defined in the schema
         suggestionsQueryData.refetch({ partialHashtag: currentHashtagValue }, { name: currentHashtagValue }).then(dataObject => {
             const suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion[`${currentHashtagValue}`].suggestions;
-            this.setState({ value: this.state.value, items: suggestions });
+            this.setState({ items: suggestions });
             this.props.dispatch((0, _actions.setCurrentHashtag)(currentHashtagValue));
         });
     }

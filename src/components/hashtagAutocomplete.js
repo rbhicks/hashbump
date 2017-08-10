@@ -75,7 +75,7 @@ class HashtagAutocomplete extends React.Component {
                           .suggest
                           .analyzedSuggestion[`${currentHashtagValue}`]
                           .suggestions;
-                this.setState({value: this.state.value, items: suggestions});
+                this.setState({items: suggestions});
                 this.props.dispatch(setCurrentHashtag(currentHashtagValue));
             }
         );                
