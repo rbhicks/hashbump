@@ -69,7 +69,7 @@ class HashtagAutocomplete extends React.Component {
 
         // !!!!!!
         // ugly kludge: fix this so it has a proper type defined in the schema
-        suggestionsQueryData.refetch({partialHashtag: currentHashtagValue},{name: currentHashtagValue})
+        suggestionsQueryData.refetch({partialHashtag: currentHashtagValue})
             .then(dataObject => {
                 const suggestions = JSON.parse(dataObject.data.suggestions[0])
                           .suggest
