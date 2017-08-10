@@ -974,8 +974,6 @@ var HashtagAutocomplete = function (_React$Component) {
             this.setState({ value: currentHashtagValue, items: this.state.items });
 
             suggestionsQueryData.refetch({ partialHashtag: currentHashtagValue }).then(function (dataObject) {
-                // !!!!!!
-                // ugly kludge: fix this so it has a proper type defined in the schema
                 var suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion['' + currentHashtagValue].suggestions;
 
                 hashtagQueryData.refetch({ name: currentHashtagValue }).then(function (dataObject) {

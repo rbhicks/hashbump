@@ -97,8 +97,6 @@ const Query = new GraphQLObjectType({
                 }
             },
             resolve (root, args) {
-                // !!!!!!
-                // ugly kludge: fix this so it has a proper type defined
                 const suggestionsUrl = `http://localhost:8983/solr/hashbump/suggest?suggest=true&suggest.dictionary=analyzedSuggestion&wt=json&suggest.q=${args.partialHashtag}`;
                 const suggestions = fetch(suggestionsUrl).then(res => res.text());
 

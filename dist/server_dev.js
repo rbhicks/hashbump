@@ -1169,8 +1169,6 @@ const Query = new _graphql.GraphQLObjectType({
           }
         },
         resolve(root, args) {
-          // !!!!!!
-          // ugly kludge: fix this so it has a proper type defined
           const suggestionsUrl = `http://localhost:8983/solr/hashbump/suggest?suggest=true&suggest.dictionary=analyzedSuggestion&wt=json&suggest.q=${args.partialHashtag}`;
           const suggestions = fetch(suggestionsUrl).then(res => res.text());
 
@@ -1718,8 +1716,6 @@ let HashtagAutocomplete = class HashtagAutocomplete extends _react2.default.Comp
         this.setState({ value: currentHashtagValue, items: this.state.items });
 
         suggestionsQueryData.refetch({ partialHashtag: currentHashtagValue }).then(dataObject => {
-            // !!!!!!
-            // ugly kludge: fix this so it has a proper type defined in the schema
             const suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion[`${currentHashtagValue}`].suggestions;
 
             hashtagQueryData.refetch({ name: currentHashtagValue }).then(dataObject => {
