@@ -1206,14 +1206,7 @@ const Mutation = new _graphql.GraphQLObjectType({
         },
         resolve(source, args) {
           return _db2.default.models.hashtag.findOne({ where: { name: args.name } }).then(hashtag => {
-
-            if (!hashtag) {
-              _db2.default.models.hashtag.create({ name: args.name }).then(hashtag => {
-                return hashtag.increment([`${args.bump}Count`], { by: 1 });
-              });
-            } else {
-              return hashtag.increment([`${args.bump}Count`], { by: 1 });
-            }
+            return hashtag.increment([`${args.bump}Count`], { by: 1 });
           });
         }
       }
@@ -1603,9 +1596,7 @@ let BumpButton = class BumpButton extends _react2.default.PureComponent {
     }
 
     handleClick() {
-        //this.props.mutate({variables: {currentHashtag: this.props.currentHashtag.name, bump: this.props.bump}});
         this.props.mutate({ variables: { currentHashtag: this.props.currentHashtag.name, bump: this.props.bump } }).then(dataObject => {
-
             this.props.dispatch((0, _actions.setCurrentHashtag)(dataObject.data.bumpHashtag));
         });
     }
@@ -1688,6 +1679,18 @@ const hashtagQuery = (0, _reactApollo.graphql)(_graphqlTag2.default`
     })
 });
 
+const addHashtagMutation = (0, _reactApollo.graphql)(_graphqlTag2.default`
+  mutation addHashtag($name: String!) {
+    addHashtag(name: $name) {
+      name
+      yayCount
+      grrrCount
+      dunnoCount
+      mehCount
+    }
+  }
+`);
+
 let HashtagAutocomplete = class HashtagAutocomplete extends _react2.default.Component {
     constructor(props) {
         super(props);
@@ -1714,19 +1717,19 @@ let HashtagAutocomplete = class HashtagAutocomplete extends _react2.default.Comp
     handleChange(event) {
         const suggestionsQueryData = this.props.suggestionsQuery;
         const hashtagQueryData = this.props.hashtagQuery;
-        const currentHashtagValue = event.target.value;
+        const currentHashtagName = event.target.value;
 
-        this.props.dispatch((0, _actions.setCurrentHashtag)(currentHashtagValue));
-        this.setState({ value: currentHashtagValue, items: this.state.items });
+        this.props.dispatch((0, _actions.setCurrentHashtag)(currentHashtagName));
+        this.setState({ value: currentHashtagName, items: this.state.items });
 
-        suggestionsQueryData.refetch({ partialHashtag: currentHashtagValue }).then(dataObject => {
-            const suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion[`${currentHashtagValue}`].suggestions;
+        suggestionsQueryData.refetch({ partialHashtag: currentHashtagName }).then(dataObject => {
+            const suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion[`${currentHashtagName}`].suggestions;
 
-            hashtagQueryData.refetch({ name: currentHashtagValue }).then(dataObject => {
+            hashtagQueryData.refetch({ name: currentHashtagName }).then(dataObject => {
                 if (dataObject.data.hashtag) {
                     this.props.dispatch((0, _actions.setCurrentHashtag)(dataObject.data.hashtag));
                 } else {
-                    this.props.dispatch((0, _actions.setCurrentHashtag)({ name: currentHashtagValue,
+                    this.props.dispatch((0, _actions.setCurrentHashtag)({ name: currentHashtagName,
                         yayCount: 0,
                         grrrCount: 0,
                         dunnoCount: 0,
@@ -1770,7 +1773,7 @@ let HashtagAutocomplete = class HashtagAutocomplete extends _react2.default.Comp
         );
     }
 };
-exports.default = (0, _reactApollo.compose)((0, _reactRedux.connect)(), hashtagQuery, suggestionsQuery)(HashtagAutocomplete);
+exports.default = (0, _reactApollo.compose)((0, _reactRedux.connect)(), hashtagQuery, suggestionsQuery, addHashtagMutation)(HashtagAutocomplete);
 
 /***/ }),
 /* 25 */

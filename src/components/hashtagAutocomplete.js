@@ -36,6 +36,18 @@ const hashtagQuery = graphql(gql`
     }),
 });
 
+const addHashtagMutation = graphql(gql`
+  mutation addHashtag($name: String!) {
+    addHashtag(name: $name) {
+      name
+      yayCount
+      grrrCount
+      dunnoCount
+      mehCount
+    }
+  }
+`);
+
 class HashtagAutocomplete extends React.Component {
     constructor(props) {
         super(props);
@@ -62,25 +74,25 @@ class HashtagAutocomplete extends React.Component {
     handleChange(event) {
         const suggestionsQueryData = this.props.suggestionsQuery;
         const hashtagQueryData = this.props.hashtagQuery;
-        const currentHashtagValue = event.target.value;
+        const currentHashtagName = event.target.value;
 
-        this.props.dispatch(setCurrentHashtag(currentHashtagValue));
-        this.setState({value: currentHashtagValue, items: this.state.items});
+        this.props.dispatch(setCurrentHashtag(currentHashtagName));
+        this.setState({value: currentHashtagName, items: this.state.items});
 
-        suggestionsQueryData.refetch({partialHashtag: currentHashtagValue})
+        suggestionsQueryData.refetch({partialHashtag: currentHashtagName})
             .then(dataObject => {
                 const suggestions = JSON.parse(dataObject.data.suggestions[0])
                           .suggest
-                          .analyzedSuggestion[`${currentHashtagValue}`]
+                          .analyzedSuggestion[`${currentHashtagName}`]
                           .suggestions;
 
-                hashtagQueryData.refetch({name: currentHashtagValue})
+                hashtagQueryData.refetch({name: currentHashtagName})
                     .then(dataObject => {
                         if (dataObject.data.hashtag) {
                             this.props.dispatch(setCurrentHashtag(dataObject.data.hashtag));
                         }
-                        else {
-                            this.props.dispatch(setCurrentHashtag({name: currentHashtagValue,
+                        else {                            
+                            this.props.dispatch(setCurrentHashtag({name: currentHashtagName,
                                                                    yayCount: 0,
                                                                    grrrCount: 0,
                                                                    dunnoCount: 0,
@@ -133,4 +145,5 @@ export default compose(
     connect(),
     hashtagQuery,
     suggestionsQuery,
+    addHashtagMutation,
 )(HashtagAutocomplete);

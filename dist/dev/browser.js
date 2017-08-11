@@ -851,9 +851,7 @@ var BumpButton = function (_React$PureComponent) {
         value: function handleClick() {
             var _this2 = this;
 
-            //this.props.mutate({variables: {currentHashtag: this.props.currentHashtag.name, bump: this.props.bump}});
             this.props.mutate({ variables: { currentHashtag: this.props.currentHashtag.name, bump: this.props.bump } }).then(function (dataObject) {
-
                 _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(dataObject.data.bumpHashtag));
             });
         }
@@ -901,7 +899,8 @@ var BumpButton = function (_React$PureComponent) {
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n  query suggestions($partialHashtag: String!) {\n    suggestions(partialHashtag: $partialHashtag)\n  }\n'], ['\n  query suggestions($partialHashtag: String!) {\n    suggestions(partialHashtag: $partialHashtag)\n  }\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n  query hashtag($name: String!) {\n    hashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n'], ['\n  query hashtag($name: String!) {\n    hashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n']);
+    _templateObject2 = _taggedTemplateLiteral(['\n  query hashtag($name: String!) {\n    hashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n'], ['\n  query hashtag($name: String!) {\n    hashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n  mutation addHashtag($name: String!) {\n    addHashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n'], ['\n  mutation addHashtag($name: String!) {\n    addHashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -937,6 +936,8 @@ var hashtagQuery = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apoll
         };
     }
 });
+
+var addHashtagMutation = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject3));
 
 var HashtagAutocomplete = function (_React$Component) {
     _inherits(HashtagAutocomplete, _React$Component);
@@ -976,19 +977,19 @@ var HashtagAutocomplete = function (_React$Component) {
 
             var suggestionsQueryData = this.props.suggestionsQuery;
             var hashtagQueryData = this.props.hashtagQuery;
-            var currentHashtagValue = event.target.value;
+            var currentHashtagName = event.target.value;
 
-            this.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(currentHashtagValue));
-            this.setState({ value: currentHashtagValue, items: this.state.items });
+            this.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(currentHashtagName));
+            this.setState({ value: currentHashtagName, items: this.state.items });
 
-            suggestionsQueryData.refetch({ partialHashtag: currentHashtagValue }).then(function (dataObject) {
-                var suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion['' + currentHashtagValue].suggestions;
+            suggestionsQueryData.refetch({ partialHashtag: currentHashtagName }).then(function (dataObject) {
+                var suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion['' + currentHashtagName].suggestions;
 
-                hashtagQueryData.refetch({ name: currentHashtagValue }).then(function (dataObject) {
+                hashtagQueryData.refetch({ name: currentHashtagName }).then(function (dataObject) {
                     if (dataObject.data.hashtag) {
                         _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(dataObject.data.hashtag));
                     } else {
-                        _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])({ name: currentHashtagValue,
+                        _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])({ name: currentHashtagName,
                             yayCount: 0,
                             grrrCount: 0,
                             dunnoCount: 0,
@@ -1040,7 +1041,7 @@ var HashtagAutocomplete = function (_React$Component) {
     return HashtagAutocomplete;
 }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
 
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react_redux__["a" /* connect */])(), hashtagQuery, suggestionsQuery)(HashtagAutocomplete));
+/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react_redux__["a" /* connect */])(), hashtagQuery, suggestionsQuery, addHashtagMutation)(HashtagAutocomplete));
 
 /***/ }),
 
