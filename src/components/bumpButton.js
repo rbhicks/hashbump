@@ -2,7 +2,25 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { graphql, compose } from 'react-apollo';
 import { connect } from 'react-redux';
-import { setCurrentHashtag } from '../store/actions';
+import { setCurrentHashtagName } from '../store/actions';
+
+const hashtagQuery = graphql(gql`
+  query hashtag($name: String!) {
+    hashtag(name: $name) {
+      name
+      yayCount
+      grrrCount
+      dunnoCount
+      mehCount
+    }
+  }
+`, {
+    data: "hashtag",
+    name: "hashtagQuery",
+    options: {
+        variables: {name: ""}
+    },
+});
 
 const bumpHashtagMutation = graphql(gql`
   mutation bumpHashtag($currentHashtag: String!, $bump: String!) {
@@ -14,7 +32,25 @@ const bumpHashtagMutation = graphql(gql`
       mehCount
     }
   }
-`);
+`
+, {
+    name: "bumpHashtagMutation"
+}
+);
+
+const addHashtagMutation = graphql(gql`
+  mutation addHashtag($currentHashtag: String!) {
+    addHashtag(name: $currentHashtag) {
+      name
+      yayCount
+      grrrCount
+      dunnoCount
+      mehCount
+    }
+  }
+`, {
+    name: "addHashtagMutation"
+});
 
 class BumpButton extends React.PureComponent {
 
@@ -28,18 +64,50 @@ class BumpButton extends React.PureComponent {
                             meh: "../hashbump-meh.svg"};
     }
     
-    handleClick() {
-        this.props.mutate({variables: {currentHashtag: this.props.currentHashtag.name, bump: this.props.bump}}).
-            then(
-                dataObject => {
-                    this.props.dispatch(setCurrentHashtag(dataObject.data.bumpHashtag));
-                });
+    handleClick() {        
+        const hashtagQuery = this.props.hashtagQuery;
+        const bumpHashtagMutation = this.props.bumpHashtagMutation;
+        const addHashtagMutation = this.props.addHashtagMutation;
+
+        hashtagQuery.refetch({name: this.props.currentHashtagName})
+            .then(dataObject => {
+                if (!dataObject.data.hashtag) {
+                    addHashtagMutation({variables: {currentHashtag: this.props.currentHashtagName}})
+                        .then(hashtag => {
+                            bumpHashtagMutation({variables: {currentHashtag: this.props.currentHashtagName, bump: this.props.bump}}).
+                                then(
+                                    () => {
+                                        hashtagQuery.refetch({name: this.props.currentHashtagName});
+                                    });
+                        });
+                }
+                else {
+                    bumpHashtagMutation({variables: {currentHashtag: this.props.currentHashtagName, bump: this.props.bump}}).
+                        then(
+                            () => {
+                                hashtagQuery.refetch({name: this.props.currentHashtagName});
+                            });
+                }
+            });
+    }
+
+    componentWillUpdate() {
+        const hashtagQuery = this.props.hashtagQuery;
+        
+        hashtagQuery.refetch({name: this.props.currentHashtagName});
     }
 
     render() {
+        let count = 0;
+        
+        if(this.props.hashtagQuery.hashtag) {
+
+            count = this.props.hashtagQuery.hashtag[`${this.props.bump}Count`];
+        }
+        
         return (
                 <button>
-                <h1>{this.props.currentHashtag[`${this.props.bump}Count`]}</h1>
+                <h1>{count}</h1>
                 <img src={this.imageLookup[this.props.bump]} onClick={this.handleClick} />
                 </button>
         );
@@ -47,6 +115,8 @@ class BumpButton extends React.PureComponent {
 }
 
 export default compose(
-    connect(state => ({ currentHashtag: state.currentHashtag })),
+    connect(state => ({ currentHashtagName: state.currentHashtagName })),
+    hashtagQuery,
     bumpHashtagMutation,
+    addHashtagMutation
 )(BumpButton);

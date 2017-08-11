@@ -1,17 +1,8 @@
-export function currentHashtag(state = "buffalo", action) {
+export function currentHashtagName(state = "", action) {
   switch (action.type) {
-  case 'SET_CURRENT_HASHTAG':
-      return action.hashtag;
+  case 'SET_CURRENT_HASHTAG_NAME':
+      return action.hashtagName;
   default:
       return state;
   }
 }
-
-// export function currentPartialHashtag(state = "", action) {
-//   switch (action.type) {
-//   case 'SET_CURRENT_PARTIAL_HASHTAG':
-//       return action.currentPartialHashtag;
-//   default:
-//       return state;
-//   }
-// }

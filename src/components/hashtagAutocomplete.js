@@ -2,7 +2,7 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { graphql, compose, withApollo } from 'react-apollo';
 import { connect } from 'react-redux';
-import { setCurrentHashtag } from '../store/actions';
+import { setCurrentHashtagName } from '../store/actions';
 import Autocomplete from 'react-autocomplete';
 
 
@@ -14,9 +14,9 @@ const suggestionsQuery = graphql(gql`
   }
 `, {
     name: "suggestionsQuery",
-    options: (props) => ({
+    options: {
         variables: {partialHashtag: "!"}
-    }),
+    },
 });
 
 const hashtagQuery = graphql(gql`
@@ -31,9 +31,9 @@ const hashtagQuery = graphql(gql`
   }
 `, {
     name: "hashtagQuery",
-    options: (props) => ({
+    options: {
         variables: {name: ""}
-    }),
+    },
 });
 
 const addHashtagMutation = graphql(gql`
@@ -72,31 +72,27 @@ class HashtagAutocomplete extends React.Component {
     }
     
     handleChange(event) {
-        const suggestionsQueryData = this.props.suggestionsQuery;
-        const hashtagQueryData = this.props.hashtagQuery;
+        const suggestionsQuery = this.props.suggestionsQuery;
+        const hashtagQuery = this.props.hashtagQuery;
         const currentHashtagName = event.target.value;
 
-        this.props.dispatch(setCurrentHashtag(currentHashtagName));
+        this.props.dispatch(setCurrentHashtagName(currentHashtagName));
         this.setState({value: currentHashtagName, items: this.state.items});
 
-        suggestionsQueryData.refetch({partialHashtag: currentHashtagName})
+        suggestionsQuery.refetch({partialHashtag: currentHashtagName})
             .then(dataObject => {
                 const suggestions = JSON.parse(dataObject.data.suggestions[0])
                           .suggest
                           .analyzedSuggestion[`${currentHashtagName}`]
                           .suggestions;
 
-                hashtagQueryData.refetch({name: currentHashtagName})
+                hashtagQuery.refetch({name: currentHashtagName})
                     .then(dataObject => {
                         if (dataObject.data.hashtag) {
-                            this.props.dispatch(setCurrentHashtag(dataObject.data.hashtag));
+                            this.props.dispatch(setCurrentHashtagName(dataObject.data.hashtag.name));
                         }
                         else {                            
-                            this.props.dispatch(setCurrentHashtag({name: currentHashtagName,
-                                                                   yayCount: 0,
-                                                                   grrrCount: 0,
-                                                                   dunnoCount: 0,
-                                                                   mehCount: 0}));
+                            this.props.dispatch(setCurrentHashtagName(currentHashtagName));
                         }
                         this.setState({items: suggestions});
                     });
@@ -105,19 +101,15 @@ class HashtagAutocomplete extends React.Component {
     }
 
     handleSelect(val) {
-        const hashtagQueryData = this.props.hashtagQuery;
+        const hashtagQuery = this.props.hashtagQuery;
         
-        hashtagQueryData.refetch({name: val})
+        hashtagQuery.refetch({name: val})
             .then(dataObject => {
                 if (dataObject.data.hashtag) {                    
-                    this.props.dispatch(setCurrentHashtag(dataObject.data.hashtag));
+                    this.props.dispatch(setCurrentHashtagName(dataObject.data.hashtag.name));
                 }
                 else {
-                    this.props.dispatch(setCurrentHashtag({name: val,
-                                                           yayCount: 0,
-                                                           grrrCount: 0,
-                                                           dunnoCount: 0,
-                                                           mehCount: 0}));
+                    this.props.dispatch(setCurrentHashtagName(val));
                 }
             });
         this.setState({value: val})

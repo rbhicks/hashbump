@@ -94,20 +94,13 @@ module.exports = require("prop-types");
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.setCurrentHashtag = setCurrentHashtag;
-function setCurrentHashtag(hashtag) {
+exports.setCurrentHashtagName = setCurrentHashtagName;
+function setCurrentHashtagName(hashtagName) {
     return {
-        type: 'SET_CURRENT_HASHTAG',
-        hashtag
+        type: 'SET_CURRENT_HASHTAG_NAME',
+        hashtagName
     };
 }
-
-// export function setCurrentPartialHashtag(currentPartialHashtag) {
-//     return {
-//         type: 'SET_CURRENT_PARTIAL_HASHTAG',
-//         currentPartialHashtag,
-//     };
-// }
 
 /***/ }),
 /* 4 */
@@ -943,8 +936,7 @@ function createNewStore(apolloClient) {
     // own here, for global store management outside of Apollo
     (0, _redux.combineReducers)({
         apollo: apolloClient.reducer(),
-        currentHashtag: _reducers.currentHashtag
-        //        currentPartialHashtag,
+        currentHashtagName: _reducers.currentHashtagName
     }),
     // Initial server state, provided by the server.  Only relevant in the
     // browser -- on the server, we'll start with a blank object
@@ -1571,6 +1563,24 @@ var _actions = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+const hashtagQuery = (0, _reactApollo.graphql)(_graphqlTag2.default`
+  query hashtag($name: String!) {
+    hashtag(name: $name) {
+      name
+      yayCount
+      grrrCount
+      dunnoCount
+      mehCount
+    }
+  }
+`, {
+    data: "hashtag",
+    name: "hashtagQuery",
+    options: {
+        variables: { name: "" }
+    }
+});
+
 const bumpHashtagMutation = (0, _reactApollo.graphql)(_graphqlTag2.default`
   mutation bumpHashtag($currentHashtag: String!, $bump: String!) {
     bumpHashtag(name: $currentHashtag, bump: $bump) {
@@ -1581,7 +1591,23 @@ const bumpHashtagMutation = (0, _reactApollo.graphql)(_graphqlTag2.default`
       mehCount
     }
   }
-`);
+`, {
+    name: "bumpHashtagMutation"
+});
+
+const addHashtagMutation = (0, _reactApollo.graphql)(_graphqlTag2.default`
+  mutation addHashtag($currentHashtag: String!) {
+    addHashtag(name: $currentHashtag) {
+      name
+      yayCount
+      grrrCount
+      dunnoCount
+      mehCount
+    }
+  }
+`, {
+    name: "addHashtagMutation"
+});
 
 let BumpButton = class BumpButton extends _react2.default.PureComponent {
 
@@ -1596,25 +1622,52 @@ let BumpButton = class BumpButton extends _react2.default.PureComponent {
     }
 
     handleClick() {
-        this.props.mutate({ variables: { currentHashtag: this.props.currentHashtag.name, bump: this.props.bump } }).then(dataObject => {
-            this.props.dispatch((0, _actions.setCurrentHashtag)(dataObject.data.bumpHashtag));
+        const hashtagQuery = this.props.hashtagQuery;
+        const bumpHashtagMutation = this.props.bumpHashtagMutation;
+        const addHashtagMutation = this.props.addHashtagMutation;
+
+        hashtagQuery.refetch({ name: this.props.currentHashtagName }).then(dataObject => {
+            if (!dataObject.data.hashtag) {
+                addHashtagMutation({ variables: { currentHashtag: this.props.currentHashtagName } }).then(hashtag => {
+                    bumpHashtagMutation({ variables: { currentHashtag: this.props.currentHashtagName, bump: this.props.bump } }).then(() => {
+                        hashtagQuery.refetch({ name: this.props.currentHashtagName });
+                    });
+                });
+            } else {
+                bumpHashtagMutation({ variables: { currentHashtag: this.props.currentHashtagName, bump: this.props.bump } }).then(() => {
+                    hashtagQuery.refetch({ name: this.props.currentHashtagName });
+                });
+            }
         });
     }
 
+    componentWillUpdate() {
+        const hashtagQuery = this.props.hashtagQuery;
+
+        hashtagQuery.refetch({ name: this.props.currentHashtagName });
+    }
+
     render() {
+        let count = 0;
+
+        if (this.props.hashtagQuery.hashtag) {
+
+            count = this.props.hashtagQuery.hashtag[`${this.props.bump}Count`];
+        }
+
         return _react2.default.createElement(
             'button',
             null,
             _react2.default.createElement(
                 'h1',
                 null,
-                this.props.currentHashtag[`${this.props.bump}Count`]
+                count
             ),
             _react2.default.createElement('img', { src: this.imageLookup[this.props.bump], onClick: this.handleClick })
         );
     }
 };
-exports.default = (0, _reactApollo.compose)((0, _reactRedux.connect)(state => ({ currentHashtag: state.currentHashtag })), bumpHashtagMutation)(BumpButton);
+exports.default = (0, _reactApollo.compose)((0, _reactRedux.connect)(state => ({ currentHashtagName: state.currentHashtagName })), hashtagQuery, bumpHashtagMutation, addHashtagMutation)(BumpButton);
 
 /***/ }),
 /* 24 */
@@ -1657,9 +1710,9 @@ const suggestionsQuery = (0, _reactApollo.graphql)(_graphqlTag2.default`
   }
 `, {
     name: "suggestionsQuery",
-    options: props => ({
+    options: {
         variables: { partialHashtag: "!" }
-    })
+    }
 });
 
 const hashtagQuery = (0, _reactApollo.graphql)(_graphqlTag2.default`
@@ -1674,9 +1727,9 @@ const hashtagQuery = (0, _reactApollo.graphql)(_graphqlTag2.default`
   }
 `, {
     name: "hashtagQuery",
-    options: props => ({
+    options: {
         variables: { name: "" }
-    })
+    }
 });
 
 const addHashtagMutation = (0, _reactApollo.graphql)(_graphqlTag2.default`
@@ -1715,25 +1768,21 @@ let HashtagAutocomplete = class HashtagAutocomplete extends _react2.default.Comp
     }
 
     handleChange(event) {
-        const suggestionsQueryData = this.props.suggestionsQuery;
-        const hashtagQueryData = this.props.hashtagQuery;
+        const suggestionsQuery = this.props.suggestionsQuery;
+        const hashtagQuery = this.props.hashtagQuery;
         const currentHashtagName = event.target.value;
 
-        this.props.dispatch((0, _actions.setCurrentHashtag)(currentHashtagName));
+        this.props.dispatch((0, _actions.setCurrentHashtagName)(currentHashtagName));
         this.setState({ value: currentHashtagName, items: this.state.items });
 
-        suggestionsQueryData.refetch({ partialHashtag: currentHashtagName }).then(dataObject => {
+        suggestionsQuery.refetch({ partialHashtag: currentHashtagName }).then(dataObject => {
             const suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion[`${currentHashtagName}`].suggestions;
 
-            hashtagQueryData.refetch({ name: currentHashtagName }).then(dataObject => {
+            hashtagQuery.refetch({ name: currentHashtagName }).then(dataObject => {
                 if (dataObject.data.hashtag) {
-                    this.props.dispatch((0, _actions.setCurrentHashtag)(dataObject.data.hashtag));
+                    this.props.dispatch((0, _actions.setCurrentHashtagName)(dataObject.data.hashtag.name));
                 } else {
-                    this.props.dispatch((0, _actions.setCurrentHashtag)({ name: currentHashtagName,
-                        yayCount: 0,
-                        grrrCount: 0,
-                        dunnoCount: 0,
-                        mehCount: 0 }));
+                    this.props.dispatch((0, _actions.setCurrentHashtagName)(currentHashtagName));
                 }
                 this.setState({ items: suggestions });
             });
@@ -1741,17 +1790,13 @@ let HashtagAutocomplete = class HashtagAutocomplete extends _react2.default.Comp
     }
 
     handleSelect(val) {
-        const hashtagQueryData = this.props.hashtagQuery;
+        const hashtagQuery = this.props.hashtagQuery;
 
-        hashtagQueryData.refetch({ name: val }).then(dataObject => {
+        hashtagQuery.refetch({ name: val }).then(dataObject => {
             if (dataObject.data.hashtag) {
-                this.props.dispatch((0, _actions.setCurrentHashtag)(dataObject.data.hashtag));
+                this.props.dispatch((0, _actions.setCurrentHashtagName)(dataObject.data.hashtag.name));
             } else {
-                this.props.dispatch((0, _actions.setCurrentHashtag)({ name: val,
-                    yayCount: 0,
-                    grrrCount: 0,
-                    dunnoCount: 0,
-                    mehCount: 0 }));
+                this.props.dispatch((0, _actions.setCurrentHashtagName)(val));
             }
         });
         this.setState({ value: val });
@@ -1785,24 +1830,15 @@ exports.default = (0, _reactApollo.compose)((0, _reactRedux.connect)(), hashtagQ
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.currentHashtag = currentHashtag;
-function currentHashtag(state = "buffalo", action) {
+exports.currentHashtagName = currentHashtagName;
+function currentHashtagName(state = "", action) {
     switch (action.type) {
-        case 'SET_CURRENT_HASHTAG':
-            return action.hashtag;
+        case 'SET_CURRENT_HASHTAG_NAME':
+            return action.hashtagName;
         default:
             return state;
     }
 }
-
-// export function currentPartialHashtag(state = "", action) {
-//   switch (action.type) {
-//   case 'SET_CURRENT_PARTIAL_HASHTAG':
-//       return action.currentPartialHashtag;
-//   default:
-//       return state;
-//   }
-// }
 
 /***/ }),
 /* 26 */

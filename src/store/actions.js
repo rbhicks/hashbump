@@ -1,13 +1,6 @@
-export function setCurrentHashtag(hashtag) {
+export function setCurrentHashtagName(hashtagName) {
     return {
-        type: 'SET_CURRENT_HASHTAG',
-        hashtag,
+        type: 'SET_CURRENT_HASHTAG_NAME',
+        hashtagName,
     };
 }
-
-// export function setCurrentPartialHashtag(currentPartialHashtag) {
-//     return {
-//         type: 'SET_CURRENT_PARTIAL_HASHTAG',
-//         currentPartialHashtag,
-//     };
-// }

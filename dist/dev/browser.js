@@ -349,8 +349,7 @@ function createNewStore(apolloClient) {
     // own here, for global store management outside of Apollo
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redux__["combineReducers"])({
         apollo: apolloClient.reducer(),
-        currentHashtag: __WEBPACK_IMPORTED_MODULE_1__src_store_reducers_js__["a" /* currentHashtag */]
-        //        currentPartialHashtag,
+        currentHashtagName: __WEBPACK_IMPORTED_MODULE_1__src_store_reducers_js__["a" /* currentHashtagName */]
     }),
     // Initial server state, provided by the server.  Only relevant in the
     // browser -- on the server, we'll start with a blank object
@@ -811,7 +810,9 @@ var App = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_actions__ = __webpack_require__(66);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n  mutation bumpHashtag($currentHashtag: String!, $bump: String!) {\n    bumpHashtag(name: $currentHashtag, bump: $bump) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n'], ['\n  mutation bumpHashtag($currentHashtag: String!, $bump: String!) {\n    bumpHashtag(name: $currentHashtag, bump: $bump) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  query hashtag($name: String!) {\n    hashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n'], ['\n  query hashtag($name: String!) {\n    hashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  mutation bumpHashtag($currentHashtag: String!, $bump: String!) {\n    bumpHashtag(name: $currentHashtag, bump: $bump) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n'], ['\n  mutation bumpHashtag($currentHashtag: String!, $bump: String!) {\n    bumpHashtag(name: $currentHashtag, bump: $bump) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n  mutation addHashtag($currentHashtag: String!) {\n    addHashtag(name: $currentHashtag) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n'], ['\n  mutation addHashtag($currentHashtag: String!) {\n    addHashtag(name: $currentHashtag) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -827,7 +828,21 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 
 
-var bumpHashtagMutation = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject));
+var hashtagQuery = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject), {
+    data: "hashtag",
+    name: "hashtagQuery",
+    options: {
+        variables: { name: "" }
+    }
+});
+
+var bumpHashtagMutation = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject2), {
+    name: "bumpHashtagMutation"
+});
+
+var addHashtagMutation = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject3), {
+    name: "addHashtagMutation"
+});
 
 var BumpButton = function (_React$PureComponent) {
     _inherits(BumpButton, _React$PureComponent);
@@ -851,20 +866,48 @@ var BumpButton = function (_React$PureComponent) {
         value: function handleClick() {
             var _this2 = this;
 
-            this.props.mutate({ variables: { currentHashtag: this.props.currentHashtag.name, bump: this.props.bump } }).then(function (dataObject) {
-                _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(dataObject.data.bumpHashtag));
+            var hashtagQuery = this.props.hashtagQuery;
+            var bumpHashtagMutation = this.props.bumpHashtagMutation;
+            var addHashtagMutation = this.props.addHashtagMutation;
+
+            hashtagQuery.refetch({ name: this.props.currentHashtagName }).then(function (dataObject) {
+                if (!dataObject.data.hashtag) {
+                    addHashtagMutation({ variables: { currentHashtag: _this2.props.currentHashtagName } }).then(function (hashtag) {
+                        bumpHashtagMutation({ variables: { currentHashtag: _this2.props.currentHashtagName, bump: _this2.props.bump } }).then(function () {
+                            hashtagQuery.refetch({ name: _this2.props.currentHashtagName });
+                        });
+                    });
+                } else {
+                    bumpHashtagMutation({ variables: { currentHashtag: _this2.props.currentHashtagName, bump: _this2.props.bump } }).then(function () {
+                        hashtagQuery.refetch({ name: _this2.props.currentHashtagName });
+                    });
+                }
             });
+        }
+    }, {
+        key: 'componentWillUpdate',
+        value: function componentWillUpdate() {
+            var hashtagQuery = this.props.hashtagQuery;
+
+            hashtagQuery.refetch({ name: this.props.currentHashtagName });
         }
     }, {
         key: 'render',
         value: function render() {
+            var count = 0;
+
+            if (this.props.hashtagQuery.hashtag) {
+
+                count = this.props.hashtagQuery.hashtag[this.props.bump + 'Count'];
+            }
+
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'button',
                 null,
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h1',
                     null,
-                    this.props.currentHashtag[this.props.bump + 'Count']
+                    count
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: this.imageLookup[this.props.bump], onClick: this.handleClick })
             );
@@ -875,8 +918,8 @@ var BumpButton = function (_React$PureComponent) {
 }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.PureComponent);
 
 /* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react_redux__["a" /* connect */])(function (state) {
-    return { currentHashtag: state.currentHashtag };
-}), bumpHashtagMutation)(BumpButton));
+    return { currentHashtagName: state.currentHashtagName };
+}), hashtagQuery, bumpHashtagMutation, addHashtagMutation)(BumpButton));
 
 /***/ }),
 
@@ -921,19 +964,15 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 var suggestionsQuery = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject), {
     name: "suggestionsQuery",
-    options: function options(props) {
-        return {
-            variables: { partialHashtag: "!" }
-        };
+    options: {
+        variables: { partialHashtag: "!" }
     }
 });
 
 var hashtagQuery = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject2), {
     name: "hashtagQuery",
-    options: function options(props) {
-        return {
-            variables: { name: "" }
-        };
+    options: {
+        variables: { name: "" }
     }
 });
 
@@ -975,25 +1014,21 @@ var HashtagAutocomplete = function (_React$Component) {
         value: function handleChange(event) {
             var _this2 = this;
 
-            var suggestionsQueryData = this.props.suggestionsQuery;
-            var hashtagQueryData = this.props.hashtagQuery;
+            var suggestionsQuery = this.props.suggestionsQuery;
+            var hashtagQuery = this.props.hashtagQuery;
             var currentHashtagName = event.target.value;
 
-            this.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(currentHashtagName));
+            this.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtagName */])(currentHashtagName));
             this.setState({ value: currentHashtagName, items: this.state.items });
 
-            suggestionsQueryData.refetch({ partialHashtag: currentHashtagName }).then(function (dataObject) {
+            suggestionsQuery.refetch({ partialHashtag: currentHashtagName }).then(function (dataObject) {
                 var suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion['' + currentHashtagName].suggestions;
 
-                hashtagQueryData.refetch({ name: currentHashtagName }).then(function (dataObject) {
+                hashtagQuery.refetch({ name: currentHashtagName }).then(function (dataObject) {
                     if (dataObject.data.hashtag) {
-                        _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(dataObject.data.hashtag));
+                        _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtagName */])(dataObject.data.hashtag.name));
                     } else {
-                        _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])({ name: currentHashtagName,
-                            yayCount: 0,
-                            grrrCount: 0,
-                            dunnoCount: 0,
-                            mehCount: 0 }));
+                        _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtagName */])(currentHashtagName));
                     }
                     _this2.setState({ items: suggestions });
                 });
@@ -1004,17 +1039,13 @@ var HashtagAutocomplete = function (_React$Component) {
         value: function handleSelect(val) {
             var _this3 = this;
 
-            var hashtagQueryData = this.props.hashtagQuery;
+            var hashtagQuery = this.props.hashtagQuery;
 
-            hashtagQueryData.refetch({ name: val }).then(function (dataObject) {
+            hashtagQuery.refetch({ name: val }).then(function (dataObject) {
                 if (dataObject.data.hashtag) {
-                    _this3.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(dataObject.data.hashtag));
+                    _this3.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtagName */])(dataObject.data.hashtag.name));
                 } else {
-                    _this3.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])({ name: val,
-                        yayCount: 0,
-                        grrrCount: 0,
-                        dunnoCount: 0,
-                        mehCount: 0 }));
+                    _this3.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtagName */])(val));
                 }
             });
             this.setState({ value: val });
@@ -1049,27 +1080,18 @@ var HashtagAutocomplete = function (_React$Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = currentHashtag;
-function currentHashtag() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "buffalo";
+/* harmony export (immutable) */ __webpack_exports__["a"] = currentHashtagName;
+function currentHashtagName() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
     var action = arguments[1];
 
     switch (action.type) {
-        case 'SET_CURRENT_HASHTAG':
-            return action.hashtag;
+        case 'SET_CURRENT_HASHTAG_NAME':
+            return action.hashtagName;
         default:
             return state;
     }
 }
-
-// export function currentPartialHashtag(state = "", action) {
-//   switch (action.type) {
-//   case 'SET_CURRENT_PARTIAL_HASHTAG':
-//       return action.currentPartialHashtag;
-//   default:
-//       return state;
-//   }
-// }
 
 /***/ }),
 
@@ -1115,20 +1137,13 @@ module.exports = __webpack_require__(164);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = setCurrentHashtag;
-function setCurrentHashtag(hashtag) {
+/* harmony export (immutable) */ __webpack_exports__["a"] = setCurrentHashtagName;
+function setCurrentHashtagName(hashtagName) {
     return {
-        type: 'SET_CURRENT_HASHTAG',
-        hashtag: hashtag
+        type: 'SET_CURRENT_HASHTAG_NAME',
+        hashtagName: hashtagName
     };
 }
-
-// export function setCurrentPartialHashtag(currentPartialHashtag) {
-//     return {
-//         type: 'SET_CURRENT_PARTIAL_HASHTAG',
-//         currentPartialHashtag,
-//     };
-// }
 
 /***/ })
 
