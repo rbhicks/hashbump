@@ -8,8 +8,6 @@ import {
 } from 'graphql';
 
 import Db from './db';
-//import fetch from 'node-fetch';
-
 
 const Hashtag = new GraphQLObjectType({
   name: 'Hashtag',

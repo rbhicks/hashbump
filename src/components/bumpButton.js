@@ -29,12 +29,21 @@ class BumpButton extends React.PureComponent {
     }
     
     handleClick() {
-        this.props.mutate({variables: {currentHashtag: this.props.currentHashtag.name, bump: this.props.bump}});
+        //this.props.mutate({variables: {currentHashtag: this.props.currentHashtag.name, bump: this.props.bump}});
+        this.props.mutate({variables: {currentHashtag: this.props.currentHashtag.name, bump: this.props.bump}}).
+            then(
+                dataObject => {
+
+                    this.props.dispatch(setCurrentHashtag(dataObject.data.bumpHashtag));
+                });
     }
 
     render() {
         return (
-                <button><img src={this.imageLookup[this.props.bump]} onClick={this.handleClick} /></button>
+                <button>
+                <h1>{this.props.currentHashtag[`${this.props.bump}Count`]}</h1>
+                <img src={this.imageLookup[this.props.bump]} onClick={this.handleClick} />
+                </button>
         );
     }
 }

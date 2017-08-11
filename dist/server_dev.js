@@ -1080,9 +1080,6 @@ var _db2 = _interopRequireDefault(_db);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//import fetch from 'node-fetch';
-
-
 const Hashtag = new _graphql.GraphQLObjectType({
   name: 'Hashtag',
   description: 'This represents a Hashtag',
@@ -1606,13 +1603,22 @@ let BumpButton = class BumpButton extends _react2.default.PureComponent {
     }
 
     handleClick() {
-        this.props.mutate({ variables: { currentHashtag: this.props.currentHashtag.name, bump: this.props.bump } });
+        //this.props.mutate({variables: {currentHashtag: this.props.currentHashtag.name, bump: this.props.bump}});
+        this.props.mutate({ variables: { currentHashtag: this.props.currentHashtag.name, bump: this.props.bump } }).then(dataObject => {
+
+            this.props.dispatch((0, _actions.setCurrentHashtag)(dataObject.data.bumpHashtag));
+        });
     }
 
     render() {
         return _react2.default.createElement(
             'button',
             null,
+            _react2.default.createElement(
+                'h1',
+                null,
+                this.props.currentHashtag[`${this.props.bump}Count`]
+            ),
             _react2.default.createElement('img', { src: this.imageLookup[this.props.bump], onClick: this.handleClick })
         );
     }

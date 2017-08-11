@@ -849,7 +849,13 @@ var BumpButton = function (_React$PureComponent) {
     _createClass(BumpButton, [{
         key: 'handleClick',
         value: function handleClick() {
-            this.props.mutate({ variables: { currentHashtag: this.props.currentHashtag.name, bump: this.props.bump } });
+            var _this2 = this;
+
+            //this.props.mutate({variables: {currentHashtag: this.props.currentHashtag.name, bump: this.props.bump}});
+            this.props.mutate({ variables: { currentHashtag: this.props.currentHashtag.name, bump: this.props.bump } }).then(function (dataObject) {
+
+                _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtag */])(dataObject.data.bumpHashtag));
+            });
         }
     }, {
         key: 'render',
@@ -857,6 +863,11 @@ var BumpButton = function (_React$PureComponent) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'button',
                 null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'h1',
+                    null,
+                    this.props.currentHashtag[this.props.bump + 'Count']
+                ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: this.imageLookup[this.props.bump], onClick: this.handleClick })
             );
         }
