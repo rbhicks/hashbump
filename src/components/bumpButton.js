@@ -29,7 +29,6 @@ class BumpButton extends React.PureComponent {
     }
     
     handleClick() {
-        //this.props.mutate({variables: {currentHashtag: this.props.currentHashtag.name, bump: this.props.bump}});
         this.props.mutate({variables: {currentHashtag: this.props.currentHashtag.name, bump: this.props.bump}}).
             then(
                 dataObject => {
