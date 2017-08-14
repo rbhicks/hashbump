@@ -108,23 +108,26 @@ const Query = new GraphQLObjectType({
             resolve (root, args) {
                 return Db.models.hashtag.findOne({ where: args });
             }
-        },
-
-
-// Today's Top Count query
-//                    `select "name", "${args.bump}Count" as "count" from hashtags where "updatedAt" >= now() - '1 day'::interval and "${args.bump}Count" = (select max("${args.bump}Count") from hashtags);`
-
-        
+        },        
         topCount: {
             type: TopCount,
             args: {
                 bump: {
                     type: new GraphQLNonNull(GraphQLString)
+                },
+                topCountType: {
+                    type: new GraphQLNonNull(GraphQLString)
                 }
             },
             resolve (root, args) {
+                let topCountQueryString = `select "name", "${args.bump}Count" as "count" from hashtags where "${args.bump}Count" = (select max("${args.bump}Count") from hashtags);`;
+
+                if (args.topCountType == "all-time") {
+                    topCountQueryString = `select "name", "${args.bump}Count" as "count" from hashtags where "updatedAt" >= now() - '1 day'::interval and "${args.bump}Count" = (select max("${args.bump}Count") from hashtags);`;
+                }
+                
                 return Db.query(
-                    `select "name", "${args.bump}Count" as "count" from hashtags where "${args.bump}Count" = (select max("${args.bump}Count") from hashtags);`,
+                    topCountQueryString,
                     {type: sequelize.QueryTypes.SELECT}
                 ).spread((results) => {
                     return results;

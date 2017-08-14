@@ -788,7 +788,8 @@ var App = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'yay' })
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'yay', topCountType: 'all-time' }),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'yay', topCountType: 'today' })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
@@ -956,7 +957,7 @@ var BumpButton = function (_React$PureComponent) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utility_image_lookup__ = __webpack_require__(107);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n  query topCount($bump: String!) {\n    topCount(bump: $bump) {\n      name\n      count\n    }\n  }\n'], ['\n  query topCount($bump: String!) {\n    topCount(bump: $bump) {\n      name\n      count\n    }\n  }\n']);
+var _templateObject = _taggedTemplateLiteral(['\n  query topCount($bump: String!, $topCountType: String!) {\n    topCount(bump: $bump, topCountType: $topCountType) {\n      name\n      count\n    }\n  }\n'], ['\n  query topCount($bump: String!, $topCountType: String!) {\n    topCount(bump: $bump, topCountType: $topCountType) {\n      name\n      count\n    }\n  }\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 

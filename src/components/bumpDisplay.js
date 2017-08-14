@@ -8,8 +8,8 @@ import imageLookup from '../utility/image-lookup';
 
 
 const topCountQuery = graphql(gql`
-  query topCount($bump: String!) {
-    topCount(bump: $bump) {
+  query topCount($bump: String!, $topCountType: String!) {
+    topCount(bump: $bump, topCountType: $topCountType) {
       name
       count
     }

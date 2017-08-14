@@ -1202,20 +1202,24 @@ const Query = new _graphql.GraphQLObjectType({
           return _db2.default.models.hashtag.findOne({ where: args });
         }
       },
-
-      // Today's Top Count query
-      //                    `select "name", "${args.bump}Count" as "count" from hashtags where "updatedAt" >= now() - '1 day'::interval and "${args.bump}Count" = (select max("${args.bump}Count") from hashtags);`
-
-
       topCount: {
         type: TopCount,
         args: {
           bump: {
             type: new _graphql.GraphQLNonNull(_graphql.GraphQLString)
+          },
+          topCountType: {
+            type: new _graphql.GraphQLNonNull(_graphql.GraphQLString)
           }
         },
         resolve(root, args) {
-          return _db2.default.query(`select "name", "${args.bump}Count" as "count" from hashtags where "${args.bump}Count" = (select max("${args.bump}Count") from hashtags);`, { type: _sequelize2.default.QueryTypes.SELECT }).spread(results => {
+          let topCountQueryString = `select "name", "${args.bump}Count" as "count" from hashtags where "${args.bump}Count" = (select max("${args.bump}Count") from hashtags);`;
+
+          if (args.topCountType == "all-time") {
+            topCountQueryString = `select "name", "${args.bump}Count" as "count" from hashtags where "updatedAt" >= now() - '1 day'::interval and "${args.bump}Count" = (select max("${args.bump}Count") from hashtags);`;
+          }
+
+          return _db2.default.query(topCountQueryString, { type: _sequelize2.default.QueryTypes.SELECT }).spread(results => {
             return results;
           });
         }
@@ -1590,7 +1594,8 @@ let App = class App extends _react.Component {
       _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_bumpDisplay2.default, { bump: 'yay' })
+        _react2.default.createElement(_bumpDisplay2.default, { bump: 'yay', topCountType: 'all-time' }),
+        _react2.default.createElement(_bumpDisplay2.default, { bump: 'yay', topCountType: 'today' })
       ),
       _react2.default.createElement(
         'div',
@@ -1775,8 +1780,8 @@ var _imageLookup2 = _interopRequireDefault(_imageLookup);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const topCountQuery = (0, _reactApollo.graphql)(_graphqlTag2.default`
-  query topCount($bump: String!) {
-    topCount(bump: $bump) {
+  query topCount($bump: String!, $topCountType: String!) {
+    topCount(bump: $bump, topCountType: $topCountType) {
       name
       count
     }
