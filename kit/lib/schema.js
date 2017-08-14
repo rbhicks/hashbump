@@ -8,6 +8,7 @@ import {
 } from 'graphql';
 
 import Db from './db';
+import sequelize from 'sequelize';
 
 const Hashtag = new GraphQLObjectType({
   name: 'Hashtag',
@@ -42,6 +43,27 @@ const Hashtag = new GraphQLObjectType({
         type: GraphQLInt,
         resolve (hashtag) {
           return hashtag.mehCount;
+        }
+      }
+    };
+  }
+});
+
+const TopCount = new GraphQLObjectType({
+  name: 'TopCount',
+  description: 'This represents a TopCount.',
+  fields: () => {
+    return {
+      name: {
+        type: GraphQLString,
+        resolve (topcount) {
+          return topcount.name;
+        }
+      },
+      count: {
+        type: GraphQLInt,
+        resolve (topcount) {
+          return topcount.count;
         }
       }
     };
@@ -85,6 +107,28 @@ const Query = new GraphQLObjectType({
             },
             resolve (root, args) {
                 return Db.models.hashtag.findOne({ where: args });
+            }
+        },
+
+
+// Today's Top Count query
+//                    `select "name", "${args.bump}Count" as "count" from hashtags where "updatedAt" >= now() - '1 day'::interval and "${args.bump}Count" = (select max("${args.bump}Count") from hashtags);`
+
+        
+        topCount: {
+            type: TopCount,
+            args: {
+                bump: {
+                    type: new GraphQLNonNull(GraphQLString)
+                }
+            },
+            resolve (root, args) {
+                return Db.query(
+                    `select "name", "${args.bump}Count" as "count" from hashtags where "${args.bump}Count" = (select max("${args.bump}Count") from hashtags);`,
+                    {type: sequelize.QueryTypes.SELECT}
+                ).spread((results) => {
+                    return results;
+                });
             }
         },
         suggestions: {

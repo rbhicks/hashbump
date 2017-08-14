@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 50);
+/******/ 	return __webpack_require__(__webpack_require__.s = 52);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -106,10 +106,16 @@ function setCurrentHashtagName(hashtagName) {
 /* 4 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-redux");
+module.exports = require("graphql-tag");
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
+
+/***/ }),
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -128,7 +134,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactApollo = __webpack_require__(1);
 
-var _project = __webpack_require__(14);
+var _project = __webpack_require__(16);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -181,7 +187,7 @@ function serverClient() {
 }
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -283,7 +289,28 @@ function getURL() {
 }
 
 /***/ }),
-/* 7 */
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+                    value: true
+});
+
+exports.default = key => {
+
+                    const lookupList = { yay: "../hashbump-yay.svg",
+                                        grrr: "../hashbump-grrr.svg",
+                                        dunno: "../hashbump-dunno.svg",
+                                        meh: "../hashbump-meh.svg" };
+
+                    return lookupList[key];
+};
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -292,45 +319,45 @@ module.exports = {
 };
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = require("chalk");
 
 /***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-module.exports = require("graphql-tag");
-
-/***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-helmet");
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-router-dom");
 
 /***/ }),
-/* 12 */
+/* 13 */
+/***/ (function(module, exports) {
+
+module.exports = require("sequelize");
+
+/***/ }),
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _chalk = __webpack_require__(8);
+var _chalk = __webpack_require__(10);
 
 var _chalk2 = _interopRequireDefault(_chalk);
 
-var _env = __webpack_require__(6);
+var _env = __webpack_require__(7);
 
-var _console = __webpack_require__(16);
+var _console = __webpack_require__(18);
 
-var _server = __webpack_require__(15);
+var _server = __webpack_require__(17);
 
 var _server2 = _interopRequireDefault(_server);
 
@@ -386,7 +413,7 @@ _server2.default.then(({ router, app }) => {
 });
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -395,7 +422,7 @@ _server2.default.then(({ router, app }) => {
 // ----------------------
 // IMPORTS
 
-const path = __webpack_require__(44);
+const path = __webpack_require__(47);
 
 // ----------------------
 
@@ -439,7 +466,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -450,7 +477,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.APOLLO = undefined;
 
-var _env = __webpack_require__(6);
+var _env = __webpack_require__(7);
 
 // ----------------------
 
@@ -464,7 +491,7 @@ const APOLLO = exports.APOLLO = {
 /* Local */
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -476,73 +503,73 @@ Object.defineProperty(exports, "__esModule", {
 exports.staticMiddleware = staticMiddleware;
 exports.createReactHandler = createReactHandler;
 
-__webpack_require__(35);
+__webpack_require__(38);
 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(46);
+var _server = __webpack_require__(49);
 
 var _server2 = _interopRequireDefault(_server);
 
-var _koa = __webpack_require__(37);
+var _koa = __webpack_require__(40);
 
 var _koa2 = _interopRequireDefault(_koa);
 
 var _reactApollo = __webpack_require__(1);
 
-var _koaSend = __webpack_require__(41);
+var _koaSend = __webpack_require__(44);
 
 var _koaSend2 = _interopRequireDefault(_koaSend);
 
-var _koaHelmet = __webpack_require__(39);
+var _koaHelmet = __webpack_require__(42);
 
 var _koaHelmet2 = _interopRequireDefault(_koaHelmet);
 
-var _koaRouter = __webpack_require__(40);
+var _koaRouter = __webpack_require__(43);
 
 var _koaRouter2 = _interopRequireDefault(_koaRouter);
 
-var _microseconds = __webpack_require__(43);
+var _microseconds = __webpack_require__(46);
 
 var _microseconds2 = _interopRequireDefault(_microseconds);
 
-var _reactRouter = __webpack_require__(47);
+var _reactRouter = __webpack_require__(50);
 
-var _reactHelmet = __webpack_require__(10);
+var _reactHelmet = __webpack_require__(11);
 
 var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
-var _kcors = __webpack_require__(36);
+var _kcors = __webpack_require__(39);
 
 var _kcors2 = _interopRequireDefault(_kcors);
 
-var _koaBodyparser = __webpack_require__(38);
+var _koaBodyparser = __webpack_require__(41);
 
 var _koaBodyparser2 = _interopRequireDefault(_koaBodyparser);
 
-var _graphqlServerKoa = __webpack_require__(33);
+var _graphqlServerKoa = __webpack_require__(36);
 
-var _schema = __webpack_require__(20);
+var _schema = __webpack_require__(22);
 
 var _schema2 = _interopRequireDefault(_schema);
 
-var _apollo = __webpack_require__(5);
+var _apollo = __webpack_require__(6);
 
-var _redux = __webpack_require__(18);
+var _redux = __webpack_require__(20);
 
 var _redux2 = _interopRequireDefault(_redux);
 
-var _ssr = __webpack_require__(21);
+var _ssr = __webpack_require__(23);
 
 var _ssr2 = _interopRequireDefault(_ssr);
 
-var _app = __webpack_require__(22);
+var _app = __webpack_require__(24);
 
 var _app2 = _interopRequireDefault(_app);
 
-var _paths = __webpack_require__(13);
+var _paths = __webpack_require__(15);
 
 var _paths2 = _interopRequireDefault(_paths);
 
@@ -777,7 +804,7 @@ exports.default = async function server() {
 }();
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -788,15 +815,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.logServerStarted = logServerStarted;
 
-var _boxen = __webpack_require__(30);
+var _boxen = __webpack_require__(33);
 
 var _boxen2 = _interopRequireDefault(_boxen);
 
-var _chalk = __webpack_require__(8);
+var _chalk = __webpack_require__(10);
 
 var _chalk2 = _interopRequireDefault(_chalk);
 
-var _ip = __webpack_require__(34);
+var _ip = __webpack_require__(37);
 
 var _ip2 = _interopRequireDefault(_ip);
 
@@ -834,7 +861,7 @@ function logServerStarted(opt = {}) {
 // Display a border around a message
 
 /***/ }),
-/* 17 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -844,15 +871,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _sequelize = __webpack_require__(49);
+var _sequelize = __webpack_require__(13);
 
 var _sequelize2 = _interopRequireDefault(_sequelize);
 
-var _faker = __webpack_require__(31);
+var _faker = __webpack_require__(34);
 
 var _faker2 = _interopRequireDefault(_faker);
 
-var _lodash = __webpack_require__(42);
+var _lodash = __webpack_require__(45);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -905,7 +932,7 @@ const Hashtag = Conn.define('hashtag', {
 exports.default = Conn;
 
 /***/ }),
-/* 18 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -916,9 +943,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = createNewStore;
 
-var _redux = __webpack_require__(48);
+var _redux = __webpack_require__(51);
 
-var _reducers = __webpack_require__(25);
+var _reducers = __webpack_require__(28);
 
 // ----------------------
 
@@ -951,7 +978,7 @@ function createNewStore(apolloClient) {
 }
 
 /***/ }),
-/* 19 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -970,7 +997,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRouterDom = __webpack_require__(11);
+var _reactRouterDom = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1054,7 +1081,7 @@ Redirect.defaultProps = {
 };
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1064,11 +1091,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _graphql = __webpack_require__(32);
+var _graphql = __webpack_require__(35);
 
-var _db = __webpack_require__(17);
+var _db = __webpack_require__(19);
 
 var _db2 = _interopRequireDefault(_db);
+
+var _sequelize = __webpack_require__(13);
+
+var _sequelize2 = _interopRequireDefault(_sequelize);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1105,6 +1136,27 @@ const Hashtag = new _graphql.GraphQLObjectType({
         type: _graphql.GraphQLInt,
         resolve(hashtag) {
           return hashtag.mehCount;
+        }
+      }
+    };
+  }
+});
+
+const TopCount = new _graphql.GraphQLObjectType({
+  name: 'TopCount',
+  description: 'This represents a TopCount.',
+  fields: () => {
+    return {
+      name: {
+        type: _graphql.GraphQLString,
+        resolve(topcount) {
+          return topcount.name;
+        }
+      },
+      count: {
+        type: _graphql.GraphQLInt,
+        resolve(topcount) {
+          return topcount.count;
         }
       }
     };
@@ -1148,6 +1200,24 @@ const Query = new _graphql.GraphQLObjectType({
         },
         resolve(root, args) {
           return _db2.default.models.hashtag.findOne({ where: args });
+        }
+      },
+
+      // Today's Top Count query
+      //                    `select "name", "${args.bump}Count" as "count" from hashtags where "updatedAt" >= now() - '1 day'::interval and "${args.bump}Count" = (select max("${args.bump}Count") from hashtags);`
+
+
+      topCount: {
+        type: TopCount,
+        args: {
+          bump: {
+            type: new _graphql.GraphQLNonNull(_graphql.GraphQLString)
+          }
+        },
+        resolve(root, args) {
+          return _db2.default.query(`select "name", "${args.bump}Count" as "count" from hashtags where "${args.bump}Count" = (select max("${args.bump}Count") from hashtags);`, { type: _sequelize2.default.QueryTypes.SELECT }).spread(results => {
+            return results;
+          });
         }
       },
       suggestions: {
@@ -1214,7 +1284,7 @@ const Schema = new _graphql.GraphQLSchema({
 exports.default = Schema;
 
 /***/ }),
-/* 21 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1281,7 +1351,7 @@ Html.propTypes = {
 exports.default = Html;
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1301,72 +1371,55 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactApollo = __webpack_require__(1);
 
-var _reactRouterDom = __webpack_require__(11);
+var _reactRouterDom = __webpack_require__(12);
 
-var _reactHelmet = __webpack_require__(10);
+var _reactHelmet = __webpack_require__(11);
 
 var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
-var _apollo = __webpack_require__(5);
+var _apollo = __webpack_require__(6);
 
-var _routing = __webpack_require__(19);
+var _routing = __webpack_require__(21);
 
-__webpack_require__(27);
+__webpack_require__(30);
 
-var _styles = __webpack_require__(26);
+var _styles = __webpack_require__(29);
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _styles3 = __webpack_require__(7);
+var _styles3 = __webpack_require__(9);
 
 var _styles4 = _interopRequireDefault(_styles3);
 
-var _styles5 = __webpack_require__(28);
+var _styles5 = __webpack_require__(31);
 
 var _styles6 = _interopRequireDefault(_styles5);
 
-var _hashbumpLogo = __webpack_require__(29);
+var _hashbumpLogo = __webpack_require__(32);
 
 var _hashbumpLogo2 = _interopRequireDefault(_hashbumpLogo);
 
-var _reactRedux = __webpack_require__(4);
+var _reactRedux = __webpack_require__(5);
 
 var _actions = __webpack_require__(3);
 
-var _bumpButton = __webpack_require__(23);
+var _bumpButton = __webpack_require__(25);
 
 var _bumpButton2 = _interopRequireDefault(_bumpButton);
 
-var _hashtagAutocomplete = __webpack_require__(24);
+var _hashtagAutocomplete = __webpack_require__(27);
 
 var _hashtagAutocomplete2 = _interopRequireDefault(_hashtagAutocomplete);
+
+var _bumpDisplay = __webpack_require__(26);
+
+var _bumpDisplay2 = _interopRequireDefault(_bumpDisplay);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // ----------------------
 
 // We'll display this <Home> component when we're on the / route
-
-
-// NotFound 404 handler for unknown routes
-
-
-// <Helmet> component for setting the page title
-
-
-// GraphQL
-// ----------------------
-// IMPORTS
-
-// React
-const Home = () => _react2.default.createElement(
-  'h1',
-  null,
-  'You\'re on the home page - click another link above'
-);
-
-// Helper component that will be conditionally shown when the route matches.
-// This gives you an idea how React Router v4 works
 
 
 // Get the ReactQL logo.  This is a local .svg file, which will be made
@@ -1380,6 +1433,27 @@ const Home = () => _react2.default.createElement(
 
 
 // Routing
+const Home = () => _react2.default.createElement(
+  'h1',
+  null,
+  'You\'re on the home page - click another link above'
+);
+
+// Helper component that will be conditionally shown when the route matches.
+// This gives you an idea how React Router v4 works
+
+
+// NotFound 404 handler for unknown routes
+
+
+// <Helmet> component for setting the page title
+
+
+// GraphQL
+// ----------------------
+// IMPORTS
+
+// React
 const Page = ({ match }) => _react2.default.createElement(
   'h1',
   null,
@@ -1516,6 +1590,11 @@ let App = class App extends _react.Component {
       _react2.default.createElement(
         'div',
         null,
+        _react2.default.createElement(_bumpDisplay2.default, { bump: 'yay' })
+      ),
+      _react2.default.createElement(
+        'div',
+        null,
         _react2.default.createElement(
           'center',
           null,
@@ -1537,7 +1616,7 @@ let App = class App extends _react.Component {
 exports.default = App;
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1551,15 +1630,19 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _graphqlTag = __webpack_require__(9);
+var _graphqlTag = __webpack_require__(4);
 
 var _graphqlTag2 = _interopRequireDefault(_graphqlTag);
 
 var _reactApollo = __webpack_require__(1);
 
-var _reactRedux = __webpack_require__(4);
+var _reactRedux = __webpack_require__(5);
 
 var _actions = __webpack_require__(3);
+
+var _imageLookup = __webpack_require__(8);
+
+var _imageLookup2 = _interopRequireDefault(_imageLookup);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1614,11 +1697,6 @@ let BumpButton = class BumpButton extends _react2.default.PureComponent {
     constructor() {
         super();
         this.handleClick = this.handleClick.bind(this);
-
-        this.imageLookup = { yay: "../hashbump-yay.svg",
-            grrr: "../hashbump-grrr.svg",
-            dunno: "../hashbump-dunno.svg",
-            meh: "../hashbump-meh.svg" };
     }
 
     handleClick() {
@@ -1663,14 +1741,14 @@ let BumpButton = class BumpButton extends _react2.default.PureComponent {
                 null,
                 count
             ),
-            _react2.default.createElement('img', { src: this.imageLookup[this.props.bump], onClick: this.handleClick })
+            _react2.default.createElement('img', { src: (0, _imageLookup2.default)(this.props.bump), onClick: this.handleClick })
         );
     }
 };
 exports.default = (0, _reactApollo.compose)((0, _reactRedux.connect)(state => ({ currentHashtagName: state.currentHashtagName })), hashtagQuery, bumpHashtagMutation, addHashtagMutation)(BumpButton);
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1684,21 +1762,87 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _graphqlTag = __webpack_require__(9);
+var _graphqlTag = __webpack_require__(4);
 
 var _graphqlTag2 = _interopRequireDefault(_graphqlTag);
 
 var _reactApollo = __webpack_require__(1);
 
-var _reactRedux = __webpack_require__(4);
+var _imageLookup = __webpack_require__(8);
+
+var _imageLookup2 = _interopRequireDefault(_imageLookup);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const topCountQuery = (0, _reactApollo.graphql)(_graphqlTag2.default`
+  query topCount($bump: String!) {
+    topCount(bump: $bump) {
+      name
+      count
+    }
+  }
+`, {
+    data: "topCount",
+    name: "topCountQuery"
+});
+
+let BumpDisplay = class BumpDisplay extends _react2.default.PureComponent {
+    render() {
+        if (this.props.topCountQuery.loading) {
+            return _react2.default.createElement(
+                'div',
+                null,
+                'loading...'
+            );
+        } else {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'h1',
+                    null,
+                    '#',
+                    this.props.topCountQuery.topCount.name,
+                    '  ',
+                    this.props.topCountQuery.topCount.count
+                ),
+                _react2.default.createElement('img', { src: '../hashbump-yay.svg' })
+            );
+        }
+    }
+};
+exports.default = (0, _reactApollo.compose)(topCountQuery)(BumpDisplay);
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _graphqlTag = __webpack_require__(4);
+
+var _graphqlTag2 = _interopRequireDefault(_graphqlTag);
+
+var _reactApollo = __webpack_require__(1);
+
+var _reactRedux = __webpack_require__(5);
 
 var _actions = __webpack_require__(3);
 
-var _reactAutocomplete = __webpack_require__(45);
+var _reactAutocomplete = __webpack_require__(48);
 
 var _reactAutocomplete2 = _interopRequireDefault(_reactAutocomplete);
 
-var _styles = __webpack_require__(7);
+var _styles = __webpack_require__(9);
 
 var _styles2 = _interopRequireDefault(_styles);
 
@@ -1821,7 +1965,7 @@ let HashtagAutocomplete = class HashtagAutocomplete extends _react2.default.Comp
 exports.default = (0, _reactApollo.compose)((0, _reactRedux.connect)(), hashtagQuery, suggestionsQuery, addHashtagMutation)(HashtagAutocomplete);
 
 /***/ }),
-/* 25 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1841,7 +1985,7 @@ function currentHashtagName(state = "", action) {
 }
 
 /***/ }),
-/* 26 */
+/* 29 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -1853,13 +1997,13 @@ module.exports = {
 };
 
 /***/ }),
-/* 27 */
+/* 30 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 28 */
+/* 31 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -1867,136 +2011,130 @@ module.exports = {
 };
 
 /***/ }),
-/* 29 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "assets/img/hashbump-logo.c093c35762e7ccd4caaa39ce9d1cc87f.svg";
 
 /***/ }),
-/* 30 */
+/* 33 */
 /***/ (function(module, exports) {
 
 module.exports = require("boxen");
 
 /***/ }),
-/* 31 */
+/* 34 */
 /***/ (function(module, exports) {
 
 module.exports = require("faker");
 
 /***/ }),
-/* 32 */
+/* 35 */
 /***/ (function(module, exports) {
 
 module.exports = require("graphql");
 
 /***/ }),
-/* 33 */
+/* 36 */
 /***/ (function(module, exports) {
 
 module.exports = require("graphql-server-koa");
 
 /***/ }),
-/* 34 */
+/* 37 */
 /***/ (function(module, exports) {
 
 module.exports = require("ip");
 
 /***/ }),
-/* 35 */
+/* 38 */
 /***/ (function(module, exports) {
 
 module.exports = require("isomorphic-fetch");
 
 /***/ }),
-/* 36 */
+/* 39 */
 /***/ (function(module, exports) {
 
 module.exports = require("kcors");
 
 /***/ }),
-/* 37 */
+/* 40 */
 /***/ (function(module, exports) {
 
 module.exports = require("koa");
 
 /***/ }),
-/* 38 */
+/* 41 */
 /***/ (function(module, exports) {
 
 module.exports = require("koa-bodyparser");
 
 /***/ }),
-/* 39 */
+/* 42 */
 /***/ (function(module, exports) {
 
 module.exports = require("koa-helmet");
 
 /***/ }),
-/* 40 */
+/* 43 */
 /***/ (function(module, exports) {
 
 module.exports = require("koa-router");
 
 /***/ }),
-/* 41 */
+/* 44 */
 /***/ (function(module, exports) {
 
 module.exports = require("koa-send");
 
 /***/ }),
-/* 42 */
+/* 45 */
 /***/ (function(module, exports) {
 
 module.exports = require("lodash");
 
 /***/ }),
-/* 43 */
+/* 46 */
 /***/ (function(module, exports) {
 
 module.exports = require("microseconds");
 
 /***/ }),
-/* 44 */
+/* 47 */
 /***/ (function(module, exports) {
 
 module.exports = require("path");
 
 /***/ }),
-/* 45 */
+/* 48 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-autocomplete");
 
 /***/ }),
-/* 46 */
+/* 49 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 47 */
+/* 50 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-router");
 
 /***/ }),
-/* 48 */
+/* 51 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux");
 
 /***/ }),
-/* 49 */
-/***/ (function(module, exports) {
-
-module.exports = require("sequelize");
-
-/***/ }),
-/* 50 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(12);
+module.exports = __webpack_require__(14);
 
 
 /***/ })

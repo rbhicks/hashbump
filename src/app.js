@@ -39,6 +39,7 @@ import { setCurrentHashtag } from './store/actions.js';
 
 import BumpButton  from './components/bumpButton.js';
 import HashtagAutocomplete from './components/hashtagAutocomplete.js';
+import BumpDisplay from './components/bumpDisplay.js';
 
 // ----------------------
 
@@ -154,6 +155,9 @@ class App extends Component {
                 <img src={logo} alt="hashbump" className={css.logo} />
                 </div>
                 <hr />
+                <div>
+                <BumpDisplay bump="yay"/>
+                </div>
                 <div>
                 <center><div><HashtagAutocomplete className={sass.hashtag}/></div>
             <BumpButton bump="yay"/>

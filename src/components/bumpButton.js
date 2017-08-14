@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import { graphql, compose } from 'react-apollo';
 import { connect } from 'react-redux';
 import { setCurrentHashtagName } from '../store/actions';
+import imageLookup from '../utility/image-lookup';
 
 const hashtagQuery = graphql(gql`
   query hashtag($name: String!) {
@@ -57,11 +58,6 @@ class BumpButton extends React.PureComponent {
     constructor() {
         super();
         this.handleClick = this.handleClick.bind(this);
-
-        this.imageLookup = {yay: "../hashbump-yay.svg",
-                            grrr: "../hashbump-grrr.svg",
-                            dunno: "../hashbump-dunno.svg",
-                            meh: "../hashbump-meh.svg"};
     }
     
     handleClick() {        
@@ -108,7 +104,7 @@ class BumpButton extends React.PureComponent {
         return (
                 <button>
                 <h1>{count}</h1>
-                <img src={this.imageLookup[this.props.bump]} onClick={this.handleClick} />
+                <img src={imageLookup(this.props.bump)} onClick={this.handleClick} />
                 </button>
         );
     }
