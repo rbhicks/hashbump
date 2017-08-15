@@ -1812,7 +1812,7 @@ let BumpDisplay = class BumpDisplay extends _react2.default.PureComponent {
                     { version: '1.1', style: { height: "100%" }, viewBox: '0 0 96 96' },
                     _react2.default.createElement(
                         'g',
-                        { id: 'yay', display: this.props.bump == "yay" ? "" : "none" },
+                        { id: 'yay', display: this.props.bump == "yay" ? "inline-block" : "none" },
                         _react2.default.createElement('path', { d: 'M48.5,93.5 C23.647,93.5 3.5,73.353 3.5,48.5 C3.5,23.647 23.647,3.5 48.5,3.5 C73.353,3.5 93.5,23.647 93.5,48.5 C93.5,73.353 73.353,93.5 48.5,93.5 z', style: { fillOpacity: "0", stroke: "#8845AD", strokeWidth: "5" } }),
                         _react2.default.createElement(
                             'g',
@@ -1899,7 +1899,7 @@ let BumpDisplay = class BumpDisplay extends _react2.default.PureComponent {
                 ),
                 _react2.default.createElement(
                     'h1',
-                    null,
+                    { style: { display: "inline-block" } },
                     '#',
                     this.props.topCountQuery.topCount.name,
                     '  ',
