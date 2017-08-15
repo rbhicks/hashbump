@@ -769,7 +769,6 @@ var App = function (_Component) {
   _createClass(App, [{
     key: 'render',
     value: function render() {
-
       return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
         'div',
         null,
@@ -787,9 +786,23 @@ var App = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
-          null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'yay', topCountType: 'all-time' }),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'yay', topCountType: 'today' })
+          { style: { position: "relative", height: "30vh" } },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { style: { position: "absolute", top: 0, left: 0, width: "50vw" } },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'yay', topCountType: 'all-time' }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'grrr', topCountType: 'all-time' }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'dunno', topCountType: 'all-time' }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'meh', topCountType: 'all-time' })
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { style: { position: "absolute", top: 0, right: 0, width: "50vw" } },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'yay', topCountType: 'today' }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'grrr', topCountType: 'today' }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'dunno', topCountType: 'today' }),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'meh', topCountType: 'today' })
+          )
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
@@ -998,10 +1011,9 @@ var BumpDisplay = function (_React$PureComponent) {
                     'loading...'
                 );
             } else {
-
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { style: { height: "5vh", width: "100%" } },
+                    { style: { height: "5vh", width: "100vw" } },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'svg',
                         { version: '1.1', style: { height: "100%" }, viewBox: '0 0 96 96' },

@@ -1213,12 +1213,11 @@ const Query = new _graphql.GraphQLObjectType({
           }
         },
         resolve(root, args) {
-          let topCountQueryString = `select "name", "${args.bump}Count" as "count" from hashtags where "${args.bump}Count" = (select max("${args.bump}Count") from hashtags);`;
+          let topCountQueryString = `select "name", "${args.bump}Count" as "count" from hashtags order by "${args.bump}Count" desc LIMIT 1;`;
 
-          if (args.topCountType == "all-time") {
-            topCountQueryString = `select "name", "${args.bump}Count" as "count" from hashtags where "updatedAt" >= now() - '1 day'::interval and "${args.bump}Count" = (select max("${args.bump}Count") from hashtags);`;
+          if (args.topCountType == "today") {
+            topCountQueryString = `select "name", "${args.bump}Count" as "count" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "${args.bump}Count" desc LIMIT 1;`;
           }
-
           return _db2.default.query(topCountQueryString, { type: _sequelize2.default.QueryTypes.SELECT }).spread(results => {
             return results;
           });
@@ -1575,7 +1574,6 @@ const Styles = () => _react2.default.createElement(
 let App = class App extends _react.Component {
 
   render() {
-
     return _react2.default.createElement(
       'div',
       null,
@@ -1593,9 +1591,23 @@ let App = class App extends _react.Component {
       _react2.default.createElement('hr', null),
       _react2.default.createElement(
         'div',
-        null,
-        _react2.default.createElement(_bumpDisplay2.default, { bump: 'yay', topCountType: 'all-time' }),
-        _react2.default.createElement(_bumpDisplay2.default, { bump: 'yay', topCountType: 'today' })
+        { style: { position: "relative", height: "30vh" } },
+        _react2.default.createElement(
+          'div',
+          { style: { position: "absolute", top: 0, left: 0, width: "50vw" } },
+          _react2.default.createElement(_bumpDisplay2.default, { bump: 'yay', topCountType: 'all-time' }),
+          _react2.default.createElement(_bumpDisplay2.default, { bump: 'grrr', topCountType: 'all-time' }),
+          _react2.default.createElement(_bumpDisplay2.default, { bump: 'dunno', topCountType: 'all-time' }),
+          _react2.default.createElement(_bumpDisplay2.default, { bump: 'meh', topCountType: 'all-time' })
+        ),
+        _react2.default.createElement(
+          'div',
+          { style: { position: "absolute", top: 0, right: 0, width: "50vw" } },
+          _react2.default.createElement(_bumpDisplay2.default, { bump: 'yay', topCountType: 'today' }),
+          _react2.default.createElement(_bumpDisplay2.default, { bump: 'grrr', topCountType: 'today' }),
+          _react2.default.createElement(_bumpDisplay2.default, { bump: 'dunno', topCountType: 'today' }),
+          _react2.default.createElement(_bumpDisplay2.default, { bump: 'meh', topCountType: 'today' })
+        )
       ),
       _react2.default.createElement(
         'div',
@@ -1803,10 +1815,9 @@ let BumpDisplay = class BumpDisplay extends _react2.default.PureComponent {
                 'loading...'
             );
         } else {
-
             return _react2.default.createElement(
                 'div',
-                { style: { height: "5vh", width: "100%" } },
+                { style: { height: "5vh", width: "100vw" } },
                 _react2.default.createElement(
                     'svg',
                     { version: '1.1', style: { height: "100%" }, viewBox: '0 0 96 96' },

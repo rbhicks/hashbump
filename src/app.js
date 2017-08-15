@@ -141,8 +141,7 @@ const Styles = () => (
 // the <Page> component based on the route name
 class App extends Component {
 
-    render() {
-
+    render() {        
         return (
                 <div>
                 <Helmet
@@ -155,16 +154,25 @@ class App extends Component {
                 <img src={logo} alt="hashbump" className={css.logo} />
                 </div>
                 <hr />
-                <div>
-                <BumpDisplay bump="yay" topCountType="all-time"/>
-                <BumpDisplay bump="yay" topCountType="today"/>
-
+                <div style={{position: "relative", height: "30vh"}}>
+                <div style={{position: "absolute", top: 0, left: 0, width: "50vw" }}>
+                <BumpDisplay bump="yay" topCountType="all-time" />
+                <BumpDisplay bump="grrr" topCountType="all-time" />
+                <BumpDisplay bump="dunno" topCountType="all-time" />
+                <BumpDisplay bump="meh" topCountType="all-time" />
+                </div>
+                <div style={{position: "absolute", top: 0, right: 0, width: "50vw" }}>
+                <BumpDisplay bump="yay" topCountType="today" />
+                <BumpDisplay bump="grrr" topCountType="today" />
+                <BumpDisplay bump="dunno" topCountType="today" />
+                <BumpDisplay bump="meh" topCountType="today" />
+                </div>
                 </div>
                 <div>
                 <center><div><HashtagAutocomplete className={sass.hashtag}/></div>
-            <BumpButton bump="yay"/>
-            <BumpButton bump="grrr"/>
-            <BumpButton bump="dunno"/>
+                <BumpButton bump="yay"/>
+                <BumpButton bump="grrr"/>
+                <BumpButton bump="dunno"/>
                 <BumpButton bump="meh"/>
                 </center>
                 </div>
