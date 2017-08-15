@@ -786,7 +786,7 @@ var App = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
-          { style: { position: "relative", height: "30vh" } },
+          { style: { height: "30vh" } },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
             { style: { float: "left", width: "50%" } },

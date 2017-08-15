@@ -154,7 +154,7 @@ class App extends Component {
                 <img src={logo} alt="hashbump" className={css.logo} />
                 </div>
                 <hr />
-                <div style={{position: "relative", height: "30vh"}}>
+                <div style={{height: "30vh"}}>
                 <div style={{float: "left", width: "50%" }}>
                 <BumpDisplay bump="yay" topCountType="all-time" />
                 <BumpDisplay bump="grrr" topCountType="all-time" />

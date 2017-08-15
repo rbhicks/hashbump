@@ -1591,7 +1591,7 @@ let App = class App extends _react.Component {
       _react2.default.createElement('hr', null),
       _react2.default.createElement(
         'div',
-        { style: { position: "relative", height: "30vh" } },
+        { style: { height: "30vh" } },
         _react2.default.createElement(
           'div',
           { style: { float: "left", width: "50%" } },
