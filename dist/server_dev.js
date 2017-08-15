@@ -1594,7 +1594,7 @@ let App = class App extends _react.Component {
         { style: { position: "relative", height: "30vh" } },
         _react2.default.createElement(
           'div',
-          { style: { position: "absolute", top: 0, left: 0, width: "50vw" } },
+          { style: { float: "left", width: "50%" } },
           _react2.default.createElement(_bumpDisplay2.default, { bump: 'yay', topCountType: 'all-time' }),
           _react2.default.createElement(_bumpDisplay2.default, { bump: 'grrr', topCountType: 'all-time' }),
           _react2.default.createElement(_bumpDisplay2.default, { bump: 'dunno', topCountType: 'all-time' }),
@@ -1602,7 +1602,7 @@ let App = class App extends _react.Component {
         ),
         _react2.default.createElement(
           'div',
-          { style: { position: "absolute", top: 0, right: 0, width: "50vw" } },
+          { style: { float: "right", width: "50%" } },
           _react2.default.createElement(_bumpDisplay2.default, { bump: 'yay', topCountType: 'today' }),
           _react2.default.createElement(_bumpDisplay2.default, { bump: 'grrr', topCountType: 'today' }),
           _react2.default.createElement(_bumpDisplay2.default, { bump: 'dunno', topCountType: 'today' }),

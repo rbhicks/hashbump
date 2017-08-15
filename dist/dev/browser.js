@@ -789,7 +789,7 @@ var App = function (_Component) {
           { style: { position: "relative", height: "30vh" } },
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { style: { position: "absolute", top: 0, left: 0, width: "50vw" } },
+            { style: { float: "left", width: "50%" } },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'yay', topCountType: 'all-time' }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'grrr', topCountType: 'all-time' }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'dunno', topCountType: 'all-time' }),
@@ -797,7 +797,7 @@ var App = function (_Component) {
           ),
           __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
             'div',
-            { style: { position: "absolute", top: 0, right: 0, width: "50vw" } },
+            { style: { float: "right", width: "50%" } },
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'yay', topCountType: 'today' }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'grrr', topCountType: 'today' }),
             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'dunno', topCountType: 'today' }),

@@ -155,13 +155,13 @@ class App extends Component {
                 </div>
                 <hr />
                 <div style={{position: "relative", height: "30vh"}}>
-                <div style={{position: "absolute", top: 0, left: 0, width: "50vw" }}>
+                <div style={{float: "left", width: "50%" }}>
                 <BumpDisplay bump="yay" topCountType="all-time" />
                 <BumpDisplay bump="grrr" topCountType="all-time" />
                 <BumpDisplay bump="dunno" topCountType="all-time" />
                 <BumpDisplay bump="meh" topCountType="all-time" />
                 </div>
-                <div style={{position: "absolute", top: 0, right: 0, width: "50vw" }}>
+                <div style={{float: "right", width: "50%" }}>
                 <BumpDisplay bump="yay" topCountType="today" />
                 <BumpDisplay bump="grrr" topCountType="today" />
                 <BumpDisplay bump="dunno" topCountType="today" />
