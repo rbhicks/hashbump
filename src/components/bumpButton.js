@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { setCurrentHashtagName } from '../store/actions';
 import imageLookup from '../utility/image-lookup';
 
+
+//<!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0, 0, 100, 100" height="50%" width="auto"> -->
+
 const hashtagQuery = graphql(gql`
   query hashtag($name: String!) {
     hashtag(name: $name) {

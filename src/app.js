@@ -158,6 +158,7 @@ class App extends Component {
                 <div>
                 <BumpDisplay bump="yay" topCountType="all-time"/>
                 <BumpDisplay bump="yay" topCountType="today"/>
+
                 </div>
                 <div>
                 <center><div><HashtagAutocomplete className={sass.hashtag}/></div>
