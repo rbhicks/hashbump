@@ -2123,7 +2123,7 @@ module.exports = {
 /* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "assets/img/hashbump-logo.b27f0afabf2d684b0b9e14c2164f663d.svg";
+module.exports = __webpack_require__.p + "assets/img/hashbump-logo.07a6c46f5813584b6f560fc8484bf6fa.svg";
 
 /***/ }),
 /* 33 */
