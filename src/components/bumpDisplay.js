@@ -50,7 +50,7 @@ class BumpDisplay extends React.PureComponent {
                     </g>
                     <path d="M72.594,60.545 C60.612,84.509 36.3,84.494 24.486,60.525" style={{fillOpacity: "0", stroke: "#8845AD", strokeWidth:"5"}}/>
                     </g>
-                    <g id="grrr" display={this.props.bump == "grrr" ? "" : "none"}>
+                    <g id="grrr" display={this.props.bump == "grrr" ? "inline-block" : "none"}>
                     <path d="M48.54,93.5 C23.687,93.5 3.54,73.353 3.54,48.5 C3.54,23.647 23.687,3.5 48.54,3.5 C73.393,3.5 93.54,23.647 93.54,48.5 C93.54,73.353 73.393,93.5 48.54,93.5 z" style={{fillOpacity: "0", stroke: "#8845AD", strokeWidth:"5"}}/>
                     <path d="M72.487,77.332 C84.376,46.657 12.746,46.391 24.497,77.291" style={{fillOpacity: "0", stroke: "#8845AD", strokeWidth:"5"}}/>
                     <g>
@@ -65,7 +65,7 @@ class BumpDisplay extends React.PureComponent {
                     </g>
                     </g>
 
-                    <g id="dunno" display={this.props.bump == "dunno" ? "" : "none"}>
+                    <g id="dunno" display={this.props.bump == "dunno" ? "inline-block" : "none"}>
                     <path d="M48.5,93.5 C23.647,93.5 3.5,73.353 3.5,48.5 C3.5,23.647 23.647,3.5 48.5,3.5 C73.353,3.5 93.5,23.647 93.5,48.5 C93.5,73.353 73.353,93.5 48.5,93.5 z" style={{fillOpacity: "0", stroke: "#8845AD", strokeWidth:"5"}}/>
                     <path d="M55.789,72.839 C55.949,62.268 25.613,68.799 25.899,55.218" style={{fillOpacity: "0", stroke: "#8845AD", strokeWidth:"5"}}/>
                     <path d="M24.5,40.5 C20.082,40.5 16.5,36.918 16.5,32.5 C16.5,28.082 20.082,24.5 24.5,24.5 C28.918,24.5 36.884,34.521 36.884,38.939 C36.884,43.358 28.918,40.5 24.5,40.5 z" style={{fillOpacity: "0", stroke: "#8845AD", strokeWidth:"5"}}/>
@@ -73,7 +73,7 @@ class BumpDisplay extends React.PureComponent {
                     <path d="M67.136,40.5 C62.718,40.5 59.136,36.918 59.136,32.5 C59.136,28.082 62.718,24.5 67.136,24.5 C71.555,24.5 79.521,34.521 79.521,38.939 C79.521,43.358 71.555,40.5 67.136,40.5 z" style={{fillOpacity: "0", stroke: "#8845AD", strokeWidth:"5"}}/>
                     <path d="M63.891,34.54 C61.958,34.54 60.391,32.973 60.391,31.04 C60.391,29.107 61.958,27.54 63.891,27.54 C65.824,27.54 67.391,29.107 67.391,31.04 C67.391,32.973 65.824,34.54 63.891,34.54 z" style={{fill:"#8845AD"}}/>
                     </g>
-                    <g id="meh" display={this.props.bump == "meh" ? "" : "none"}>
+                    <g id="meh" display={this.props.bump == "meh" ? "inline-block" : "none"}>
                     <path d="M48.5,93.5 C23.647,93.5 3.5,73.353 3.5,48.5 C3.5,23.647 23.647,3.5 48.5,3.5 C73.353,3.5 93.5,23.647 93.5,48.5 C93.5,73.353 73.353,93.5 48.5,93.5 z" style={{fillOpacity: "0", stroke: "#8845AD", strokeWidth:"5"}}/>
                     <path d="M70.681,59.458 C66.551,61.225 24.128,58.624 21.955,58.867" style={{fillOpacity: "0", stroke: "#8845AD", strokeWidth:"5"}}/>
                     <g>

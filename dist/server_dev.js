@@ -1834,7 +1834,7 @@ let BumpDisplay = class BumpDisplay extends _react2.default.PureComponent {
                     ),
                     _react2.default.createElement(
                         'g',
-                        { id: 'grrr', display: this.props.bump == "grrr" ? "" : "none" },
+                        { id: 'grrr', display: this.props.bump == "grrr" ? "inline-block" : "none" },
                         _react2.default.createElement('path', { d: 'M48.54,93.5 C23.687,93.5 3.54,73.353 3.54,48.5 C3.54,23.647 23.687,3.5 48.54,3.5 C73.393,3.5 93.54,23.647 93.54,48.5 C93.54,73.353 73.393,93.5 48.54,93.5 z', style: { fillOpacity: "0", stroke: "#8845AD", strokeWidth: "5" } }),
                         _react2.default.createElement('path', { d: 'M72.487,77.332 C84.376,46.657 12.746,46.391 24.497,77.291', style: { fillOpacity: "0", stroke: "#8845AD", strokeWidth: "5" } }),
                         _react2.default.createElement(
@@ -1856,7 +1856,7 @@ let BumpDisplay = class BumpDisplay extends _react2.default.PureComponent {
                     ),
                     _react2.default.createElement(
                         'g',
-                        { id: 'dunno', display: this.props.bump == "dunno" ? "" : "none" },
+                        { id: 'dunno', display: this.props.bump == "dunno" ? "inline-block" : "none" },
                         _react2.default.createElement('path', { d: 'M48.5,93.5 C23.647,93.5 3.5,73.353 3.5,48.5 C3.5,23.647 23.647,3.5 48.5,3.5 C73.353,3.5 93.5,23.647 93.5,48.5 C93.5,73.353 73.353,93.5 48.5,93.5 z', style: { fillOpacity: "0", stroke: "#8845AD", strokeWidth: "5" } }),
                         _react2.default.createElement('path', { d: 'M55.789,72.839 C55.949,62.268 25.613,68.799 25.899,55.218', style: { fillOpacity: "0", stroke: "#8845AD", strokeWidth: "5" } }),
                         _react2.default.createElement('path', { d: 'M24.5,40.5 C20.082,40.5 16.5,36.918 16.5,32.5 C16.5,28.082 20.082,24.5 24.5,24.5 C28.918,24.5 36.884,34.521 36.884,38.939 C36.884,43.358 28.918,40.5 24.5,40.5 z', style: { fillOpacity: "0", stroke: "#8845AD", strokeWidth: "5" } }),
@@ -1866,7 +1866,7 @@ let BumpDisplay = class BumpDisplay extends _react2.default.PureComponent {
                     ),
                     _react2.default.createElement(
                         'g',
-                        { id: 'meh', display: this.props.bump == "meh" ? "" : "none" },
+                        { id: 'meh', display: this.props.bump == "meh" ? "inline-block" : "none" },
                         _react2.default.createElement('path', { d: 'M48.5,93.5 C23.647,93.5 3.5,73.353 3.5,48.5 C3.5,23.647 23.647,3.5 48.5,3.5 C73.353,3.5 93.5,23.647 93.5,48.5 C93.5,73.353 73.353,93.5 48.5,93.5 z', style: { fillOpacity: "0", stroke: "#8845AD", strokeWidth: "5" } }),
                         _react2.default.createElement('path', { d: 'M70.681,59.458 C66.551,61.225 24.128,58.624 21.955,58.867', style: { fillOpacity: "0", stroke: "#8845AD", strokeWidth: "5" } }),
                         _react2.default.createElement(
