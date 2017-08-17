@@ -4,10 +4,6 @@ import { graphql, compose } from 'react-apollo';
 import imageLookup from '../utility/image-lookup';
 
 
-
-
-
-
 const topCountQuery = graphql(gql`
   query topCount($bump: String!, $topCountType: String!) {
     topCount(bump: $bump, topCountType: $topCountType) {
@@ -22,11 +18,6 @@ const topCountQuery = graphql(gql`
 
 
 class BumpDisplay extends React.PureComponent {
-
-    
-
-    
-
     render() {
         if (this.props.topCountQuery.loading) {
             return (<div>loading...</div>);
@@ -95,7 +86,6 @@ class BumpDisplay extends React.PureComponent {
                     </svg>
                     <h1 style={{display: "inline-block"}}>#{this.props.topCountQuery.topCount.name}  {this.props.topCountQuery.topCount.count}</h1>
                     </div>
-  
             );
         }
     }

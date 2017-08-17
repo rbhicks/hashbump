@@ -1663,8 +1663,6 @@ var _imageLookup2 = _interopRequireDefault(_imageLookup);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//<!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0, 0, 100, 100" height="50%" width="auto"> -->
-
 const hashtagQuery = (0, _reactApollo.graphql)(_graphqlTag2.default`
   query hashtag($name: String!) {
     hashtag(name: $name) {
@@ -1722,6 +1720,7 @@ let BumpButton = class BumpButton extends _react2.default.PureComponent {
         const hashtagQuery = this.props.hashtagQuery;
         const bumpHashtagMutation = this.props.bumpHashtagMutation;
         const addHashtagMutation = this.props.addHashtagMutation;
+        const topCountQuery = this.props.topCountQuery;
 
         hashtagQuery.refetch({ name: this.props.currentHashtagName }).then(dataObject => {
             if (!dataObject.data.hashtag) {
@@ -1806,7 +1805,6 @@ const topCountQuery = (0, _reactApollo.graphql)(_graphqlTag2.default`
 });
 
 let BumpDisplay = class BumpDisplay extends _react2.default.PureComponent {
-
     render() {
         if (this.props.topCountQuery.loading) {
             return _react2.default.createElement(
@@ -2123,7 +2121,7 @@ module.exports = {
 /* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "assets/img/hashbump-logo.07a6c46f5813584b6f560fc8484bf6fa.svg";
+module.exports = __webpack_require__.p + "assets/img/hashbump-logo-2.36ca345cc416818c44d874ff0ba79271.svg";
 
 /***/ }),
 /* 33 */

@@ -32,7 +32,7 @@ import less from './styles.less';
 
 // Get the ReactQL logo.  This is a local .svg file, which will be made
 // available as a string relative to [root]/dist/assets/img/
-import logo from './hashbump-logo.svg';
+import logo from './hashbump-logo-2.svg';
 
 import { connect } from 'react-redux';
 import { setCurrentHashtag } from './store/actions.js';

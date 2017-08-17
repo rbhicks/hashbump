@@ -560,8 +560,8 @@ Redirect.defaultProps = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styles_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__styles_scss__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__styles_less__ = __webpack_require__(202);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__styles_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__styles_less__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__hashbump_logo_svg__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__hashbump_logo_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__hashbump_logo_svg__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__hashbump_logo_2_svg__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__hashbump_logo_2_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__hashbump_logo_2_svg__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_redux__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__store_actions_js__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_bumpButton_js__ = __webpack_require__(187);
@@ -781,7 +781,7 @@ var App = function (_Component) {
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
           'div',
           { className: __WEBPACK_IMPORTED_MODULE_8__styles_css___default.a.hello },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_11__hashbump_logo_svg___default.a, alt: 'hashbump', className: __WEBPACK_IMPORTED_MODULE_8__styles_css___default.a.logo })
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_11__hashbump_logo_2_svg___default.a, alt: 'hashbump', className: __WEBPACK_IMPORTED_MODULE_8__styles_css___default.a.logo })
         ),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -867,8 +867,6 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 
 
-//<!-- <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0, 0, 100, 100" height="50%" width="auto"> -->
-
 var hashtagQuery = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject), {
     data: "hashtag",
     name: "hashtagQuery",
@@ -905,6 +903,7 @@ var BumpButton = function (_React$PureComponent) {
             var hashtagQuery = this.props.hashtagQuery;
             var bumpHashtagMutation = this.props.bumpHashtagMutation;
             var addHashtagMutation = this.props.addHashtagMutation;
+            var topCountQuery = this.props.topCountQuery;
 
             hashtagQuery.refetch({ name: this.props.currentHashtagName }).then(function (dataObject) {
                 if (!dataObject.data.hashtag) {
@@ -1322,7 +1321,7 @@ module.exports = {"example":"example-277HEpojiJhg7dzqJQ0KRt"};
 /***/ 217:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "assets/img/hashbump-logo.07a6c46f5813584b6f560fc8484bf6fa.svg";
+module.exports = __webpack_require__.p + "assets/img/hashbump-logo-2.36ca345cc416818c44d874ff0ba79271.svg";
 
 /***/ }),
 
