@@ -125,7 +125,7 @@ class HashtagAutocomplete extends React.Component {
             onChange={this.handleChange}
             onSelect={this.handleSelect}
             inputProps={{
-                size: "30",
+                size: "25",
             }}
             wrapperStyle={{
                 display: "inline-block",

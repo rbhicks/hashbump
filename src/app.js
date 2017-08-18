@@ -60,7 +60,13 @@ class App extends Component {
                 content: 'bump that hashtag',
             }]} />
                 <div>
+                <span>
                 <img src={logo} alt="hashbump" />
+                </span>
+                <span className={hashbumpStyle.nameSpan}>
+                <span className={hashbumpStyle.nameSpanHash}>hash</span>
+                <span className={hashbumpStyle.nameSpanBump}>bump</span>
+            </span>
                 </div>
                 <hr />
                 <div style={{height: "30vh"}}>

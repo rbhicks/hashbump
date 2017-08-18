@@ -641,7 +641,25 @@ var App = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
                     null,
-                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_8__hashbump_logo_2_svg___default.a, alt: 'hashbump' })
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'span',
+                        null,
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_8__hashbump_logo_2_svg___default.a, alt: 'hashbump' })
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'span',
+                        { className: __WEBPACK_IMPORTED_MODULE_7__style_hashbump_scss___default.a.nameSpan },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'span',
+                            { className: __WEBPACK_IMPORTED_MODULE_7__style_hashbump_scss___default.a.nameSpanHash },
+                            'hash'
+                        ),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'span',
+                            { className: __WEBPACK_IMPORTED_MODULE_7__style_hashbump_scss___default.a.nameSpanBump },
+                            'bump'
+                        )
+                    )
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -1120,7 +1138,7 @@ var HashtagAutocomplete = function (_React$Component) {
                 onChange: this.handleChange,
                 onSelect: this.handleSelect,
                 inputProps: {
-                    size: "30"
+                    size: "25"
                 },
                 wrapperStyle: {
                     display: "inline-block"
@@ -1192,7 +1210,7 @@ function setCurrentHashtagName(hashtagName) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"bumpButton":"bumpButton-28LWxXFSiz4-fz6t7Y7Zj_","hashbump":"hashbump-2zwODwJ9mdtmsmwCp7FamT","autocompleteRenderHighlightedItem":"autocompleteRenderHighlightedItem-gH0fYDnSx0RYJVa2rotcS","autocompleteRenderItem":"autocompleteRenderItem-3367xYX9MqO9x39CVojAAQ","hashtag":"hashtag-33Kk32V-tY0FXvyPkC-BYk","buttonAndDisplayContainer":"buttonAndDisplayContainer-3viTRwGFZCsBlW3tMpx30o"};
+module.exports = {"bumpButton":"bumpButton-28LWxXFSiz4-fz6t7Y7Zj_","hashbump":"hashbump-2zwODwJ9mdtmsmwCp7FamT","autocompleteRenderHighlightedItem":"autocompleteRenderHighlightedItem-gH0fYDnSx0RYJVa2rotcS","autocompleteRenderItem":"autocompleteRenderItem-3367xYX9MqO9x39CVojAAQ","hashtag":"hashtag-33Kk32V-tY0FXvyPkC-BYk","buttonAndDisplayContainer":"buttonAndDisplayContainer-3viTRwGFZCsBlW3tMpx30o","nameSpan":"nameSpan-2bH2nmExuQDVhUviqren0I","nameSpanHash":"nameSpanHash-oE6TIx1HWGeXarRKW0zhf","nameSpanBump":"nameSpanBump-3fnP-ALfoXcTAYtWZetQd2"};
 
 /***/ })
 

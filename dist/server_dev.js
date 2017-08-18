@@ -112,7 +112,10 @@ module.exports = {
 	"autocompleteRenderHighlightedItem": "autocompleteRenderHighlightedItem-gH0fYDnSx0RYJVa2rotcS",
 	"autocompleteRenderItem": "autocompleteRenderItem-3367xYX9MqO9x39CVojAAQ",
 	"hashtag": "hashtag-33Kk32V-tY0FXvyPkC-BYk",
-	"buttonAndDisplayContainer": "buttonAndDisplayContainer-3viTRwGFZCsBlW3tMpx30o"
+	"buttonAndDisplayContainer": "buttonAndDisplayContainer-3viTRwGFZCsBlW3tMpx30o",
+	"nameSpan": "nameSpan-2bH2nmExuQDVhUviqren0I",
+	"nameSpanHash": "nameSpanHash-oE6TIx1HWGeXarRKW0zhf",
+	"nameSpanBump": "nameSpanBump-3fnP-ALfoXcTAYtWZetQd2"
 };
 
 /***/ }),
@@ -1449,7 +1452,25 @@ let App = class App extends _react.Component {
             _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement('img', { src: _hashbumpLogo2.default, alt: 'hashbump' })
+                _react2.default.createElement(
+                    'span',
+                    null,
+                    _react2.default.createElement('img', { src: _hashbumpLogo2.default, alt: 'hashbump' })
+                ),
+                _react2.default.createElement(
+                    'span',
+                    { className: _hashbump2.default.nameSpan },
+                    _react2.default.createElement(
+                        'span',
+                        { className: _hashbump2.default.nameSpanHash },
+                        'hash'
+                    ),
+                    _react2.default.createElement(
+                        'span',
+                        { className: _hashbump2.default.nameSpanBump },
+                        'bump'
+                    )
+                )
             ),
             _react2.default.createElement('hr', null),
             _react2.default.createElement(
@@ -1939,7 +1960,7 @@ let HashtagAutocomplete = class HashtagAutocomplete extends _react2.default.Comp
             onChange: this.handleChange,
             onSelect: this.handleSelect,
             inputProps: {
-                size: "30"
+                size: "25"
             },
             wrapperStyle: {
                 display: "inline-block"
