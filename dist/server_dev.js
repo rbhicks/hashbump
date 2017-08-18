@@ -106,16 +106,29 @@ function setCurrentHashtagName(hashtagName) {
 /* 4 */
 /***/ (function(module, exports) {
 
-module.exports = require("graphql-tag");
+module.exports = {
+	"bumpButton": "bumpButton-28LWxXFSiz4-fz6t7Y7Zj_",
+	"hashbump": "hashbump-2zwODwJ9mdtmsmwCp7FamT",
+	"autocompleteRenderHighlightedItem": "autocompleteRenderHighlightedItem-gH0fYDnSx0RYJVa2rotcS",
+	"autocompleteRenderItem": "autocompleteRenderItem-3367xYX9MqO9x39CVojAAQ",
+	"hashtag": "hashtag-33Kk32V-tY0FXvyPkC-BYk",
+	"buttonAndDisplayContainer": "buttonAndDisplayContainer-3viTRwGFZCsBlW3tMpx30o"
+};
 
 /***/ }),
 /* 5 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-redux");
+module.exports = require("graphql-tag");
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -187,7 +200,7 @@ function serverClient() {
 }
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -289,7 +302,7 @@ function getURL() {
 }
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -307,18 +320,6 @@ exports.default = key => {
                                         meh: "../hashbump-meh.svg" };
 
                     return lookupList[key];
-};
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-module.exports = {
-	"bumpButton": "bumpButton-28LWxXFSiz4-fz6t7Y7Zj_",
-	"hashbump": "hashbump-2zwODwJ9mdtmsmwCp7FamT",
-	"autocompleteRenderHighlightedItem": "autocompleteRenderHighlightedItem-gH0fYDnSx0RYJVa2rotcS",
-	"autocompleteRenderItem": "autocompleteRenderItem-3367xYX9MqO9x39CVojAAQ",
-	"hashtag": "hashtag-33Kk32V-tY0FXvyPkC-BYk"
 };
 
 /***/ }),
@@ -356,7 +357,7 @@ var _chalk = __webpack_require__(10);
 
 var _chalk2 = _interopRequireDefault(_chalk);
 
-var _env = __webpack_require__(7);
+var _env = __webpack_require__(8);
 
 var _console = __webpack_require__(18);
 
@@ -480,7 +481,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.APOLLO = undefined;
 
-var _env = __webpack_require__(7);
+var _env = __webpack_require__(8);
 
 // ----------------------
 
@@ -558,7 +559,7 @@ var _schema = __webpack_require__(22);
 
 var _schema2 = _interopRequireDefault(_schema);
 
-var _apollo = __webpack_require__(6);
+var _apollo = __webpack_require__(7);
 
 var _redux = __webpack_require__(20);
 
@@ -1383,11 +1384,11 @@ var _reactHelmet = __webpack_require__(11);
 
 var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
-var _apollo = __webpack_require__(6);
+var _apollo = __webpack_require__(7);
 
 var _routing = __webpack_require__(21);
 
-var _hashbump = __webpack_require__(9);
+var _hashbump = __webpack_require__(4);
 
 var _hashbump2 = _interopRequireDefault(_hashbump);
 
@@ -1395,7 +1396,7 @@ var _hashbumpLogo = __webpack_require__(29);
 
 var _hashbumpLogo2 = _interopRequireDefault(_hashbumpLogo);
 
-var _reactRedux = __webpack_require__(5);
+var _reactRedux = __webpack_require__(6);
 
 var _actions = __webpack_require__(3);
 
@@ -1473,7 +1474,7 @@ let App = class App extends _react.Component {
             ),
             _react2.default.createElement(
                 'div',
-                null,
+                { className: _hashbump2.default.buttonAndDisplayContainer },
                 _react2.default.createElement(
                     'div',
                     null,
@@ -1518,21 +1519,21 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _graphqlTag = __webpack_require__(4);
+var _graphqlTag = __webpack_require__(5);
 
 var _graphqlTag2 = _interopRequireDefault(_graphqlTag);
 
 var _reactApollo = __webpack_require__(1);
 
-var _reactRedux = __webpack_require__(5);
+var _reactRedux = __webpack_require__(6);
 
 var _actions = __webpack_require__(3);
 
-var _imageLookup = __webpack_require__(8);
+var _imageLookup = __webpack_require__(9);
 
 var _imageLookup2 = _interopRequireDefault(_imageLookup);
 
-var _hashbump = __webpack_require__(9);
+var _hashbump = __webpack_require__(4);
 
 var _hashbump2 = _interopRequireDefault(_hashbump);
 
@@ -1655,13 +1656,13 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _graphqlTag = __webpack_require__(4);
+var _graphqlTag = __webpack_require__(5);
 
 var _graphqlTag2 = _interopRequireDefault(_graphqlTag);
 
 var _reactApollo = __webpack_require__(1);
 
-var _imageLookup = __webpack_require__(8);
+var _imageLookup = __webpack_require__(9);
 
 var _imageLookup2 = _interopRequireDefault(_imageLookup);
 
@@ -1810,13 +1811,13 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _graphqlTag = __webpack_require__(4);
+var _graphqlTag = __webpack_require__(5);
 
 var _graphqlTag2 = _interopRequireDefault(_graphqlTag);
 
 var _reactApollo = __webpack_require__(1);
 
-var _reactRedux = __webpack_require__(5);
+var _reactRedux = __webpack_require__(6);
 
 var _actions = __webpack_require__(3);
 
@@ -1824,7 +1825,7 @@ var _reactAutocomplete = __webpack_require__(45);
 
 var _reactAutocomplete2 = _interopRequireDefault(_reactAutocomplete);
 
-var _hashbump = __webpack_require__(9);
+var _hashbump = __webpack_require__(4);
 
 var _hashbump2 = _interopRequireDefault(_hashbump);
 

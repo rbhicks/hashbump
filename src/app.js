@@ -77,16 +77,16 @@ class App extends Component {
                 <BumpDisplay bump="meh" topCountType="today" />
                 </div>
                 </div>
-                <div>
-                <div>
-                <div className={hashbumpStyle.hashtag}>
-                </div>
-                <HashtagAutocomplete />
-                </div>
-                <BumpButton bump="yay"/>
-                <BumpButton bump="grrr"/>
-                <BumpButton bump="dunno"/>
-                <BumpButton bump="meh"/>
+                <div className={hashbumpStyle.buttonAndDisplayContainer}>
+                   <div>
+                      <div className={hashbumpStyle.hashtag}>
+                      </div>
+                      <HashtagAutocomplete />
+                   </div>
+                   <BumpButton bump="yay"/>
+                   <BumpButton bump="grrr"/>
+                   <BumpButton bump="dunno"/>
+                   <BumpButton bump="meh"/>
                 </div>
                 </div>
         );
