@@ -664,10 +664,15 @@ var App = function (_Component) {
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { style: { height: "30vh" } },
+                    { style: { height: "30vh", marginBottom: "7vh" } },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { style: { float: "left", width: "50%" } },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'h1',
+                            null,
+                            'All Time Highs'
+                        ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__components_bumpDisplay_js__["a" /* default */], { bump: 'yay', topCountType: 'all-time' }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__components_bumpDisplay_js__["a" /* default */], { bump: 'grrr', topCountType: 'all-time' }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__components_bumpDisplay_js__["a" /* default */], { bump: 'dunno', topCountType: 'all-time' }),
@@ -676,6 +681,11 @@ var App = function (_Component) {
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         { style: { float: "right", width: "50%" } },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                            'h1',
+                            null,
+                            'Today\'s Highs'
+                        ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__components_bumpDisplay_js__["a" /* default */], { bump: 'yay', topCountType: 'today' }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__components_bumpDisplay_js__["a" /* default */], { bump: 'grrr', topCountType: 'today' }),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__components_bumpDisplay_js__["a" /* default */], { bump: 'dunno', topCountType: 'today' }),
@@ -684,7 +694,7 @@ var App = function (_Component) {
                 ),
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { className: __WEBPACK_IMPORTED_MODULE_7__style_hashbump_scss___default.a.buttonAndDisplayContainer },
+                    { className: __WEBPACK_IMPORTED_MODULE_7__style_hashbump_scss___default.a.buttonAndAutocompleteContainer },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'div',
                         null,
@@ -889,7 +899,12 @@ var BumpDisplay = function (_React$PureComponent) {
             } else {
                 return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'div',
-                    { style: { height: "5vh", width: "100vw" } },
+                    { style: {
+                            height: "5vh",
+                            width: "100vw",
+                            marginTop: "1vh",
+                            marginBottom: "1vh"
+                        } },
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'svg',
                         { version: '1.1', style: { height: "100%" }, viewBox: '0 0 96 96' },
@@ -982,10 +997,13 @@ var BumpDisplay = function (_React$PureComponent) {
                     ),
                     __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                         'h1',
-                        { style: { display: "inline-block" } },
+                        { style: {
+                                display: "inline-block",
+                                paddingLeft: "0.5vw"
+                            } },
                         '#',
                         this.props.topCountQuery.topCount.name,
-                        '  ',
+                        ':\u2002',
                         this.props.topCountQuery.topCount.count
                     )
                 );
@@ -1138,7 +1156,7 @@ var HashtagAutocomplete = function (_React$Component) {
                 onChange: this.handleChange,
                 onSelect: this.handleSelect,
                 inputProps: {
-                    size: "25"
+                    size: "23"
                 },
                 wrapperStyle: {
                     display: "inline-block"
@@ -1210,7 +1228,7 @@ function setCurrentHashtagName(hashtagName) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"bumpButton":"bumpButton-28LWxXFSiz4-fz6t7Y7Zj_","hashbump":"hashbump-2zwODwJ9mdtmsmwCp7FamT","autocompleteRenderHighlightedItem":"autocompleteRenderHighlightedItem-gH0fYDnSx0RYJVa2rotcS","autocompleteRenderItem":"autocompleteRenderItem-3367xYX9MqO9x39CVojAAQ","hashtag":"hashtag-33Kk32V-tY0FXvyPkC-BYk","buttonAndDisplayContainer":"buttonAndDisplayContainer-3viTRwGFZCsBlW3tMpx30o","nameSpan":"nameSpan-2bH2nmExuQDVhUviqren0I","nameSpanHash":"nameSpanHash-oE6TIx1HWGeXarRKW0zhf","nameSpanBump":"nameSpanBump-3fnP-ALfoXcTAYtWZetQd2"};
+module.exports = {"bumpButton":"bumpButton-28LWxXFSiz4-fz6t7Y7Zj_","hashbump":"hashbump-2zwODwJ9mdtmsmwCp7FamT","autocompleteRenderHighlightedItem":"autocompleteRenderHighlightedItem-gH0fYDnSx0RYJVa2rotcS","autocompleteRenderItem":"autocompleteRenderItem-3367xYX9MqO9x39CVojAAQ","hashtag":"hashtag-33Kk32V-tY0FXvyPkC-BYk","buttonAndAutocompleteContainer":"buttonAndAutocompleteContainer-f4CESqFxiSBiWE_ulg665","nameSpan":"nameSpan-2bH2nmExuQDVhUviqren0I","nameSpanHash":"nameSpanHash-oE6TIx1HWGeXarRKW0zhf","nameSpanBump":"nameSpanBump-3fnP-ALfoXcTAYtWZetQd2"};
 
 /***/ })
 

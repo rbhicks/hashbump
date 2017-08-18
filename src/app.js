@@ -69,21 +69,23 @@ class App extends Component {
             </span>
                 </div>
                 <hr />
-                <div style={{height: "30vh"}}>
+                <div style={{height: "30vh", marginBottom: "7vh",}}>
                 <div style={{float: "left", width: "50%" }}>
+                <h1>All Time Highs</h1>
                 <BumpDisplay bump="yay" topCountType="all-time" />
                 <BumpDisplay bump="grrr" topCountType="all-time" />
                 <BumpDisplay bump="dunno" topCountType="all-time" />
                 <BumpDisplay bump="meh" topCountType="all-time" />
                 </div>
                 <div style={{float: "right", width: "50%" }}>
+                <h1>Today's Highs</h1>
                 <BumpDisplay bump="yay" topCountType="today" />
                 <BumpDisplay bump="grrr" topCountType="today" />
                 <BumpDisplay bump="dunno" topCountType="today" />
                 <BumpDisplay bump="meh" topCountType="today" />
                 </div>
                 </div>
-                <div className={hashbumpStyle.buttonAndDisplayContainer}>
+                <div className={hashbumpStyle.buttonAndAutocompleteContainer}>
                    <div>
                       <div className={hashbumpStyle.hashtag}>
                       </div>

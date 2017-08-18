@@ -112,7 +112,7 @@ module.exports = {
 	"autocompleteRenderHighlightedItem": "autocompleteRenderHighlightedItem-gH0fYDnSx0RYJVa2rotcS",
 	"autocompleteRenderItem": "autocompleteRenderItem-3367xYX9MqO9x39CVojAAQ",
 	"hashtag": "hashtag-33Kk32V-tY0FXvyPkC-BYk",
-	"buttonAndDisplayContainer": "buttonAndDisplayContainer-3viTRwGFZCsBlW3tMpx30o",
+	"buttonAndAutocompleteContainer": "buttonAndAutocompleteContainer-f4CESqFxiSBiWE_ulg665",
 	"nameSpan": "nameSpan-2bH2nmExuQDVhUviqren0I",
 	"nameSpanHash": "nameSpanHash-oE6TIx1HWGeXarRKW0zhf",
 	"nameSpanBump": "nameSpanBump-3fnP-ALfoXcTAYtWZetQd2"
@@ -1475,10 +1475,15 @@ let App = class App extends _react.Component {
             _react2.default.createElement('hr', null),
             _react2.default.createElement(
                 'div',
-                { style: { height: "30vh" } },
+                { style: { height: "30vh", marginBottom: "7vh" } },
                 _react2.default.createElement(
                     'div',
                     { style: { float: "left", width: "50%" } },
+                    _react2.default.createElement(
+                        'h1',
+                        null,
+                        'All Time Highs'
+                    ),
                     _react2.default.createElement(_bumpDisplay2.default, { bump: 'yay', topCountType: 'all-time' }),
                     _react2.default.createElement(_bumpDisplay2.default, { bump: 'grrr', topCountType: 'all-time' }),
                     _react2.default.createElement(_bumpDisplay2.default, { bump: 'dunno', topCountType: 'all-time' }),
@@ -1487,6 +1492,11 @@ let App = class App extends _react.Component {
                 _react2.default.createElement(
                     'div',
                     { style: { float: "right", width: "50%" } },
+                    _react2.default.createElement(
+                        'h1',
+                        null,
+                        'Today\'s Highs'
+                    ),
                     _react2.default.createElement(_bumpDisplay2.default, { bump: 'yay', topCountType: 'today' }),
                     _react2.default.createElement(_bumpDisplay2.default, { bump: 'grrr', topCountType: 'today' }),
                     _react2.default.createElement(_bumpDisplay2.default, { bump: 'dunno', topCountType: 'today' }),
@@ -1495,7 +1505,7 @@ let App = class App extends _react.Component {
             ),
             _react2.default.createElement(
                 'div',
-                { className: _hashbump2.default.buttonAndDisplayContainer },
+                { className: _hashbump2.default.buttonAndAutocompleteContainer },
                 _react2.default.createElement(
                     'div',
                     null,
@@ -1712,7 +1722,12 @@ let BumpDisplay = class BumpDisplay extends _react2.default.PureComponent {
         } else {
             return _react2.default.createElement(
                 'div',
-                { style: { height: "5vh", width: "100vw" } },
+                { style: {
+                        height: "5vh",
+                        width: "100vw",
+                        marginTop: "1vh",
+                        marginBottom: "1vh"
+                    } },
                 _react2.default.createElement(
                     'svg',
                     { version: '1.1', style: { height: "100%" }, viewBox: '0 0 96 96' },
@@ -1805,10 +1820,13 @@ let BumpDisplay = class BumpDisplay extends _react2.default.PureComponent {
                 ),
                 _react2.default.createElement(
                     'h1',
-                    { style: { display: "inline-block" } },
+                    { style: {
+                            display: "inline-block",
+                            paddingLeft: "0.5vw"
+                        } },
                     '#',
                     this.props.topCountQuery.topCount.name,
-                    '  ',
+                    ':\u2002',
                     this.props.topCountQuery.topCount.count
                 )
             );
@@ -1960,7 +1978,7 @@ let HashtagAutocomplete = class HashtagAutocomplete extends _react2.default.Comp
             onChange: this.handleChange,
             onSelect: this.handleSelect,
             inputProps: {
-                size: "25"
+                size: "23"
             },
             wrapperStyle: {
                 display: "inline-block"
