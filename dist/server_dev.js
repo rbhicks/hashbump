@@ -892,7 +892,7 @@ var _lodash2 = _interopRequireDefault(_lodash);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const Conn = new _sequelize2.default('whitesands', 'postgres', 'postgres', {
+const Conn = new _sequelize2.default('hashbump', 'postgres', 'Do we need a dolphinarium?', {
   dialect: 'postgres',
   host: 'localhost'
 });

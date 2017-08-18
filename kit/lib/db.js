@@ -3,9 +3,9 @@ import Faker from 'faker';
 import _ from 'lodash';
 
 const Conn = new Sequelize(
-  'whitesands',
+  'hashbump',
   'postgres',
-  'postgres',
+  'Do we need a dolphinarium?',
   {
     dialect: 'postgres',
     host: 'localhost'
