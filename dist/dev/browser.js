@@ -88,7 +88,7 @@ function serverClient() {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-module.exports = {"example":"example-3q0nqQ9ZKcBd8-DB7rcoyt","hashtag":"hashtag-1Dm1gOm7e37k27bIcRcehj"};
+module.exports = {"bumpButton":"bumpButton-28LWxXFSiz4-fz6t7Y7Zj_","hashbump":"hashbump-2zwODwJ9mdtmsmwCp7FamT","autocompleteRenderHighlightedItem":"autocompleteRenderHighlightedItem-gH0fYDnSx0RYJVa2rotcS","autocompleteRenderItem":"autocompleteRenderItem-3367xYX9MqO9x39CVojAAQ","hashtag":"hashtag-33Kk32V-tY0FXvyPkC-BYk"};
 
 /***/ }),
 
@@ -97,9 +97,9 @@ module.exports = {"example":"example-3q0nqQ9ZKcBd8-DB7rcoyt","hashtag":"hashtag-
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_regenerator_runtime_runtime__ = __webpack_require__(369);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_regenerator_runtime_runtime__ = __webpack_require__(366);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_regenerator_runtime_runtime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_regenerator_runtime_runtime__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__ = __webpack_require__(237);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
@@ -111,6 +111,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_kit_lib_apollo__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_kit_lib_redux__ = __webpack_require__(184);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_src_app__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_webfontloader__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_webfontloader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_webfontloader__);
 // Browser entry point, for Webpack.  We'll grab the browser-flavoured
 // versions of React mounting, routing etc to hook into the DOM
 
@@ -154,6 +156,14 @@ var client = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_kit_lib_apollo__[
 
 // Create a new Redux store
 var store = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7_kit_lib_redux__["a" /* default */])(client);
+
+
+
+__WEBPACK_IMPORTED_MODULE_9_webfontloader___default.a.load({
+  google: {
+    families: ['Fira Sans', 'sans-serif']
+  }
+});
 
 // Create the 'root' entry point into the app.  If we have React hot loading
 // (i.e. if we're in development), then we'll wrap the whole thing in an
@@ -387,7 +397,7 @@ function createNewStore(apolloClient) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NotFound; });
+/* unused harmony export NotFound */
 /* unused harmony export Redirect */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
@@ -548,28 +558,20 @@ Redirect.defaultProps = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_apollo__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(94);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_helmet__ = __webpack_require__(323);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_helmet__ = __webpack_require__(320);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_helmet__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_kit_lib_apollo__ = __webpack_require__(106);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_kit_lib_routing__ = __webpack_require__(185);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__styles_global_css__ = __webpack_require__(201);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__styles_global_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__styles_global_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styles_css__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__styles_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__styles_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styles_scss__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__styles_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__styles_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__styles_less__ = __webpack_require__(202);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__styles_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__styles_less__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__hashbump_logo_2_svg__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__hashbump_logo_2_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__hashbump_logo_2_svg__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_react_redux__ = __webpack_require__(92);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__store_actions_js__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_bumpButton_js__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_hashtagAutocomplete_js__ = __webpack_require__(189);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__style_hashbump_scss__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__style_hashbump_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__style_hashbump_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__hashbump_logo_2_svg__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__hashbump_logo_2_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__hashbump_logo_2_svg__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_redux__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__store_actions_js__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_bumpButton_js__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_hashtagAutocomplete_js__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_bumpDisplay_js__ = __webpack_require__(188);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -600,7 +602,10 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 // Styles
-
+// import './styles.global.css';
+// import css from './styles.css';
+// import sass from './styles.scss';
+// import less from './styles.less';
 
 
 
@@ -616,217 +621,76 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 
-// ----------------------
-
-// We'll display this <Home> component when we're on the / route
-var Home = function Home() {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'h1',
-    null,
-    'You\'re on the home page - click another link above'
-  );
-};
-
-// Helper component that will be conditionally shown when the route matches.
-// This gives you an idea how React Router v4 works
-var Page = function Page(_ref) {
-  var match = _ref.match;
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'h1',
-    null,
-    'Changed route: ',
-    match.params.name
-  );
-};
-
-// Create a route that will be displayed when the code isn't found
-var WhenNotFound = function WhenNotFound() {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    __WEBPACK_IMPORTED_MODULE_6_kit_lib_routing__["a" /* NotFound */],
-    null,
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'h1',
-      null,
-      'Unknown route - the 404 handler was triggered!'
-    )
-  );
-};
-
-// Specify PropTypes if the `match` object, which is injected to props by
-// the <Route> component
-Page.propTypes = {
-  match: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.shape({
-    params: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object
-  }).isRequired
-};
-
-// Stats pulled from the environment.  This demonstrates how data will
-// change depending where we're running the code (environment vars, etc)
-// and also how we can connect a 'vanilla' React component to an RxJS
-// observable source, and feed eventual values in as properties
-var Stats = function Stats() {
-  var info = [['Environment', "development"]];
-
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'ul',
-    { className: __WEBPACK_IMPORTED_MODULE_8__styles_css___default.a.data },
-    info.map(function (_ref2) {
-      var _ref3 = _slicedToArray(_ref2, 2),
-          key = _ref3[0],
-          val = _ref3[1];
-
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'li',
-        { key: key },
-        key,
-        ': ',
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'span',
-          null,
-          val
-        )
-      );
-    })
-  );
-};
-
-// Now, let's create a GraphQL-enabled component...
-
-// First, create the GraphQL query that we'll use to request data from our
-// sample endpoint
-// const query = gql`
-//   query {
-//     message {
-//       text
-//     }
-//   }
-// `;
-
-// ... then, let's create the component and decorate it with the `graphql`
-// HOC that will automatically populate `this.props` with the query data
-// once the GraphQL API request has been completed
-// @graphql(query)
-// class GraphQLMessage extends React.PureComponent {    
-//   static propTypes = {
-//     data: mergeData({
-//       message: PropTypes.arrayOf(
-//         PropTypes.shape({
-//           text: PropTypes.string.isRequired,
-//         }),
-//       ),
-//     }),
-//   }
-
-//   render() {
-//     const { data } = this.props;
-//     const message = data.message && data.message.text;
-//     const isLoading = data.loading ? 'yes' : 'nope';
-//     return (
-//       <div>
-//         <h2>Message from GraphQL server: <em>{message}</em></h2>
-//         <h2>Currently loading?: {isLoading}</h2>
-//       </div>
-//     );
-//   }
-// }
-
-// Example of CSS, SASS and LESS styles being used together
-var Styles = function Styles() {
-  return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-    'ul',
-    { className: __WEBPACK_IMPORTED_MODULE_8__styles_css___default.a.styleExamples },
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'li',
-      { className: __WEBPACK_IMPORTED_MODULE_8__styles_css___default.a.example },
-      'Styled by CSS'
-    ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'li',
-      { className: __WEBPACK_IMPORTED_MODULE_9__styles_scss___default.a.example },
-      'Styled by SASS'
-    ),
-    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-      'li',
-      { className: __WEBPACK_IMPORTED_MODULE_10__styles_less___default.a.example },
-      'Styled by LESS'
-    )
-  );
-};
-
 // Export a simple component that allows clicking on list items to change
 // the route, along with a <Route> 'listener' that will conditionally display
 // the <Page> component based on the route name
 
 var App = function (_Component) {
-  _inherits(App, _Component);
+    _inherits(App, _Component);
 
-  function App() {
-    _classCallCheck(this, App);
+    function App() {
+        _classCallCheck(this, App);
 
-    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
-  }
-
-  _createClass(App, [{
-    key: 'render',
-    value: function render() {
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        'div',
-        null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_helmet___default.a, {
-          title: 'hashbump',
-          meta: [{
-            name: 'description',
-            content: 'bump that hashtag'
-          }] }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'div',
-          { className: __WEBPACK_IMPORTED_MODULE_8__styles_css___default.a.hello },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_11__hashbump_logo_2_svg___default.a, alt: 'hashbump', className: __WEBPACK_IMPORTED_MODULE_8__styles_css___default.a.logo })
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'div',
-          { style: { height: "30vh" } },
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { style: { float: "left", width: "50%" } },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'yay', topCountType: 'all-time' }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'grrr', topCountType: 'all-time' }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'dunno', topCountType: 'all-time' }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'meh', topCountType: 'all-time' })
-          ),
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            { style: { float: "right", width: "50%" } },
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'yay', topCountType: 'today' }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'grrr', topCountType: 'today' }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'dunno', topCountType: 'today' }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_16__components_bumpDisplay_js__["a" /* default */], { bump: 'meh', topCountType: 'today' })
-          )
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-          'div',
-          null,
-          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'center',
-            null,
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-              'div',
-              null,
-              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_15__components_hashtagAutocomplete_js__["a" /* default */], { className: __WEBPACK_IMPORTED_MODULE_9__styles_scss___default.a.hashtag })
-            ),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_14__components_bumpButton_js__["a" /* default */], { bump: 'yay' }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_14__components_bumpButton_js__["a" /* default */], { bump: 'grrr' }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_14__components_bumpButton_js__["a" /* default */], { bump: 'dunno' }),
-            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_14__components_bumpButton_js__["a" /* default */], { bump: 'meh' })
-          )
-        ),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null)
-      );
+        return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
     }
-  }]);
 
-  return App;
+    _createClass(App, [{
+        key: 'render',
+        value: function render() {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: __WEBPACK_IMPORTED_MODULE_7__style_hashbump_scss___default.a.hashbump },
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_4_react_helmet___default.a, {
+                    title: 'hashbump',
+                    meta: [{
+                        name: 'description',
+                        content: 'bump that hashtag'
+                    }] }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __WEBPACK_IMPORTED_MODULE_8__hashbump_logo_2_svg___default.a, alt: 'hashbump' })
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('hr', null),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    { style: { height: "30vh" } },
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { style: { float: "left", width: "50%" } },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__components_bumpDisplay_js__["a" /* default */], { bump: 'yay', topCountType: 'all-time' }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__components_bumpDisplay_js__["a" /* default */], { bump: 'grrr', topCountType: 'all-time' }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__components_bumpDisplay_js__["a" /* default */], { bump: 'dunno', topCountType: 'all-time' }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__components_bumpDisplay_js__["a" /* default */], { bump: 'meh', topCountType: 'all-time' })
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        { style: { float: "right", width: "50%" } },
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__components_bumpDisplay_js__["a" /* default */], { bump: 'yay', topCountType: 'today' }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__components_bumpDisplay_js__["a" /* default */], { bump: 'grrr', topCountType: 'today' }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__components_bumpDisplay_js__["a" /* default */], { bump: 'dunno', topCountType: 'today' }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_13__components_bumpDisplay_js__["a" /* default */], { bump: 'meh', topCountType: 'today' })
+                    )
+                ),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                    'div',
+                    null,
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                        'div',
+                        null,
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: __WEBPACK_IMPORTED_MODULE_7__style_hashbump_scss___default.a.hashtag }),
+                        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_12__components_hashtagAutocomplete_js__["a" /* default */], null)
+                    ),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__components_bumpButton_js__["a" /* default */], { bump: 'yay' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__components_bumpButton_js__["a" /* default */], { bump: 'grrr' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__components_bumpButton_js__["a" /* default */], { bump: 'dunno' }),
+                    __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_11__components_bumpButton_js__["a" /* default */], { bump: 'meh' })
+                )
+            );
+        }
+    }]);
+
+    return App;
 }(__WEBPACK_IMPORTED_MODULE_0_react__["Component"]);
 
 /* harmony default export */ __webpack_exports__["a"] = (App);
@@ -846,6 +710,8 @@ var App = function (_Component) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_actions__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utility_image_lookup__ = __webpack_require__(107);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n  query hashtag($name: String!) {\n    hashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n'], ['\n  query hashtag($name: String!) {\n    hashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n']),
@@ -859,6 +725,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
 
 
 
@@ -938,7 +805,7 @@ var BumpButton = function (_React$PureComponent) {
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'button',
-                null,
+                { className: __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss___default.a.bumpButton },
                 __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                     'h1',
                     null,
@@ -1135,10 +1002,10 @@ var BumpDisplay = function (_React$PureComponent) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_apollo__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux__ = __webpack_require__(92);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_actions__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_autocomplete__ = __webpack_require__(252);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_autocomplete__ = __webpack_require__(249);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_autocomplete___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_autocomplete__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__styles_scss__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__styles_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__styles_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n  query suggestions($partialHashtag: String!) {\n    suggestions(partialHashtag: $partialHashtag)\n  }\n'], ['\n  query suggestions($partialHashtag: String!) {\n    suggestions(partialHashtag: $partialHashtag)\n  }\n']),
@@ -1152,7 +1019,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
 
 
 
@@ -1200,7 +1066,7 @@ var HashtagAutocomplete = function (_React$Component) {
         value: function handleRenderItem(item, isHighlighted) {
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
                 'div',
-                { style: { background: isHighlighted ? 'lightgray' : 'white' } },
+                { className: isHighlighted ? __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss___default.a.autocompleteRenderHighlightedItem : __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss___default.a.autocompleteRenderItem },
                 item.term
             );
         }
@@ -1254,18 +1120,24 @@ var HashtagAutocomplete = function (_React$Component) {
         key: 'render',
         value: function render() {
 
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'span',
-                { className: __WEBPACK_IMPORTED_MODULE_6__styles_scss___default.a.hashtag },
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_autocomplete___default.a, {
-                    getItemValue: this.handleGetItemValue,
-                    renderItem: this.handleRenderItem,
-                    items: this.state.items,
-                    value: this.state.value,
-                    onChange: this.handleChange, t: true,
-                    onSelect: this.handleSelect
-                })
-            );
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_autocomplete___default.a, {
+                getItemValue: this.handleGetItemValue,
+                renderItem: this.handleRenderItem,
+                items: this.state.items,
+                value: this.state.value,
+                onChange: this.handleChange,
+                onSelect: this.handleSelect,
+                inputProps: {
+                    size: "30"
+                },
+                wrapperStyle: {
+                    display: "inline-block"
+                },
+                menuStyle: {
+                    background: "#e4be45",
+                    position: "fixed"
+                }
+            });
         }
     }]);
 
@@ -1295,37 +1167,14 @@ function currentHashtagName() {
 
 /***/ }),
 
-/***/ 200:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-module.exports = {"hello":"hello-1P9zCbIx8YQ5eID6A-67d6","logo":"logo-1tNzgJsJwXMqFQ0a4xMkPk","data":"data-1oklYPlS4mQJRj2Dp24Czw","styleExamples":"styleExamples-2cmVxjYoxVhR_tpCfyIq_T","example":"example-3quOHBYrr7YOUvefuRPyGa"};
-
-/***/ }),
-
-/***/ 201:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 202:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-module.exports = {"example":"example-277HEpojiJhg7dzqJQ0KRt"};
-
-/***/ }),
-
-/***/ 217:
+/***/ 214:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "assets/img/hashbump-logo-2.36ca345cc416818c44d874ff0ba79271.svg";
+module.exports = __webpack_require__.p + "assets/img/hashbump-logo-2.1d23e4579aaf0aaa22df9d983cce6923.svg";
 
 /***/ }),
 
-/***/ 378:
+/***/ 376:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(165);
@@ -1347,5 +1196,5 @@ function setCurrentHashtagName(hashtagName) {
 
 /***/ })
 
-},[378]);
+},[376]);
 //# sourceMappingURL=browser.js.map

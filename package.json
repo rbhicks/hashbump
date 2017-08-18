@@ -101,6 +101,7 @@
     "react-router-dom": "^4.1.1",
     "redux": "^3.6.0",
     "regenerator-runtime": "^0.10.5",
-    "sequelize": "^4.4.2"
+    "sequelize": "^4.4.2",
+    "webfontloader": "^1.6.28"
   }
 }

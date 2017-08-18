@@ -42,6 +42,17 @@ const client = browserClient();
 // Create a new Redux store
 const store = createNewStore(client);
 
+
+import WebFont from 'webfontloader';
+
+
+WebFont.load({
+    google: {
+        families: ['Fira Sans', 'sans-serif']
+    }
+});
+
+
 // Create the 'root' entry point into the app.  If we have React hot loading
 // (i.e. if we're in development), then we'll wrap the whole thing in an
 // <AppContainer>.  Otherwise, we'll jump straight to the browser router

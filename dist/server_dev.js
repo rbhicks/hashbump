@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 52);
+/******/ 	return __webpack_require__(__webpack_require__.s = 49);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -314,8 +314,11 @@ exports.default = key => {
 /***/ (function(module, exports) {
 
 module.exports = {
-	"example": "example-3q0nqQ9ZKcBd8-DB7rcoyt",
-	"hashtag": "hashtag-1Dm1gOm7e37k27bIcRcehj"
+	"bumpButton": "bumpButton-28LWxXFSiz4-fz6t7Y7Zj_",
+	"hashbump": "hashbump-2zwODwJ9mdtmsmwCp7FamT",
+	"autocompleteRenderHighlightedItem": "autocompleteRenderHighlightedItem-gH0fYDnSx0RYJVa2rotcS",
+	"autocompleteRenderItem": "autocompleteRenderItem-3367xYX9MqO9x39CVojAAQ",
+	"hashtag": "hashtag-33Kk32V-tY0FXvyPkC-BYk"
 };
 
 /***/ }),
@@ -422,7 +425,7 @@ _server2.default.then(({ router, app }) => {
 // ----------------------
 // IMPORTS
 
-const path = __webpack_require__(47);
+const path = __webpack_require__(44);
 
 // ----------------------
 
@@ -503,53 +506,53 @@ Object.defineProperty(exports, "__esModule", {
 exports.staticMiddleware = staticMiddleware;
 exports.createReactHandler = createReactHandler;
 
-__webpack_require__(38);
+__webpack_require__(35);
 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(49);
+var _server = __webpack_require__(46);
 
 var _server2 = _interopRequireDefault(_server);
 
-var _koa = __webpack_require__(40);
+var _koa = __webpack_require__(37);
 
 var _koa2 = _interopRequireDefault(_koa);
 
 var _reactApollo = __webpack_require__(1);
 
-var _koaSend = __webpack_require__(44);
+var _koaSend = __webpack_require__(41);
 
 var _koaSend2 = _interopRequireDefault(_koaSend);
 
-var _koaHelmet = __webpack_require__(42);
+var _koaHelmet = __webpack_require__(39);
 
 var _koaHelmet2 = _interopRequireDefault(_koaHelmet);
 
-var _koaRouter = __webpack_require__(43);
+var _koaRouter = __webpack_require__(40);
 
 var _koaRouter2 = _interopRequireDefault(_koaRouter);
 
-var _microseconds = __webpack_require__(46);
+var _microseconds = __webpack_require__(43);
 
 var _microseconds2 = _interopRequireDefault(_microseconds);
 
-var _reactRouter = __webpack_require__(50);
+var _reactRouter = __webpack_require__(47);
 
 var _reactHelmet = __webpack_require__(11);
 
 var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
-var _kcors = __webpack_require__(39);
+var _kcors = __webpack_require__(36);
 
 var _kcors2 = _interopRequireDefault(_kcors);
 
-var _koaBodyparser = __webpack_require__(41);
+var _koaBodyparser = __webpack_require__(38);
 
 var _koaBodyparser2 = _interopRequireDefault(_koaBodyparser);
 
-var _graphqlServerKoa = __webpack_require__(36);
+var _graphqlServerKoa = __webpack_require__(33);
 
 var _schema = __webpack_require__(22);
 
@@ -815,7 +818,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.logServerStarted = logServerStarted;
 
-var _boxen = __webpack_require__(33);
+var _boxen = __webpack_require__(30);
 
 var _boxen2 = _interopRequireDefault(_boxen);
 
@@ -823,7 +826,7 @@ var _chalk = __webpack_require__(10);
 
 var _chalk2 = _interopRequireDefault(_chalk);
 
-var _ip = __webpack_require__(37);
+var _ip = __webpack_require__(34);
 
 var _ip2 = _interopRequireDefault(_ip);
 
@@ -875,11 +878,11 @@ var _sequelize = __webpack_require__(13);
 
 var _sequelize2 = _interopRequireDefault(_sequelize);
 
-var _faker = __webpack_require__(34);
+var _faker = __webpack_require__(31);
 
 var _faker2 = _interopRequireDefault(_faker);
 
-var _lodash = __webpack_require__(45);
+var _lodash = __webpack_require__(42);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -943,7 +946,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = createNewStore;
 
-var _redux = __webpack_require__(51);
+var _redux = __webpack_require__(48);
 
 var _reducers = __webpack_require__(28);
 
@@ -1091,7 +1094,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _graphql = __webpack_require__(35);
+var _graphql = __webpack_require__(32);
 
 var _db = __webpack_require__(19);
 
@@ -1361,7 +1364,7 @@ exports.default = Html;
 
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _react = __webpack_require__(0);
@@ -1384,21 +1387,11 @@ var _apollo = __webpack_require__(6);
 
 var _routing = __webpack_require__(21);
 
-__webpack_require__(30);
+var _hashbump = __webpack_require__(9);
 
-var _styles = __webpack_require__(29);
+var _hashbump2 = _interopRequireDefault(_hashbump);
 
-var _styles2 = _interopRequireDefault(_styles);
-
-var _styles3 = __webpack_require__(9);
-
-var _styles4 = _interopRequireDefault(_styles3);
-
-var _styles5 = __webpack_require__(31);
-
-var _styles6 = _interopRequireDefault(_styles5);
-
-var _hashbumpLogo = __webpack_require__(32);
+var _hashbumpLogo = __webpack_require__(29);
 
 var _hashbumpLogo2 = _interopRequireDefault(_hashbumpLogo);
 
@@ -1420,30 +1413,13 @@ var _bumpDisplay2 = _interopRequireDefault(_bumpDisplay);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// ----------------------
-
-// We'll display this <Home> component when we're on the / route
+// Export a simple component that allows clicking on list items to change
+// the route, along with a <Route> 'listener' that will conditionally display
+// the <Page> component based on the route name
 
 
 // Get the ReactQL logo.  This is a local .svg file, which will be made
 // available as a string relative to [root]/dist/assets/img/
-
-
-// Styles
-
-
-// Helper to merge expected React PropTypes to Apollo-enabled component
-
-
-// Routing
-const Home = () => _react2.default.createElement(
-  'h1',
-  null,
-  'You\'re on the home page - click another link above'
-);
-
-// Helper component that will be conditionally shown when the route matches.
-// This gives you an idea how React Router v4 works
 
 
 // NotFound 404 handler for unknown routes
@@ -1457,179 +1433,74 @@ const Home = () => _react2.default.createElement(
 // IMPORTS
 
 // React
-const Page = ({ match }) => _react2.default.createElement(
-  'h1',
-  null,
-  'Changed route: ',
-  match.params.name
-);
-
-// Create a route that will be displayed when the code isn't found
-const WhenNotFound = () => _react2.default.createElement(
-  _routing.NotFound,
-  null,
-  _react2.default.createElement(
-    'h1',
-    null,
-    'Unknown route - the 404 handler was triggered!'
-  )
-);
-
-// Specify PropTypes if the `match` object, which is injected to props by
-// the <Route> component
-Page.propTypes = {
-  match: _propTypes2.default.shape({
-    params: _propTypes2.default.object
-  }).isRequired
-};
-
-// Stats pulled from the environment.  This demonstrates how data will
-// change depending where we're running the code (environment vars, etc)
-// and also how we can connect a 'vanilla' React component to an RxJS
-// observable source, and feed eventual values in as properties
-const Stats = () => {
-  const info = [['Environment', "development"]];
-
-  return _react2.default.createElement(
-    'ul',
-    { className: _styles2.default.data },
-    info.map(([key, val]) => _react2.default.createElement(
-      'li',
-      { key: key },
-      key,
-      ': ',
-      _react2.default.createElement(
-        'span',
-        null,
-        val
-      )
-    ))
-  );
-};
-
-// Now, let's create a GraphQL-enabled component...
-
-// First, create the GraphQL query that we'll use to request data from our
-// sample endpoint
-// const query = gql`
-//   query {
-//     message {
-//       text
-//     }
-//   }
-// `;
-
-// ... then, let's create the component and decorate it with the `graphql`
-// HOC that will automatically populate `this.props` with the query data
-// once the GraphQL API request has been completed
-// @graphql(query)
-// class GraphQLMessage extends React.PureComponent {    
-//   static propTypes = {
-//     data: mergeData({
-//       message: PropTypes.arrayOf(
-//         PropTypes.shape({
-//           text: PropTypes.string.isRequired,
-//         }),
-//       ),
-//     }),
-//   }
-
-//   render() {
-//     const { data } = this.props;
-//     const message = data.message && data.message.text;
-//     const isLoading = data.loading ? 'yes' : 'nope';
-//     return (
-//       <div>
-//         <h2>Message from GraphQL server: <em>{message}</em></h2>
-//         <h2>Currently loading?: {isLoading}</h2>
-//       </div>
-//     );
-//   }
-// }
-
-// Example of CSS, SASS and LESS styles being used together
-const Styles = () => _react2.default.createElement(
-  'ul',
-  { className: _styles2.default.styleExamples },
-  _react2.default.createElement(
-    'li',
-    { className: _styles2.default.example },
-    'Styled by CSS'
-  ),
-  _react2.default.createElement(
-    'li',
-    { className: _styles4.default.example },
-    'Styled by SASS'
-  ),
-  _react2.default.createElement(
-    'li',
-    { className: _styles6.default.example },
-    'Styled by LESS'
-  )
-);
-
-// Export a simple component that allows clicking on list items to change
-// the route, along with a <Route> 'listener' that will conditionally display
-// the <Page> component based on the route name
 let App = class App extends _react.Component {
 
-  render() {
-    return _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(_reactHelmet2.default, {
-        title: 'hashbump',
-        meta: [{
-          name: 'description',
-          content: 'bump that hashtag'
-        }] }),
-      _react2.default.createElement(
-        'div',
-        { className: _styles2.default.hello },
-        _react2.default.createElement('img', { src: _hashbumpLogo2.default, alt: 'hashbump', className: _styles2.default.logo })
-      ),
-      _react2.default.createElement('hr', null),
-      _react2.default.createElement(
-        'div',
-        { style: { height: "30vh" } },
-        _react2.default.createElement(
-          'div',
-          { style: { float: "left", width: "50%" } },
-          _react2.default.createElement(_bumpDisplay2.default, { bump: 'yay', topCountType: 'all-time' }),
-          _react2.default.createElement(_bumpDisplay2.default, { bump: 'grrr', topCountType: 'all-time' }),
-          _react2.default.createElement(_bumpDisplay2.default, { bump: 'dunno', topCountType: 'all-time' }),
-          _react2.default.createElement(_bumpDisplay2.default, { bump: 'meh', topCountType: 'all-time' })
-        ),
-        _react2.default.createElement(
-          'div',
-          { style: { float: "right", width: "50%" } },
-          _react2.default.createElement(_bumpDisplay2.default, { bump: 'yay', topCountType: 'today' }),
-          _react2.default.createElement(_bumpDisplay2.default, { bump: 'grrr', topCountType: 'today' }),
-          _react2.default.createElement(_bumpDisplay2.default, { bump: 'dunno', topCountType: 'today' }),
-          _react2.default.createElement(_bumpDisplay2.default, { bump: 'meh', topCountType: 'today' })
-        )
-      ),
-      _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'center',
-          null,
-          _react2.default.createElement(
+    render() {
+        return _react2.default.createElement(
             'div',
-            null,
-            _react2.default.createElement(_hashtagAutocomplete2.default, { className: _styles4.default.hashtag })
-          ),
-          _react2.default.createElement(_bumpButton2.default, { bump: 'yay' }),
-          _react2.default.createElement(_bumpButton2.default, { bump: 'grrr' }),
-          _react2.default.createElement(_bumpButton2.default, { bump: 'dunno' }),
-          _react2.default.createElement(_bumpButton2.default, { bump: 'meh' })
-        )
-      ),
-      _react2.default.createElement('hr', null)
-    );
-  }
+            { className: _hashbump2.default.hashbump },
+            _react2.default.createElement(_reactHelmet2.default, {
+                title: 'hashbump',
+                meta: [{
+                    name: 'description',
+                    content: 'bump that hashtag'
+                }] }),
+            _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement('img', { src: _hashbumpLogo2.default, alt: 'hashbump' })
+            ),
+            _react2.default.createElement('hr', null),
+            _react2.default.createElement(
+                'div',
+                { style: { height: "30vh" } },
+                _react2.default.createElement(
+                    'div',
+                    { style: { float: "left", width: "50%" } },
+                    _react2.default.createElement(_bumpDisplay2.default, { bump: 'yay', topCountType: 'all-time' }),
+                    _react2.default.createElement(_bumpDisplay2.default, { bump: 'grrr', topCountType: 'all-time' }),
+                    _react2.default.createElement(_bumpDisplay2.default, { bump: 'dunno', topCountType: 'all-time' }),
+                    _react2.default.createElement(_bumpDisplay2.default, { bump: 'meh', topCountType: 'all-time' })
+                ),
+                _react2.default.createElement(
+                    'div',
+                    { style: { float: "right", width: "50%" } },
+                    _react2.default.createElement(_bumpDisplay2.default, { bump: 'yay', topCountType: 'today' }),
+                    _react2.default.createElement(_bumpDisplay2.default, { bump: 'grrr', topCountType: 'today' }),
+                    _react2.default.createElement(_bumpDisplay2.default, { bump: 'dunno', topCountType: 'today' }),
+                    _react2.default.createElement(_bumpDisplay2.default, { bump: 'meh', topCountType: 'today' })
+                )
+            ),
+            _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement('div', { className: _hashbump2.default.hashtag }),
+                    _react2.default.createElement(_hashtagAutocomplete2.default, null)
+                ),
+                _react2.default.createElement(_bumpButton2.default, { bump: 'yay' }),
+                _react2.default.createElement(_bumpButton2.default, { bump: 'grrr' }),
+                _react2.default.createElement(_bumpButton2.default, { bump: 'dunno' }),
+                _react2.default.createElement(_bumpButton2.default, { bump: 'meh' })
+            )
+        );
+    }
 };
+
+// Styles
+// import './styles.global.css';
+// import css from './styles.css';
+// import sass from './styles.scss';
+// import less from './styles.less';
+
+
+// Helper to merge expected React PropTypes to Apollo-enabled component
+
+
+// Routing
+
 exports.default = App;
 
 /***/ }),
@@ -1660,6 +1531,10 @@ var _actions = __webpack_require__(3);
 var _imageLookup = __webpack_require__(8);
 
 var _imageLookup2 = _interopRequireDefault(_imageLookup);
+
+var _hashbump = __webpack_require__(9);
+
+var _hashbump2 = _interopRequireDefault(_hashbump);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1753,7 +1628,7 @@ let BumpButton = class BumpButton extends _react2.default.PureComponent {
 
         return _react2.default.createElement(
             'button',
-            null,
+            { className: _hashbump2.default.bumpButton },
             _react2.default.createElement(
                 'h1',
                 null,
@@ -1945,13 +1820,13 @@ var _reactRedux = __webpack_require__(5);
 
 var _actions = __webpack_require__(3);
 
-var _reactAutocomplete = __webpack_require__(48);
+var _reactAutocomplete = __webpack_require__(45);
 
 var _reactAutocomplete2 = _interopRequireDefault(_reactAutocomplete);
 
-var _styles = __webpack_require__(9);
+var _hashbump = __webpack_require__(9);
 
-var _styles2 = _interopRequireDefault(_styles);
+var _hashbump2 = _interopRequireDefault(_hashbump);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2009,7 +1884,7 @@ let HashtagAutocomplete = class HashtagAutocomplete extends _react2.default.Comp
     handleRenderItem(item, isHighlighted) {
         return _react2.default.createElement(
             'div',
-            { style: { background: isHighlighted ? 'lightgray' : 'white' } },
+            { className: isHighlighted ? _hashbump2.default.autocompleteRenderHighlightedItem : _hashbump2.default.autocompleteRenderItem },
             item.term
         );
     }
@@ -2055,18 +1930,24 @@ let HashtagAutocomplete = class HashtagAutocomplete extends _react2.default.Comp
 
     render() {
 
-        return _react2.default.createElement(
-            'span',
-            { className: _styles2.default.hashtag },
-            _react2.default.createElement(_reactAutocomplete2.default, {
-                getItemValue: this.handleGetItemValue,
-                renderItem: this.handleRenderItem,
-                items: this.state.items,
-                value: this.state.value,
-                onChange: this.handleChange, t: true,
-                onSelect: this.handleSelect
-            })
-        );
+        return _react2.default.createElement(_reactAutocomplete2.default, {
+            getItemValue: this.handleGetItemValue,
+            renderItem: this.handleRenderItem,
+            items: this.state.items,
+            value: this.state.value,
+            onChange: this.handleChange,
+            onSelect: this.handleSelect,
+            inputProps: {
+                size: "30"
+            },
+            wrapperStyle: {
+                display: "inline-block"
+            },
+            menuStyle: {
+                background: "#e4be45",
+                position: "fixed"
+            }
+        });
     }
 };
 exports.default = (0, _reactApollo.compose)((0, _reactRedux.connect)(), hashtagQuery, suggestionsQuery, addHashtagMutation)(HashtagAutocomplete);
@@ -2093,152 +1974,126 @@ function currentHashtagName(state = "", action) {
 
 /***/ }),
 /* 29 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = {
-	"hello": "hello-1P9zCbIx8YQ5eID6A-67d6",
-	"logo": "logo-1tNzgJsJwXMqFQ0a4xMkPk",
-	"data": "data-1oklYPlS4mQJRj2Dp24Czw",
-	"styleExamples": "styleExamples-2cmVxjYoxVhR_tpCfyIq_T",
-	"example": "example-3quOHBYrr7YOUvefuRPyGa"
-};
+module.exports = __webpack_require__.p + "assets/img/hashbump-logo-2.1d23e4579aaf0aaa22df9d983cce6923.svg";
 
 /***/ }),
 /* 30 */
 /***/ (function(module, exports) {
 
-
+module.exports = require("boxen");
 
 /***/ }),
 /* 31 */
 /***/ (function(module, exports) {
 
-module.exports = {
-	"example": "example-277HEpojiJhg7dzqJQ0KRt"
-};
-
-/***/ }),
-/* 32 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/img/hashbump-logo-2.36ca345cc416818c44d874ff0ba79271.svg";
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports) {
-
-module.exports = require("boxen");
-
-/***/ }),
-/* 34 */
-/***/ (function(module, exports) {
-
 module.exports = require("faker");
 
 /***/ }),
-/* 35 */
+/* 32 */
 /***/ (function(module, exports) {
 
 module.exports = require("graphql");
 
 /***/ }),
-/* 36 */
+/* 33 */
 /***/ (function(module, exports) {
 
 module.exports = require("graphql-server-koa");
 
 /***/ }),
-/* 37 */
+/* 34 */
 /***/ (function(module, exports) {
 
 module.exports = require("ip");
 
 /***/ }),
-/* 38 */
+/* 35 */
 /***/ (function(module, exports) {
 
 module.exports = require("isomorphic-fetch");
 
 /***/ }),
-/* 39 */
+/* 36 */
 /***/ (function(module, exports) {
 
 module.exports = require("kcors");
 
 /***/ }),
-/* 40 */
+/* 37 */
 /***/ (function(module, exports) {
 
 module.exports = require("koa");
 
 /***/ }),
-/* 41 */
+/* 38 */
 /***/ (function(module, exports) {
 
 module.exports = require("koa-bodyparser");
 
 /***/ }),
-/* 42 */
+/* 39 */
 /***/ (function(module, exports) {
 
 module.exports = require("koa-helmet");
 
 /***/ }),
-/* 43 */
+/* 40 */
 /***/ (function(module, exports) {
 
 module.exports = require("koa-router");
 
 /***/ }),
-/* 44 */
+/* 41 */
 /***/ (function(module, exports) {
 
 module.exports = require("koa-send");
 
 /***/ }),
-/* 45 */
+/* 42 */
 /***/ (function(module, exports) {
 
 module.exports = require("lodash");
 
 /***/ }),
-/* 46 */
+/* 43 */
 /***/ (function(module, exports) {
 
 module.exports = require("microseconds");
 
 /***/ }),
-/* 47 */
+/* 44 */
 /***/ (function(module, exports) {
 
 module.exports = require("path");
 
 /***/ }),
-/* 48 */
+/* 45 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-autocomplete");
 
 /***/ }),
-/* 49 */
+/* 46 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 50 */
+/* 47 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-router");
 
 /***/ }),
-/* 51 */
+/* 48 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux");
 
 /***/ }),
-/* 52 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(14);

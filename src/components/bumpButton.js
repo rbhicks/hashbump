@@ -4,6 +4,7 @@ import { graphql, compose } from 'react-apollo';
 import { connect } from 'react-redux';
 import { setCurrentHashtagName } from '../store/actions';
 import imageLookup from '../utility/image-lookup';
+import hashbumpStyle from '../style/hashbump.scss';
 
 
 const hashtagQuery = graphql(gql`
@@ -104,9 +105,9 @@ class BumpButton extends React.PureComponent {
         }
         
         return (
-                <button>
+                <button className={hashbumpStyle.bumpButton}>
                 <h1>{count}</h1>
-                <img src={imageLookup(this.props.bump)} onClick={this.handleClick} />
+                <img src={imageLookup(this.props.bump)}  onClick={this.handleClick} />
                 </button>
         );
     }

@@ -4,9 +4,8 @@ import { graphql, compose, withApollo } from 'react-apollo';
 import { connect } from 'react-redux';
 import { setCurrentHashtagName } from '../store/actions';
 import Autocomplete from 'react-autocomplete';
+import hashbumpStyle from '../style/hashbump.scss';
 
-
-import sass from '../styles.scss';
 
 const suggestionsQuery = graphql(gql`
   query suggestions($partialHashtag: String!) {
@@ -61,8 +60,8 @@ class HashtagAutocomplete extends React.Component {
 
     handleRenderItem(item, isHighlighted) {
         return (
-            <div style={{ background: isHighlighted ? 'lightgray' : 'white' }} >
-            {item.term}
+            <div className={isHighlighted ? hashbumpStyle.autocompleteRenderHighlightedItem : hashbumpStyle.autocompleteRenderItem}>
+                {item.term}
             </div>
         );
     }
@@ -118,17 +117,24 @@ class HashtagAutocomplete extends React.Component {
     render() {
 
         return (
-
-            <span className={sass.hashtag}>
-                <Autocomplete 
+                <Autocomplete
             getItemValue={this.handleGetItemValue}
             renderItem={this.handleRenderItem}
             items={this.state.items}
             value={this.state.value}
-            onChange={this.handleChange}t
-            onSelect={this.handleSelect}            
+            onChange={this.handleChange}
+            onSelect={this.handleSelect}
+            inputProps={{
+                size: "30",
+            }}
+            wrapperStyle={{
+                display: "inline-block",
+            }}
+            menuStyle={{
+                background: "#e4be45",
+                position: "fixed",
+            }}
                 />
-                </span>
         );
     }
 }
