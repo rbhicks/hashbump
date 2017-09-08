@@ -5,7 +5,7 @@ import _ from 'lodash';
 const Conn = new Sequelize(
   'hashbump',
   'postgres',
-  '',
+  '<replace with password, old one is still in github history',
   {
     dialect: 'postgres',
     host: 'localhost'
