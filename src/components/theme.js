@@ -1,0 +1,77 @@
+
+export const hashbumpColorGold = "#e4be45";
+export const hashbumpColorGreen = "#2f9b4c";
+export const hashbumpColorPurple = "#8845ad";
+
+
+const theme = {
+    yaySvgSource: '../hashbump-yay.svg',
+    grrrSvgSource: '../hashbump-grrr.svg',
+    dunnoSvgSource: '../hashbump-dunno.svg',
+    mehSvgSource: '../hashbump-meh.svg',
+    hashbumpLogoSvgSource: '../hashbump-logo.svg',
+    header: {
+        logoImageDisplay: 'inline-flex',
+        logoImageWidth: [1/6, 1/14, 1/10],
+        nameBoxMl: 'auto',
+        nameBoxPr: [2, 2, 3],
+        nameBoxPt: [3, 2, 4],
+        nameLabelDisplay: 'inline-flex',
+        nameLabelFontSize: [4, 4, 7],
+        nameLabelLeftColor: hashbumpColorGreen,
+        nameLabelRightColor: hashbumpColorPurple,
+    },
+    topHashtags: {
+        boxWidth: [1, 1/2, 1/2],
+        boxPl: [1, 1, 3],
+        boxPr: [0, 0, 1],
+        boxPt: [0, 0, 2],
+        labelIs: 'h1',
+        labelFontSize: [3, 3, 5],
+        labelPb: [0, 0, 1],
+        labelColor: hashbumpColorGreen,
+        flexAlign: 'center',
+        inlineImageDisplay: 'inline-flex',
+        inlineImageWidth: [1/15, 1/16, 1/14],
+        infoBoxDisplay: 'inline-flex',
+        infoBoxFontSize: [2, 2, 4],
+        infoBoxColor: hashbumpColorGreen,
+        infoBoxPl: 2,
+    },
+    hashtagAutoSuggest: {
+        inputBg: hashbumpColorGold,
+        inputFg: hashbumpColorGreen,
+        inputPl: [1],
+        inputPr: [0],
+        inputPt: [0],
+        inputPb: [0],
+        inputMl: [0],
+        inputMr: [0],
+        inputMt: [0],
+        inputMb: [0],
+        inputBorder: '2px solid',
+        inputBorderRadius: '',
+        suggestionBoxPl: [1],
+        suggestionBoxPr: [0],
+        suggestionBoxPt: [0],
+        suggestionBoxPb: [0],
+        suggestionBoxMl: [0],
+        suggestionBoxMr: [0],
+        suggestionBoxMt: [0],
+        suggestionBoxMb: [0],
+        suggestionBoxBg: hashbumpColorGold,
+        suggestionBoxFg: hashbumpColorGreen,
+        suggestionBoxSelectedBg: hashbumpColorPurple,
+        suggestionBoxSelectedFg: hashbumpColorGreen,
+    },
+    bumpButton: {
+        boxP: [1, 1, 1],
+        width: [1, 4/5, 1/4],
+        imageDisplay: 'inline-flex',
+        color: hashbumpColorGreen,
+        fontSize: [4, 2, 4],
+    },
+    font: 'Fira Sans',
+};
+
+export default theme;

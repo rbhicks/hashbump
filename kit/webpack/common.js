@@ -13,16 +13,32 @@ import chalk from 'chalk';
 
 // ----------------------
 
+// RegExp for file types
+export const regex = {
+  fonts: /\.(woff|woff2|ttf|eot)$/i,
+  images: /\.(jpe?g|png|gif|svg)$/i,
+};
+
 export const css = {
   // CSS loader configuration -- plain CSS, SASS and LESS
-  loaders: [
+  rules: [
     {
       ext: 'css',
       use: [],
     },
     {
       ext: 's(c|a)ss',
-      use: ['resolve-url-loader', 'sass-loader?sourceMap'],
+      use: [
+        {
+          loader: 'resolve-url-loader',
+        },
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true,
+          },
+        },
+      ],
     },
     {
       ext: 'less',
@@ -46,19 +62,19 @@ export const css = {
   // based on the original file extension
   getModuleRegExp(ext) {
     return [
-      [`[^\\.global]\\.${ext}$`, { modules: true }],
+      [`^(?!.*\\.global\\.${ext}$).*\\.${ext}$`, { modules: true }],
       [`\\.global\\.${ext}$`, { modules: false }],
     ];
   },
 
   getDevLoaders() {
     return (function* loadCss() {
-      for (const loader of css.loaders) {
+      for (const loader of css.rules) {
         // Iterate over CSS/SASS/LESS and yield local and global mod configs
         for (const mod of css.getModuleRegExp(loader.ext)) {
           yield {
             test: new RegExp(mod[0]),
-            loader: [
+            use: [
               'style-loader',
               {
                 loader: 'css-loader',
@@ -81,9 +97,9 @@ export const css = {
     }());
   },
 
-  getExtractCSSLoaders(extractCSS) {
+  getExtractCSSLoaders(extractCSS, sourceMap = false) {
     return (function* loadCss() {
-      for (const loader of css.loaders) {
+      for (const loader of css.rules) {
         // Iterate over CSS/SASS/LESS and yield local and global mod configs
         for (const mod of css.getModuleRegExp(loader.ext)) {
           yield {
@@ -92,9 +108,16 @@ export const css = {
               use: [
                 {
                   loader: 'css-loader',
-                  query: Object.assign({}, css.loaderDefaults, mod[1]),
+                  query: Object.assign({}, css.loaderDefaults, {
+                    sourceMap,
+                  }, mod[1]),
                 },
-                'postcss-loader',
+                {
+                  loader: 'postcss-loader',
+                  options: {
+                    sourceMap,
+                  },
+                },
                 ...loader.use,
               ],
               fallback: 'style-loader',

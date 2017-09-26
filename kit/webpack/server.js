@@ -4,7 +4,6 @@
 // IMPORTS
 
 /* NPM */
-import webpack from 'webpack';
 import WebpackConfig from 'webpack-config';
 
 // Plugin to allow us to exclude `node_modules` packages from the final
@@ -13,15 +12,15 @@ import WebpackConfig from 'webpack-config';
 import nodeModules from 'webpack-node-externals';
 
 /* Local */
-import { css } from './common';
+import { regex, css } from './common';
 
 // ----------------------
 
 // Helper function to recursively filter through loaders, and apply the
 // supplied function
 function recursiveLoader(root = {}, func) {
-  if (root.loaders) {
-    root.loaders.forEach(l => recursiveLoader(l, func));
+  if (root.rules) {
+    root.use.forEach(l => recursiveLoader(l, func));
   }
   if (root.loader) return func(root);
   return false;
@@ -30,7 +29,7 @@ function recursiveLoader(root = {}, func) {
 export default new WebpackConfig().extend({
   '[root]/base.js': conf => {
     // Prevent file emission, since the browser bundle will already have done it
-    conf.module.loaders.forEach(loader => {
+    conf.module.rules.forEach(loader => {
       recursiveLoader(loader, l => {
         if (l.loader === 'file-loader') {
           // eslint-disable-next-line
@@ -50,15 +49,15 @@ export default new WebpackConfig().extend({
   },
 
   module: {
-    loaders: [
+    rules: [
       // CSS loaders
       ...(function* loadCss() {
-        for (const loader of css.loaders) {
+        for (const loader of css.rules) {
           // Iterate over CSS/SASS/LESS and yield local and global mod configs
           for (const mod of css.getModuleRegExp(loader.ext)) {
             yield {
               test: new RegExp(mod[0]),
-              loader: [
+              use: [
                 {
                   loader: 'css-loader/locals',
                   query: Object.assign({}, css.loaderDefaults, mod[1]),
@@ -91,13 +90,12 @@ export default new WebpackConfig().extend({
       },
     ],
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      // We're running on the Node.js server, so set `SERVER` to true
-      SERVER: true,
-    }),
-  ],
   // No need to transpile `node_modules` files, since they'll obviously
   // still be available to Node.js when we run the resulting `server.js` entry
-  externals: nodeModules(),
+  externals: nodeModules({
+    whitelist: [
+      regex.fonts,
+      regex.images,
+    ],
+  }),
 });

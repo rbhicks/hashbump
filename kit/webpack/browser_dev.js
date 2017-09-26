@@ -15,13 +15,9 @@ import chalk from 'chalk';
 
 /* Local */
 
-
 // Import console messages
 import { css, stats } from './common';
 import { logServerStarted } from '../lib/console';
-
-// Local environment
-import { getHost, getPort, getURL } from '../lib/env';
 
 // Locla paths
 import PATHS from '../../config/paths';
@@ -29,9 +25,11 @@ import PATHS from '../../config/paths';
 // ----------------------
 
 // Host and port settings to spawn the dev server on
-const HOST = getHost();
-const PORT = getPort();
-const LOCAL = getURL();
+// rbh
+//const HOST = process.env.BROWSER_HOST || 'localhost';
+const HOST = process.env.BROWSER_HOST || '0.0.0.0';
+const PORT = process.env.BROWSER_PORT || 8080;
+const LOCAL = `http://${HOST}:${PORT}`;
 
 export default new WebpackConfig().extend({
   '[root]/browser.js': conf => {
@@ -44,8 +42,8 @@ export default new WebpackConfig().extend({
     );
 
     // Add React-specific hot loading
-    conf.module.loaders.find(l => l.test.toString() === /\.jsx?$/.toString())
-      .loaders.unshift({
+    conf.module.rules.find(l => l.test.toString() === /\.jsx?$/.toString())
+      .use.unshift({
         loader: 'react-hot-loader/webpack',
       });
 
@@ -53,7 +51,7 @@ export default new WebpackConfig().extend({
   },
 }, '[root]/dev.js').merge({
   module: {
-    loaders: [
+    rules: [
       // CSS loaders
       ...css.getDevLoaders(),
     ],
@@ -121,6 +119,7 @@ export default new WebpackConfig().extend({
             host: HOST,
             port: PORT,
             chalk: chalk.bgMagenta.white,
+            allowSSL: false,
           });
         });
       },
@@ -130,5 +129,21 @@ export default new WebpackConfig().extend({
 
     // Activate the hot-reloader, so changes can be pushed to the browser
     new webpack.HotModuleReplacementPlugin(),
+
+    // Global variables
+    new webpack.DefinePlugin({
+      // We're not running on the server
+      SERVER: false,
+      'process.env': {
+        // Point the server host/port to the dev server
+        HOST: JSON.stringify(process.env.HOST || 'localhost'),
+        PORT: JSON.stringify(process.env.PORT || '8081'),
+        SSL_PORT: process.env.SSL_PORT ? JSON.stringify(process.env.SSL_PORT) : null,
+
+        // Debug development
+        NODE_ENV: JSON.stringify('development'),
+        DEBUG: true,
+      },
+    }),
   ],
 });

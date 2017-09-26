@@ -19,7 +19,7 @@ import WebpackConfig from 'webpack-config';
 /* Local */
 
 // Common config
-import { stats } from './common';
+import { regex, stats } from './common';
 
 // Our local path configuration, so webpack knows where everything is/goes.
 // Since we haven't yet established our module resolution paths, we have to
@@ -27,6 +27,9 @@ import { stats } from './common';
 import PATHS from '../../config/paths';
 
 // ----------------------
+
+// RegExp for image files
+
 
 // Export a new 'base' config, which we can extend/merge from
 export default new WebpackConfig().merge({
@@ -53,10 +56,10 @@ export default new WebpackConfig().merge({
   // possible to do crazy things like `import css from './style.css'` and
   // actually get that stuff working in *Javascript* -- woot!
   module: {
-    loaders: [
+    rules: [
       // Fonts
       {
-        test: /\.(woff|woff2|ttf|eot)$/i,
+        test: regex.fonts,
         loader: 'file-loader',
         query: {
           name: 'assets/fonts/[name].[hash].[ext]',
@@ -67,8 +70,8 @@ export default new WebpackConfig().merge({
       // we'll also crunch the images first -- so let's set up `loaders` to
       // be an array to make extending this easier
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
+        test: regex.images,
+        use: [
           {
             loader: 'file-loader',
             query: {
@@ -76,6 +79,13 @@ export default new WebpackConfig().merge({
             },
           },
         ],
+      },
+
+      // GraphQL queries
+      {
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'graphql-tag/loader',
       },
     ],
   },
