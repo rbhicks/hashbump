@@ -1,70 +1,10 @@
 webpackJsonp([0],{
 
 /***/ 107:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/* unused harmony export mergeData */
-/* harmony export (immutable) */ __webpack_exports__["a"] = browserClient;
-/* unused harmony export serverClient */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prop_types__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_apollo__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_apollo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_apollo__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_config_project__ = __webpack_require__(182);
-// ----------------------
-// IMPORTS
+module.exports = __webpack_require__(108);
 
-// React propTypes
-
-
-// Apollo client library
-
-
-// Custom configuration/settings
-
-
-// ----------------------
-
-// Create a new Apollo network interface, to point to our API server.
-// Note:  By default in this kit, we'll connect to a sample endpoint that
-// repsonds with simple messages.  Update [root]/config.js as needed.
-var networkInterface = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_react_apollo__["createNetworkInterface"])({
-  uri: __WEBPACK_IMPORTED_MODULE_2_config_project__["a" /* APOLLO */].uri
-});
-
-// Helper function to create a new Apollo client, by merging in
-// passed options alongside the defaults
-function createClient() {
-  var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-  return new __WEBPACK_IMPORTED_MODULE_1_react_apollo__["ApolloClient"](Object.assign({
-    reduxRootSelector: function reduxRootSelector(state) {
-      return state.apollo;
-    },
-    networkInterface: networkInterface
-  }, opt));
-}
-
-// Helper function that will merge a passed object with the expected
-// React propTypes 'shape', for use with the `react-apollo` `graphql` HOC
-function mergeData(toMerge) {
-  return __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.shape(Object.assign({
-    loading: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool.isRequired
-  }, toMerge));
-}
-
-// Creates a new browser client
-function browserClient() {
-  return createClient();
-}
-
-// Creates a new server-side client
-function serverClient() {
-  return createClient({
-    ssrMode: true
-  });
-}
 
 /***/ }),
 
@@ -72,38 +12,22 @@ function serverClient() {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony default export */ __webpack_exports__["a"] = (function (key) {
-
-                    var lookupList = { yay: "../hashbump-yay.svg",
-                                        grrr: "../hashbump-grrr.svg",
-                                        dunno: "../hashbump-dunno.svg",
-                                        meh: "../hashbump-meh.svg" };
-
-                    return lookupList[key];
-});
-
-/***/ }),
-
-/***/ 165:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_regenerator_runtime_runtime__ = __webpack_require__(366);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_regenerator_runtime_runtime__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_regenerator_runtime_runtime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_regenerator_runtime_runtime__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_dom__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_dom__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_router_dom__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_apollo__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_router_dom__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_apollo__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_apollo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_apollo__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_kit_lib_apollo__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_kit_lib_redux__ = __webpack_require__(184);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_src_app__ = __webpack_require__(186);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_webfontloader__ = __webpack_require__(374);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_kit_lib_apollo__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_kit_lib_redux__ = __webpack_require__(295);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_src_app__ = __webpack_require__(196);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_webfontloader__ = __webpack_require__(298);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_webfontloader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_webfontloader__);
 // Browser entry point, for Webpack.  We'll grab the browser-flavoured
 // versions of React mounting, routing etc to hook into the DOM
@@ -144,10 +68,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // ----------------------
 
 // Create a new browser Apollo client
-var client = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6_kit_lib_apollo__["a" /* browserClient */])();
+var client = Object(__WEBPACK_IMPORTED_MODULE_6_kit_lib_apollo__["a" /* browserClient */])();
 
 // Create a new Redux store
-var store = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_7_kit_lib_redux__["a" /* default */])(client);
+var store = Object(__WEBPACK_IMPORTED_MODULE_7_kit_lib_redux__["a" /* default */])(client);
 
 
 
@@ -220,349 +144,30 @@ doRender();
 
 /***/ }),
 
-/***/ 182:
+/***/ 196:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return APOLLO; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_kit_lib_env__ = __webpack_require__(183);
-/* eslint-disable import/prefer-default-export */
-
-// ----------------------
-// IMPORTS
-
-/* Local */
-
-
-// ----------------------
-
-var APOLLO = {
-  uri: 'http://' + __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_kit_lib_env__["a" /* getServerHost */])() + ':' + __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_kit_lib_env__["b" /* getServerPort */])() + '/graphql'
-};
-
-/***/ }),
-
-/***/ 183:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/* unused harmony export getHost */
-/* harmony export (immutable) */ __webpack_exports__["a"] = getServerHost;
-/* unused harmony export getBrowserHost */
-/* unused harmony export getPort */
-/* unused harmony export getBrowserPort */
-/* harmony export (immutable) */ __webpack_exports__["b"] = getServerPort;
-/* unused harmony export getURL */
-// Environment-aware functions
-
-// Default host that any server should bind to.  This is generally just
-// 'localhost', for all server types
-var defaultHost = 'localhost';
-
-// Default ports.  Various modes (development, production) and various server
-// types (browser, server, static) are catered for
-var defaultPorts = {
-  production: {
-    server: 4000
-  },
-  development: {
-    browser: 8080,
-    server: 8081
-  }
-};
-
-// Determines whether we're currently running in production
-var isProduction = "development" === 'production';
-var isServer = "boolean" !== 'undefined' && false;
-
-// Returns the prefix of the variable on `process.env` that determines
-// whether we're running in server or browser mode, and in production or dev
-function getStub() {
-  return (isServer ? 'SERVER' : 'BROWSER') + '_' + (isProduction ? 'PROD' : 'DEV');
-}
-
-// Get browser stub
-function getBrowserStub() {
-  return 'BROWSER_' + (isProduction ? 'PROD' : 'DEV');
-}
-
-// Get server stub
-function getServerStub() {
-  return 'SERVER_' + (isProduction ? 'PROD' : 'DEV');
-}
-
-// Get the hostname for the server, based on the current environment
-function getHost() {
-  return process.env[getStub() + '_HOST'] || defaultHost;
-}
-
-// Get the server host -- based on the current environment
-function getServerHost() {
-  return process.env[getServerStub() + '_HOST'] || defaultHost;
-}
-
-// Get the browser host -- based on the current environment
-function getBrowserHost() {
-  return process.env[getBrowserStub() + '_HOST'] || defaultHost;
-}
-
-// Get the port, based on the current environment
-function getPort() {
-  var port = process.env[getStub() + '_PORT'];
-  if (port) return port;
-
-  // No clue from the environment -- work it out ourselves
-  return defaultPorts["development"][isServer ? 'server' : 'browser'];
-}
-
-// Get the browser port, based on the current environment
-function getBrowserPort() {
-  var port = process.env[getBrowserStub() + '_PORT'];
-  if (port) return port;
-
-  // No clue from the environment -- work it out ourselves
-  return defaultPorts["development"].browser;
-}
-
-// Get the server port, based on the current environment
-function getServerPort() {
-  var port = process.env[getServerStub() + '_PORT'];
-  if (port) return port;
-
-  // No clue from the environment -- work it out ourselves
-  return defaultPorts["development"].server;
-}
-
-// Get the protocol://host:port of where the current server would bind
-function getURL() {
-  return 'http://' + getHost() + ':' + getPort();
-}
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(24)))
-
-/***/ }),
-
-/***/ 184:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = createNewStore;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(59);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_store_reducers_js__ = __webpack_require__(190);
-/*
-Custom Redux store creation.  Instead of using the default Apollo store,
-we'll create our own for each request so that we can easily layer in our
-own reducers for store state outside of Apollo
-*/
-
-// ----------------------
-// IMPORTS
-
-
-
-// ----------------------
-
-function createNewStore(apolloClient) {
-    var store = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redux__["createStore"])(
-    // By default, we'll use just the apollo reducer.  We can easily add our
-    // own here, for global store management outside of Apollo
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redux__["combineReducers"])({
-        apollo: apolloClient.reducer(),
-        currentHashtagName: __WEBPACK_IMPORTED_MODULE_1__src_store_reducers_js__["a" /* currentHashtagName */]
-    }),
-    // Initial server state, provided by the server.  Only relevant in the
-    // browser -- on the server, we'll start with a blank object
-    // eslint-disable-next-line no-underscore-dangle
-     true ? window.__STATE__ : {}, // initial state
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redux__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0_redux__["applyMiddleware"])(apolloClient.middleware()),
-    // Enable Redux Devtools on the browser, for easy state debugging
-    // eslint-disable-next-line no-underscore-dangle
-    !false && typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined' ? window.__REDUX_DEVTOOLS_EXTENSION__() : function (f) {
-        return f;
-    }));
-
-    return store;
-}
-
-/***/ }),
-
-/***/ 185:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export NotFound */
-/* unused harmony export Redirect */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(95);
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-/* eslint-disable no-param-reassign */
-
-// ----------------------
-// IMPORTS
-
-
-
-
-
-
-// ----------------------
-
-// <Status code="xxx"> component.  Updates the context router's context, which
-// can be used by the server handler to respond to the status on the server.
-
-var Status = function (_React$PureComponent) {
-  _inherits(Status, _React$PureComponent);
-
-  function Status() {
-    _classCallCheck(this, Status);
-
-    return _possibleConstructorReturn(this, (Status.__proto__ || Object.getPrototypeOf(Status)).apply(this, arguments));
-  }
-
-  _createClass(Status, [{
-    key: 'render',
-    value: function render() {
-      var _props = this.props,
-          code = _props.code,
-          children = _props.children;
-
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Route */], { render: function render(_ref) {
-          var staticContext = _ref.staticContext;
-
-          if (staticContext) {
-            staticContext.status = code;
-          }
-          return children;
-        } });
-    }
-  }]);
-
-  return Status;
-}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.PureComponent);
-
-// <NotFound> component.  If this renders on the server in development mode,
-// it will attempt to proxyify the request to the upstream `webpack-dev-server`.
-// In production, it will issue a hard 404 and render.  In the browser, it will
-// simply render.
-
-
-Status.propTypes = {
-  code: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.number.isRequired,
-  children: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.node
-};
-Status.defaultProps = {
-  children: null
-};
-var NotFound = function (_React$PureComponent2) {
-  _inherits(NotFound, _React$PureComponent2);
-
-  function NotFound() {
-    _classCallCheck(this, NotFound);
-
-    return _possibleConstructorReturn(this, (NotFound.__proto__ || Object.getPrototypeOf(NotFound)).apply(this, arguments));
-  }
-
-  _createClass(NotFound, [{
-    key: 'render',
-    value: function render() {
-      var children = this.props.children;
-
-
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        Status,
-        { code: 404 },
-        children
-      );
-    }
-  }]);
-
-  return NotFound;
-}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.PureComponent);
-
-// <Redirect> component. Mirrors React Router's component by the same name,
-// except it sets a 301/302 status code for setting server-side HTTP headers.
-NotFound.propTypes = {
-  children: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.node
-};
-NotFound.defaultProps = {
-  children: null
-};
-var Redirect = function (_React$PureComponent3) {
-  _inherits(Redirect, _React$PureComponent3);
-
-  function Redirect() {
-    _classCallCheck(this, Redirect);
-
-    return _possibleConstructorReturn(this, (Redirect.__proto__ || Object.getPrototypeOf(Redirect)).apply(this, arguments));
-  }
-
-  _createClass(Redirect, [{
-    key: 'render',
-    value: function render() {
-      var _props2 = this.props,
-          to = _props2.to,
-          from = _props2.from,
-          push = _props2.push,
-          permanent = _props2.permanent;
-
-      var code = permanent ? 301 : 302;
-      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        Status,
-        { code: code },
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Redirect */], { to: to, from: from, push: push })
-      );
-    }
-  }]);
-
-  return Redirect;
-}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.PureComponent);
-Redirect.propTypes = {
-  to: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string, __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object]).isRequired,
-  from: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
-  push: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool,
-  permanent: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool
-};
-Redirect.defaultProps = {
-  from: null,
-  push: false,
-  permanent: false
-};
-
-/***/ }),
-
-/***/ 186:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_apollo__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(95);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_helmet__ = __webpack_require__(320);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_router_dom__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_helmet__ = __webpack_require__(201);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_react_helmet___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_react_helmet__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_kit_lib_apollo__ = __webpack_require__(107);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_kit_lib_routing__ = __webpack_require__(185);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__style_hashbump_scss__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_kit_lib_apollo__ = __webpack_require__(293);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_kit_lib_routing__ = __webpack_require__(93);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__style_hashbump_scss__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__style_hashbump_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__style_hashbump_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__hashbump_logo_2_svg__ = __webpack_require__(214);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__hashbump_logo_2_svg__ = __webpack_require__(485);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__hashbump_logo_2_svg___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__hashbump_logo_2_svg__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_redux__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__store_actions_js__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_bumpButton_js__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_hashtagAutocomplete_js__ = __webpack_require__(189);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_bumpDisplay_js__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_react_redux__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__store_actions_js__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_bumpButton_js__ = __webpack_require__(486);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_hashtagAutocomplete_js__ = __webpack_require__(487);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_bumpDisplay_js__ = __webpack_require__(492);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -717,20 +322,316 @@ var App = function (_Component) {
 
 /***/ }),
 
-/***/ 187:
+/***/ 293:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
+/* unused harmony export mergeData */
+/* harmony export (immutable) */ __webpack_exports__["a"] = browserClient;
+/* unused harmony export serverClient */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prop_types__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_apollo__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_apollo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_apollo__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_config_project__ = __webpack_require__(483);
+// ----------------------
+// IMPORTS
+
+// React propTypes
+
+
+// Apollo client library
+
+
+// Custom configuration/settings
+
+
+// ----------------------
+
+// Create a new Apollo network interface, to point to our API server.
+// Note:  By default in this kit, we'll connect to a sample endpoint that
+// repsonds with simple messages.  Update [root]/config.js as needed.
+var networkInterface = Object(__WEBPACK_IMPORTED_MODULE_1_react_apollo__["createNetworkInterface"])({
+  uri: __WEBPACK_IMPORTED_MODULE_2_config_project__["a" /* APOLLO */].uri
+});
+
+// Helper function to create a new Apollo client, by merging in
+// passed options alongside the defaults
+function createClient() {
+  var opt = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+  return new __WEBPACK_IMPORTED_MODULE_1_react_apollo__["ApolloClient"](Object.assign({
+    reduxRootSelector: function reduxRootSelector(state) {
+      return state.apollo;
+    },
+    networkInterface: networkInterface
+  }, opt));
+}
+
+// Helper function that will merge a passed object with the expected
+// React propTypes 'shape', for use with the `react-apollo` `graphql` HOC
+function mergeData(toMerge) {
+  return __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.shape(Object.assign({
+    loading: __WEBPACK_IMPORTED_MODULE_0_prop_types___default.a.bool.isRequired
+  }, toMerge));
+}
+
+// Creates a new browser client
+function browserClient() {
+  return createClient();
+}
+
+// Creates a new server-side client
+function serverClient() {
+  return createClient({
+    ssrMode: true
+  });
+}
+
+/***/ }),
+
+/***/ 294:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export getHost */
+/* harmony export (immutable) */ __webpack_exports__["a"] = getServerHost;
+/* unused harmony export getBrowserHost */
+/* unused harmony export getPort */
+/* unused harmony export getBrowserPort */
+/* harmony export (immutable) */ __webpack_exports__["b"] = getServerPort;
+/* unused harmony export getURL */
+// Environment-aware functions
+
+// Default host that any server should bind to.  This is generally just
+// 'localhost', for all server types
+var defaultHost = 'localhost';
+
+// Default ports.  Various modes (development, production) and various server
+// types (browser, server, static) are catered for
+var defaultPorts = {
+  production: {
+    server: 4000
+  },
+  development: {
+    browser: 8080,
+    server: 8081
+  }
+};
+
+// Determines whether we're currently running in production
+var isProduction = "development" === 'production';
+var isServer = "boolean" !== 'undefined' && false;
+
+// Returns the prefix of the variable on `process.env` that determines
+// whether we're running in server or browser mode, and in production or dev
+function getStub() {
+  return (isServer ? 'SERVER' : 'BROWSER') + '_' + (isProduction ? 'PROD' : 'DEV');
+}
+
+// Get browser stub
+function getBrowserStub() {
+  return 'BROWSER_' + (isProduction ? 'PROD' : 'DEV');
+}
+
+// Get server stub
+function getServerStub() {
+  return 'SERVER_' + (isProduction ? 'PROD' : 'DEV');
+}
+
+// Get the hostname for the server, based on the current environment
+function getHost() {
+  return Object({"HOST":"localhost","PORT":"8081","SSL_PORT":null,"NODE_ENV":"development","DEBUG":true})[getStub() + '_HOST'] || defaultHost;
+}
+
+// Get the server host -- based on the current environment
+function getServerHost() {
+  return Object({"HOST":"localhost","PORT":"8081","SSL_PORT":null,"NODE_ENV":"development","DEBUG":true})[getServerStub() + '_HOST'] || defaultHost;
+}
+
+// Get the browser host -- based on the current environment
+function getBrowserHost() {
+  return Object({"HOST":"localhost","PORT":"8081","SSL_PORT":null,"NODE_ENV":"development","DEBUG":true})[getBrowserStub() + '_HOST'] || defaultHost;
+}
+
+// Get the port, based on the current environment
+function getPort() {
+  var port = Object({"HOST":"localhost","PORT":"8081","SSL_PORT":null,"NODE_ENV":"development","DEBUG":true})[getStub() + '_PORT'];
+  if (port) return port;
+
+  // No clue from the environment -- work it out ourselves
+  return defaultPorts["development"][isServer ? 'server' : 'browser'];
+}
+
+// Get the browser port, based on the current environment
+function getBrowserPort() {
+  var port = Object({"HOST":"localhost","PORT":"8081","SSL_PORT":null,"NODE_ENV":"development","DEBUG":true})[getBrowserStub() + '_PORT'];
+  if (port) return port;
+
+  // No clue from the environment -- work it out ourselves
+  return defaultPorts["development"].browser;
+}
+
+// Get the server port, based on the current environment
+function getServerPort() {
+  var port = Object({"HOST":"localhost","PORT":"8081","SSL_PORT":null,"NODE_ENV":"development","DEBUG":true})[getServerStub() + '_PORT'];
+  if (port) return port;
+
+  // No clue from the environment -- work it out ourselves
+  return defaultPorts["development"].server;
+}
+
+// Get the protocol://host:port of where the current server would bind
+function getURL() {
+  return 'http://' + getHost() + ':' + getPort();
+}
+
+/***/ }),
+
+/***/ 295:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = createNewStore;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_redux__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_store_reducers_js__ = __webpack_require__(484);
+/*
+Custom Redux store creation.  Instead of using the default Apollo store,
+we'll create our own for each request so that we can easily layer in our
+own reducers for store state outside of Apollo
+*/
+
+// ----------------------
+// IMPORTS
+
+
+
+// ----------------------
+
+function createNewStore(apolloClient) {
+    var store = Object(__WEBPACK_IMPORTED_MODULE_0_redux__["createStore"])(
+    // By default, we'll use just the apollo reducer.  We can easily add our
+    // own here, for global store management outside of Apollo
+    Object(__WEBPACK_IMPORTED_MODULE_0_redux__["combineReducers"])({
+        apollo: apolloClient.reducer(),
+        currentHashtagName: __WEBPACK_IMPORTED_MODULE_1__src_store_reducers_js__["a" /* currentHashtagName */]
+    }),
+    // Initial server state, provided by the server.  Only relevant in the
+    // browser -- on the server, we'll start with a blank object
+    // eslint-disable-next-line no-underscore-dangle
+     true ? window.__STATE__ : {}, // initial state
+    Object(__WEBPACK_IMPORTED_MODULE_0_redux__["compose"])(Object(__WEBPACK_IMPORTED_MODULE_0_redux__["applyMiddleware"])(apolloClient.middleware()),
+    // Enable Redux Devtools on the browser, for easy state debugging
+    // eslint-disable-next-line no-underscore-dangle
+    !false && typeof window.__REDUX_DEVTOOLS_EXTENSION__ !== 'undefined' ? window.__REDUX_DEVTOOLS_EXTENSION__() : function (f) {
+        return f;
+    }));
+
+    return store;
+}
+
+/***/ }),
+
+/***/ 350:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+module.exports = {"bumpButton":"bumpButton-28LWxXFSiz4-fz6t7Y7Zj_","hashbump":"hashbump-2zwODwJ9mdtmsmwCp7FamT","autocompleteRenderHighlightedItem":"autocompleteRenderHighlightedItem-gH0fYDnSx0RYJVa2rotcS","autocompleteRenderItem":"autocompleteRenderItem-3367xYX9MqO9x39CVojAAQ","hashtag":"hashtag-33Kk32V-tY0FXvyPkC-BYk","buttonAndAutocompleteContainer":"buttonAndAutocompleteContainer-f4CESqFxiSBiWE_ulg665","nameSpan":"nameSpan-2bH2nmExuQDVhUviqren0I","nameSpanHash":"nameSpanHash-oE6TIx1HWGeXarRKW0zhf","nameSpanBump":"nameSpanBump-3fnP-ALfoXcTAYtWZetQd2"};
+
+/***/ }),
+
+/***/ 351:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = setCurrentHashtagName;
+function setCurrentHashtagName(hashtagName) {
+    return {
+        type: 'SET_CURRENT_HASHTAG_NAME',
+        hashtagName: hashtagName
+    };
+}
+
+/***/ }),
+
+/***/ 384:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = (function (key) {
+
+                    var lookupList = { yay: "../hashbump-yay.svg",
+                                        grrr: "../hashbump-grrr.svg",
+                                        dunno: "../hashbump-dunno.svg",
+                                        meh: "../hashbump-meh.svg" };
+
+                    return lookupList[key];
+});
+
+/***/ }),
+
+/***/ 483:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return APOLLO; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_kit_lib_env__ = __webpack_require__(294);
+/* eslint-disable import/prefer-default-export */
+
+// ----------------------
+// IMPORTS
+
+/* Local */
+
+
+// ----------------------
+
+var APOLLO = {
+  uri: 'http://' + Object(__WEBPACK_IMPORTED_MODULE_0_kit_lib_env__["a" /* getServerHost */])() + ':' + Object(__WEBPACK_IMPORTED_MODULE_0_kit_lib_env__["b" /* getServerPort */])() + '/graphql'
+};
+
+/***/ }),
+
+/***/ 484:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = currentHashtagName;
+function currentHashtagName() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var action = arguments[1];
+
+    switch (action.type) {
+        case 'SET_CURRENT_HASHTAG_NAME':
+            return action.hashtagName;
+        default:
+            return state;
+    }
+}
+
+/***/ }),
+
+/***/ 485:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "assets/img/hashbump-logo-2.1d23e4579aaf0aaa22df9d983cce6923.svg";
+
+/***/ }),
+
+/***/ 486:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_graphql_tag__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_graphql_tag__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_graphql_tag___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_graphql_tag__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_apollo__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_actions__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utility_image_lookup__ = __webpack_require__(108);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_actions__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__utility_image_lookup__ = __webpack_require__(384);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss__ = __webpack_require__(350);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss__);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -754,7 +655,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 
 
-var hashtagQuery = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject), {
+var hashtagQuery = Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject), {
     data: "hashtag",
     name: "hashtagQuery",
     options: {
@@ -762,11 +663,11 @@ var hashtagQuery = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apoll
     }
 });
 
-var bumpHashtagMutation = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject2), {
+var bumpHashtagMutation = Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject2), {
     name: "bumpHashtagMutation"
 });
 
-var addHashtagMutation = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject3), {
+var addHashtagMutation = Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject3), {
     name: "addHashtagMutation"
 });
 
@@ -831,7 +732,7 @@ var BumpButton = function (_React$PureComponent) {
                     null,
                     count
                 ),
-                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_5__utility_image_lookup__["a" /* default */])(this.props.bump), onClick: this.handleClick })
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('img', { src: Object(__WEBPACK_IMPORTED_MODULE_5__utility_image_lookup__["a" /* default */])(this.props.bump), onClick: this.handleClick })
             );
         }
     }]);
@@ -839,23 +740,181 @@ var BumpButton = function (_React$PureComponent) {
     return BumpButton;
 }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.PureComponent);
 
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react_redux__["a" /* connect */])(function (state) {
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["compose"])(Object(__WEBPACK_IMPORTED_MODULE_3_react_redux__["a" /* connect */])(function (state) {
     return { currentHashtagName: state.currentHashtagName };
 }), hashtagQuery, bumpHashtagMutation, addHashtagMutation)(BumpButton));
 
 /***/ }),
 
-/***/ 188:
+/***/ 487:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_graphql_tag__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_graphql_tag__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_graphql_tag___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_graphql_tag__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_apollo__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utility_image_lookup__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_actions__ = __webpack_require__(351);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_autocomplete__ = __webpack_require__(488);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_autocomplete___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_autocomplete__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss__ = __webpack_require__(350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _templateObject = _taggedTemplateLiteral(['\n  query suggestions($partialHashtag: String!) {\n    suggestions(partialHashtag: $partialHashtag)\n  }\n'], ['\n  query suggestions($partialHashtag: String!) {\n    suggestions(partialHashtag: $partialHashtag)\n  }\n']),
+    _templateObject2 = _taggedTemplateLiteral(['\n  query hashtag($name: String!) {\n    hashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n'], ['\n  query hashtag($name: String!) {\n    hashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n']),
+    _templateObject3 = _taggedTemplateLiteral(['\n  mutation addHashtag($name: String!) {\n    addHashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n'], ['\n  mutation addHashtag($name: String!) {\n    addHashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n']);
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+
+
+
+
+var suggestionsQuery = Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject), {
+    name: "suggestionsQuery",
+    options: {
+        variables: { partialHashtag: "!" }
+    }
+});
+
+var hashtagQuery = Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject2), {
+    name: "hashtagQuery",
+    options: {
+        variables: { name: "" }
+    }
+});
+
+var addHashtagMutation = Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject3));
+
+var HashtagAutocomplete = function (_React$Component) {
+    _inherits(HashtagAutocomplete, _React$Component);
+
+    function HashtagAutocomplete(props) {
+        _classCallCheck(this, HashtagAutocomplete);
+
+        var _this = _possibleConstructorReturn(this, (HashtagAutocomplete.__proto__ || Object.getPrototypeOf(HashtagAutocomplete)).call(this, props));
+
+        _this.state = { value: '', items: [] };
+
+        _this.handleSelect = _this.handleSelect.bind(_this);
+        _this.handleChange = _this.handleChange.bind(_this);
+        _this.handleGetItemValue = _this.handleGetItemValue.bind(_this);
+        _this.handleRenderItem = _this.handleRenderItem.bind(_this);
+        return _this;
+    }
+
+    _createClass(HashtagAutocomplete, [{
+        key: 'handleRenderItem',
+        value: function handleRenderItem(item, isHighlighted) {
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'div',
+                { className: isHighlighted ? __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss___default.a.autocompleteRenderHighlightedItem : __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss___default.a.autocompleteRenderItem },
+                item.term
+            );
+        }
+    }, {
+        key: 'handleGetItemValue',
+        value: function handleGetItemValue(item) {
+            return item.term;
+        }
+    }, {
+        key: 'handleChange',
+        value: function handleChange(event) {
+            var _this2 = this;
+
+            var suggestionsQuery = this.props.suggestionsQuery;
+            var hashtagQuery = this.props.hashtagQuery;
+            var currentHashtagName = event.target.value;
+
+            this.props.dispatch(Object(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtagName */])(currentHashtagName));
+            this.setState({ value: currentHashtagName, items: this.state.items });
+
+            suggestionsQuery.refetch({ partialHashtag: currentHashtagName }).then(function (dataObject) {
+                var suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion['' + currentHashtagName].suggestions;
+
+                hashtagQuery.refetch({ name: currentHashtagName }).then(function (dataObject) {
+                    if (dataObject.data.hashtag) {
+                        _this2.props.dispatch(Object(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtagName */])(dataObject.data.hashtag.name));
+                    } else {
+                        _this2.props.dispatch(Object(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtagName */])(currentHashtagName));
+                    }
+                    _this2.setState({ items: suggestions });
+                });
+            });
+        }
+    }, {
+        key: 'handleSelect',
+        value: function handleSelect(val) {
+            var _this3 = this;
+
+            var hashtagQuery = this.props.hashtagQuery;
+
+            hashtagQuery.refetch({ name: val }).then(function (dataObject) {
+                if (dataObject.data.hashtag) {
+                    _this3.props.dispatch(Object(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtagName */])(dataObject.data.hashtag.name));
+                } else {
+                    _this3.props.dispatch(Object(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtagName */])(val));
+                }
+            });
+            this.setState({ value: val });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_autocomplete___default.a, {
+                getItemValue: this.handleGetItemValue,
+                renderItem: this.handleRenderItem,
+                items: this.state.items,
+                value: this.state.value,
+                onChange: this.handleChange,
+                onSelect: this.handleSelect,
+                inputProps: {
+                    size: "23"
+                },
+                wrapperStyle: {
+                    display: "inline-block"
+                },
+                menuStyle: {
+                    background: "#e4be45",
+                    position: "fixed"
+                }
+            });
+        }
+    }]);
+
+    return HashtagAutocomplete;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["compose"])(Object(__WEBPACK_IMPORTED_MODULE_3_react_redux__["a" /* connect */])(), hashtagQuery, suggestionsQuery, addHashtagMutation)(HashtagAutocomplete));
+
+/***/ }),
+
+/***/ 492:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_graphql_tag__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_graphql_tag___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_graphql_tag__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_apollo__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__utility_image_lookup__ = __webpack_require__(384);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _templateObject = _taggedTemplateLiteral(['\n  query topCount($bump: String!, $topCountType: String!) {\n    topCount(bump: $bump, topCountType: $topCountType) {\n      name\n      count\n    }\n  }\n'], ['\n  query topCount($bump: String!, $topCountType: String!) {\n    topCount(bump: $bump, topCountType: $topCountType) {\n      name\n      count\n    }\n  }\n']);
@@ -873,7 +932,7 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 
 
 
-var topCountQuery = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject), {
+var topCountQuery = Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject), {
     data: "topCount",
     name: "topCountQuery"
 });
@@ -1014,31 +1073,22 @@ var BumpDisplay = function (_React$PureComponent) {
     return BumpDisplay;
 }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.PureComponent);
 
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["compose"])(topCountQuery)(BumpDisplay));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["compose"])(topCountQuery)(BumpDisplay));
 
 /***/ }),
 
-/***/ 189:
+/***/ 93:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(5);
+/* unused harmony export NotFound */
+/* unused harmony export Redirect */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_graphql_tag__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_graphql_tag___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_graphql_tag__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_apollo___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_apollo__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_react_redux__ = __webpack_require__(93);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_actions__ = __webpack_require__(67);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_autocomplete__ = __webpack_require__(249);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_react_autocomplete___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_react_autocomplete__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_router_dom__ = __webpack_require__(35);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _templateObject = _taggedTemplateLiteral(['\n  query suggestions($partialHashtag: String!) {\n    suggestions(partialHashtag: $partialHashtag)\n  }\n'], ['\n  query suggestions($partialHashtag: String!) {\n    suggestions(partialHashtag: $partialHashtag)\n  }\n']),
-    _templateObject2 = _taggedTemplateLiteral(['\n  query hashtag($name: String!) {\n    hashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n'], ['\n  query hashtag($name: String!) {\n    hashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n']),
-    _templateObject3 = _taggedTemplateLiteral(['\n  mutation addHashtag($name: String!) {\n    addHashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n'], ['\n  mutation addHashtag($name: String!) {\n    addHashtag(name: $name) {\n      name\n      yayCount\n      grrrCount\n      dunnoCount\n      mehCount\n    }\n  }\n']);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -1046,191 +1096,140 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+/* eslint-disable no-param-reassign */
+
+// ----------------------
+// IMPORTS
 
 
 
 
 
 
+// ----------------------
 
+// <Status code="xxx"> component.  Updates the context router's context, which
+// can be used by the server handler to respond to the status on the server.
 
+var Status = function (_React$PureComponent) {
+  _inherits(Status, _React$PureComponent);
 
-var suggestionsQuery = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject), {
-    name: "suggestionsQuery",
-    options: {
-        variables: { partialHashtag: "!" }
+  function Status() {
+    _classCallCheck(this, Status);
+
+    return _possibleConstructorReturn(this, (Status.__proto__ || Object.getPrototypeOf(Status)).apply(this, arguments));
+  }
+
+  _createClass(Status, [{
+    key: 'render',
+    value: function render() {
+      var _props = this.props,
+          code = _props.code,
+          children = _props.children;
+
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["c" /* Route */], { render: function render(_ref) {
+          var staticContext = _ref.staticContext;
+
+          if (staticContext) {
+            staticContext.status = code;
+          }
+          return children;
+        } });
     }
-});
+  }]);
 
-var hashtagQuery = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject2), {
-    name: "hashtagQuery",
-    options: {
-        variables: { name: "" }
+  return Status;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.PureComponent);
+
+// <NotFound> component.  If this renders on the server in development mode,
+// it will attempt to proxyify the request to the upstream `webpack-dev-server`.
+// In production, it will issue a hard 404 and render.  In the browser, it will
+// simply render.
+
+
+Status.propTypes = {
+  code: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.number.isRequired,
+  children: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.node
+};
+Status.defaultProps = {
+  children: null
+};
+var NotFound = function (_React$PureComponent2) {
+  _inherits(NotFound, _React$PureComponent2);
+
+  function NotFound() {
+    _classCallCheck(this, NotFound);
+
+    return _possibleConstructorReturn(this, (NotFound.__proto__ || Object.getPrototypeOf(NotFound)).apply(this, arguments));
+  }
+
+  _createClass(NotFound, [{
+    key: 'render',
+    value: function render() {
+      var children = this.props.children;
+
+
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        Status,
+        { code: 404 },
+        children
+      );
     }
-});
+  }]);
 
-var addHashtagMutation = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["graphql"])(__WEBPACK_IMPORTED_MODULE_1_graphql_tag___default()(_templateObject3));
+  return NotFound;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.PureComponent);
 
-var HashtagAutocomplete = function (_React$Component) {
-    _inherits(HashtagAutocomplete, _React$Component);
+// <Redirect> component. Mirrors React Router's component by the same name,
+// except it sets a 301/302 status code for setting server-side HTTP headers.
+NotFound.propTypes = {
+  children: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.node
+};
+NotFound.defaultProps = {
+  children: null
+};
+var Redirect = function (_React$PureComponent3) {
+  _inherits(Redirect, _React$PureComponent3);
 
-    function HashtagAutocomplete(props) {
-        _classCallCheck(this, HashtagAutocomplete);
+  function Redirect() {
+    _classCallCheck(this, Redirect);
 
-        var _this = _possibleConstructorReturn(this, (HashtagAutocomplete.__proto__ || Object.getPrototypeOf(HashtagAutocomplete)).call(this, props));
+    return _possibleConstructorReturn(this, (Redirect.__proto__ || Object.getPrototypeOf(Redirect)).apply(this, arguments));
+  }
 
-        _this.state = { value: '', items: [] };
+  _createClass(Redirect, [{
+    key: 'render',
+    value: function render() {
+      var _props2 = this.props,
+          to = _props2.to,
+          from = _props2.from,
+          push = _props2.push,
+          permanent = _props2.permanent;
 
-        _this.handleSelect = _this.handleSelect.bind(_this);
-        _this.handleChange = _this.handleChange.bind(_this);
-        _this.handleGetItemValue = _this.handleGetItemValue.bind(_this);
-        _this.handleRenderItem = _this.handleRenderItem.bind(_this);
-        return _this;
+      var code = permanent ? 301 : 302;
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        Status,
+        { code: code },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_react_router_dom__["b" /* Redirect */], { to: to, from: from, push: push })
+      );
     }
+  }]);
 
-    _createClass(HashtagAutocomplete, [{
-        key: 'handleRenderItem',
-        value: function handleRenderItem(item, isHighlighted) {
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-                'div',
-                { className: isHighlighted ? __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss___default.a.autocompleteRenderHighlightedItem : __WEBPACK_IMPORTED_MODULE_6__style_hashbump_scss___default.a.autocompleteRenderItem },
-                item.term
-            );
-        }
-    }, {
-        key: 'handleGetItemValue',
-        value: function handleGetItemValue(item) {
-            return item.term;
-        }
-    }, {
-        key: 'handleChange',
-        value: function handleChange(event) {
-            var _this2 = this;
-
-            var suggestionsQuery = this.props.suggestionsQuery;
-            var hashtagQuery = this.props.hashtagQuery;
-            var currentHashtagName = event.target.value;
-
-            this.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtagName */])(currentHashtagName));
-            this.setState({ value: currentHashtagName, items: this.state.items });
-
-            suggestionsQuery.refetch({ partialHashtag: currentHashtagName }).then(function (dataObject) {
-                var suggestions = JSON.parse(dataObject.data.suggestions[0]).suggest.analyzedSuggestion['' + currentHashtagName].suggestions;
-
-                hashtagQuery.refetch({ name: currentHashtagName }).then(function (dataObject) {
-                    if (dataObject.data.hashtag) {
-                        _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtagName */])(dataObject.data.hashtag.name));
-                    } else {
-                        _this2.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtagName */])(currentHashtagName));
-                    }
-                    _this2.setState({ items: suggestions });
-                });
-            });
-        }
-    }, {
-        key: 'handleSelect',
-        value: function handleSelect(val) {
-            var _this3 = this;
-
-            var hashtagQuery = this.props.hashtagQuery;
-
-            hashtagQuery.refetch({ name: val }).then(function (dataObject) {
-                if (dataObject.data.hashtag) {
-                    _this3.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtagName */])(dataObject.data.hashtag.name));
-                } else {
-                    _this3.props.dispatch(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_4__store_actions__["a" /* setCurrentHashtagName */])(val));
-                }
-            });
-            this.setState({ value: val });
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-
-            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_5_react_autocomplete___default.a, {
-                getItemValue: this.handleGetItemValue,
-                renderItem: this.handleRenderItem,
-                items: this.state.items,
-                value: this.state.value,
-                onChange: this.handleChange,
-                onSelect: this.handleSelect,
-                inputProps: {
-                    size: "23"
-                },
-                wrapperStyle: {
-                    display: "inline-block"
-                },
-                menuStyle: {
-                    background: "#e4be45",
-                    position: "fixed"
-                }
-            });
-        }
-    }]);
-
-    return HashtagAutocomplete;
-}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
-
-/* harmony default export */ __webpack_exports__["a"] = (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_react_apollo__["compose"])(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_react_redux__["a" /* connect */])(), hashtagQuery, suggestionsQuery, addHashtagMutation)(HashtagAutocomplete));
-
-/***/ }),
-
-/***/ 190:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = currentHashtagName;
-function currentHashtagName() {
-    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-    var action = arguments[1];
-
-    switch (action.type) {
-        case 'SET_CURRENT_HASHTAG_NAME':
-            return action.hashtagName;
-        default:
-            return state;
-    }
-}
-
-/***/ }),
-
-/***/ 214:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__.p + "assets/img/hashbump-logo-2.1d23e4579aaf0aaa22df9d983cce6923.svg";
-
-/***/ }),
-
-/***/ 376:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(165);
-
-
-/***/ }),
-
-/***/ 67:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = setCurrentHashtagName;
-function setCurrentHashtagName(hashtagName) {
-    return {
-        type: 'SET_CURRENT_HASHTAG_NAME',
-        hashtagName: hashtagName
-    };
-}
-
-/***/ }),
-
-/***/ 68:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-module.exports = {"bumpButton":"bumpButton-28LWxXFSiz4-fz6t7Y7Zj_","hashbump":"hashbump-2zwODwJ9mdtmsmwCp7FamT","autocompleteRenderHighlightedItem":"autocompleteRenderHighlightedItem-gH0fYDnSx0RYJVa2rotcS","autocompleteRenderItem":"autocompleteRenderItem-3367xYX9MqO9x39CVojAAQ","hashtag":"hashtag-33Kk32V-tY0FXvyPkC-BYk","buttonAndAutocompleteContainer":"buttonAndAutocompleteContainer-f4CESqFxiSBiWE_ulg665","nameSpan":"nameSpan-2bH2nmExuQDVhUviqren0I","nameSpanHash":"nameSpanHash-oE6TIx1HWGeXarRKW0zhf","nameSpanBump":"nameSpanBump-3fnP-ALfoXcTAYtWZetQd2"};
+  return Redirect;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.PureComponent);
+Redirect.propTypes = {
+  to: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string, __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object]).isRequired,
+  from: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string,
+  push: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool,
+  permanent: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.bool
+};
+Redirect.defaultProps = {
+  from: null,
+  push: false,
+  permanent: false
+};
 
 /***/ })
 
-},[376]);
+},[107]);
 //# sourceMappingURL=browser.js.map
