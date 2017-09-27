@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -77,6 +77,18 @@ module.exports = require("prop-types");
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+module.exports = require("styled-components");
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("rebass");
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -329,19 +341,19 @@ if (true) {
 exports.default = new Config();
 
 /***/ }),
-/* 3 */
+/* 5 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-apollo");
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, exports) {
 
 module.exports = require("chalk");
 
 /***/ }),
-/* 5 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -375,25 +387,25 @@ function getServerURL(host = "localhost", port = "8081", allowSSL = true) {
 }
 
 /***/ }),
-/* 6 */
+/* 8 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-helmet");
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports) {
 
 module.exports = require("graphql");
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-router-dom");
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -412,7 +424,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRouterDom = __webpack_require__(8);
+var _reactRouterDom = __webpack_require__(10);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -496,38 +508,32 @@ Redirect.defaultProps = {
 };
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-module.exports = require("styled-components");
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports) {
-
-module.exports = require("rebass");
-
-/***/ }),
 /* 12 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-module.exports = __webpack_require__(13);
-
+module.exports = require("react-redux");
 
 /***/ }),
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports = __webpack_require__(14);
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
-var _chalk = __webpack_require__(4);
+var _chalk = __webpack_require__(6);
 
 var _chalk2 = _interopRequireDefault(_chalk);
 
-var _console = __webpack_require__(14);
+var _console = __webpack_require__(15);
 
-var _server = __webpack_require__(17);
+var _server = __webpack_require__(18);
 
 var _server2 = _interopRequireDefault(_server);
 
@@ -579,7 +585,7 @@ const scripts = ['vendor.js', 'browser.js'].map(key => `/${key}`);
 })();
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -590,19 +596,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.logServerStarted = logServerStarted;
 
-var _boxen = __webpack_require__(15);
+var _boxen = __webpack_require__(16);
 
 var _boxen2 = _interopRequireDefault(_boxen);
 
-var _chalk = __webpack_require__(4);
+var _chalk = __webpack_require__(6);
 
 var _chalk2 = _interopRequireDefault(_chalk);
 
-var _ip = __webpack_require__(16);
+var _ip = __webpack_require__(17);
 
 var _ip2 = _interopRequireDefault(_ip);
 
-var _env = __webpack_require__(5);
+var _env = __webpack_require__(7);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -639,19 +645,19 @@ function logServerStarted(opt = {}) {
 // Chalk library, to add colour to our console logs
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports) {
 
 module.exports = require("boxen");
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports) {
 
 module.exports = require("ip");
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -663,91 +669,91 @@ Object.defineProperty(exports, "__esModule", {
 exports.staticMiddleware = staticMiddleware;
 exports.createReactHandler = createReactHandler;
 
-var _stream = __webpack_require__(18);
+var _stream = __webpack_require__(19);
 
-var _http = __webpack_require__(19);
+var _http = __webpack_require__(20);
 
 var _http2 = _interopRequireDefault(_http);
 
-var _https = __webpack_require__(20);
+var _https = __webpack_require__(21);
 
 var _https2 = _interopRequireDefault(_https);
 
-__webpack_require__(21);
+__webpack_require__(22);
 
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _server = __webpack_require__(22);
+var _server = __webpack_require__(23);
 
 var _server2 = _interopRequireDefault(_server);
 
-var _koa = __webpack_require__(23);
+var _koa = __webpack_require__(24);
 
 var _koa2 = _interopRequireDefault(_koa);
 
-var _reactApollo = __webpack_require__(3);
+var _reactApollo = __webpack_require__(5);
 
-var _koaSslify = __webpack_require__(24);
+var _koaSslify = __webpack_require__(25);
 
 var _koaSslify2 = _interopRequireDefault(_koaSslify);
 
-var _kcors = __webpack_require__(25);
+var _kcors = __webpack_require__(26);
 
 var _kcors2 = _interopRequireDefault(_kcors);
 
-var _koaSend = __webpack_require__(26);
+var _koaSend = __webpack_require__(27);
 
 var _koaSend2 = _interopRequireDefault(_koaSend);
 
-var _koaHelmet = __webpack_require__(27);
+var _koaHelmet = __webpack_require__(28);
 
 var _koaHelmet2 = _interopRequireDefault(_koaHelmet);
 
-var _koaRouter = __webpack_require__(28);
+var _koaRouter = __webpack_require__(29);
 
 var _koaRouter2 = _interopRequireDefault(_koaRouter);
 
-var _microseconds = __webpack_require__(29);
+var _microseconds = __webpack_require__(30);
 
 var _microseconds2 = _interopRequireDefault(_microseconds);
 
-var _reactRouter = __webpack_require__(30);
+var _reactRouter = __webpack_require__(31);
 
-var _reactHelmet = __webpack_require__(6);
+var _reactHelmet = __webpack_require__(8);
 
 var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
-var _apolloServerKoa = __webpack_require__(31);
+var _apolloServerKoa = __webpack_require__(32);
 
-var _apolloLocalQuery = __webpack_require__(32);
+var _apolloLocalQuery = __webpack_require__(33);
 
 var _apolloLocalQuery2 = _interopRequireDefault(_apolloLocalQuery);
 
-var _graphql = __webpack_require__(7);
+var _graphql = __webpack_require__(9);
 
 var graphql = _interopRequireWildcard(_graphql);
 
-var _app = __webpack_require__(33);
+var _app = __webpack_require__(34);
 
 var _app2 = _interopRequireDefault(_app);
 
-var _redux = __webpack_require__(56);
+var _redux = __webpack_require__(62);
 
 var _redux2 = _interopRequireDefault(_redux);
 
-var _ssr = __webpack_require__(60);
+var _ssr = __webpack_require__(66);
 
 var _ssr2 = _interopRequireDefault(_ssr);
 
-var _apollo = __webpack_require__(61);
+var _apollo = __webpack_require__(67);
 
-var _config = __webpack_require__(2);
+var _config = __webpack_require__(4);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _paths = __webpack_require__(62);
+var _paths = __webpack_require__(68);
 
 var _paths2 = _interopRequireDefault(_paths);
 
@@ -1111,7 +1117,7 @@ _config2.default.routes.forEach(route => {
 // `koa-bodyparser` is used to process POST requests.  Check that it's enabled
 // (default) and apply a custom config if we need one
 if (_config2.default.enableBodyParser) {
-  app.use(__webpack_require__(64)(
+  app.use(__webpack_require__(70)(
   // Pass in any options that may have been set in userland
   _config2.default.bodyParserOptions));
 }
@@ -1151,97 +1157,97 @@ exports.default = {
 };
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 module.exports = require("stream");
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports) {
 
 module.exports = require("http");
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
 module.exports = require("https");
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports) {
 
 module.exports = require("isomorphic-fetch");
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-dom/server");
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports) {
 
 module.exports = require("koa");
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports) {
 
 module.exports = require("koa-sslify");
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports) {
 
 module.exports = require("kcors");
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports) {
 
 module.exports = require("koa-send");
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports) {
 
 module.exports = require("koa-helmet");
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports) {
 
 module.exports = require("koa-router");
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports) {
 
 module.exports = require("microseconds");
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-router");
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports) {
 
 module.exports = require("apollo-server-koa");
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports) {
 
 module.exports = require("apollo-local-query");
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1251,27 +1257,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _config = __webpack_require__(2);
+var _config = __webpack_require__(4);
 
 var _config2 = _interopRequireDefault(_config);
 
-var _counter = __webpack_require__(34);
+var _counter = __webpack_require__(35);
 
 var _counter2 = _interopRequireDefault(_counter);
 
-var _suggestionsReducer = __webpack_require__(69);
+var _suggestionsReducer = __webpack_require__(36);
 
 var _suggestionsReducer2 = _interopRequireDefault(_suggestionsReducer);
 
-var _valueReducer = __webpack_require__(70);
+var _valueReducer = __webpack_require__(37);
 
 var _valueReducer2 = _interopRequireDefault(_valueReducer);
 
-var _main = __webpack_require__(35);
+var _main = __webpack_require__(38);
 
 var _main2 = _interopRequireDefault(_main);
 
-__webpack_require__(53);
+__webpack_require__(59);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1355,7 +1361,7 @@ if (true) {
     Uncomment the next two lines to enable SSL!
   */
 
-  const cert = __webpack_require__(54);
+  const cert = __webpack_require__(60);
   _config2.default.enableSSL({ key: cert.key, cert: cert.cert });
 
   // If wanted, you could also run an *SSL-only* server by uncommenting:
@@ -1370,7 +1376,7 @@ if (true) {
   // Pass in the schema to use for our internal GraphQL server.  Note we're
   // doing this inside a `SERVER` block to avoid importing a potentially large
   // file, which would then inflate our client bundle unnecessarily
-  _config2.default.setGraphQLSchema(__webpack_require__(55).default);
+  _config2.default.setGraphQLSchema(__webpack_require__(61).default);
 
   /* CUSTOM ROUTES */
 
@@ -1480,7 +1486,7 @@ if (true) {
 exports.default = _main2.default;
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1512,7 +1518,141 @@ function reducer(state, action) {
 }
 
 /***/ }),
-/* 35 */
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = suggestionsReducer;
+
+var _immutabilityHelper = __webpack_require__(71);
+
+var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function suggestionsReducer(state, action) {
+    if (action.type === 'UPDATE_SUGGESTIONS') {
+        return (0, _immutabilityHelper2.default)(state, {
+            suggestions: { $set: action.suggestions }
+        });
+    }
+    if (action.type === 'CHANGE_SELECTION_ON_MOUSEOVER' && state.suggestions) {
+        let deselectIndex = null;
+        let selectIndex = 0;
+
+        state.suggestions.forEach((item, i) => {
+            if (item.selected === true) deselectIndex = i;
+            if (item.name === action.name) {
+                selectIndex = i;
+            }
+        });
+
+        if (deselectIndex !== null) {
+            return (0, _immutabilityHelper2.default)(state, {
+                suggestions: {
+                    [deselectIndex]: {
+                        selected: { $set: false }
+                    },
+                    [selectIndex]: {
+                        selected: { $set: true }
+                    }
+                }
+            });
+        } else {
+            return (0, _immutabilityHelper2.default)(state, {
+                suggestions: {
+                    [selectIndex]: {
+                        selected: { $set: true }
+                    }
+                }
+            });
+        }
+    }
+    if (action.type === 'MOVE_SUGGESTION_SELECTION_BY_ARROWS' && state.suggestions) {
+        const selectionExists = state.suggestions && state.suggestions.find(item => {
+            return item.selected === true;
+        });
+        let deselectIndex = null;
+        let selectIndex = 0;
+
+        if (selectionExists) {
+            if (action.subtype === 'UP') {
+                state.suggestions.find((item, i) => {
+                    if (item.selected === true && i > 0) {
+                        deselectIndex = i;
+                        selectIndex = i - 1;
+                        return true;
+                    } else if (item.selected === true && i === 0) {
+                        deselectIndex = null;
+                        selectIndex = 0;
+                        return true;
+                    }
+                });
+            } else if (action.subtype === 'DOWN') {
+                state.suggestions.find((item, i) => {
+                    if (item.selected === true && i < state.suggestions.length - 1) {
+                        deselectIndex = i;
+                        selectIndex = i + 1;
+                        return true;
+                    } else if (item.selected === true && i === state.suggestions.length - 1) {
+                        deselectIndex = null;
+                        selectIndex = i;
+                        return true;
+                    }
+                });
+            }
+        }
+        if (deselectIndex !== null) {
+            return (0, _immutabilityHelper2.default)(state, {
+                suggestions: {
+                    [deselectIndex]: {
+                        selected: { $set: false }
+                    },
+                    [selectIndex]: {
+                        selected: { $set: true }
+                    }
+                }
+            });
+        } else {
+            return (0, _immutabilityHelper2.default)(state, {
+                suggestions: {
+                    [selectIndex]: {
+                        selected: { $set: true }
+                    }
+                }
+            });
+        }
+    }
+    return state;
+}
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = valueReducer;
+function valueReducer(state, action) {
+    if (action.type === 'UPDATE_VALUE') {
+        return state.merge({
+            value: action.value
+        });
+    }
+    return state;
+}
+
+/***/ }),
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1526,33 +1666,33 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(8);
+var _reactRouterDom = __webpack_require__(10);
 
-var _reactHelmet = __webpack_require__(6);
+var _reactHelmet = __webpack_require__(8);
 
 var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 
-var _routing = __webpack_require__(9);
+var _routing = __webpack_require__(11);
 
-var _graphql = __webpack_require__(36);
+var _graphql = __webpack_require__(39);
 
 var _graphql2 = _interopRequireDefault(_graphql);
 
-var _routes = __webpack_require__(39);
+var _routes = __webpack_require__(42);
 
-var _redux = __webpack_require__(40);
+var _redux = __webpack_require__(43);
 
 var _redux2 = _interopRequireDefault(_redux);
 
-var _stats = __webpack_require__(42);
+var _stats = __webpack_require__(44);
 
 var _stats2 = _interopRequireDefault(_stats);
 
-var _styles = __webpack_require__(44);
+var _styles = __webpack_require__(46);
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _HashbumpContainer = __webpack_require__(48);
+var _HashbumpContainer = __webpack_require__(50);
 
 var _HashbumpContainer2 = _interopRequireDefault(_HashbumpContainer);
 
@@ -1614,7 +1754,7 @@ exports.default = () => _react2.default.createElement(_HashbumpContainer2.defaul
 // Routing via React Router
 
 /***/ }),
-/* 36 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1654,9 +1794,9 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactApollo = __webpack_require__(3);
+var _reactApollo = __webpack_require__(5);
 
-var _all_messages = __webpack_require__(37);
+var _all_messages = __webpack_require__(40);
 
 var _all_messages2 = _interopRequireDefault(_all_messages);
 
@@ -1720,7 +1860,7 @@ GraphQLMessage.defaultProps = {
 exports.default = GraphQLMessage;
 
 /***/ }),
-/* 37 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
@@ -1743,12 +1883,12 @@ exports.default = GraphQLMessage;
         }
       )
     }
-  doc.definitions = doc.definitions.concat(unique(__webpack_require__(38).definitions));
+  doc.definitions = doc.definitions.concat(unique(__webpack_require__(41).definitions));
 
 module.exports = doc;
 
 /***/ }),
-/* 38 */
+/* 41 */
 /***/ (function(module, exports) {
 
 
@@ -1775,7 +1915,7 @@ module.exports = doc;
 module.exports = doc;
 
 /***/ }),
-/* 39 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1794,7 +1934,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _routing = __webpack_require__(9);
+var _routing = __webpack_require__(11);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1857,7 +1997,7 @@ const WhenNotFound = exports.WhenNotFound = () => _react2.default.createElement(
 );
 
 /***/ }),
-/* 40 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1889,7 +2029,7 @@ var _propTypes = __webpack_require__(1);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _reactRedux = __webpack_require__(41);
+var _reactRedux = __webpack_require__(12);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1946,13 +2086,7 @@ ReduxCounter.defaultProps = {
 exports.default = ReduxCounter;
 
 /***/ }),
-/* 41 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-redux");
-
-/***/ }),
-/* 42 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1966,7 +2100,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _stats = __webpack_require__(43);
+var _stats = __webpack_require__(45);
 
 var _stats2 = _interopRequireDefault(_stats);
 
@@ -2009,7 +2143,7 @@ exports.default = () => {
 // Styles
 
 /***/ }),
-/* 43 */
+/* 45 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -2017,7 +2151,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 44 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2031,15 +2165,15 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _styles = __webpack_require__(45);
+var _styles = __webpack_require__(47);
 
 var _styles2 = _interopRequireDefault(_styles);
 
-var _styles3 = __webpack_require__(46);
+var _styles3 = __webpack_require__(48);
 
 var _styles4 = _interopRequireDefault(_styles3);
 
-var _styles5 = __webpack_require__(47);
+var _styles5 = __webpack_require__(49);
 
 var _styles6 = _interopRequireDefault(_styles5);
 
@@ -2078,7 +2212,7 @@ exports.default = () => _react2.default.createElement(
 // Styles
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -2087,7 +2221,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 46 */
+/* 48 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -2095,7 +2229,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 47 */
+/* 49 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -2103,7 +2237,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 48 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2120,41 +2254,41 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(41);
+var _reactRedux = __webpack_require__(12);
 
-var _styledComponents = __webpack_require__(10);
+var _styledComponents = __webpack_require__(2);
 
 var _styledComponents2 = _interopRequireDefault(_styledComponents);
 
-var _styledSystem = __webpack_require__(49);
+var _styledSystem = __webpack_require__(51);
 
-var _rebass = __webpack_require__(11);
+var _rebass = __webpack_require__(3);
 
-var _reactXRay = __webpack_require__(50);
+var _reactXRay = __webpack_require__(52);
 
 var _reactXRay2 = _interopRequireDefault(_reactXRay);
 
-var _hashtags = __webpack_require__(51);
+var _hashtags = __webpack_require__(53);
 
 var _hashtags2 = _interopRequireDefault(_hashtags);
 
-var _AutoSuggest = __webpack_require__(52);
+var _AutoSuggest = __webpack_require__(54);
 
 var _AutoSuggest2 = _interopRequireDefault(_AutoSuggest);
 
-var _TopHashtags = __webpack_require__(65);
+var _TopHashtags = __webpack_require__(55);
 
 var _TopHashtags2 = _interopRequireDefault(_TopHashtags);
 
-var _Header = __webpack_require__(66);
+var _Header = __webpack_require__(56);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _BumpButton = __webpack_require__(67);
+var _BumpButton = __webpack_require__(57);
 
 var _BumpButton2 = _interopRequireDefault(_BumpButton);
 
-var _theme = __webpack_require__(68);
+var _theme = __webpack_require__(58);
 
 var _theme2 = _interopRequireDefault(_theme);
 
@@ -2173,76 +2307,37 @@ let HashbumpContainer = (_dec = (0, _reactRedux.connect)(state => ({ suggestions
     }
 
     onMouseOverSuggestionsHandler(event) {
-
-        const suggestions = [];
-
-        // need to clone the whole array for the below to work
-        this.props.suggestions.suggestions.forEach((item, i) => {
-            suggestions[i] = Object.assign({}, item);
-        });
-
-        suggestions.forEach(item => {
-            if (item.selected === true) item.selected = false;
-            if (item.name === event.target.innerText) {
-                item.selected = true;
-            }
-        });
-        this.suggestionsHandler(suggestions);
+        this.props.dispatch({ type: 'CHANGE_SELECTION_ON_MOUSEOVER',
+            name: event.target.innerText });
     }
 
     onKeyDownSuggestionsHandler(event) {
 
-        if (!this.props.suggestions.suggestions) return;
+        const { suggestions } = this.props.suggestions;
 
-        const suggestions = [];
-
-        // need to clone the whole array for the below to work
-        this.props.suggestions.suggestions.forEach((item, i) => {
-            suggestions[i] = Object.assign({}, item);
-        });
+        if (!suggestions) return;
 
         const { value } = this.props.value;
-        const selectionExists = suggestions && suggestions.find(item => {
+        const selectionExists = suggestions.find(item => {
             return item.selected === true;
         });
 
         switch (event.keyCode) {
             // up
             case 38:
-                if (selectionExists) {
-                    suggestions.find((item, i) => {
-                        if (item.selected === true && i > 0) {
-                            item.selected = false;
-                            suggestions[i - 1].selected = true;
-                            return true;
-                        }
-                    });
-                } else if (suggestions) {
-                    suggestions[0].selected = true;
-                }
-                this.suggestionsHandler(suggestions);
+                this.props.dispatch({ type: 'MOVE_SUGGESTION_SELECTION_BY_ARROWS',
+                    subtype: 'UP' });
                 break;
             // down
             case 40:
-                if (selectionExists) {
-                    suggestions.find((item, i) => {
-                        if (item.selected === true && i < suggestions.length - 1) {
-                            item.selected = false;
-                            suggestions[i + 1].selected = true;
-                            return true;
-                        }
-                    });
-                } else if (suggestions) {
-                    suggestions[0].selected = true;
-                }
-                this.suggestionsHandler(suggestions);
+                this.props.dispatch({ type: 'MOVE_SUGGESTION_SELECTION_BY_ARROWS',
+                    subtype: 'DOWN' });
                 break;
             // enter
             case 13:
                 if (selectionExists) {
                     suggestions.find(item => {
                         if (item.selected === true) {
-                            item.selected = false;
                             this.valueHandler(item.name, true);
                             return true;
                         }
@@ -2251,6 +2346,7 @@ let HashbumpContainer = (_dec = (0, _reactRedux.connect)(state => ({ suggestions
                     this.valueHandler(value, true);
                 }
                 this.suggestionsHandler(null);
+
                 break;
             // esc
             case 27:
@@ -2345,19 +2441,19 @@ let HashbumpContainer = (_dec = (0, _reactRedux.connect)(state => ({ suggestions
 exports.default = HashbumpContainer;
 
 /***/ }),
-/* 49 */
+/* 51 */
 /***/ (function(module, exports) {
 
 module.exports = require("styled-system");
 
 /***/ }),
-/* 50 */
+/* 52 */
 /***/ (function(module, exports) {
 
 module.exports = require("react-x-ray");
 
 /***/ }),
-/* 51 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2371,7 +2467,7 @@ const hashtags = [{ name: "love" }, { name: "TagsForLikes" }, { name: "TagsForLi
 exports.default = hashtags;
 
 /***/ }),
-/* 52 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2385,9 +2481,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _styledComponents = __webpack_require__(10);
+var _styledComponents = __webpack_require__(2);
 
-var _rebass = __webpack_require__(11);
+var _rebass = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2463,77 +2559,6 @@ const AutoSuggest = props => {
 exports.default = (0, _styledComponents.withTheme)(AutoSuggest);
 
 /***/ }),
-/* 53 */
-/***/ (function(module, exports) {
-
-
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-// Self-signed certificate. Used for the purposes of running a demo SSL server
-// in the sample kit. Don't use in production!
-
-// Private key file
-const key = exports.key = `
------BEGIN RSA PRIVATE KEY-----
-MIIEogIBAAKCAQEArImW6u4aqhFf2sXDWjYiSg6W9e7LxNz6YbTk0E/G3vybHZk9
-4DLe/LLF2x2740WV60DLBXSw1PXbRdNX90MDUJey++BMNDrNlYNTgKC5jBSO54mD
-u3WKqhQfawYIaraNdzFix8yCgDgNyDuOziWTcIHRIO4DGH3zERcUH9yxrepoSuE9
-HqROVF+dsgTvP+I6CYULMTIDncQi5QaK6DScykAFs8lobmBuZ6ncEZJWejIzzdAo
-ZGaW1SQY7BwCauckiqbdlvYdLoRqijvnl/1IyYDBYbDpg+LGnw1US5dmzSf68biT
-VpdsmoZi4TgH8Cmnx1VKzGErvaFjJmguhiqqSwIDAQABAoIBAECVsFx4jJqkrlDi
-PmICaYt3MqMUpEoovcDdSdmAQ10tCZNmzXajFD1bXhzLYI2OerP5KQX9zEOrVE0q
-836nIxKD9oe6Skwyxsn0wskfYNVCzMt2+kytjx5jMe+J7pSjiQjY/7TypNcCJIaT
-ZL1d63bt4S6Gabo9S0NWdD4JCqmiu7X8AhJY4TcMr9taRKYH3ileGSRrp2jQyYGV
-+E11f8jb6VLFNWJzYV0aRftOefbFm8IQv13vGkxPtJ054tqPfdrIiI6GY01yRxS2
-xCPVREnw/nvPu2a3I7EdXdZjgkGMDt9rMGJOkWpEuk9UlEIQqsGRBZ2LfjnS8Kw2
-X65JbMECgYEA2vbjJ+0Q7tyxHxp468r84NGiZT/W92p5B31S1yE6czSFtk2rw2vK
-6nM5vlYwKnYt0ESlYtmdiWyl4mdrA2eclUczwuVbISlMxLphMs3puQFVcCoBYQ9q
-B1Z60BkNfevWXbSN9SH+E/yqqGA9HMuCKcyDIgKsYXvBNyPMlhNloSMCgYEAybhs
-3SbxS67NWlF7kT/A8rBDy8alWWAUcX4qD6fxzRpilrT7ChHPydMsgS9rd436GBId
-hlFSy+wKfwNvFeyZ59tSWBruEo/9tIPy/aSJRWgxPXcmtoMN/URNvM0igm+ModYA
-gMMddekNz+qjpD0a5gSMiw/nV18Kbg3N785haLkCgYB7YEcoFQTIgiNu8hyWR57r
-ElPdlvYKHL0rQisuOnPTvBFnYiZZC2Cfb+NmYuvq0QIJatSBeTqx1z007661kWkC
-F8eLlm4dpkayRo5D8RAzhRPeCl0SknvcvJagsK0QeZUk4XpnWArwuhpymx90HRsv
-cCOnQzhcCT4aUpqRKUbHXwKBgCX2rZZZc+QYe9FZsHW/l+KUxc2eDxRo/q/1XJkh
-tGIzawaN/QkCHScQtTmC4SjY8Y6CKkhTGdADFl6dGNT5eGWoYzDtsIyRyN+mTZ7q
-zmLfnxTATerfc0yNBExaFvqRX9g9XE7fabX9LHpK4I1SarOLe5/YWGObIW1g77cI
-ElERAoGAI0R8KGB6qLmAUx2Kt1LcrH8anhJ32q/qimYdae+0rpfJ7PgqtEyohJ2W
-cPOb3RRB2Cte/tYfhZse91lhuFMksp5R+/7H1aAA6u8vw2RFRVfpQMIq8Jag9xoA
-wreduKK1jVs++uTaWsz8hJm+OivXz+TVEbv14FxCG+UL0+jHgak=
------END RSA PRIVATE KEY-----
-`;
-
-// Certificate
-const cert = exports.cert = `
------BEGIN CERTIFICATE-----
-MIICpDCCAYwCCQDJpSJg3QqP6zANBgkqhkiG9w0BAQsFADAUMRIwEAYDVQQDDAls
-b2NhbGhvc3QwHhcNMTcwODI4MTUzNDM3WhcNMjcwODI2MTUzNDM3WjAUMRIwEAYD
-VQQDDAlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCs
-iZbq7hqqEV/axcNaNiJKDpb17svE3PphtOTQT8be/JsdmT3gMt78ssXbHbvjRZXr
-QMsFdLDU9dtF01f3QwNQl7L74Ew0Os2Vg1OAoLmMFI7niYO7dYqqFB9rBghqto13
-MWLHzIKAOA3IO47OJZNwgdEg7gMYffMRFxQf3LGt6mhK4T0epE5UX52yBO8/4joJ
-hQsxMgOdxCLlBoroNJzKQAWzyWhuYG5nqdwRklZ6MjPN0ChkZpbVJBjsHAJq5ySK
-pt2W9h0uhGqKO+eX/UjJgMFhsOmD4safDVRLl2bNJ/rxuJNWl2yahmLhOAfwKafH
-VUrMYSu9oWMmaC6GKqpLAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAGu3NXny0wNR
-ltJnRujm5hIDfvu/buG6KUcC/7VIfqWbu2sRjc6ItRWhLZhG46GpfBkU30drSlAe
-YAS8vxPPAXegX+X6spdWZu8YMAEncZQyOQsNnGGMUCH9D58Jb8XAGdYUp43M6bE8
-muhQs6HDdtEqYpimiGhgBRgnMgbit0dN4jn2U7x0Z+TXbOOJHSN7WGDj5Cm12Dw8
-dG1lxJQxNCJuqV/E7Mw6L6Q7KDxiY3hqUeR1wcIE7lgtzhgoFBWv2P0KCyiH3VB/
-N9pdArD1KgMyvF7gUZ9jCsrsovOoCfxj8EQ2acgELHDnKA9pfwE8dX5N5iIb8AoE
-qoTa3AOG8Vk=
------END CERTIFICATE-----
-`;
-
-/***/ }),
 /* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2544,412 +2569,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _graphql = __webpack_require__(7);
-
-// ----------------------
-
-// GraphQL can handle Promises from its `resolve()` calls, so we'll create a
-// simple async function that returns a simple message.  In practice, `resolve()`
-// will generally pull from a 'real' data source such as a database
-async function getMessage() {
-  return {
-    text: `Hello from the GraphQL server @ ${new Date()}`
-  };
-}
-
-// Message type.  Imagine this like static type hinting on the 'message'
-// object we're going to throw back to the user
-// Schema for sample GraphQL server.
-
-// ----------------------
-// IMPORTS
-
-// GraphQL schema library, for building our GraphQL schema
-const Message = new _graphql.GraphQLObjectType({
-  name: 'Message',
-  description: 'GraphQL server message',
-  fields() {
-    return {
-      text: {
-        type: _graphql.GraphQLString,
-        resolve(msg) {
-          return msg.text;
-        }
-      }
-    };
-  }
-});
-
-// Root query.  This is our 'public API'.
-const Query = new _graphql.GraphQLObjectType({
-  name: 'Query',
-  description: 'Root query object',
-  fields() {
-    return {
-      message: {
-        type: Message,
-        resolve() {
-          return getMessage();
-        }
-      }
-    };
-  }
-});
-
-// The resulting schema.  We insert our 'root' `Query` object, to tell our
-// GraphQL server what to respond to.  We could also add a root `mutation`
-// if we want to pass mutation queries that have side-effects (e.g. like HTTP POST)
-exports.default = new _graphql.GraphQLSchema({
-  query: Query
-});
-
-/***/ }),
-/* 56 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /* eslint-disable no-underscore-dangle */
-
-/*
-Custom Redux store creation.  Along with the default Apollo store,
-we can define custom reducers using `kit/config.addReducer()` which will
-be available on the server and in the browser.
-
-Store state is wrapped by `seamless-immutable` to enforce a pattern of
-immutability, to prevent weird side effects.
-*/
-
-// ----------------------
-// IMPORTS
-
-/* NPM */
-
-
-/* Local */
-
-
-exports.default = createNewStore;
-
-var _redux = __webpack_require__(57);
-
-var _reduxThunk = __webpack_require__(58);
-
-var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
-
-var _seamlessImmutable = __webpack_require__(59);
-
-var _seamlessImmutable2 = _interopRequireDefault(_seamlessImmutable);
-
-var _config = __webpack_require__(2);
-
-var _config2 = _interopRequireDefault(_config);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// ----------------------
-
-// Detect if we're both in the browser, AND we have dehydrated state
-const hasState = !!(!true && window.__STATE__);
-
-// Helper function that 'unwinds' the `config.reducers` Map, and provides
-// the `reducer` function or `initialState` (wrapped in `seamless-immutable`)
-// depending on what we asked for
-function unwind(reducer = true) {
-  // Unwind `config.reducers`.  If we're looking for the `reducer`, we'll
-  // wrap this in a `defaultReducer` function that properly handles the Redux
-  // 'undefined' sentinel value, or calls 'real' reducer if it's not undefined.
-  //
-  // If we're not looking for reducers, it'll pull out the `initialState`
-  // variable instead, which we'll further process below
-  const r = Object.assign({}, ...[].concat([..._config2.default.reducers].map(arr => ({
-    [arr[0]]: reducer ? function defaultReducer(state, action) {
-      // If `state` === undefined, this is Redux sending a sentinel value
-      // to check our set-up.  So we'll send back a plain object to prove
-      // that we're properly handling our reducer
-      if (typeof state === 'undefined') return {};
-
-      // Otherwise, call our real reducer with the {state, action}
-      return arr[1].reducer(state, action);
-    } : arr[1].initialState
-  }))));
-
-  // If this is a reducer, return at this point
-  if (reducer) return r;
-
-  // If not, we're looking for the state -- so let's map it and wrap the
-  // object in `seamless-immutable`, to avoid side-effects with Redux
-  return Object.assign({}, ...Object.keys(r).map(key => ({
-    [key]: (0, _seamlessImmutable2.default)(hasState && window.__STATE__[key] || r[key])
-  })));
-}
-
-function createNewStore(apolloClient) {
-  const store = (0, _redux.createStore)(
-  // By default, we'll use just the apollo reducer.  We can easily add our
-  // own here, for global store management outside of Apollo
-  (0, _redux.combineReducers)(_extends({
-    apollo: apolloClient.reducer()
-  }, unwind())),
-  // Initial server state, provided by the server.
-  _extends({
-    apollo: hasState && window.__STATE__.apollo || {}
-  }, unwind(false)), (0, _redux.compose)((0, _redux.applyMiddleware)(apolloClient.middleware(), _reduxThunk2.default),
-  // Enable Redux Devtools on the browser, for easy state debugging
-  // eslint-disable-next-line no-underscore-dangle
-   false ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f));
-
-  return store;
-}
-
-/***/ }),
-/* 57 */
-/***/ (function(module, exports) {
-
-module.exports = require("redux");
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports) {
-
-module.exports = require("redux-thunk");
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports) {
-
-module.exports = require("seamless-immutable");
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _propTypes = __webpack_require__(1);
+var _styledComponents = __webpack_require__(2);
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// ----------------------
-
-/* eslint-disable react/no-danger, no-return-assign, no-param-reassign */
-
-// Component to render the full HTML response in React
-
-// ----------------------
-// IMPORTS
-const Html = ({ head, scripts, window, css, children }) => _react2.default.createElement(
-  'html',
-  { lang: 'en', prefix: 'og: http://ogp.me/ns#' },
-  _react2.default.createElement(
-    'head',
-    null,
-    _react2.default.createElement('meta', { charSet: 'utf-8' }),
-    _react2.default.createElement('meta', { httpEquiv: 'X-UA-Compatible', content: 'IE=edge' }),
-    _react2.default.createElement('meta', { httpEquiv: 'Content-Language', content: 'en' }),
-    _react2.default.createElement('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }),
-    head.meta.toComponent(),
-    _react2.default.createElement('link', { rel: 'stylesheet', href: css }),
-    head.title.toComponent()
-  ),
-  _react2.default.createElement(
-    'body',
-    null,
-    _react2.default.createElement(
-      'div',
-      { id: 'main' },
-      children
-    ),
-    _react2.default.createElement('script', {
-      dangerouslySetInnerHTML: {
-        __html: Object.keys(window).reduce((out, key) => out += `window.${key}=${JSON.stringify(window[key])};`, '')
-      } }),
-    scripts.map(src => _react2.default.createElement('script', { key: src, src: src }))
-  )
-);
-
-Html.propTypes = {
-  head: _propTypes2.default.object.isRequired,
-  window: _propTypes2.default.object.isRequired,
-  scripts: _propTypes2.default.arrayOf(_propTypes2.default.string).isRequired,
-  css: _propTypes2.default.string.isRequired,
-  children: _propTypes2.default.element.isRequired
-};
-
-exports.default = Html;
-
-/***/ }),
-/* 61 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.createClient = createClient;
-exports.getNetworkInterface = getNetworkInterface;
-exports.browserClient = browserClient;
-
-var _reactApollo = __webpack_require__(3);
-
-var _config = __webpack_require__(2);
-
-var _config2 = _interopRequireDefault(_config);
-
-var _env = __webpack_require__(5);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// ----------------------
-
-// Helper function to create a new Apollo client, by merging in
-// passed options alongside any set by `config.setApolloOptions` and defaults
-
-
-/* ReactQL */
-
-// Configuration
-function createClient(opt = {}) {
-  return new _reactApollo.ApolloClient(Object.assign({
-    reduxRootSelector: state => state.apollo
-  }, _config2.default.apolloClientOptions, opt));
-}
-
-// Wrap `createNetworkInterface` to attach middleware
-
-
-// Get environment, to figure out where we're running the GraphQL server
-// ----------------------
-// IMPORTS
-
-/* NPM */
-
-// Apollo client library
-function getNetworkInterface(uri) {
-  const networkInterface = (0, _reactApollo.createNetworkInterface)({
-    uri,
-    opts: _config2.default.apolloNetworkOptions
-  });
-
-  // Attach middleware
-  networkInterface.use(_config2.default.apolloMiddleware.map(f => ({ applyMiddleware: f })));
-  networkInterface.useAfter(_config2.default.apolloAfterware.map(f => ({ applyAfterware: f })));
-
-  return networkInterface;
-}
-
-// Creates a new browser client
-function browserClient() {
-  // If we have an internal GraphQL server, we need to append it with a
-  // call to `getServerURL()` to add the correct host (in dev + production)
-  const uri = _config2.default.graphQLServer ? `${(0, _env.getServerURL)()}${_config2.default.graphQLEndpoint}` : _config2.default.graphQLEndpoint;
-
-  return createClient({
-    networkInterface: getNetworkInterface(uri)
-  });
-}
-
-/***/ }),
-/* 62 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// ----------------------
-// IMPORTS
-
-const path = __webpack_require__(63);
-
-// ----------------------
-
-// Parent folder = project root
-const root = path.join(__dirname, '..');
-
-module.exports = {
-  // Root project folder.  This is the current dir.
-  root,
-
-  // Kit.  ReactQL starter kit code.  You can edit these files, but be
-  // aware that upgrading your starter kit could overwrite them
-  kit: path.join(root, 'kit'),
-
-  // Entry points.  This is where webpack will look for our browser.js,
-  // server.js and vendor.js files to start building
-  entry: path.join(root, 'kit', 'entry'),
-
-  // Webpack configuration files
-  webpack: path.join(root, 'kit', 'webpack'),
-
-  // Views for internal use
-  views: path.join(root, 'kit', 'views'),
-
-  // Source path; where we'll put our application files
-  src: path.join(root, 'src'),
-
-  // Static files.  HTML, images, etc that can be processed by Webpack
-  // before being moved into the final `dist` folder
-  static: path.join(root, 'static'),
-
-  // Dist path; where bundled assets will wind up
-  dist: path.join(root, 'dist'),
-
-  // Dist path for development; where dev assets will wind up
-  distDev: path.resolve(root, 'dist', 'dev'),
-
-  // Public.  This is where our web server will start looking to serve
-  // static files from
-  public: path.join(root, 'dist', 'public')
-};
-
-/***/ }),
-/* 63 */
-/***/ (function(module, exports) {
-
-module.exports = require("path");
-
-/***/ }),
-/* 64 */
-/***/ (function(module, exports) {
-
-module.exports = require("koa-bodyparser");
-
-/***/ }),
-/* 65 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _styledComponents = __webpack_require__(10);
-
-var _rebass = __webpack_require__(11);
+var _rebass = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3034,7 +2660,7 @@ const _TopHashtags = props => {
 exports.default = (0, _styledComponents.withTheme)(_TopHashtags);
 
 /***/ }),
-/* 66 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3048,9 +2674,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _styledComponents = __webpack_require__(10);
+var _styledComponents = __webpack_require__(2);
 
-var _rebass = __webpack_require__(11);
+var _rebass = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3083,7 +2709,7 @@ const _Header = props => {
 exports.default = (0, _styledComponents.withTheme)(_Header);
 
 /***/ }),
-/* 67 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3097,9 +2723,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _styledComponents = __webpack_require__(10);
+var _styledComponents = __webpack_require__(2);
 
-var _rebass = __webpack_require__(11);
+var _rebass = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -3119,7 +2745,7 @@ const _BumpButton = props => {
 exports.default = (0, _styledComponents.withTheme)(_BumpButton);
 
 /***/ }),
-/* 68 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3205,44 +2831,706 @@ const theme = {
 exports.default = theme;
 
 /***/ }),
-/* 69 */
+/* 59 */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-exports.default = suggestionsReducer;
-function suggestionsReducer(state, action) {
-    if (action.type === 'UPDATE_SUGGESTIONS') {
-        return state.merge({
-            suggestions: action.suggestions
-        });
-    }
-    return state;
+// Self-signed certificate. Used for the purposes of running a demo SSL server
+// in the sample kit. Don't use in production!
+
+// Private key file
+const key = exports.key = `
+-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEArImW6u4aqhFf2sXDWjYiSg6W9e7LxNz6YbTk0E/G3vybHZk9
+4DLe/LLF2x2740WV60DLBXSw1PXbRdNX90MDUJey++BMNDrNlYNTgKC5jBSO54mD
+u3WKqhQfawYIaraNdzFix8yCgDgNyDuOziWTcIHRIO4DGH3zERcUH9yxrepoSuE9
+HqROVF+dsgTvP+I6CYULMTIDncQi5QaK6DScykAFs8lobmBuZ6ncEZJWejIzzdAo
+ZGaW1SQY7BwCauckiqbdlvYdLoRqijvnl/1IyYDBYbDpg+LGnw1US5dmzSf68biT
+VpdsmoZi4TgH8Cmnx1VKzGErvaFjJmguhiqqSwIDAQABAoIBAECVsFx4jJqkrlDi
+PmICaYt3MqMUpEoovcDdSdmAQ10tCZNmzXajFD1bXhzLYI2OerP5KQX9zEOrVE0q
+836nIxKD9oe6Skwyxsn0wskfYNVCzMt2+kytjx5jMe+J7pSjiQjY/7TypNcCJIaT
+ZL1d63bt4S6Gabo9S0NWdD4JCqmiu7X8AhJY4TcMr9taRKYH3ileGSRrp2jQyYGV
++E11f8jb6VLFNWJzYV0aRftOefbFm8IQv13vGkxPtJ054tqPfdrIiI6GY01yRxS2
+xCPVREnw/nvPu2a3I7EdXdZjgkGMDt9rMGJOkWpEuk9UlEIQqsGRBZ2LfjnS8Kw2
+X65JbMECgYEA2vbjJ+0Q7tyxHxp468r84NGiZT/W92p5B31S1yE6czSFtk2rw2vK
+6nM5vlYwKnYt0ESlYtmdiWyl4mdrA2eclUczwuVbISlMxLphMs3puQFVcCoBYQ9q
+B1Z60BkNfevWXbSN9SH+E/yqqGA9HMuCKcyDIgKsYXvBNyPMlhNloSMCgYEAybhs
+3SbxS67NWlF7kT/A8rBDy8alWWAUcX4qD6fxzRpilrT7ChHPydMsgS9rd436GBId
+hlFSy+wKfwNvFeyZ59tSWBruEo/9tIPy/aSJRWgxPXcmtoMN/URNvM0igm+ModYA
+gMMddekNz+qjpD0a5gSMiw/nV18Kbg3N785haLkCgYB7YEcoFQTIgiNu8hyWR57r
+ElPdlvYKHL0rQisuOnPTvBFnYiZZC2Cfb+NmYuvq0QIJatSBeTqx1z007661kWkC
+F8eLlm4dpkayRo5D8RAzhRPeCl0SknvcvJagsK0QeZUk4XpnWArwuhpymx90HRsv
+cCOnQzhcCT4aUpqRKUbHXwKBgCX2rZZZc+QYe9FZsHW/l+KUxc2eDxRo/q/1XJkh
+tGIzawaN/QkCHScQtTmC4SjY8Y6CKkhTGdADFl6dGNT5eGWoYzDtsIyRyN+mTZ7q
+zmLfnxTATerfc0yNBExaFvqRX9g9XE7fabX9LHpK4I1SarOLe5/YWGObIW1g77cI
+ElERAoGAI0R8KGB6qLmAUx2Kt1LcrH8anhJ32q/qimYdae+0rpfJ7PgqtEyohJ2W
+cPOb3RRB2Cte/tYfhZse91lhuFMksp5R+/7H1aAA6u8vw2RFRVfpQMIq8Jag9xoA
+wreduKK1jVs++uTaWsz8hJm+OivXz+TVEbv14FxCG+UL0+jHgak=
+-----END RSA PRIVATE KEY-----
+`;
+
+// Certificate
+const cert = exports.cert = `
+-----BEGIN CERTIFICATE-----
+MIICpDCCAYwCCQDJpSJg3QqP6zANBgkqhkiG9w0BAQsFADAUMRIwEAYDVQQDDAls
+b2NhbGhvc3QwHhcNMTcwODI4MTUzNDM3WhcNMjcwODI2MTUzNDM3WjAUMRIwEAYD
+VQQDDAlsb2NhbGhvc3QwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCs
+iZbq7hqqEV/axcNaNiJKDpb17svE3PphtOTQT8be/JsdmT3gMt78ssXbHbvjRZXr
+QMsFdLDU9dtF01f3QwNQl7L74Ew0Os2Vg1OAoLmMFI7niYO7dYqqFB9rBghqto13
+MWLHzIKAOA3IO47OJZNwgdEg7gMYffMRFxQf3LGt6mhK4T0epE5UX52yBO8/4joJ
+hQsxMgOdxCLlBoroNJzKQAWzyWhuYG5nqdwRklZ6MjPN0ChkZpbVJBjsHAJq5ySK
+pt2W9h0uhGqKO+eX/UjJgMFhsOmD4safDVRLl2bNJ/rxuJNWl2yahmLhOAfwKafH
+VUrMYSu9oWMmaC6GKqpLAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAGu3NXny0wNR
+ltJnRujm5hIDfvu/buG6KUcC/7VIfqWbu2sRjc6ItRWhLZhG46GpfBkU30drSlAe
+YAS8vxPPAXegX+X6spdWZu8YMAEncZQyOQsNnGGMUCH9D58Jb8XAGdYUp43M6bE8
+muhQs6HDdtEqYpimiGhgBRgnMgbit0dN4jn2U7x0Z+TXbOOJHSN7WGDj5Cm12Dw8
+dG1lxJQxNCJuqV/E7Mw6L6Q7KDxiY3hqUeR1wcIE7lgtzhgoFBWv2P0KCyiH3VB/
+N9pdArD1KgMyvF7gUZ9jCsrsovOoCfxj8EQ2acgELHDnKA9pfwE8dX5N5iIb8AoE
+qoTa3AOG8Vk=
+-----END CERTIFICATE-----
+`;
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _graphql = __webpack_require__(9);
+
+// ----------------------
+
+// GraphQL can handle Promises from its `resolve()` calls, so we'll create a
+// simple async function that returns a simple message.  In practice, `resolve()`
+// will generally pull from a 'real' data source such as a database
+async function getMessage() {
+  return {
+    text: `Hello from the GraphQL server @ ${new Date()}`
+  };
+}
+
+// Message type.  Imagine this like static type hinting on the 'message'
+// object we're going to throw back to the user
+// Schema for sample GraphQL server.
+
+// ----------------------
+// IMPORTS
+
+// GraphQL schema library, for building our GraphQL schema
+const Message = new _graphql.GraphQLObjectType({
+  name: 'Message',
+  description: 'GraphQL server message',
+  fields() {
+    return {
+      text: {
+        type: _graphql.GraphQLString,
+        resolve(msg) {
+          return msg.text;
+        }
+      }
+    };
+  }
+});
+
+// Root query.  This is our 'public API'.
+const Query = new _graphql.GraphQLObjectType({
+  name: 'Query',
+  description: 'Root query object',
+  fields() {
+    return {
+      message: {
+        type: Message,
+        resolve() {
+          return getMessage();
+        }
+      }
+    };
+  }
+});
+
+// The resulting schema.  We insert our 'root' `Query` object, to tell our
+// GraphQL server what to respond to.  We could also add a root `mutation`
+// if we want to pass mutation queries that have side-effects (e.g. like HTTP POST)
+exports.default = new _graphql.GraphQLSchema({
+  query: Query
+});
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; /* eslint-disable no-underscore-dangle */
+
+/*
+Custom Redux store creation.  Along with the default Apollo store,
+we can define custom reducers using `kit/config.addReducer()` which will
+be available on the server and in the browser.
+
+Store state is wrapped by `seamless-immutable` to enforce a pattern of
+immutability, to prevent weird side effects.
+*/
+
+// ----------------------
+// IMPORTS
+
+/* NPM */
+
+
+/* Local */
+
+
+exports.default = createNewStore;
+
+var _redux = __webpack_require__(63);
+
+var _reduxThunk = __webpack_require__(64);
+
+var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+
+var _seamlessImmutable = __webpack_require__(65);
+
+var _seamlessImmutable2 = _interopRequireDefault(_seamlessImmutable);
+
+var _config = __webpack_require__(4);
+
+var _config2 = _interopRequireDefault(_config);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// ----------------------
+
+// Detect if we're both in the browser, AND we have dehydrated state
+const hasState = !!(!true && window.__STATE__);
+
+// Helper function that 'unwinds' the `config.reducers` Map, and provides
+// the `reducer` function or `initialState` (wrapped in `seamless-immutable`)
+// depending on what we asked for
+function unwind(reducer = true) {
+  // Unwind `config.reducers`.  If we're looking for the `reducer`, we'll
+  // wrap this in a `defaultReducer` function that properly handles the Redux
+  // 'undefined' sentinel value, or calls 'real' reducer if it's not undefined.
+  //
+  // If we're not looking for reducers, it'll pull out the `initialState`
+  // variable instead, which we'll further process below
+  const r = Object.assign({}, ...[].concat([..._config2.default.reducers].map(arr => ({
+    [arr[0]]: reducer ? function defaultReducer(state, action) {
+      // If `state` === undefined, this is Redux sending a sentinel value
+      // to check our set-up.  So we'll send back a plain object to prove
+      // that we're properly handling our reducer
+      if (typeof state === 'undefined') return {};
+
+      // Otherwise, call our real reducer with the {state, action}
+      return arr[1].reducer(state, action);
+    } : arr[1].initialState
+  }))));
+
+  // If this is a reducer, return at this point
+  if (reducer) return r;
+
+  // If not, we're looking for the state -- so let's map it and wrap the
+  // object in `seamless-immutable`, to avoid side-effects with Redux
+  return Object.assign({}, ...Object.keys(r).map(key => ({
+    [key]: (0, _seamlessImmutable2.default)(hasState && window.__STATE__[key] || r[key])
+  })));
+}
+
+function createNewStore(apolloClient) {
+  const store = (0, _redux.createStore)(
+  // By default, we'll use just the apollo reducer.  We can easily add our
+  // own here, for global store management outside of Apollo
+  (0, _redux.combineReducers)(_extends({
+    apollo: apolloClient.reducer()
+  }, unwind())),
+  // Initial server state, provided by the server.
+  _extends({
+    apollo: hasState && window.__STATE__.apollo || {}
+  }, unwind(false)), (0, _redux.compose)((0, _redux.applyMiddleware)(apolloClient.middleware(), _reduxThunk2.default),
+  // Enable Redux Devtools on the browser, for easy state debugging
+  // eslint-disable-next-line no-underscore-dangle
+   false ? window.__REDUX_DEVTOOLS_EXTENSION__() : f => f));
+
+  return store;
 }
 
 /***/ }),
-/* 70 */
+/* 63 */
+/***/ (function(module, exports) {
+
+module.exports = require("redux");
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports) {
+
+module.exports = require("redux-thunk");
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports) {
+
+module.exports = require("seamless-immutable");
+
+/***/ }),
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-exports.default = valueReducer;
-function valueReducer(state, action) {
-    if (action.type === 'UPDATE_VALUE') {
-        return state.merge({
-            value: action.value
-        });
-    }
-    return state;
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(1);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// ----------------------
+
+/* eslint-disable react/no-danger, no-return-assign, no-param-reassign */
+
+// Component to render the full HTML response in React
+
+// ----------------------
+// IMPORTS
+const Html = ({ head, scripts, window, css, children }) => _react2.default.createElement(
+  'html',
+  { lang: 'en', prefix: 'og: http://ogp.me/ns#' },
+  _react2.default.createElement(
+    'head',
+    null,
+    _react2.default.createElement('meta', { charSet: 'utf-8' }),
+    _react2.default.createElement('meta', { httpEquiv: 'X-UA-Compatible', content: 'IE=edge' }),
+    _react2.default.createElement('meta', { httpEquiv: 'Content-Language', content: 'en' }),
+    _react2.default.createElement('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }),
+    head.meta.toComponent(),
+    _react2.default.createElement('link', { rel: 'stylesheet', href: css }),
+    head.title.toComponent()
+  ),
+  _react2.default.createElement(
+    'body',
+    null,
+    _react2.default.createElement(
+      'div',
+      { id: 'main' },
+      children
+    ),
+    _react2.default.createElement('script', {
+      dangerouslySetInnerHTML: {
+        __html: Object.keys(window).reduce((out, key) => out += `window.${key}=${JSON.stringify(window[key])};`, '')
+      } }),
+    scripts.map(src => _react2.default.createElement('script', { key: src, src: src }))
+  )
+);
+
+Html.propTypes = {
+  head: _propTypes2.default.object.isRequired,
+  window: _propTypes2.default.object.isRequired,
+  scripts: _propTypes2.default.arrayOf(_propTypes2.default.string).isRequired,
+  css: _propTypes2.default.string.isRequired,
+  children: _propTypes2.default.element.isRequired
+};
+
+exports.default = Html;
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createClient = createClient;
+exports.getNetworkInterface = getNetworkInterface;
+exports.browserClient = browserClient;
+
+var _reactApollo = __webpack_require__(5);
+
+var _config = __webpack_require__(4);
+
+var _config2 = _interopRequireDefault(_config);
+
+var _env = __webpack_require__(7);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// ----------------------
+
+// Helper function to create a new Apollo client, by merging in
+// passed options alongside any set by `config.setApolloOptions` and defaults
+
+
+/* ReactQL */
+
+// Configuration
+function createClient(opt = {}) {
+  return new _reactApollo.ApolloClient(Object.assign({
+    reduxRootSelector: state => state.apollo
+  }, _config2.default.apolloClientOptions, opt));
 }
+
+// Wrap `createNetworkInterface` to attach middleware
+
+
+// Get environment, to figure out where we're running the GraphQL server
+// ----------------------
+// IMPORTS
+
+/* NPM */
+
+// Apollo client library
+function getNetworkInterface(uri) {
+  const networkInterface = (0, _reactApollo.createNetworkInterface)({
+    uri,
+    opts: _config2.default.apolloNetworkOptions
+  });
+
+  // Attach middleware
+  networkInterface.use(_config2.default.apolloMiddleware.map(f => ({ applyMiddleware: f })));
+  networkInterface.useAfter(_config2.default.apolloAfterware.map(f => ({ applyAfterware: f })));
+
+  return networkInterface;
+}
+
+// Creates a new browser client
+function browserClient() {
+  // If we have an internal GraphQL server, we need to append it with a
+  // call to `getServerURL()` to add the correct host (in dev + production)
+  const uri = _config2.default.graphQLServer ? `${(0, _env.getServerURL)()}${_config2.default.graphQLEndpoint}` : _config2.default.graphQLEndpoint;
+
+  return createClient({
+    networkInterface: getNetworkInterface(uri)
+  });
+}
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+// ----------------------
+// IMPORTS
+
+const path = __webpack_require__(69);
+
+// ----------------------
+
+// Parent folder = project root
+const root = path.join(__dirname, '..');
+
+module.exports = {
+  // Root project folder.  This is the current dir.
+  root,
+
+  // Kit.  ReactQL starter kit code.  You can edit these files, but be
+  // aware that upgrading your starter kit could overwrite them
+  kit: path.join(root, 'kit'),
+
+  // Entry points.  This is where webpack will look for our browser.js,
+  // server.js and vendor.js files to start building
+  entry: path.join(root, 'kit', 'entry'),
+
+  // Webpack configuration files
+  webpack: path.join(root, 'kit', 'webpack'),
+
+  // Views for internal use
+  views: path.join(root, 'kit', 'views'),
+
+  // Source path; where we'll put our application files
+  src: path.join(root, 'src'),
+
+  // Static files.  HTML, images, etc that can be processed by Webpack
+  // before being moved into the final `dist` folder
+  static: path.join(root, 'static'),
+
+  // Dist path; where bundled assets will wind up
+  dist: path.join(root, 'dist'),
+
+  // Dist path for development; where dev assets will wind up
+  distDev: path.resolve(root, 'dist', 'dev'),
+
+  // Public.  This is where our web server will start looking to serve
+  // static files from
+  public: path.join(root, 'dist', 'public')
+};
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports) {
+
+module.exports = require("koa-bodyparser");
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var invariant = __webpack_require__(72);
+
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var splice = Array.prototype.splice;
+
+var assign = Object.assign || /* istanbul ignore next */ function assign(target, source) {
+  getAllKeys(source).forEach(function(key) {
+    if (hasOwnProperty.call(source, key)) {
+      target[key] = source[key];
+    }
+  });
+  return target;
+};
+
+var getAllKeys = typeof Object.getOwnPropertySymbols === 'function' ?
+  function(obj) { return Object.keys(obj).concat(Object.getOwnPropertySymbols(obj)) } :
+  /* istanbul ignore next */ function(obj) { return Object.keys(obj) };
+
+/* istanbul ignore next */
+function copy(object) {
+  if (object instanceof Array) {
+    return assign(object.constructor(object.length), object)
+  } else if (object && typeof object === 'object') {
+    var prototype = object.constructor && object.constructor.prototype
+    return assign(Object.create(prototype || null), object);
+  } else {
+    return object;
+  }
+}
+
+function newContext() {
+  var commands = assign({}, defaultCommands);
+  update.extend = function(directive, fn) {
+    commands[directive] = fn;
+  };
+  update.isEquals = function(a, b) { return a === b; };
+
+  return update;
+
+  function update(object, spec) {
+    if (!(Array.isArray(object) && Array.isArray(spec))) {
+      invariant(
+        !Array.isArray(spec),
+        'update(): You provided an invalid spec to update(). The spec may ' +
+        'not contain an array except as the value of $set, $push, $unshift, ' +
+        '$splice or any custom command allowing an array value.'
+      );
+    }
+
+    invariant(
+      typeof spec === 'object' && spec !== null,
+      'update(): You provided an invalid spec to update(). The spec and ' +
+      'every included key path must be plain objects containing one of the ' +
+      'following commands: %s.',
+      Object.keys(commands).join(', ')
+    );
+
+    var nextObject = object;
+    var index, key;
+    getAllKeys(spec).forEach(function(key) {
+      if (hasOwnProperty.call(commands, key)) {
+        var objectWasNextObject = object === nextObject;
+        nextObject = commands[key](spec[key], nextObject, spec, object);
+        if (objectWasNextObject && update.isEquals(nextObject, object)) {
+          nextObject = object;
+        }
+      } else {
+        var nextValueForKey = update(object[key], spec[key]);
+        if (!update.isEquals(nextValueForKey, nextObject[key]) || typeof nextValueForKey === 'undefined' && !hasOwnProperty.call(object, key)) {
+          if (nextObject === object) {
+            nextObject = copy(object);
+          }
+          nextObject[key] = nextValueForKey;
+        }
+      }
+    })
+    return nextObject;
+  }
+
+}
+
+var defaultCommands = {
+  $push: function(value, nextObject, spec) {
+    invariantPushAndUnshift(nextObject, spec, '$push');
+    return value.length ? nextObject.concat(value) : nextObject;
+  },
+  $unshift: function(value, nextObject, spec) {
+    invariantPushAndUnshift(nextObject, spec, '$unshift');
+    return value.length ? value.concat(nextObject) : nextObject;
+  },
+  $splice: function(value, nextObject, spec, originalObject) {
+    invariantSplices(nextObject, spec);
+    value.forEach(function(args) {
+      invariantSplice(args);
+      if (nextObject === originalObject && args.length) nextObject = copy(originalObject);
+      splice.apply(nextObject, args);
+    });
+    return nextObject;
+  },
+  $set: function(value, nextObject, spec) {
+    invariantSet(spec);
+    return value;
+  },
+  $toggle: function(targets, nextObject) {
+    invariantToggle(targets, nextObject);
+    var nextObjectCopy = targets.length ? copy(nextObject) : nextObject;
+
+    targets.forEach(function(target) {
+      nextObjectCopy[target] = !nextObject[target];
+    });
+
+    return nextObjectCopy;
+  },
+  $unset: function(value, nextObject, spec, originalObject) {
+    invariant(
+      Array.isArray(value),
+      'update(): expected spec of $unset to be an array; got %s. ' +
+      'Did you forget to wrap the key(s) in an array?',
+      value
+    );
+    value.forEach(function(key) {
+      if (Object.hasOwnProperty.call(nextObject, key)) {
+        if (nextObject === originalObject) nextObject = copy(originalObject);
+        delete nextObject[key];
+      }
+    });
+    return nextObject;
+  },
+  $merge: function(value, nextObject, spec, originalObject) {
+    invariantMerge(nextObject, value);
+    getAllKeys(value).forEach(function(key) {
+      if (value[key] !== nextObject[key]) {
+        if (nextObject === originalObject) nextObject = copy(originalObject);
+        nextObject[key] = value[key];
+      }
+    });
+    return nextObject;
+  },
+  $apply: function(value, original) {
+    invariantApply(value);
+    return value(original);
+  }
+};
+
+module.exports = newContext();
+module.exports.newContext = newContext;
+
+// invariants
+
+function invariantPushAndUnshift(value, spec, command) {
+  invariant(
+    Array.isArray(value),
+    'update(): expected target of %s to be an array; got %s.',
+    command,
+    value
+  );
+  var specValue = spec[command];
+  invariant(
+    Array.isArray(specValue),
+    'update(): expected spec of %s to be an array; got %s. ' +
+    'Did you forget to wrap your parameter in an array?',
+    command,
+    specValue
+  );
+}
+
+function invariantToggle(value) {
+  invariant(
+    Array.isArray(value),
+    'update(): expected spec of $toggle to be an array; got %s. ' +
+    'Did you forget to wrap the key(s) in an array?',
+    value
+  );
+}
+
+function invariantSplices(value, spec) {
+  invariant(
+    Array.isArray(value),
+    'Expected $splice target to be an array; got %s',
+    value
+  );
+  invariantSplice(spec['$splice']);
+}
+
+function invariantSplice(value) {
+  invariant(
+    Array.isArray(value),
+    'update(): expected spec of $splice to be an array of arrays; got %s. ' +
+    'Did you forget to wrap your parameters in an array?',
+    value
+  );
+}
+
+function invariantApply(fn) {
+  invariant(
+    typeof fn === 'function',
+    'update(): expected spec of $apply to be a function; got %s.',
+    fn
+  );
+}
+
+function invariantSet(spec) {
+  invariant(
+    Object.keys(spec).length === 1,
+    'Cannot have more than one key in an object with $set'
+  );
+}
+
+function invariantMerge(target, specValue) {
+  invariant(
+    specValue && typeof specValue === 'object',
+    'update(): $merge expects a spec of type \'object\'; got %s',
+    specValue
+  );
+  invariant(
+    target && typeof target === 'object',
+    'update(): $merge expects a target of type \'object\'; got %s',
+    target
+  );
+}
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, exports) {
+
+module.exports = require("invariant");
 
 /***/ })
 /******/ ]);
