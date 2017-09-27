@@ -35,45 +35,82 @@ export default class HashbumpContainer extends Component {
     }
 
     onMouseOverSuggestionsHandler(event) {
-        this.props.dispatch({type: 'CHANGE_SELECTION_ON_MOUSEOVER',
-                             name: event.target.innerText});
+
+        const suggestions = [];
+
+        // need to clone the whole array for the below to work
+        this.props.suggestions.suggestions.forEach((item, i) => {suggestions[i] = Object.assign({}, item)});
+                          
+        suggestions.forEach(item => {
+            if(item.selected === true) item.selected = false;
+            if(item.name === event.target.innerText) {
+                item.selected = true;
+            }
+        });
+        this.suggestionsHandler(suggestions);
     }
 
     onKeyDownSuggestionsHandler(event) {
 
-        const {suggestions}   = this.props.suggestions;
-
-        if(!suggestions) return;
+        if (!this.props.suggestions.suggestions) return;
         
+        const suggestions = [];
+
+        // need to clone the whole array for the below to work
+        this.props.suggestions.suggestions.forEach((item, i) => {suggestions[i] = Object.assign({}, item)});
+
         const {value}         = this.props.value;
-        const selectionExists = suggestions.find(item => {return item.selected === true;});
+        const selectionExists = suggestions &&
+                                suggestions.find(item => {return item.selected === true;});
 
         switch(event.keyCode) {
-        // up
+            // up
         case 38:
-            this.props.dispatch({type: 'MOVE_SUGGESTION_SELECTION_BY_ARROWS',
-                                 subtype: 'UP'});
-            break;
-        // down
-        case 40:
-            this.props.dispatch({type: 'MOVE_SUGGESTION_SELECTION_BY_ARROWS',
-                                 subtype: 'DOWN'});
-            break;
-        // enter
-        case 13:
             if(selectionExists) {
-                suggestions.find((item) => {
-                    if(item.selected === true) {
-                        this.valueHandler(item.name, true);
+                suggestions.find((item, i) => {
+                    if(item.selected === true && i > 0) {
+                        item.selected = false;
+                        suggestions[i-1].selected = true;
                         return true;
                     }
                 });
             }
+            else if(suggestions) {
+                suggestions[0].selected = true;                             
+            }
+            this.suggestionsHandler(suggestions);
+            break;
+            // down
+        case 40:
+            if(selectionExists) {
+                suggestions.find((item, i) => {
+                    if(item.selected === true && i < suggestions.length - 1) {
+                        item.selected = false;
+                        suggestions[i+1].selected = true;
+                        return true;
+                    }
+                });                             
+            }
+            else if(suggestions) {
+                suggestions[0].selected = true;
+            }
+            this.suggestionsHandler(suggestions);
+            break;
+            // enter
+        case 13:
+            if(selectionExists) {
+                suggestions.find((item) => {
+                    if(item.selected === true) {
+                        item.selected = false;
+                        this.valueHandler(item.name, true);
+                        return true;
+                    }
+                });                             
+            }
             else if(value) {
                 this.valueHandler(value, true);
-            }            
+            }
             this.suggestionsHandler(null);
-
             break;
             // esc
         case 27:
