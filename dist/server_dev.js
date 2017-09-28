@@ -1528,105 +1528,11 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = suggestionsReducer;
-
-var _immutabilityHelper = __webpack_require__(71);
-
-var _immutabilityHelper2 = _interopRequireDefault(_immutabilityHelper);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function suggestionsReducer(state, action) {
     if (action.type === 'UPDATE_SUGGESTIONS') {
-        return (0, _immutabilityHelper2.default)(state, {
-            suggestions: { $set: action.suggestions }
+        return state.merge({
+            suggestions: action.suggestions
         });
-    }
-    if (action.type === 'CHANGE_SELECTION_ON_MOUSEOVER' && state.suggestions) {
-        let deselectIndex = null;
-        let selectIndex = 0;
-
-        state.suggestions.forEach((item, i) => {
-            if (item.selected === true) deselectIndex = i;
-            if (item.name === action.name) {
-                selectIndex = i;
-            }
-        });
-
-        if (deselectIndex !== null) {
-            return (0, _immutabilityHelper2.default)(state, {
-                suggestions: {
-                    [deselectIndex]: {
-                        selected: { $set: false }
-                    },
-                    [selectIndex]: {
-                        selected: { $set: true }
-                    }
-                }
-            });
-        } else {
-            return (0, _immutabilityHelper2.default)(state, {
-                suggestions: {
-                    [selectIndex]: {
-                        selected: { $set: true }
-                    }
-                }
-            });
-        }
-    }
-    if (action.type === 'MOVE_SUGGESTION_SELECTION_BY_ARROWS' && state.suggestions) {
-        const selectionExists = state.suggestions && state.suggestions.find(item => {
-            return item.selected === true;
-        });
-        let deselectIndex = null;
-        let selectIndex = 0;
-
-        if (selectionExists) {
-            if (action.subtype === 'UP') {
-                state.suggestions.find((item, i) => {
-                    if (item.selected === true && i > 0) {
-                        deselectIndex = i;
-                        selectIndex = i - 1;
-                        return true;
-                    } else if (item.selected === true && i === 0) {
-                        deselectIndex = null;
-                        selectIndex = 0;
-                        return true;
-                    }
-                });
-            } else if (action.subtype === 'DOWN') {
-                state.suggestions.find((item, i) => {
-                    if (item.selected === true && i < state.suggestions.length - 1) {
-                        deselectIndex = i;
-                        selectIndex = i + 1;
-                        return true;
-                    } else if (item.selected === true && i === state.suggestions.length - 1) {
-                        deselectIndex = null;
-                        selectIndex = i;
-                        return true;
-                    }
-                });
-            }
-        }
-        if (deselectIndex !== null) {
-            return (0, _immutabilityHelper2.default)(state, {
-                suggestions: {
-                    [deselectIndex]: {
-                        selected: { $set: false }
-                    },
-                    [selectIndex]: {
-                        selected: { $set: true }
-                    }
-                }
-            });
-        } else {
-            return (0, _immutabilityHelper2.default)(state, {
-                suggestions: {
-                    [selectIndex]: {
-                        selected: { $set: true }
-                    }
-                }
-            });
-        }
     }
     return state;
 }
@@ -2302,58 +2208,6 @@ let HashbumpContainer = (_dec = (0, _reactRedux.connect)(state => ({ suggestions
 
         this.suggestionsHandler = this.suggestionsHandler.bind(this);
         this.valueHandler = this.valueHandler.bind(this);
-        this.onKeyDownSuggestionsHandler = this.onKeyDownSuggestionsHandler.bind(this);
-        this.onMouseOverSuggestionsHandler = this.onMouseOverSuggestionsHandler.bind(this);
-    }
-
-    onMouseOverSuggestionsHandler(event) {
-        this.props.dispatch({ type: 'CHANGE_SELECTION_ON_MOUSEOVER',
-            name: event.target.innerText });
-    }
-
-    onKeyDownSuggestionsHandler(event) {
-
-        const { suggestions } = this.props.suggestions;
-
-        if (!suggestions) return;
-
-        const { value } = this.props.value;
-        const selectionExists = suggestions.find(item => {
-            return item.selected === true;
-        });
-
-        switch (event.keyCode) {
-            // up
-            case 38:
-                this.props.dispatch({ type: 'MOVE_SUGGESTION_SELECTION_BY_ARROWS',
-                    subtype: 'UP' });
-                break;
-            // down
-            case 40:
-                this.props.dispatch({ type: 'MOVE_SUGGESTION_SELECTION_BY_ARROWS',
-                    subtype: 'DOWN' });
-                break;
-            // enter
-            case 13:
-                if (selectionExists) {
-                    suggestions.find(item => {
-                        if (item.selected === true) {
-                            this.valueHandler(item.name, true);
-                            return true;
-                        }
-                    });
-                } else if (value) {
-                    this.valueHandler(value, true);
-                }
-                this.suggestionsHandler(null);
-
-                break;
-            // esc
-            case 27:
-                this.suggestionsHandler(null);
-                this.valueHandler("", true);
-                break;
-        }
     }
 
     suggestionsHandler(suggestions) {
@@ -2412,9 +2266,7 @@ let HashbumpContainer = (_dec = (0, _reactRedux.connect)(state => ({ suggestions
                             suggestions: suggestions,
                             value: value,
                             suggestionsHandler: this.suggestionsHandler.bind(this),
-                            valueHandler: this.valueHandler.bind(this),
-                            onKeyDownSuggestionsHandler: this.onKeyDownSuggestionsHandler.bind(this),
-                            onMouseOverSuggestionsHandler: this.onMouseOverSuggestionsHandler.bind(this)
+                            valueHandler: this.valueHandler.bind(this)
                         })
                     ),
                     _react2.default.createElement(
@@ -2522,40 +2374,135 @@ const __Suggestions = props => {
 
 const _Suggestions = (0, _styledComponents.withTheme)(__Suggestions);
 
-const AutoSuggest = props => {
-    return _react2.default.createElement(
-        _rebass.Relative,
-        null,
-        _react2.default.createElement(_rebass.Input, { bg: props.theme.hashtagAutoSuggest.inputBg,
-            color: props.theme.hashtagAutoSuggest.inputFg,
-            pl: props.theme.hashtagAutoSuggest.inputPl,
-            pr: props.theme.hashtagAutoSuggest.inputPr,
-            pt: props.theme.hashtagAutoSuggest.inputPt,
-            pb: props.theme.hashtagAutoSuggest.inputPb,
-            ml: props.theme.hashtagAutoSuggest.inputMl,
-            mr: props.theme.hashtagAutoSuggest.inputMr,
-            mt: props.theme.hashtagAutoSuggest.inputMt,
-            mb: props.theme.hashtagAutoSuggest.inputMb,
-            style: { overflow: 'hidden',
-                border: props.theme.hashtagAutoSuggest.inputBorder,
-                borderRadius: props.theme.hashtagAutoSuggest.inputBorderRadius },
-            value: props.value,
-            onChange: event => {
-                props.valueHandler(event.target.value);
-            },
-            onKeyDown: props.onKeyDownSuggestionsHandler
-        }),
-        _react2.default.createElement(_Suggestions, {
-            suggestions: props.suggestions,
-            onClickSuggestions: event => {
-                props.suggestionsHandler(null);
-                props.valueHandler(event.target.innerText, true);
-            },
-            onMouseOverSuggestions: props.onMouseOverSuggestionsHandler
-        })
-    );
-};
+let AutoSuggest = class AutoSuggest extends _react.PureComponent {
 
+    constructor(props) {
+        super(props);
+
+        this.onKeyDownSuggestionsHandler = this.onKeyDownSuggestionsHandler.bind(this);
+        this.onMouseOverSuggestionsHandler = this.onMouseOverSuggestionsHandler.bind(this);
+    }
+
+    onMouseOverSuggestionsHandler(event) {
+
+        const suggestions = [];
+
+        this.props.suggestions.forEach((item, i) => {
+            suggestions[i] = Object.assign({}, item);
+        });
+
+        suggestions.forEach(item => {
+            if (item.selected === true) item.selected = false;
+            if (item.name === event.target.innerText) {
+                item.selected = true;
+            }
+        });
+        this.props.suggestionsHandler(suggestions);
+    }
+
+    onKeyDownSuggestionsHandler(event) {
+
+        if (!this.props.suggestions) return;
+
+        const suggestions = [];
+
+        this.props.suggestions.forEach((item, i) => {
+            suggestions[i] = Object.assign({}, item);
+        });
+
+        const { value } = this.props.value;
+        const selectionExists = suggestions && suggestions.find(item => {
+            return item.selected === true;
+        });
+
+        switch (event.keyCode) {
+            // up
+            case 38:
+                if (selectionExists) {
+                    suggestions.find((item, i) => {
+                        if (item.selected === true && i > 0) {
+                            item.selected = false;
+                            suggestions[i - 1].selected = true;
+                            return true;
+                        }
+                    });
+                } else if (suggestions) {
+                    suggestions[0].selected = true;
+                }
+                this.props.suggestionsHandler(suggestions);
+                break;
+            // down
+            case 40:
+                if (selectionExists) {
+                    suggestions.find((item, i) => {
+                        if (item.selected === true && i < suggestions.length - 1) {
+                            item.selected = false;
+                            suggestions[i + 1].selected = true;
+                            return true;
+                        }
+                    });
+                } else if (suggestions) {
+                    suggestions[0].selected = true;
+                }
+                this.props.suggestionsHandler(suggestions);
+                break;
+            // enter
+            case 13:
+                if (selectionExists) {
+                    suggestions.find(item => {
+                        if (item.selected === true) {
+                            item.selected = false;
+                            this.props.valueHandler(item.name, true);
+                            return true;
+                        }
+                    });
+                } else if (value) {
+                    this.props.valueHandler(value, true);
+                }
+                this.props.suggestionsHandler(null);
+                break;
+            // esc
+            case 27:
+                this.props.suggestionsHandler(null);
+                this.props.valueHandler("", true);
+                break;
+        }
+    }
+
+    render() {
+        return _react2.default.createElement(
+            _rebass.Relative,
+            null,
+            _react2.default.createElement(_rebass.Input, { bg: this.props.theme.hashtagAutoSuggest.inputBg,
+                color: this.props.theme.hashtagAutoSuggest.inputFg,
+                pl: this.props.theme.hashtagAutoSuggest.inputPl,
+                pr: this.props.theme.hashtagAutoSuggest.inputPr,
+                pt: this.props.theme.hashtagAutoSuggest.inputPt,
+                pb: this.props.theme.hashtagAutoSuggest.inputPb,
+                ml: this.props.theme.hashtagAutoSuggest.inputMl,
+                mr: this.props.theme.hashtagAutoSuggest.inputMr,
+                mt: this.props.theme.hashtagAutoSuggest.inputMt,
+                mb: this.props.theme.hashtagAutoSuggest.inputMb,
+                style: { overflow: 'hidden',
+                    border: this.props.theme.hashtagAutoSuggest.inputBorder,
+                    borderRadius: this.props.theme.hashtagAutoSuggest.inputBorderRadius },
+                value: this.props.value,
+                onChange: event => {
+                    this.props.valueHandler(event.target.value);
+                },
+                onKeyDown: this.onKeyDownSuggestionsHandler
+            }),
+            _react2.default.createElement(_Suggestions, {
+                suggestions: this.props.suggestions,
+                onClickSuggestions: event => {
+                    this.props.suggestionsHandler(null);
+                    this.props.valueHandler(event.target.innerText, true);
+                },
+                onMouseOverSuggestions: this.onMouseOverSuggestionsHandler
+            })
+        );
+    }
+};
 exports.default = (0, _styledComponents.withTheme)(AutoSuggest);
 
 /***/ }),
@@ -3299,238 +3246,6 @@ module.exports = require("path");
 /***/ (function(module, exports) {
 
 module.exports = require("koa-bodyparser");
-
-/***/ }),
-/* 71 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var invariant = __webpack_require__(72);
-
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-var splice = Array.prototype.splice;
-
-var assign = Object.assign || /* istanbul ignore next */ function assign(target, source) {
-  getAllKeys(source).forEach(function(key) {
-    if (hasOwnProperty.call(source, key)) {
-      target[key] = source[key];
-    }
-  });
-  return target;
-};
-
-var getAllKeys = typeof Object.getOwnPropertySymbols === 'function' ?
-  function(obj) { return Object.keys(obj).concat(Object.getOwnPropertySymbols(obj)) } :
-  /* istanbul ignore next */ function(obj) { return Object.keys(obj) };
-
-/* istanbul ignore next */
-function copy(object) {
-  if (object instanceof Array) {
-    return assign(object.constructor(object.length), object)
-  } else if (object && typeof object === 'object') {
-    var prototype = object.constructor && object.constructor.prototype
-    return assign(Object.create(prototype || null), object);
-  } else {
-    return object;
-  }
-}
-
-function newContext() {
-  var commands = assign({}, defaultCommands);
-  update.extend = function(directive, fn) {
-    commands[directive] = fn;
-  };
-  update.isEquals = function(a, b) { return a === b; };
-
-  return update;
-
-  function update(object, spec) {
-    if (!(Array.isArray(object) && Array.isArray(spec))) {
-      invariant(
-        !Array.isArray(spec),
-        'update(): You provided an invalid spec to update(). The spec may ' +
-        'not contain an array except as the value of $set, $push, $unshift, ' +
-        '$splice or any custom command allowing an array value.'
-      );
-    }
-
-    invariant(
-      typeof spec === 'object' && spec !== null,
-      'update(): You provided an invalid spec to update(). The spec and ' +
-      'every included key path must be plain objects containing one of the ' +
-      'following commands: %s.',
-      Object.keys(commands).join(', ')
-    );
-
-    var nextObject = object;
-    var index, key;
-    getAllKeys(spec).forEach(function(key) {
-      if (hasOwnProperty.call(commands, key)) {
-        var objectWasNextObject = object === nextObject;
-        nextObject = commands[key](spec[key], nextObject, spec, object);
-        if (objectWasNextObject && update.isEquals(nextObject, object)) {
-          nextObject = object;
-        }
-      } else {
-        var nextValueForKey = update(object[key], spec[key]);
-        if (!update.isEquals(nextValueForKey, nextObject[key]) || typeof nextValueForKey === 'undefined' && !hasOwnProperty.call(object, key)) {
-          if (nextObject === object) {
-            nextObject = copy(object);
-          }
-          nextObject[key] = nextValueForKey;
-        }
-      }
-    })
-    return nextObject;
-  }
-
-}
-
-var defaultCommands = {
-  $push: function(value, nextObject, spec) {
-    invariantPushAndUnshift(nextObject, spec, '$push');
-    return value.length ? nextObject.concat(value) : nextObject;
-  },
-  $unshift: function(value, nextObject, spec) {
-    invariantPushAndUnshift(nextObject, spec, '$unshift');
-    return value.length ? value.concat(nextObject) : nextObject;
-  },
-  $splice: function(value, nextObject, spec, originalObject) {
-    invariantSplices(nextObject, spec);
-    value.forEach(function(args) {
-      invariantSplice(args);
-      if (nextObject === originalObject && args.length) nextObject = copy(originalObject);
-      splice.apply(nextObject, args);
-    });
-    return nextObject;
-  },
-  $set: function(value, nextObject, spec) {
-    invariantSet(spec);
-    return value;
-  },
-  $toggle: function(targets, nextObject) {
-    invariantToggle(targets, nextObject);
-    var nextObjectCopy = targets.length ? copy(nextObject) : nextObject;
-
-    targets.forEach(function(target) {
-      nextObjectCopy[target] = !nextObject[target];
-    });
-
-    return nextObjectCopy;
-  },
-  $unset: function(value, nextObject, spec, originalObject) {
-    invariant(
-      Array.isArray(value),
-      'update(): expected spec of $unset to be an array; got %s. ' +
-      'Did you forget to wrap the key(s) in an array?',
-      value
-    );
-    value.forEach(function(key) {
-      if (Object.hasOwnProperty.call(nextObject, key)) {
-        if (nextObject === originalObject) nextObject = copy(originalObject);
-        delete nextObject[key];
-      }
-    });
-    return nextObject;
-  },
-  $merge: function(value, nextObject, spec, originalObject) {
-    invariantMerge(nextObject, value);
-    getAllKeys(value).forEach(function(key) {
-      if (value[key] !== nextObject[key]) {
-        if (nextObject === originalObject) nextObject = copy(originalObject);
-        nextObject[key] = value[key];
-      }
-    });
-    return nextObject;
-  },
-  $apply: function(value, original) {
-    invariantApply(value);
-    return value(original);
-  }
-};
-
-module.exports = newContext();
-module.exports.newContext = newContext;
-
-// invariants
-
-function invariantPushAndUnshift(value, spec, command) {
-  invariant(
-    Array.isArray(value),
-    'update(): expected target of %s to be an array; got %s.',
-    command,
-    value
-  );
-  var specValue = spec[command];
-  invariant(
-    Array.isArray(specValue),
-    'update(): expected spec of %s to be an array; got %s. ' +
-    'Did you forget to wrap your parameter in an array?',
-    command,
-    specValue
-  );
-}
-
-function invariantToggle(value) {
-  invariant(
-    Array.isArray(value),
-    'update(): expected spec of $toggle to be an array; got %s. ' +
-    'Did you forget to wrap the key(s) in an array?',
-    value
-  );
-}
-
-function invariantSplices(value, spec) {
-  invariant(
-    Array.isArray(value),
-    'Expected $splice target to be an array; got %s',
-    value
-  );
-  invariantSplice(spec['$splice']);
-}
-
-function invariantSplice(value) {
-  invariant(
-    Array.isArray(value),
-    'update(): expected spec of $splice to be an array of arrays; got %s. ' +
-    'Did you forget to wrap your parameters in an array?',
-    value
-  );
-}
-
-function invariantApply(fn) {
-  invariant(
-    typeof fn === 'function',
-    'update(): expected spec of $apply to be a function; got %s.',
-    fn
-  );
-}
-
-function invariantSet(spec) {
-  invariant(
-    Object.keys(spec).length === 1,
-    'Cannot have more than one key in an object with $set'
-  );
-}
-
-function invariantMerge(target, specValue) {
-  invariant(
-    specValue && typeof specValue === 'object',
-    'update(): $merge expects a spec of type \'object\'; got %s',
-    specValue
-  );
-  invariant(
-    target && typeof target === 'object',
-    'update(): $merge expects a target of type \'object\'; got %s',
-    target
-  );
-}
-
-
-/***/ }),
-/* 72 */
-/***/ (function(module, exports) {
-
-module.exports = require("invariant");
 
 /***/ })
 /******/ ]);

@@ -28,96 +28,8 @@ export default class HashbumpContainer extends Component {
     constructor(props) {
         super(props);
 
-        this.suggestionsHandler            = this.suggestionsHandler.bind(this);
-        this.valueHandler                  = this.valueHandler.bind(this);
-        this.onKeyDownSuggestionsHandler   = this.onKeyDownSuggestionsHandler.bind(this);
-        this.onMouseOverSuggestionsHandler = this.onMouseOverSuggestionsHandler.bind(this);
-    }
-
-    onMouseOverSuggestionsHandler(event) {
-
-        const suggestions = [];
-
-        // need to clone the whole array for the below to work
-        this.props.suggestions.suggestions.forEach((item, i) => {suggestions[i] = Object.assign({}, item)});
-                          
-        suggestions.forEach(item => {
-            if(item.selected === true) item.selected = false;
-            if(item.name === event.target.innerText) {
-                item.selected = true;
-            }
-        });
-        this.suggestionsHandler(suggestions);
-    }
-
-    onKeyDownSuggestionsHandler(event) {
-
-        if (!this.props.suggestions.suggestions) return;
-        
-        const suggestions = [];
-
-        // need to clone the whole array for the below to work
-        this.props.suggestions.suggestions.forEach((item, i) => {suggestions[i] = Object.assign({}, item)});
-
-        const {value}         = this.props.value;
-        const selectionExists = suggestions &&
-                                suggestions.find(item => {return item.selected === true;});
-
-        switch(event.keyCode) {
-            // up
-        case 38:
-            if(selectionExists) {
-                suggestions.find((item, i) => {
-                    if(item.selected === true && i > 0) {
-                        item.selected = false;
-                        suggestions[i-1].selected = true;
-                        return true;
-                    }
-                });
-            }
-            else if(suggestions) {
-                suggestions[0].selected = true;                             
-            }
-            this.suggestionsHandler(suggestions);
-            break;
-            // down
-        case 40:
-            if(selectionExists) {
-                suggestions.find((item, i) => {
-                    if(item.selected === true && i < suggestions.length - 1) {
-                        item.selected = false;
-                        suggestions[i+1].selected = true;
-                        return true;
-                    }
-                });                             
-            }
-            else if(suggestions) {
-                suggestions[0].selected = true;
-            }
-            this.suggestionsHandler(suggestions);
-            break;
-            // enter
-        case 13:
-            if(selectionExists) {
-                suggestions.find((item) => {
-                    if(item.selected === true) {
-                        item.selected = false;
-                        this.valueHandler(item.name, true);
-                        return true;
-                    }
-                });                             
-            }
-            else if(value) {
-                this.valueHandler(value, true);
-            }
-            this.suggestionsHandler(null);
-            break;
-            // esc
-        case 27:
-            this.suggestionsHandler(null);
-            this.valueHandler("", true);
-            break;
-        }
+        this.suggestionsHandler = this.suggestionsHandler.bind(this);
+        this.valueHandler       = this.valueHandler.bind(this);
     }
 
     suggestionsHandler(suggestions) {
@@ -169,8 +81,6 @@ export default class HashbumpContainer extends Component {
                        value={value}
                        suggestionsHandler={this.suggestionsHandler.bind(this)}
                        valueHandler={this.valueHandler.bind(this)}
-                       onKeyDownSuggestionsHandler={this.onKeyDownSuggestionsHandler.bind(this)}
-                       onMouseOverSuggestionsHandler={this.onMouseOverSuggestionsHandler.bind(this)}
                        />
                   </Flex>
                   <Flex align='center' justify='center'>

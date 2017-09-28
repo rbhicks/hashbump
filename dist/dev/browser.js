@@ -444,98 +444,13 @@ function reducer(state, action) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = suggestionsReducer;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_immutability_helper__ = __webpack_require__(299);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_immutability_helper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_immutability_helper__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 function suggestionsReducer(state, action) {
     if (action.type === 'UPDATE_SUGGESTIONS') {
-        return __WEBPACK_IMPORTED_MODULE_0_immutability_helper___default()(state, {
-            suggestions: { $set: action.suggestions }
+        return state.merge({
+            suggestions: action.suggestions
         });
-    }
-    if (action.type === 'CHANGE_SELECTION_ON_MOUSEOVER' && state.suggestions) {
-        var deselectIndex = null;
-        var selectIndex = 0;
-
-        state.suggestions.forEach(function (item, i) {
-            if (item.selected === true) deselectIndex = i;
-            if (item.name === action.name) {
-                selectIndex = i;
-            }
-        });
-
-        if (deselectIndex !== null) {
-            var _suggestions;
-
-            return __WEBPACK_IMPORTED_MODULE_0_immutability_helper___default()(state, {
-                suggestions: (_suggestions = {}, _defineProperty(_suggestions, deselectIndex, {
-                    selected: { $set: false }
-                }), _defineProperty(_suggestions, selectIndex, {
-                    selected: { $set: true }
-                }), _suggestions)
-            });
-        } else {
-            return __WEBPACK_IMPORTED_MODULE_0_immutability_helper___default()(state, {
-                suggestions: _defineProperty({}, selectIndex, {
-                    selected: { $set: true }
-                })
-            });
-        }
-    }
-    if (action.type === 'MOVE_SUGGESTION_SELECTION_BY_ARROWS' && state.suggestions) {
-        var selectionExists = state.suggestions && state.suggestions.find(function (item) {
-            return item.selected === true;
-        });
-        var _deselectIndex = null;
-        var _selectIndex = 0;
-
-        if (selectionExists) {
-            if (action.subtype === 'UP') {
-                state.suggestions.find(function (item, i) {
-                    if (item.selected === true && i > 0) {
-                        _deselectIndex = i;
-                        _selectIndex = i - 1;
-                        return true;
-                    } else if (item.selected === true && i === 0) {
-                        _deselectIndex = null;
-                        _selectIndex = 0;
-                        return true;
-                    }
-                });
-            } else if (action.subtype === 'DOWN') {
-                state.suggestions.find(function (item, i) {
-                    if (item.selected === true && i < state.suggestions.length - 1) {
-                        _deselectIndex = i;
-                        _selectIndex = i + 1;
-                        return true;
-                    } else if (item.selected === true && i === state.suggestions.length - 1) {
-                        _deselectIndex = null;
-                        _selectIndex = i;
-                        return true;
-                    }
-                });
-            }
-        }
-        if (_deselectIndex !== null) {
-            var _suggestions3;
-
-            return __WEBPACK_IMPORTED_MODULE_0_immutability_helper___default()(state, {
-                suggestions: (_suggestions3 = {}, _defineProperty(_suggestions3, _deselectIndex, {
-                    selected: { $set: false }
-                }), _defineProperty(_suggestions3, _selectIndex, {
-                    selected: { $set: true }
-                }), _suggestions3)
-            });
-        } else {
-            return __WEBPACK_IMPORTED_MODULE_0_immutability_helper___default()(state, {
-                suggestions: _defineProperty({}, _selectIndex, {
-                    selected: { $set: true }
-                })
-            });
-        }
     }
     return state;
 }
@@ -1209,67 +1124,10 @@ var HashbumpContainer = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__
 
         _this.suggestionsHandler = _this.suggestionsHandler.bind(_this);
         _this.valueHandler = _this.valueHandler.bind(_this);
-        _this.onKeyDownSuggestionsHandler = _this.onKeyDownSuggestionsHandler.bind(_this);
-        _this.onMouseOverSuggestionsHandler = _this.onMouseOverSuggestionsHandler.bind(_this);
         return _this;
     }
 
     _createClass(HashbumpContainer, [{
-        key: 'onMouseOverSuggestionsHandler',
-        value: function onMouseOverSuggestionsHandler(event) {
-            this.props.dispatch({ type: 'CHANGE_SELECTION_ON_MOUSEOVER',
-                name: event.target.innerText });
-        }
-    }, {
-        key: 'onKeyDownSuggestionsHandler',
-        value: function onKeyDownSuggestionsHandler(event) {
-            var _this2 = this;
-
-            var suggestions = this.props.suggestions.suggestions;
-
-
-            if (!suggestions) return;
-
-            var value = this.props.value.value;
-
-            var selectionExists = suggestions.find(function (item) {
-                return item.selected === true;
-            });
-
-            switch (event.keyCode) {
-                // up
-                case 38:
-                    this.props.dispatch({ type: 'MOVE_SUGGESTION_SELECTION_BY_ARROWS',
-                        subtype: 'UP' });
-                    break;
-                // down
-                case 40:
-                    this.props.dispatch({ type: 'MOVE_SUGGESTION_SELECTION_BY_ARROWS',
-                        subtype: 'DOWN' });
-                    break;
-                // enter
-                case 13:
-                    if (selectionExists) {
-                        suggestions.find(function (item) {
-                            if (item.selected === true) {
-                                _this2.valueHandler(item.name, true);
-                                return true;
-                            }
-                        });
-                    } else if (value) {
-                        this.valueHandler(value, true);
-                    }
-                    this.suggestionsHandler(null);
-
-                    break;
-                // esc
-                case 27:
-                    this.suggestionsHandler(null);
-                    this.valueHandler("", true);
-                    break;
-            }
-        }
-    }, {
         key: 'suggestionsHandler',
         value: function suggestionsHandler(suggestions) {
             this.props.dispatch({ type: 'UPDATE_SUGGESTIONS',
@@ -1334,9 +1192,7 @@ var HashbumpContainer = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__
                                 suggestions: suggestions,
                                 value: value,
                                 suggestionsHandler: this.suggestionsHandler.bind(this),
-                                valueHandler: this.valueHandler.bind(this),
-                                onKeyDownSuggestionsHandler: this.onKeyDownSuggestionsHandler.bind(this),
-                                onMouseOverSuggestionsHandler: this.onMouseOverSuggestionsHandler.bind(this)
+                                valueHandler: this.valueHandler.bind(this)
                             })
                         ),
                         __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -1386,6 +1242,14 @@ var hashtags = [{ name: "love" }, { name: "TagsForLikes" }, { name: "TagsForLike
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_styled_components__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rebass__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rebass___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rebass__);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 
 
 
@@ -1427,39 +1291,150 @@ var __Suggestions = function __Suggestions(props) {
 
 var _Suggestions = Object(__WEBPACK_IMPORTED_MODULE_1_styled_components__["withTheme"])(__Suggestions);
 
-var AutoSuggest = function AutoSuggest(props) {
-    return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-        __WEBPACK_IMPORTED_MODULE_2_rebass__["Relative"],
-        null,
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_rebass__["Input"], { bg: props.theme.hashtagAutoSuggest.inputBg,
-            color: props.theme.hashtagAutoSuggest.inputFg,
-            pl: props.theme.hashtagAutoSuggest.inputPl,
-            pr: props.theme.hashtagAutoSuggest.inputPr,
-            pt: props.theme.hashtagAutoSuggest.inputPt,
-            pb: props.theme.hashtagAutoSuggest.inputPb,
-            ml: props.theme.hashtagAutoSuggest.inputMl,
-            mr: props.theme.hashtagAutoSuggest.inputMr,
-            mt: props.theme.hashtagAutoSuggest.inputMt,
-            mb: props.theme.hashtagAutoSuggest.inputMb,
-            style: { overflow: 'hidden',
-                border: props.theme.hashtagAutoSuggest.inputBorder,
-                borderRadius: props.theme.hashtagAutoSuggest.inputBorderRadius },
-            value: props.value,
-            onChange: function onChange(event) {
-                props.valueHandler(event.target.value);
-            },
-            onKeyDown: props.onKeyDownSuggestionsHandler
-        }),
-        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(_Suggestions, {
-            suggestions: props.suggestions,
-            onClickSuggestions: function onClickSuggestions(event) {
-                props.suggestionsHandler(null);
-                props.valueHandler(event.target.innerText, true);
-            },
-            onMouseOverSuggestions: props.onMouseOverSuggestionsHandler
-        })
-    );
-};
+var AutoSuggest = function (_PureComponent) {
+    _inherits(AutoSuggest, _PureComponent);
+
+    function AutoSuggest(props) {
+        _classCallCheck(this, AutoSuggest);
+
+        var _this = _possibleConstructorReturn(this, (AutoSuggest.__proto__ || Object.getPrototypeOf(AutoSuggest)).call(this, props));
+
+        _this.onKeyDownSuggestionsHandler = _this.onKeyDownSuggestionsHandler.bind(_this);
+        _this.onMouseOverSuggestionsHandler = _this.onMouseOverSuggestionsHandler.bind(_this);
+        return _this;
+    }
+
+    _createClass(AutoSuggest, [{
+        key: 'onMouseOverSuggestionsHandler',
+        value: function onMouseOverSuggestionsHandler(event) {
+
+            var suggestions = [];
+
+            this.props.suggestions.forEach(function (item, i) {
+                suggestions[i] = Object.assign({}, item);
+            });
+
+            suggestions.forEach(function (item) {
+                if (item.selected === true) item.selected = false;
+                if (item.name === event.target.innerText) {
+                    item.selected = true;
+                }
+            });
+            this.props.suggestionsHandler(suggestions);
+        }
+    }, {
+        key: 'onKeyDownSuggestionsHandler',
+        value: function onKeyDownSuggestionsHandler(event) {
+            var _this2 = this;
+
+            if (!this.props.suggestions) return;
+
+            var suggestions = [];
+
+            this.props.suggestions.forEach(function (item, i) {
+                suggestions[i] = Object.assign({}, item);
+            });
+
+            var value = this.props.value.value;
+
+            var selectionExists = suggestions && suggestions.find(function (item) {
+                return item.selected === true;
+            });
+
+            switch (event.keyCode) {
+                // up
+                case 38:
+                    if (selectionExists) {
+                        suggestions.find(function (item, i) {
+                            if (item.selected === true && i > 0) {
+                                item.selected = false;
+                                suggestions[i - 1].selected = true;
+                                return true;
+                            }
+                        });
+                    } else if (suggestions) {
+                        suggestions[0].selected = true;
+                    }
+                    this.props.suggestionsHandler(suggestions);
+                    break;
+                // down
+                case 40:
+                    if (selectionExists) {
+                        suggestions.find(function (item, i) {
+                            if (item.selected === true && i < suggestions.length - 1) {
+                                item.selected = false;
+                                suggestions[i + 1].selected = true;
+                                return true;
+                            }
+                        });
+                    } else if (suggestions) {
+                        suggestions[0].selected = true;
+                    }
+                    this.props.suggestionsHandler(suggestions);
+                    break;
+                // enter
+                case 13:
+                    if (selectionExists) {
+                        suggestions.find(function (item) {
+                            if (item.selected === true) {
+                                item.selected = false;
+                                _this2.props.valueHandler(item.name, true);
+                                return true;
+                            }
+                        });
+                    } else if (value) {
+                        this.props.valueHandler(value, true);
+                    }
+                    this.props.suggestionsHandler(null);
+                    break;
+                // esc
+                case 27:
+                    this.props.suggestionsHandler(null);
+                    this.props.valueHandler("", true);
+                    break;
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this3 = this;
+
+            return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                __WEBPACK_IMPORTED_MODULE_2_rebass__["Relative"],
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_2_rebass__["Input"], { bg: this.props.theme.hashtagAutoSuggest.inputBg,
+                    color: this.props.theme.hashtagAutoSuggest.inputFg,
+                    pl: this.props.theme.hashtagAutoSuggest.inputPl,
+                    pr: this.props.theme.hashtagAutoSuggest.inputPr,
+                    pt: this.props.theme.hashtagAutoSuggest.inputPt,
+                    pb: this.props.theme.hashtagAutoSuggest.inputPb,
+                    ml: this.props.theme.hashtagAutoSuggest.inputMl,
+                    mr: this.props.theme.hashtagAutoSuggest.inputMr,
+                    mt: this.props.theme.hashtagAutoSuggest.inputMt,
+                    mb: this.props.theme.hashtagAutoSuggest.inputMb,
+                    style: { overflow: 'hidden',
+                        border: this.props.theme.hashtagAutoSuggest.inputBorder,
+                        borderRadius: this.props.theme.hashtagAutoSuggest.inputBorderRadius },
+                    value: this.props.value,
+                    onChange: function onChange(event) {
+                        _this3.props.valueHandler(event.target.value);
+                    },
+                    onKeyDown: this.onKeyDownSuggestionsHandler
+                }),
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(_Suggestions, {
+                    suggestions: this.props.suggestions,
+                    onClickSuggestions: function onClickSuggestions(event) {
+                        _this3.props.suggestionsHandler(null);
+                        _this3.props.valueHandler(event.target.innerText, true);
+                    },
+                    onMouseOverSuggestions: this.onMouseOverSuggestionsHandler
+                })
+            );
+        }
+    }]);
+
+    return AutoSuggest;
+}(__WEBPACK_IMPORTED_MODULE_0_react__["PureComponent"]);
 
 /* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_1_styled_components__["withTheme"])(AutoSuggest));
 

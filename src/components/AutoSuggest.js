@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { withTheme } from 'styled-components'
 import { Flex,
          Box,
@@ -42,38 +42,132 @@ const __Suggestions = (props) => {
 
 const _Suggestions = withTheme(__Suggestions);
 
-const AutoSuggest = (props) => {
-    return (
-        <Relative>
-          <Input bg={props.theme.hashtagAutoSuggest.inputBg}
-                 color={props.theme.hashtagAutoSuggest.inputFg}
-                 pl={props.theme.hashtagAutoSuggest.inputPl}
-                 pr={props.theme.hashtagAutoSuggest.inputPr}
-                 pt={props.theme.hashtagAutoSuggest.inputPt}
-                 pb={props.theme.hashtagAutoSuggest.inputPb}
-                 ml={props.theme.hashtagAutoSuggest.inputMl}
-                 mr={props.theme.hashtagAutoSuggest.inputMr}
-                 mt={props.theme.hashtagAutoSuggest.inputMt}
-                 mb={props.theme.hashtagAutoSuggest.inputMb}
-                 style={{overflow: 'hidden',
-                         border: props.theme.hashtagAutoSuggest.inputBorder,
-                         borderRadius: props.theme.hashtagAutoSuggest.inputBorderRadius}}
-                 value={props.value}
-                 onChange={(event) => {
-                     props.valueHandler(event.target.value);
-                 }}
-                 onKeyDown={props.onKeyDownSuggestionsHandler}
-                 />
-              <_Suggestions
-                 suggestions={props.suggestions}
-                 onClickSuggestions={(event) => {
-                     props.suggestionsHandler(null);
-                     props.valueHandler(event.target.innerText, true);
-                 }}
-                 onMouseOverSuggestions={props.onMouseOverSuggestionsHandler}
-                 />
-        </Relative>
-    );
+class AutoSuggest extends PureComponent {
+
+    constructor(props) {
+        super(props);
+
+        this.onKeyDownSuggestionsHandler   = this.onKeyDownSuggestionsHandler.bind(this);
+        this.onMouseOverSuggestionsHandler = this.onMouseOverSuggestionsHandler.bind(this);
+    }
+
+    onMouseOverSuggestionsHandler(event) {
+
+        const suggestions = [];
+
+        this.props.suggestions.forEach((item, i) => {suggestions[i] = Object.assign({}, item)});
+                          
+        suggestions.forEach(item => {
+            if(item.selected === true) item.selected = false;
+            if(item.name === event.target.innerText) {
+                item.selected = true;
+            }
+        });
+        this.props.suggestionsHandler(suggestions);
+    }
+
+    onKeyDownSuggestionsHandler(event) {
+
+        if (!this.props.suggestions) return;
+        
+        const suggestions = [];
+
+        this.props.suggestions.forEach((item, i) => {suggestions[i] = Object.assign({}, item)});
+
+        const {value}         = this.props.value;
+        const selectionExists = suggestions &&
+                                suggestions.find(item => {return item.selected === true;});
+
+        switch(event.keyCode) {
+        // up
+        case 38:
+            if(selectionExists) {
+                suggestions.find((item, i) => {
+                    if(item.selected === true && i > 0) {
+                        item.selected = false;
+                        suggestions[i-1].selected = true;
+                        return true;
+                    }
+                });
+            }
+            else if(suggestions) {
+                suggestions[0].selected = true;                             
+            }
+            this.props.suggestionsHandler(suggestions);
+            break;
+        // down
+        case 40:
+            if(selectionExists) {
+                suggestions.find((item, i) => {
+                    if(item.selected === true && i < suggestions.length - 1) {
+                        item.selected = false;
+                        suggestions[i+1].selected = true;
+                        return true;
+                    }
+                });                             
+            }
+            else if(suggestions) {
+                suggestions[0].selected = true;
+            }
+            this.props.suggestionsHandler(suggestions);
+            break;
+        // enter
+        case 13:
+            if(selectionExists) {
+                suggestions.find((item) => {
+                    if(item.selected === true) {
+                        item.selected = false;
+                        this.props.valueHandler(item.name, true);
+                        return true;
+                    }
+                });                             
+            }
+            else if(value) {
+                this.props.valueHandler(value, true);
+            }
+            this.props.suggestionsHandler(null);
+            break;
+        // esc
+        case 27:
+            this.props.suggestionsHandler(null);
+            this.props.valueHandler("", true);
+            break;
+        }
+    }
+
+    render () {
+        return (
+            <Relative>
+              <Input bg={this.props.theme.hashtagAutoSuggest.inputBg}
+                     color={this.props.theme.hashtagAutoSuggest.inputFg}
+                     pl={this.props.theme.hashtagAutoSuggest.inputPl}
+                     pr={this.props.theme.hashtagAutoSuggest.inputPr}
+                     pt={this.props.theme.hashtagAutoSuggest.inputPt}
+                     pb={this.props.theme.hashtagAutoSuggest.inputPb}
+                     ml={this.props.theme.hashtagAutoSuggest.inputMl}
+                     mr={this.props.theme.hashtagAutoSuggest.inputMr}
+                     mt={this.props.theme.hashtagAutoSuggest.inputMt}
+                     mb={this.props.theme.hashtagAutoSuggest.inputMb}
+                     style={{overflow:     'hidden',
+                             border:       this.props.theme.hashtagAutoSuggest.inputBorder,
+                             borderRadius: this.props.theme.hashtagAutoSuggest.inputBorderRadius}}
+                     value={this.props.value}
+                     onChange={(event) => {
+                         this.props.valueHandler(event.target.value);
+                     }}
+                     onKeyDown={this.onKeyDownSuggestionsHandler}
+                     />
+                <_Suggestions
+                   suggestions={this.props.suggestions}
+                   onClickSuggestions={(event) => {
+                       this.props.suggestionsHandler(null);
+                       this.props.valueHandler(event.target.innerText, true);
+                   }}
+                   onMouseOverSuggestions={this.onMouseOverSuggestionsHandler}
+                  />
+            </Relative>
+        );
+    }
 }
 
 export default withTheme(AutoSuggest);
