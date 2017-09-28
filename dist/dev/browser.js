@@ -156,7 +156,7 @@ doRender();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_kit_config__ = __webpack_require__(54);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_src_reducers_counter__ = __webpack_require__(197);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_src_reducers_suggestionsReducer__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_src_reducers_valueReducer__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_src_reducers_currentHashtagReducer__ = __webpack_require__(493);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_src_components_main__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__styles_global_css__ = __webpack_require__(292);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__styles_global_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__styles_global_css__);
@@ -210,7 +210,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 __WEBPACK_IMPORTED_MODULE_0_kit_config__["a" /* default */].addReducer('counter', __WEBPACK_IMPORTED_MODULE_1_src_reducers_counter__["a" /* default */], { count: 0 });
 
 __WEBPACK_IMPORTED_MODULE_0_kit_config__["a" /* default */].addReducer('suggestions', __WEBPACK_IMPORTED_MODULE_2_src_reducers_suggestionsReducer__["a" /* default */], { suggestions: null });
-__WEBPACK_IMPORTED_MODULE_0_kit_config__["a" /* default */].addReducer('value', __WEBPACK_IMPORTED_MODULE_3_src_reducers_valueReducer__["a" /* default */], { value: '' });
+__WEBPACK_IMPORTED_MODULE_0_kit_config__["a" /* default */].addReducer('currentHashtag', __WEBPACK_IMPORTED_MODULE_3_src_reducers_currentHashtagReducer__["a" /* default */], { currentHashtag: '' });
 
 /* GRAPHQL */
 
@@ -450,24 +450,6 @@ function suggestionsReducer(state, action) {
     if (action.type === 'UPDATE_SUGGESTIONS') {
         return state.merge({
             suggestions: action.suggestions
-        });
-    }
-    return state;
-}
-
-/***/ }),
-
-/***/ 199:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = valueReducer;
-
-
-function valueReducer(state, action) {
-    if (action.type === 'UPDATE_VALUE') {
-        return state.merge({
-            value: action.value
         });
     }
     return state;
@@ -1113,7 +1095,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var HashbumpContainer = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__["a" /* connect */])(function (state) {
     return { suggestions: state.suggestions,
-        value: state.value };
+        currentHashtag: state.currentHashtag };
 }), _dec(_class = function (_Component) {
     _inherits(HashbumpContainer, _Component);
 
@@ -1138,8 +1120,8 @@ var HashbumpContainer = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__
         value: function valueHandler(value) {
             var finalize = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-            this.props.dispatch({ type: 'UPDATE_VALUE',
-                value: value });
+            this.props.dispatch({ type: 'UPDATE_CURRENT_HASHTAG',
+                currentHashtag: value });
 
             if (!finalize) {
                 if (value !== '') {
@@ -1158,7 +1140,7 @@ var HashbumpContainer = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__
         key: 'render',
         value: function render() {
             var suggestions = this.props.suggestions.suggestions;
-            var value = this.props.value.value;
+            var currentHashtag = this.props.currentHashtag.currentHashtag;
 
 
             return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
@@ -1190,7 +1172,7 @@ var HashbumpContainer = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__
                             { align: 'center', justify: 'center' },
                             __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_7__AutoSuggest_js__["a" /* default */], {
                                 suggestions: suggestions,
-                                value: value,
+                                value: currentHashtag,
                                 suggestionsHandler: this.suggestionsHandler.bind(this),
                                 valueHandler: this.valueHandler.bind(this)
                             })
@@ -1903,6 +1885,24 @@ function createNewStore(apolloClient) {
   }));
 
   return store;
+}
+
+/***/ }),
+
+/***/ 493:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = currentHashtagReducer;
+
+
+function currentHashtagReducer(state, action) {
+    if (action.type === 'UPDATE_CURRENT_HASHTAG') {
+        return state.merge({
+            currentHashtag: action.currentHashtag
+        });
+    }
+    return state;
 }
 
 /***/ }),

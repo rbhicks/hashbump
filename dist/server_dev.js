@@ -1269,9 +1269,9 @@ var _suggestionsReducer = __webpack_require__(36);
 
 var _suggestionsReducer2 = _interopRequireDefault(_suggestionsReducer);
 
-var _valueReducer = __webpack_require__(37);
+var _currentHashtagReducer = __webpack_require__(75);
 
-var _valueReducer2 = _interopRequireDefault(_valueReducer);
+var _currentHashtagReducer2 = _interopRequireDefault(_currentHashtagReducer);
 
 var _main = __webpack_require__(38);
 
@@ -1322,7 +1322,7 @@ _config2.default.addReducer('counter', _counter2.default, { count: 0 });
 
 
 _config2.default.addReducer('suggestions', _suggestionsReducer2.default, { suggestions: null });
-_config2.default.addReducer('value', _valueReducer2.default, { value: '' });
+_config2.default.addReducer('currentHashtag', _currentHashtagReducer2.default, { currentHashtag: '' });
 
 /* GRAPHQL */
 
@@ -1538,26 +1538,7 @@ function suggestionsReducer(state, action) {
 }
 
 /***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = valueReducer;
-function valueReducer(state, action) {
-    if (action.type === 'UPDATE_VALUE') {
-        return state.merge({
-            value: action.value
-        });
-    }
-    return state;
-}
-
-/***/ }),
+/* 37 */,
 /* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2201,7 +2182,7 @@ var _theme2 = _interopRequireDefault(_theme);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 let HashbumpContainer = (_dec = (0, _reactRedux.connect)(state => ({ suggestions: state.suggestions,
-    value: state.value })), _dec(_class = class HashbumpContainer extends _react.Component {
+    currentHashtag: state.currentHashtag })), _dec(_class = class HashbumpContainer extends _react.Component {
 
     constructor(props) {
         super(props);
@@ -2216,8 +2197,8 @@ let HashbumpContainer = (_dec = (0, _reactRedux.connect)(state => ({ suggestions
     }
 
     valueHandler(value, finalize = false) {
-        this.props.dispatch({ type: 'UPDATE_VALUE',
-            value: value });
+        this.props.dispatch({ type: 'UPDATE_CURRENT_HASHTAG',
+            currentHashtag: value });
 
         if (!finalize) {
             if (value !== '') {
@@ -2233,7 +2214,7 @@ let HashbumpContainer = (_dec = (0, _reactRedux.connect)(state => ({ suggestions
 
     render() {
         const { suggestions } = this.props.suggestions;
-        const { value } = this.props.value;
+        const { currentHashtag } = this.props.currentHashtag;
 
         return _react2.default.createElement(
             _rebass.Provider,
@@ -2264,7 +2245,7 @@ let HashbumpContainer = (_dec = (0, _reactRedux.connect)(state => ({ suggestions
                         { align: 'center', justify: 'center' },
                         _react2.default.createElement(_AutoSuggest2.default, {
                             suggestions: suggestions,
-                            value: value,
+                            value: currentHashtag,
                             suggestionsHandler: this.suggestionsHandler.bind(this),
                             valueHandler: this.valueHandler.bind(this)
                         })
@@ -3246,6 +3227,30 @@ module.exports = require("path");
 /***/ (function(module, exports) {
 
 module.exports = require("koa-bodyparser");
+
+/***/ }),
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.default = currentHashtagReducer;
+function currentHashtagReducer(state, action) {
+    if (action.type === 'UPDATE_CURRENT_HASHTAG') {
+        return state.merge({
+            currentHashtag: action.currentHashtag
+        });
+    }
+    return state;
+}
 
 /***/ })
 /******/ ]);

@@ -21,8 +21,8 @@ import BumpButton from './BumpButton.js'
 import theme, {hashbumpColorGold, hashbumpColorGreen, hashbumpColorPurple} from './theme.js'
 
 
-@connect(state => ({ suggestions: state.suggestions,
-                     value:       state.value, }))
+@connect(state => ({ suggestions:    state.suggestions,
+                     currentHashtag: state.currentHashtag, }))
 export default class HashbumpContainer extends Component {
 
     constructor(props) {
@@ -38,8 +38,8 @@ export default class HashbumpContainer extends Component {
     }
 
     valueHandler(value, finalize = false) {
-        this.props.dispatch({type:  'UPDATE_VALUE',
-                             value: value});
+        this.props.dispatch({type:           'UPDATE_CURRENT_HASHTAG',
+                             currentHashtag: value});
 
         if(!finalize) {
             if(value !== '') {
@@ -55,8 +55,8 @@ export default class HashbumpContainer extends Component {
     }
 
     render() {
-        const { suggestions } = this.props.suggestions;
-        const { value }       = this.props.value;
+        const { suggestions }    = this.props.suggestions;
+        const { currentHashtag } = this.props.currentHashtag;
 
         return (
             <Provider theme={theme}>
@@ -78,7 +78,7 @@ export default class HashbumpContainer extends Component {
                   <Flex align='center' justify='center'>
                     <AutoSuggest
                        suggestions={suggestions}
-                       value={value}
+                       value={currentHashtag}
                        suggestionsHandler={this.suggestionsHandler.bind(this)}
                        valueHandler={this.valueHandler.bind(this)}
                        />
