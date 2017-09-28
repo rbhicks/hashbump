@@ -444,98 +444,13 @@ function reducer(state, action) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = suggestionsReducer;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_immutability_helper__ = __webpack_require__(299);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_immutability_helper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_immutability_helper__);
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 
 
 function suggestionsReducer(state, action) {
     if (action.type === 'UPDATE_SUGGESTIONS') {
-        return __WEBPACK_IMPORTED_MODULE_0_immutability_helper___default()(state, {
-            suggestions: { $set: action.suggestions }
+        return state.merge({
+            suggestions: action.suggestions
         });
-    }
-    if (action.type === 'CHANGE_SELECTION_ON_MOUSEOVER' && state.suggestions) {
-        var deselectIndex = null;
-        var selectIndex = 0;
-
-        state.suggestions.forEach(function (item, i) {
-            if (item.selected === true) deselectIndex = i;
-            if (item.name === action.name) {
-                selectIndex = i;
-            }
-        });
-
-        if (deselectIndex !== null) {
-            var _suggestions;
-
-            return __WEBPACK_IMPORTED_MODULE_0_immutability_helper___default()(state, {
-                suggestions: (_suggestions = {}, _defineProperty(_suggestions, deselectIndex, {
-                    selected: { $set: false }
-                }), _defineProperty(_suggestions, selectIndex, {
-                    selected: { $set: true }
-                }), _suggestions)
-            });
-        } else {
-            return __WEBPACK_IMPORTED_MODULE_0_immutability_helper___default()(state, {
-                suggestions: _defineProperty({}, selectIndex, {
-                    selected: { $set: true }
-                })
-            });
-        }
-    }
-    if (action.type === 'MOVE_SUGGESTION_SELECTION_BY_ARROWS' && state.suggestions) {
-        var selectionExists = state.suggestions && state.suggestions.find(function (item) {
-            return item.selected === true;
-        });
-        var _deselectIndex = null;
-        var _selectIndex = 0;
-
-        if (selectionExists) {
-            if (action.subtype === 'UP') {
-                state.suggestions.find(function (item, i) {
-                    if (item.selected === true && i > 0) {
-                        _deselectIndex = i;
-                        _selectIndex = i - 1;
-                        return true;
-                    } else if (item.selected === true && i === 0) {
-                        _deselectIndex = null;
-                        _selectIndex = 0;
-                        return true;
-                    }
-                });
-            } else if (action.subtype === 'DOWN') {
-                state.suggestions.find(function (item, i) {
-                    if (item.selected === true && i < state.suggestions.length - 1) {
-                        _deselectIndex = i;
-                        _selectIndex = i + 1;
-                        return true;
-                    } else if (item.selected === true && i === state.suggestions.length - 1) {
-                        _deselectIndex = null;
-                        _selectIndex = i;
-                        return true;
-                    }
-                });
-            }
-        }
-        if (_deselectIndex !== null) {
-            var _suggestions3;
-
-            return __WEBPACK_IMPORTED_MODULE_0_immutability_helper___default()(state, {
-                suggestions: (_suggestions3 = {}, _defineProperty(_suggestions3, _deselectIndex, {
-                    selected: { $set: false }
-                }), _defineProperty(_suggestions3, _selectIndex, {
-                    selected: { $set: true }
-                }), _suggestions3)
-            });
-        } else {
-            return __WEBPACK_IMPORTED_MODULE_0_immutability_helper___default()(state, {
-                suggestions: _defineProperty({}, _selectIndex, {
-                    selected: { $set: true }
-                })
-            });
-        }
     }
     return state;
 }
@@ -1217,41 +1132,79 @@ var HashbumpContainer = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__
     _createClass(HashbumpContainer, [{
         key: 'onMouseOverSuggestionsHandler',
         value: function onMouseOverSuggestionsHandler(event) {
-            this.props.dispatch({ type: 'CHANGE_SELECTION_ON_MOUSEOVER',
-                name: event.target.innerText });
+
+            var suggestions = [];
+
+            // need to clone the whole array for the below to work
+            this.props.suggestions.suggestions.forEach(function (item, i) {
+                suggestions[i] = Object.assign({}, item);
+            });
+
+            suggestions.forEach(function (item) {
+                if (item.selected === true) item.selected = false;
+                if (item.name === event.target.innerText) {
+                    item.selected = true;
+                }
+            });
+            this.suggestionsHandler(suggestions);
         }
     }, {
         key: 'onKeyDownSuggestionsHandler',
         value: function onKeyDownSuggestionsHandler(event) {
             var _this2 = this;
 
-            var suggestions = this.props.suggestions.suggestions;
+            if (!this.props.suggestions.suggestions) return;
 
+            var suggestions = [];
 
-            if (!suggestions) return;
+            // need to clone the whole array for the below to work
+            this.props.suggestions.suggestions.forEach(function (item, i) {
+                suggestions[i] = Object.assign({}, item);
+            });
 
             var value = this.props.value.value;
 
-            var selectionExists = suggestions.find(function (item) {
+            var selectionExists = suggestions && suggestions.find(function (item) {
                 return item.selected === true;
             });
 
             switch (event.keyCode) {
                 // up
                 case 38:
-                    this.props.dispatch({ type: 'MOVE_SUGGESTION_SELECTION_BY_ARROWS',
-                        subtype: 'UP' });
+                    if (selectionExists) {
+                        suggestions.find(function (item, i) {
+                            if (item.selected === true && i > 0) {
+                                item.selected = false;
+                                suggestions[i - 1].selected = true;
+                                return true;
+                            }
+                        });
+                    } else if (suggestions) {
+                        suggestions[0].selected = true;
+                    }
+                    this.suggestionsHandler(suggestions);
                     break;
                 // down
                 case 40:
-                    this.props.dispatch({ type: 'MOVE_SUGGESTION_SELECTION_BY_ARROWS',
-                        subtype: 'DOWN' });
+                    if (selectionExists) {
+                        suggestions.find(function (item, i) {
+                            if (item.selected === true && i < suggestions.length - 1) {
+                                item.selected = false;
+                                suggestions[i + 1].selected = true;
+                                return true;
+                            }
+                        });
+                    } else if (suggestions) {
+                        suggestions[0].selected = true;
+                    }
+                    this.suggestionsHandler(suggestions);
                     break;
                 // enter
                 case 13:
                     if (selectionExists) {
                         suggestions.find(function (item) {
                             if (item.selected === true) {
+                                item.selected = false;
                                 _this2.valueHandler(item.name, true);
                                 return true;
                             }
@@ -1260,7 +1213,6 @@ var HashbumpContainer = (_dec = Object(__WEBPACK_IMPORTED_MODULE_1_react_redux__
                         this.valueHandler(value, true);
                     }
                     this.suggestionsHandler(null);
-
                     break;
                 // esc
                 case 27:
