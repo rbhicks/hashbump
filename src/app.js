@@ -24,7 +24,7 @@ import config from 'kit/config';
 import counterReducer from 'src/reducers/counter';
 
 import suggestionsReducer from 'src/reducers/suggestionsReducer';
-import valueReducer from 'src/reducers/valueReducer';
+import currentHashtagReducer from 'src/reducers/currentHashtagReducer';
 
 // Main component -- i.e. the 'root' React component in our app
 import Main from 'src/components/main';
@@ -44,7 +44,7 @@ import './styles.global.css';
 config.addReducer('counter', counterReducer, { count: 0 });
 
 config.addReducer('suggestions', suggestionsReducer, { suggestions: null });
-config.addReducer('value', valueReducer, { value: '' });
+config.addReducer('currentHashtag', currentHashtagReducer, { currentHashtag: '' });
 
 
 /* GRAPHQL */
