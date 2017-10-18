@@ -1,62 +1,331 @@
-// Schema for sample GraphQL server.
-
-// ----------------------
-// IMPORTS
-
-// GraphQL schema library, for building our GraphQL schema
 import {
   GraphQLObjectType,
   GraphQLString,
+  GraphQLInt,
   GraphQLSchema,
+  GraphQLList,
+  GraphQLBoolean,
+  GraphQLNonNull
 } from 'graphql';
 
-// ----------------------
+import Sequelize from 'sequelize';
+import password from './password.js';
+import escape from 'pg-escape';
 
-// GraphQL can handle Promises from its `resolve()` calls, so we'll create a
-// simple async function that returns a simple message.  In practice, `resolve()`
-// will generally pull from a 'real' data source such as a database
-async function getMessage() {
-  return {
-    text: `Hello from the GraphQL server @ ${new Date()}`,
-  };
-}
+const dbConnection = new Sequelize(
+    'hashbump',
+    'hashbumpglenn',
+    password,
+    {
+        dialect: 'postgres',
+        host: 'localhost'
+    }
+);
 
-// Message type.  Imagine this like static type hinting on the 'message'
-// object we're going to throw back to the user
-const Message = new GraphQLObjectType({
-  name: 'Message',
-  description: 'GraphQL server message',
-  fields() {
-    return {
-      text: {
-        type: GraphQLString,
-        resolve(msg) {
-          return msg.text;
-        },
-      },
-    };
+const operator = dbConnection.Op;
+
+const sequelize = dbConnection.define('hashtag', {
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false
   },
+  yayCount: {
+    type: Sequelize.BIGINT,
+    allowNull: false,
+    defaultValue: 0
+  },
+  grrrCount: {
+    type: Sequelize.BIGINT,
+    allowNull: false,
+    defaultValue: 0
+  },
+  dunnoCount: {
+    type: Sequelize.BIGINT,
+    allowNull: false,
+    defaultValue: 0
+  },
+  mehCount: {
+    type: Sequelize.BIGINT,
+    allowNull: false,
+    defaultValue: 0
+  }
 });
 
-// Root query.  This is our 'public API'.
+const Hashtag = new GraphQLObjectType({
+  name: 'Hashtag',
+  description: 'Hashtag information. The primary construct for hashbump.',
+  fields: () => {
+    return {
+      name: {
+        type: GraphQLString,
+        resolve (hashtag) {
+          return hashtag.name;
+        }
+      },
+      yayCount: {
+        type: GraphQLInt,
+        resolve (hashtag) {
+          return hashtag.yayCount;
+        }
+      },
+      grrrCount: {
+        type: GraphQLInt,
+        resolve (hashtag) {
+          return hashtag.grrrCount;
+        }
+      },
+      dunnoCount: {
+        type: GraphQLInt,
+        resolve (hashtag) {
+          return hashtag.dunnoCount;
+        }
+      },
+      mehCount: {
+        type: GraphQLInt,
+        resolve (hashtag) {
+          return hashtag.mehCount;
+        }
+      }
+    };
+  }
+});
+
+const TopCount = new GraphQLObjectType({
+    name: 'TopCount',
+    description: 'TopCount information. These are the highest counts for each count type. Currently, there are two kinds: all time and weekly.',
+    fields: () => {
+        return {
+            name: {
+                type: GraphQLString,
+                resolve (topCount) {
+                    return topCount.name;
+                }
+            },
+            count: {
+                type: GraphQLInt,
+                resolve (topCount) {
+                    return topCount.count;
+                }
+            }
+        };
+    }
+});
+
+const SuggestionsResult = new GraphQLObjectType({
+    name: 'SuggestionsResult',
+    description: 'Suggestion Result information. This is the base object for handling the appearance of suggestions and their selection.',
+    fields: () => {
+        return {
+            name: {
+                type: GraphQLString,
+                // resolve (suggestionsResult) {
+                //     return suggestionsResult.name;
+                // }
+            },
+            selected: {
+                type: GraphQLBoolean,
+                // resolve (suggestionsResult) {
+                //     return suggestionsResult.selected;
+                // }
+            }
+        };
+    }
+});
+    
+const Suggestions = new GraphQLObjectType({
+    name: 'Suggestions',
+    description: "Suggestions information. This is an object that wraps a list of objects and a string. The objects in the list are modified in the resolver from the list returned by the db and the string is the string that the suggestions are based on. This is returned so that it doesn't need to be stored as state.",
+    fields: () => {
+        return {
+            results: {
+                type: new GraphQLList(SuggestionsResult),
+                // resolve (suggestions) {
+                //     return suggestions.results;
+                // }
+            }
+            // ,
+            // currentHashtag: {
+            //     type: GraphQLString,
+            //     resolve (suggestions) {
+            //         return suggestions.currentHashtag;
+            //     }
+            // }
+        };
+    }
+});
+
 const Query = new GraphQLObjectType({
   name: 'Query',
-  description: 'Root query object',
-  fields() {
+  description: 'Standard graphql root query object.',
+  fields () {
     return {
-      message: {
-        type: Message,
-        resolve() {
-          return getMessage();
+        hashtags: {
+            type: new GraphQLList(Hashtag),
+            args: {
+                name: {
+                    type: GraphQLString
+                },
+                yayCount: {
+                    type: GraphQLInt
+                },
+                grrrCount: {
+                    type: GraphQLInt
+                },
+                dunnoCount: {
+                    type: GraphQLInt
+                },
+                mehCount: {
+                    type: GraphQLInt
+                }
+            },
+            resolve (root, args) {
+                return dbConnection.models.hashtag.findAll({ where: args });
+            }
         },
-      },
+        hashtag: {
+            type: Hashtag,
+            args: {
+                name: {
+                    type: GraphQLString
+                }
+            },
+            resolve (root, args) {
+                return dbConnection.models.hashtag.findOne({ where: args });
+            }
+        },        
+        topCount: {
+            type: TopCount,
+            args: {
+                bump: {
+                    type: new GraphQLNonNull(GraphQLString)
+                },
+                topCountType: {
+                    type: new GraphQLNonNull(GraphQLString)
+                }
+            },
+            resolve (root, args) {
+                let topCountQueryString = `select "name", "${args.bump}Count" as "count" from hashtags order by "${args.bump}Count" desc LIMIT 1;`;
+
+                if (args.topCountType == "today") {
+                    topCountQueryString = `select "name", "${args.bump}Count" as "count" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "${args.bump}Count" desc LIMIT 1;`;
+                }
+                return dbConnection.query(
+                    topCountQueryString,
+                    {type: Sequelize.QueryTypes.SELECT}
+                ).spread((results) => {
+                    return results;
+                });
+            }
+        },        
+        suggestions: {
+            type: Suggestions,
+            args: {
+                currentHashtag: {
+                    type: GraphQLString
+                }
+            },
+            resolve (root, args) {           
+
+                const sanititizedSuggestionString = args.currentHashtag ? escape(args.currentHashtag) : "";
+//                const suggestionsQueryString = `select "name" from hashtags where "name" ilike '${sanititizedSuggestionString}%' order by "name" limit 10;`;
+                //                const suggestionsQueryString = `select * from hashtags order by "name" limit 10;`;
+
+                
+
+                // console.log('$$$$$$$$$$$$$$$$$$$$$');
+                // console.log(args);
+                // console.log(sanititizedSuggestionString);
+                // console.log(suggestionsQueryString);
+                // console.log(password);
+                // console.log('$$$$$$$$$$$$$$$$$$$$$');                
+
+                // return dbConnection.query(
+                //     suggestionsQueryString,
+                //     {type: Sequelize.QueryTypes.SELECT}
+                // ).spread((results) => {
+
+                if (sanititizedSuggestionString !== "") {
+
+                    return dbConnection.models.hashtag.findAll(
+                        {
+                            attributes: ['name'],
+                            order: ['name'],
+                            limit: 10,
+                            where: {
+                                name: {[operator.iLike]: `${sanititizedSuggestionString}%`, }
+                            },
+                        }, ).then((rawResults) => {
+                            
+                            const results = {results: []};
+                            
+                            rawResults.map((result, i) => {
+                                results.results[i] = {name:     result.dataValues.name,
+                                                  selected: false};
+
+                            });
+                    
+                        //                        return results;
+                            console.log("(((((((((((((((((((")
+                            console.log(results);
+                            console.log("(((((((((((((((((((")
+                            return results;
+                        });
+                }
+                else {
+                    return [];
+                }
+            }
+        }
     };
-  },
+  }
 });
 
-// The resulting schema.  We insert our 'root' `Query` object, to tell our
-// GraphQL server what to respond to.  We could also add a root `mutation`
-// if we want to pass mutation queries that have side-effects (e.g. like HTTP POST)
-export default new GraphQLSchema({
-  query: Query,
+const Mutation = new GraphQLObjectType({
+  name: 'Mutations',
+  description: 'Mutations to add and bump hashtags.',
+  fields () {
+    return {
+      addHashtag: {
+        type: Hashtag,
+        args: {
+          name: {
+            type: new GraphQLNonNull(GraphQLString)
+          }
+        },
+        resolve (source, args) {
+          const sanitizedName = args.name ? escape(args.name) : "";
+            
+          return dbConnection.models.hashtag.create({
+            name: sanitizedName
+          });
+        }
+      },
+      bumpHashtag: {
+        type: Hashtag,
+        args: {
+          name: {
+            type: new GraphQLNonNull(GraphQLString)
+          },
+          bump: {
+            type: new GraphQLNonNull(GraphQLString)
+          }
+        },
+          resolve (source, args) {
+            const sanitizedName = args.name ? escape(args.name) : "";
+              
+            return dbConnection.models.hashtag.findOne({ where: {name: sanitizedName} }).then( hashtag => {
+                    return hashtag.increment([`${args.bump}Count`], { by: 1 });
+          });
+        }
+      }
+    };
+  }
 });
+
+const Schema = new GraphQLSchema({
+  query: Query,
+  mutation: Mutation
+});
+
+
+export default Schema;

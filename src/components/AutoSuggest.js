@@ -136,6 +136,13 @@ class AutoSuggest extends PureComponent {
     }
 
     render () {
+
+        // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+        // console.log(this.props.data.suggestions);
+        // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+
+        const suggestions = this.props.data.suggestions ? this.props.data.suggestions.results : [];
+        
         return (
             <Relative>
               <Input bg={this.props.theme.hashtagAutoSuggest.inputBg}
@@ -158,7 +165,8 @@ class AutoSuggest extends PureComponent {
                      onKeyDown={this.onKeyDownSuggestionsHandler}
                      />
                 <_Suggestions
-                   suggestions={this.props.suggestions}
+                   //                   suggestions={this.props.suggestions}
+                   suggestions={suggestions}
                    onClickSuggestions={(event) => {
                        this.props.suggestionsHandler(null);
                        this.props.valueHandler(event.target.innerText, true);

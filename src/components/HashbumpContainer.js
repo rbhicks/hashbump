@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import gql from 'graphql-tag';
+import { graphql, compose, withApollo } from 'react-apollo';
 import { connect } from 'react-redux';
 import styled, { withTheme } from 'styled-components'
 import { width, fontSize, color } from 'styled-system'
@@ -14,17 +17,104 @@ import { Flex,
          Provider } from 'rebass'
 import XRay from 'react-x-ray'
 import hashtags from './hashtags.js'
-import AutoSuggest from './AutoSuggest.js'
+//import AutoSuggest from './AutoSuggest.js'
+import RawAutoSuggest from './AutoSuggest.js'
 import TopHashtags from './TopHashtags.js'
 import Header from './Header.js'
 import BumpButton from './BumpButton.js'
 import theme, {hashbumpColorGold, hashbumpColorGreen, hashbumpColorPurple} from './theme.js'
 
 
-@connect(state => ({ suggestions:    state.suggestions,
-                     currentHashtag: state.currentHashtag, }))
-export default class HashbumpContainer extends Component {
+// const suggestionsQuery = graphql(gql`
+//   query suggestions($currentHashtag: String!) {
+//     suggestions(currentHashtag: $currentHashtag)
+//   }
+// `, {
+//     name: "suggestionsQuery",
+//     options: {
+//         variables: {currentHashtag: ""}
+//     },
+// });
 
+const hashtagQuery = graphql(gql`
+  query hashtag($name: String!) {
+    hashtag(name: $name) {
+      name
+      yayCount
+      grrrCount
+      dunnoCount
+      mehCount
+    }
+  }
+`, {
+    name: "hashtagQuery",
+    options: {
+        variables: {name: ""}
+    },
+});
+
+const addHashtagMutation = graphql(gql`
+  mutation addHashtag($name: String!) {
+    addHashtag(name: $name) {
+      name
+      yayCount
+      grrrCount
+      dunnoCount
+      mehCount
+    }
+  }
+`);
+
+const AutoSuggest = graphql(gql`
+  query suggestions($currentHashtag: String!) {
+    suggestions(currentHashtag: $currentHashtag)
+    {
+      results {
+         name
+         selected
+      }
+    }
+  }
+`, {
+    options: (ownProps) => (
+        {        
+        variables: {
+            currentHashtag: ownProps.value
+        }
+    })
+})(RawAutoSuggest);
+
+// @connect(state => ({ suggestions:    state.suggestions,
+//                      currentHashtag: state.currentHashtag, }))
+//export default class HashbumpContainer extends Component {
+class HashbumpContainer extends Component {
+
+
+    // static propTypes = {
+    //     data: PropTypes.shape({
+    //         suggestions: PropTypes.shape({
+    //             results: PropTypes.arrayOf(
+    //                 PropTypes.shape({
+    //                     name: PropTypes.string,
+    //                     selected: PropTypes.bool,
+    //                 })),
+    //             partialValue: PropTypes.string,
+    //         }),
+    //     }),
+    // };
+
+    // static defaultProps = {
+    //     data: {
+    //         suggestions: {
+    //             results: [{name: 'jean', selected: false}, {name: 'babtiste', selected: false}, {name: 'emanuel', selected: false}, {name: 'zorg', selected: false} ],
+    //             partialValue: 'ack',
+    //             // results: [],
+    //             // partialValue: '',
+    //         },
+    //     },
+    // };
+
+    
     constructor(props) {
         super(props);
 
@@ -55,7 +145,11 @@ export default class HashbumpContainer extends Component {
     }
 
     render() {
-        const { suggestions }    = this.props.suggestions;
+        console.log("(*(*(*(*(*(*(*(*(*(*(");
+        console.log(this);
+        console.log("(*(*(*(*(*(*(*(*(*(*(");
+        
+//        const { suggestions }    = this.props.suggestions;
         const { currentHashtag } = this.props.currentHashtag;
 
         return (
@@ -77,7 +171,7 @@ export default class HashbumpContainer extends Component {
                   </Flex>
                   <Flex align='center' justify='center'>
                     <AutoSuggest
-                       suggestions={suggestions}
+//                       suggestions={suggestions}
                        value={currentHashtag}
                        suggestionsHandler={this.suggestionsHandler.bind(this)}
                        valueHandler={this.valueHandler.bind(this)}
@@ -100,3 +194,11 @@ export default class HashbumpContainer extends Component {
     }
 }
 
+export default compose(
+    // connect(state => ({ suggestions:    state.suggestions,
+    //                     currentHashtag: state.currentHashtag, })),
+    connect(state => ({ currentHashtag: state.currentHashtag, })),
+    hashtagQuery,
+//    suggestionsQuery,
+    addHashtagMutation,
+)(HashbumpContainer);

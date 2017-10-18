@@ -44,3 +44,5 @@ dist
 
 # emacs temp file
 *.*~
+
+password.js
