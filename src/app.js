@@ -23,7 +23,7 @@ import config from 'kit/config';
 // Example counter reducer.  This simply increments the counter by +1
 import counterReducer from 'src/reducers/counter';
 
-import suggestionsReducer from 'src/reducers/suggestionsReducer';
+import selectedSuggestionReducer from 'src/reducers/selectedSuggestionReducer';
 import currentHashtagReducer from 'src/reducers/currentHashtagReducer';
 
 // Main component -- i.e. the 'root' React component in our app
@@ -43,7 +43,7 @@ import './styles.global.css';
 // automatically immutable by default
 config.addReducer('counter', counterReducer, { count: 0 });
 
-config.addReducer('suggestions', suggestionsReducer, { suggestions: null });
+config.addReducer('selectedSuggestion', selectedSuggestionReducer, { selectedSuggestion: '' });
 config.addReducer('currentHashtag', currentHashtagReducer, { currentHashtag: '' });
 
 

@@ -17,24 +17,12 @@ import { Flex,
          Provider } from 'rebass'
 import XRay from 'react-x-ray'
 import hashtags from './hashtags.js'
-//import AutoSuggest from './AutoSuggest.js'
 import RawAutoSuggest from './AutoSuggest.js'
 import TopHashtags from './TopHashtags.js'
 import Header from './Header.js'
 import BumpButton from './BumpButton.js'
 import theme, {hashbumpColorGold, hashbumpColorGreen, hashbumpColorPurple} from './theme.js'
 
-
-// const suggestionsQuery = graphql(gql`
-//   query suggestions($currentHashtag: String!) {
-//     suggestions(currentHashtag: $currentHashtag)
-//   }
-// `, {
-//     name: "suggestionsQuery",
-//     options: {
-//         variables: {currentHashtag: ""}
-//     },
-// });
 
 const hashtagQuery = graphql(gql`
   query hashtag($name: String!) {
@@ -84,9 +72,6 @@ const AutoSuggest = graphql(gql`
     })
 })(RawAutoSuggest);
 
-// @connect(state => ({ suggestions:    state.suggestions,
-//                      currentHashtag: state.currentHashtag, }))
-//export default class HashbumpContainer extends Component {
 class HashbumpContainer extends Component {
 
 
@@ -118,39 +103,26 @@ class HashbumpContainer extends Component {
     constructor(props) {
         super(props);
 
-        this.suggestionsHandler = this.suggestionsHandler.bind(this);
-        this.valueHandler       = this.valueHandler.bind(this);
+        this.selectedSuggestionHandler = this.selectedSuggestionHandler.bind(this);
+        this.valueHandler              = this.valueHandler.bind(this);
     }
 
-    suggestionsHandler(suggestions) {
-        this.props.dispatch({type:        'UPDATE_SUGGESTIONS',
-                             suggestions: suggestions});
+    selectedSuggestionHandler(selectedSuggestion) {
+        this.props.dispatch({type:               'UPDATE_SELECTED_SUGGESTION',
+                             selectedSuggestion: selectedSuggestion});
     }
 
     valueHandler(value, finalize = false) {
-        this.props.dispatch({type:           'UPDATE_CURRENT_HASHTAG',
-                             currentHashtag: value});
 
-        if(!finalize) {
-            if(value !== '') {
-                const loweredValue = value.toLowerCase();
-                const suggestions  = hashtags.filter(hashtag => hashtag.name.toLowerCase().startsWith(loweredValue));
-                
-                this.suggestionsHandler(suggestions);
-            }
-            else {
-                this.suggestionsHandler(null);
-            }
-        }
+        const loweredValue = value.toLowerCase();
+        
+        this.props.dispatch({type:           'UPDATE_CURRENT_HASHTAG',
+                             currentHashtag: loweredValue});
     }
 
     render() {
-        console.log("(*(*(*(*(*(*(*(*(*(*(");
-        console.log(this);
-        console.log("(*(*(*(*(*(*(*(*(*(*(");
-        
-//        const { suggestions }    = this.props.suggestions;
-        const { currentHashtag } = this.props.currentHashtag;
+        const { selectedSuggestion } = this.props.selectedSuggestion;
+        const { currentHashtag }     = this.props.currentHashtag;
 
         return (
             <Provider theme={theme}>
@@ -171,9 +143,9 @@ class HashbumpContainer extends Component {
                   </Flex>
                   <Flex align='center' justify='center'>
                     <AutoSuggest
-//                       suggestions={suggestions}
                        value={currentHashtag}
-                       suggestionsHandler={this.suggestionsHandler.bind(this)}
+                       selectedSuggestion={selectedSuggestion}
+                       selectedSuggestionHandler={this.selectedSuggestionHandler.bind(this)}
                        valueHandler={this.valueHandler.bind(this)}
                        />
                   </Flex>
@@ -195,10 +167,8 @@ class HashbumpContainer extends Component {
 }
 
 export default compose(
-    // connect(state => ({ suggestions:    state.suggestions,
-    //                     currentHashtag: state.currentHashtag, })),
-    connect(state => ({ currentHashtag: state.currentHashtag, })),
+    connect(state => ({ selectedSuggestion: state.selectedSuggestion,
+                        currentHashtag:     state.currentHashtag, })),
     hashtagQuery,
-//    suggestionsQuery,
     addHashtagMutation,
 )(HashbumpContainer);

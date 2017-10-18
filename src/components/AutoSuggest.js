@@ -21,8 +21,8 @@ const __Suggestions = (props) => {
           {props.suggestions.map(item => <Box onClick={props.onClickSuggestions}
                                               onMouseOver={props.onMouseOverSuggestions}
                                               color={props.theme.hashtagAutoSuggest.suggestionBoxFg}
-                                              bg={item.selected ? props.theme.hashtagAutoSuggest.suggestionBoxSelectedBg
-                                                                : props.theme.hashtagAutoSuggest.suggestionBoxBg}
+                                              bg={item.name == props.selectedSuggestion ? props.theme.hashtagAutoSuggest.suggestionBoxSelectedBg
+                                                                                        : props.theme.hashtagAutoSuggest.suggestionBoxBg}
                                               key={item.name}
                                               pl={props.theme.hashtagAutoSuggest.suggestionBoxPl}
                                               pr={props.theme.hashtagAutoSuggest.suggestionBoxPr}
@@ -52,96 +52,76 @@ class AutoSuggest extends PureComponent {
     }
 
     onMouseOverSuggestionsHandler(event) {
-
-        const suggestions = [];
-
-        this.props.suggestions.forEach((item, i) => {suggestions[i] = Object.assign({}, item)});
-                          
-        suggestions.forEach(item => {
-            if(item.selected === true) item.selected = false;
-            if(item.name === event.target.innerText) {
-                item.selected = true;
-            }
-        });
-        this.props.suggestionsHandler(suggestions);
+        this.props.selectedSuggestionHandler(event.target.innerText);
     }
 
     onKeyDownSuggestionsHandler(event) {
-
-        if (!this.props.suggestions) return;
-        
-        const suggestions = [];
-
-        this.props.suggestions.forEach((item, i) => {suggestions[i] = Object.assign({}, item)});
+        if (!this.props.data.suggestions) return;        
 
         const {value}         = this.props.value;
-        const selectionExists = suggestions &&
-                                suggestions.find(item => {return item.selected === true;});
+        let   selectedSuggestion = this.props.selectedSuggestion;
+        const selectionExists    = selectedSuggestion != "";
+        const suggestions        = this.props.data.suggestions.results;
+                                
 
         switch(event.keyCode) {
         // up
         case 38:
             if(selectionExists) {
                 suggestions.find((item, i) => {
-                    if(item.selected === true && i > 0) {
-                        item.selected = false;
-                        suggestions[i-1].selected = true;
+                    if(item.name === selectedSuggestion && i > 0) {
+                        selectedSuggestion = suggestions[i-1].name;
                         return true;
                     }
                 });
             }
             else if(suggestions) {
-                suggestions[0].selected = true;                             
+                selectedSuggestion = suggestions[0].name;
             }
-            this.props.suggestionsHandler(suggestions);
+            this.props.selectedSuggestionHandler(selectedSuggestion);
             break;
         // down
         case 40:
             if(selectionExists) {
                 suggestions.find((item, i) => {
-                    if(item.selected === true && i < suggestions.length - 1) {
-                        item.selected = false;
-                        suggestions[i+1].selected = true;
+                    if(item.name === selectedSuggestion && i < suggestions.length - 1) {
+                        selectedSuggestion = suggestions[i+1].name;
                         return true;
                     }
                 });                             
             }
             else if(suggestions) {
-                suggestions[0].selected = true;
+                selectedSuggestion = suggestions[0].name;
             }
-            this.props.suggestionsHandler(suggestions);
+            this.props.selectedSuggestionHandler(selectedSuggestion);
             break;
         // enter
         case 13:
             if(selectionExists) {
-                suggestions.find((item) => {
-                    if(item.selected === true) {
-                        item.selected = false;
-                        this.props.valueHandler(item.name, true);
-                        return true;
-                    }
-                });                             
+                this.props.valueHandler(selectedSuggestion, true);
             }
             else if(value) {
                 this.props.valueHandler(value, true);
             }
-            this.props.suggestionsHandler(null);
+            this.props.selectedSuggestionHandler("");
             break;
         // esc
         case 27:
-            this.props.suggestionsHandler(null);
+            this.props.selectedSuggestionHandler("");
             this.props.valueHandler("", true);
             break;
         }
     }
 
     render () {
+        let suggestions = this.props.data.suggestions &&
+                          this.props.data.suggestions.results ?
+                          this.props.data.suggestions.results : [];
 
-        // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-        // console.log(this.props.data.suggestions);
-        // console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-
-        const suggestions = this.props.data.suggestions ? this.props.data.suggestions.results : [];
+        if((suggestions.length == 1) &&
+           (suggestions[0].name == this.props.value)) {
+            suggestions = [];
+        }
         
         return (
             <Relative>
@@ -165,10 +145,10 @@ class AutoSuggest extends PureComponent {
                      onKeyDown={this.onKeyDownSuggestionsHandler}
                      />
                 <_Suggestions
-                   //                   suggestions={this.props.suggestions}
                    suggestions={suggestions}
+                   selectedSuggestion={this.props.selectedSuggestion}
                    onClickSuggestions={(event) => {
-                       this.props.suggestionsHandler(null);
+                       this.props.selectedSuggestionHandler("");
                        this.props.valueHandler(event.target.innerText, true);
                    }}
                    onMouseOverSuggestions={this.onMouseOverSuggestionsHandler}
