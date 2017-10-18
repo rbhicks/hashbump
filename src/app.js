@@ -24,6 +24,7 @@ import config from 'kit/config';
 import counterReducer from 'src/reducers/counter';
 
 import selectedSuggestionReducer from 'src/reducers/selectedSuggestionReducer';
+import finalizedSelectionReducer from 'src/reducers/finalizedSelectionReducer';
 import currentHashtagReducer from 'src/reducers/currentHashtagReducer';
 
 // Main component -- i.e. the 'root' React component in our app
@@ -44,6 +45,7 @@ import './styles.global.css';
 config.addReducer('counter', counterReducer, { count: 0 });
 
 config.addReducer('selectedSuggestion', selectedSuggestionReducer, { selectedSuggestion: '' });
+config.addReducer('finalizedSelection', finalizedSelectionReducer, { finalizedSelection: false });
 config.addReducer('currentHashtag', currentHashtagReducer, { currentHashtag: '' });
 
 

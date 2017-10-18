@@ -114,15 +114,11 @@ class AutoSuggest extends PureComponent {
     }
 
     render () {
-        let suggestions = this.props.data.suggestions &&
-                          this.props.data.suggestions.results ?
-                          this.props.data.suggestions.results : [];
 
-        if((suggestions.length == 1) &&
-           (suggestions[0].name == this.props.value)) {
-            suggestions = [];
-        }
-        
+        const suggestions = this.props.data.suggestions &&
+                            this.props.data.suggestions.results ?
+                            this.props.data.suggestions.results : [];
+                
         return (
             <Relative>
               <Input bg={this.props.theme.hashtagAutoSuggest.inputBg}

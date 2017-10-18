@@ -54,12 +54,11 @@ const addHashtagMutation = graphql(gql`
 `);
 
 const AutoSuggest = graphql(gql`
-  query suggestions($currentHashtag: String!) {
-    suggestions(currentHashtag: $currentHashtag)
+  query suggestions($currentHashtag: String!, $finalizedSelection: Boolean!) {
+    suggestions(currentHashtag: $currentHashtag, finalizedSelection: $finalizedSelection)
     {
       results {
          name
-         selected
       }
     }
   }
@@ -67,7 +66,8 @@ const AutoSuggest = graphql(gql`
     options: (ownProps) => (
         {        
         variables: {
-            currentHashtag: ownProps.value
+            currentHashtag:     ownProps.value,
+            finalizedSelection: ownProps.finalizedSelection,
         }
     })
 })(RawAutoSuggest);
@@ -81,7 +81,6 @@ class HashbumpContainer extends Component {
     //             results: PropTypes.arrayOf(
     //                 PropTypes.shape({
     //                     name: PropTypes.string,
-    //                     selected: PropTypes.bool,
     //                 })),
     //             partialValue: PropTypes.string,
     //         }),
@@ -111,19 +110,23 @@ class HashbumpContainer extends Component {
         this.props.dispatch({type:               'UPDATE_SELECTED_SUGGESTION',
                              selectedSuggestion: selectedSuggestion});
     }
-
+    
     valueHandler(value, finalize = false) {
 
         const loweredValue = value.toLowerCase();
         
         this.props.dispatch({type:           'UPDATE_CURRENT_HASHTAG',
                              currentHashtag: loweredValue});
+
+        this.props.dispatch({type:           'UPDATE_FINALIZED_SELECTION',
+                             finalizedSelection: finalize});
     }
 
     render() {
         const { selectedSuggestion } = this.props.selectedSuggestion;
+        const { finalizedSelection } = this.props.finalizedSelection;
         const { currentHashtag }     = this.props.currentHashtag;
-
+        
         return (
             <Provider theme={theme}>
               <Flex align='center' justify='center'>
@@ -146,6 +149,7 @@ class HashbumpContainer extends Component {
                        value={currentHashtag}
                        selectedSuggestion={selectedSuggestion}
                        selectedSuggestionHandler={this.selectedSuggestionHandler.bind(this)}
+                       finalizedSelection={finalizedSelection}
                        valueHandler={this.valueHandler.bind(this)}
                        />
                   </Flex>
@@ -168,6 +172,7 @@ class HashbumpContainer extends Component {
 
 export default compose(
     connect(state => ({ selectedSuggestion: state.selectedSuggestion,
+                        finalizedSelection: state.finalizedSelection,
                         currentHashtag:     state.currentHashtag, })),
     hashtagQuery,
     addHashtagMutation,

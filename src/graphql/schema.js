@@ -118,16 +118,7 @@ const SuggestionsResult = new GraphQLObjectType({
         return {
             name: {
                 type: GraphQLString,
-                // resolve (suggestionsResult) {
-                //     return suggestionsResult.name;
-                // }
             },
-            selected: {
-                type: GraphQLBoolean,
-                // resolve (suggestionsResult) {
-                //     return suggestionsResult.selected;
-                // }
-            }
         };
     }
 });
@@ -139,17 +130,7 @@ const Suggestions = new GraphQLObjectType({
         return {
             results: {
                 type: new GraphQLList(SuggestionsResult),
-                // resolve (suggestions) {
-                //     return suggestions.results;
-                // }
             }
-            // ,
-            // currentHashtag: {
-            //     type: GraphQLString,
-            //     resolve (suggestions) {
-            //         return suggestions.currentHashtag;
-            //     }
-            // }
         };
     }
 });
@@ -222,27 +203,16 @@ const Query = new GraphQLObjectType({
             args: {
                 currentHashtag: {
                     type: GraphQLString
+                },
+                finalizedSelection: {
+                    type: GraphQLBoolean
                 }
             },
-            resolve (root, args) {           
+            resolve (root, args) {
+
+                if(args.finalizedSelection) return [];
 
                 const sanititizedSuggestionString = args.currentHashtag ? escape(args.currentHashtag) : "";
-//                const suggestionsQueryString = `select "name" from hashtags where "name" ilike '${sanititizedSuggestionString}%' order by "name" limit 10;`;
-                //                const suggestionsQueryString = `select * from hashtags order by "name" limit 10;`;
-
-                
-
-                // console.log('$$$$$$$$$$$$$$$$$$$$$');
-                // console.log(args);
-                // console.log(sanititizedSuggestionString);
-                // console.log(suggestionsQueryString);
-                // console.log(password);
-                // console.log('$$$$$$$$$$$$$$$$$$$$$');                
-
-                // return dbConnection.query(
-                //     suggestionsQueryString,
-                //     {type: Sequelize.QueryTypes.SELECT}
-                // ).spread((results) => {
 
                 if (sanititizedSuggestionString !== "") {
 
@@ -259,15 +229,10 @@ const Query = new GraphQLObjectType({
                             const results = {results: []};
                             
                             rawResults.map((result, i) => {
-                                results.results[i] = {name:     result.dataValues.name,
-                                                  selected: false};
+                                results.results[i] = {name:     result.dataValues.name};
 
                             });
-                    
-                        //                        return results;
-                            console.log("(((((((((((((((((((")
-                            console.log(results);
-                            console.log("(((((((((((((((((((")
+
                             return results;
                         });
                 }
