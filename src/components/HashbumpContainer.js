@@ -73,31 +73,6 @@ const AutoSuggest = graphql(gql`
 })(RawAutoSuggest);
 
 class HashbumpContainer extends Component {
-
-
-    // static propTypes = {
-    //     data: PropTypes.shape({
-    //         suggestions: PropTypes.shape({
-    //             results: PropTypes.arrayOf(
-    //                 PropTypes.shape({
-    //                     name: PropTypes.string,
-    //                 })),
-    //             partialValue: PropTypes.string,
-    //         }),
-    //     }),
-    // };
-
-    // static defaultProps = {
-    //     data: {
-    //         suggestions: {
-    //             results: [{name: 'jean', selected: false}, {name: 'babtiste', selected: false}, {name: 'emanuel', selected: false}, {name: 'zorg', selected: false} ],
-    //             partialValue: 'ack',
-    //             // results: [],
-    //             // partialValue: '',
-    //         },
-    //     },
-    // };
-
     
     constructor(props) {
         super(props);
