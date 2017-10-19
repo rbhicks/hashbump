@@ -232,7 +232,7 @@ class HashbumpContainer extends Component {
               <Flex align='center' justify='center'>
                 <Box width={[1, 1, 1/2]} bg={hashbumpColorGold}>
                   <Header />
-                  <Flex wrap>
+                  <Flex wrap ml={2, 2, 2}>
                     <TopHashtags title='Top Hashtags Ever'
                                  topYay={`#${topCountsOfAllTimeResults["yay"].name}: ${topCountsOfAllTimeResults["yay"].count}`}
                                  topGrrr={`#${topCountsOfAllTimeResults["grrr"].name}: ${topCountsOfAllTimeResults["grrr"].count}`}
