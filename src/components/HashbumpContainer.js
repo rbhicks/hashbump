@@ -244,7 +244,7 @@ class HashbumpContainer extends Component {
                                  topDunno={`#${topCountsOfTheLastWeekResults["dunno"].name}: ${topCountsOfTheLastWeekResults["dunno"].count}`}
                                  topMeh={`#${topCountsOfTheLastWeekResults["meh"].name}: ${topCountsOfTheLastWeekResults["meh"].count}`} />
                   </Flex>
-                  <Flex align='center' justify='center'>
+                  <Flex align='center' justify='center' mt={1}>
                     <AutoSuggest
                        value={currentHashtag}
                        selectedSuggestion={selectedSuggestion}
