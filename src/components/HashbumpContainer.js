@@ -234,15 +234,15 @@ class HashbumpContainer extends Component {
                   <Header />
                   <Flex wrap ml={2, 2, 2}>
                     <TopHashtags title='Top Hashtags Ever'
-                                 topYay={`#${topCountsOfAllTimeResults["yay"].name}: ${topCountsOfAllTimeResults["yay"].count}`}
-                                 topGrrr={`#${topCountsOfAllTimeResults["grrr"].name}: ${topCountsOfAllTimeResults["grrr"].count}`}
-                                 topDunno={`#${topCountsOfAllTimeResults["dunno"].name}: ${topCountsOfAllTimeResults["dunno"].count}`}
-                                 topMeh={`#${topCountsOfAllTimeResults["meh"].name}: ${topCountsOfAllTimeResults["meh"].count}`} />
+                                 topYay={`${topCountsOfAllTimeResults["yay"].name}: ${topCountsOfAllTimeResults["yay"].count}`}
+                                 topGrrr={`${topCountsOfAllTimeResults["grrr"].name}: ${topCountsOfAllTimeResults["grrr"].count}`}
+                                 topDunno={`${topCountsOfAllTimeResults["dunno"].name}: ${topCountsOfAllTimeResults["dunno"].count}`}
+                                 topMeh={`${topCountsOfAllTimeResults["meh"].name}: ${topCountsOfAllTimeResults["meh"].count}`} />
                     <TopHashtags title='Top Hashtags Today'
-                                 topYay={`#${topCountsOfTheLastWeekResults["yay"].name}: ${topCountsOfTheLastWeekResults["yay"].count}`}
-                                 topGrrr={`#${topCountsOfTheLastWeekResults["grrr"].name}: ${topCountsOfTheLastWeekResults["grrr"].count}`}
-                                 topDunno={`#${topCountsOfTheLastWeekResults["dunno"].name}: ${topCountsOfTheLastWeekResults["dunno"].count}`}
-                                 topMeh={`#${topCountsOfTheLastWeekResults["meh"].name}: ${topCountsOfTheLastWeekResults["meh"].count}`} />
+                                 topYay={`${topCountsOfTheLastWeekResults["yay"].name}: ${topCountsOfTheLastWeekResults["yay"].count}`}
+                                 topGrrr={`${topCountsOfTheLastWeekResults["grrr"].name}: ${topCountsOfTheLastWeekResults["grrr"].count}`}
+                                 topDunno={`${topCountsOfTheLastWeekResults["dunno"].name}: ${topCountsOfTheLastWeekResults["dunno"].count}`}
+                                 topMeh={`${topCountsOfTheLastWeekResults["meh"].name}: ${topCountsOfTheLastWeekResults["meh"].count}`} />
                   </Flex>
                   <Flex align='center' justify='center' mt={1}>
                     <AutoSuggest

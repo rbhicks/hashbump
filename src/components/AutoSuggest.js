@@ -122,7 +122,7 @@ class AutoSuggest extends PureComponent {
                             this.props.data.suggestions.results : [];
                 
         return (
-            <Relative>
+                <Relative>                
               <Input bg={this.props.theme.hashtagAutoSuggest.inputBg}
                      color={this.props.theme.hashtagAutoSuggest.inputFg}
                      pl={this.props.theme.hashtagAutoSuggest.inputPl}
