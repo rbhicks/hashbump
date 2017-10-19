@@ -58,33 +58,18 @@ const Hashtag = new GraphQLObjectType({
     return {
       name: {
         type: GraphQLString,
-        resolve (hashtag) {
-          return hashtag.name;
-        }
       },
       yayCount: {
         type: GraphQLInt,
-        resolve (hashtag) {
-          return hashtag.yayCount;
-        }
       },
       grrrCount: {
         type: GraphQLInt,
-        resolve (hashtag) {
-          return hashtag.grrrCount;
-        }
       },
       dunnoCount: {
         type: GraphQLInt,
-        resolve (hashtag) {
-          return hashtag.dunnoCount;
-        }
       },
       mehCount: {
         type: GraphQLInt,
-        resolve (hashtag) {
-          return hashtag.mehCount;
-        }
       }
     };
   }
@@ -182,8 +167,23 @@ const Query = new GraphQLObjectType({
                     type: GraphQLString
                 }
             },
-            resolve (root, args) {
-                return dbConnection.models.hashtag.findOne({ where: args });
+            resolve (root, args) {                
+                return dbConnection.models.hashtag.findOne({
+                    where: args
+                }).then((results) => {
+                    if(args.name != "") {
+                        return results;                        
+                    }
+                    else {
+                        const blankHashtag = {
+                            name: "",
+                            yayCount: 0,
+                            grrrCount: 0,
+                            dunnoCount: 0,
+                            mehCount: 0};
+                        return blankHashtag;
+                    }
+                });
             }
         },        
         topCountsOfAllTime: {
@@ -239,7 +239,6 @@ const Query = new GraphQLObjectType({
                 }
             },
             resolve (root, args) {
-
                 if(args.finalizedSelection) return [];
 
                 const sanititizedSuggestionString = args.currentHashtag ? escape(args.currentHashtag) : "";

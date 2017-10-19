@@ -35,10 +35,13 @@ const hashtagQuery = graphql(gql`
     }
   }
 `, {
-    name: "hashtagQuery",
-    options: {
-        variables: {name: ""}
-    },
+    options: (ownProps) => (
+        {
+            name: "hashtag",
+            variables: {
+                name: ownProps.currentHashtag.currentHashtag,
+            }
+        })
 });
 
 const topCountsOfAllTimeQuery = graphql(gql`
@@ -131,10 +134,19 @@ class HashbumpContainer extends Component {
                              finalizedSelection: finalize});
     }
 
-    render() {
+    render() {        
         const { selectedSuggestion } = this.props.selectedSuggestion;
         const { finalizedSelection } = this.props.finalizedSelection;
         const { currentHashtag }     = this.props.currentHashtag;
+
+        const currentHashtagInfo = this.props.data         &&
+                                   this.props.data.hashtag ?
+                                   this.props.data.hashtag : {
+                                                               name: "",
+                                                               yayCount: 0,
+                                                               grrrCount: 0,
+                                                               dunnoCount: 0,
+                                                               mehCount: 0};
 
         let topCountsOfAllTimeResults     = this.props.topCountsOfAllTime.topCountsOfAllTime         &&
                                             this.props.topCountsOfAllTime.topCountsOfAllTime.results ?
@@ -205,10 +217,10 @@ class HashbumpContainer extends Component {
                   <Flex align='center' justify='center'>
                     <Box width={[1, 1/4, 1/3]} ml={[1, 0, 0]} mr={[1, 0, 0]}>
                       <Flex align='center' justify='center'>
-                        <BumpButton bumpType='yay' buttonImageSource={theme.yaySvgSource} bumpCount='17' />
-                        <BumpButton bumpType='grrr' buttonImageSource={theme.grrrSvgSource} bumpCount='17' />
-                        <BumpButton bumpType='dunno' buttonImageSource={theme.dunnoSvgSource} bumpCount='17' />
-                        <BumpButton bumpType='meh' buttonImageSource={theme.mehSvgSource} bumpCount='17' />
+                        <BumpButton bumpType='yay' buttonImageSource={theme.yaySvgSource} bumpCount={currentHashtagInfo.yayCount} />
+                        <BumpButton bumpType='grrr' buttonImageSource={theme.grrrSvgSource} bumpCount={currentHashtagInfo.grrrCount} />
+                        <BumpButton bumpType='dunno' buttonImageSource={theme.dunnoSvgSource} bumpCount={currentHashtagInfo.dunnoCount} />
+                        <BumpButton bumpType='meh' buttonImageSource={theme.mehSvgSource} bumpCount={currentHashtagInfo.mehCount} />
                       </Flex>
                     </Box>      
                   </Flex>

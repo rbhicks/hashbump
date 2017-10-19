@@ -58,11 +58,11 @@ class AutoSuggest extends PureComponent {
     onKeyDownSuggestionsHandler(event) {
         if (!this.props.data.suggestions) return;        
 
-        const {value}         = this.props.value;
+        const value              = this.props.value;
         let   selectedSuggestion = this.props.selectedSuggestion;
         const selectionExists    = selectedSuggestion != "";
         const suggestions        = this.props.data.suggestions.results;
-                                
+
 
         switch(event.keyCode) {
         // up
@@ -104,6 +104,8 @@ class AutoSuggest extends PureComponent {
                 this.props.valueHandler(value, true);
             }
             this.props.selectedSuggestionHandler("");
+
+            
             break;
         // esc
         case 27:
