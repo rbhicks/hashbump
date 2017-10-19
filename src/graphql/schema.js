@@ -286,9 +286,8 @@ const Mutation = new GraphQLObjectType({
             type: new GraphQLNonNull(GraphQLString)
           }
         },
-        resolve (source, args) {
+          resolve (source, args) {              
           const sanitizedName = args.name ? escape(args.name) : "";
-            
           return dbConnection.models.hashtag.create({
             name: sanitizedName
           });
@@ -307,7 +306,7 @@ const Mutation = new GraphQLObjectType({
           resolve (source, args) {
             const sanitizedName = args.name ? escape(args.name) : "";
               
-            return dbConnection.models.hashtag.findOne({ where: {name: sanitizedName} }).then( hashtag => {
+              return dbConnection.models.hashtag.findOne({ where: {name: sanitizedName} }).then( hashtag => {
                     return hashtag.increment([`${args.bump}Count`], { by: 1 });
           });
         }

@@ -8,7 +8,7 @@ import { Flex,
 const _BumpButton = (props) => {
     return (
         <Box bumpType={props.bumpType} p={props.theme.bumpButton.boxP} width={props.theme.bumpButton.width}>
-          <Image display={props.theme.bumpButton.imageDisplay} src={props.buttonImageSource}  /><Text center={true} color={props.theme.bumpButton.color} fontSize={props.theme.bumpButton.fontSize}>{props.bumpCount}</Text>
+          <Image display={props.theme.bumpButton.imageDisplay} src={props.buttonImageSource} onClick={(event) => {props.bumpHandler(event, props.bumpType);}}  /><Text center={true} color={props.theme.bumpButton.color} fontSize={props.theme.bumpButton.fontSize}>{props.bumpCount}</Text>
         </Box>
     );
 }

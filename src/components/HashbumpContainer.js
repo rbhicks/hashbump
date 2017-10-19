@@ -74,6 +74,21 @@ const topCountsOfTheLastWeekQuery = graphql(gql`
     name: "topCountsOfTheLastWeek",
 });
 
+const bumpHashtagMutation = graphql(gql`
+  mutation bumpHashtag($currentHashtag: String!, $bump: String!) {
+    bumpHashtag(name: $currentHashtag, bump: $bump) {
+      name
+      yayCount
+      grrrCount
+      dunnoCount
+      mehCount
+    }
+  }
+`
+, {
+    name: "bumpHashtagMutation"
+}
+);
 
 const addHashtagMutation = graphql(gql`
   mutation addHashtag($name: String!) {
@@ -116,8 +131,9 @@ class HashbumpContainer extends Component {
 
         this.selectedSuggestionHandler = this.selectedSuggestionHandler.bind(this);
         this.valueHandler              = this.valueHandler.bind(this);
+        this.bumpHandler               = this.bumpHandler.bind(this);
     }
-
+    
     selectedSuggestionHandler(selectedSuggestion) {
         this.props.dispatch({type:               'UPDATE_SELECTED_SUGGESTION',
                              selectedSuggestion: selectedSuggestion});
@@ -134,19 +150,44 @@ class HashbumpContainer extends Component {
                              finalizedSelection: finalize});
     }
 
+    bumpHandler(event, bumpType) {
+
+        const hashtagData         = this.props.data;
+        const bumpHashtagMutation = this.props.bumpHashtagMutation;
+        const addHashtagMutation  = this.props.addHashtagMutation;
+        const currentHashtag      = this.props.currentHashtag.currentHashtag;
+
+        if (!hashtagData.hashtag) {
+            addHashtagMutation({variables: {name: currentHashtag}})
+                .then(hashtag => {
+                    bumpHashtagMutation({variables: {currentHashtag: currentHashtag, bump: bumpType}}).
+                        then(
+                            () => {
+                                hashtagData.refetch({name: currentHashtag});
+                            });
+                });
+        }
+        else {
+            bumpHashtagMutation({variables: {currentHashtag: currentHashtag, bump: bumpType}}).
+                then(
+                    () => {
+                       hashtagData.refetch({name: currentHashtag});
+                    });
+        }        
+    }
+
     render() {        
         const { selectedSuggestion } = this.props.selectedSuggestion;
         const { finalizedSelection } = this.props.finalizedSelection;
         const { currentHashtag }     = this.props.currentHashtag;
 
-        const currentHashtagInfo = this.props.data         &&
-                                   this.props.data.hashtag ?
-                                   this.props.data.hashtag : {
-                                                               name: "",
-                                                               yayCount: 0,
-                                                               grrrCount: 0,
-                                                               dunnoCount: 0,
-                                                               mehCount: 0};
+        const currentHashtagCounts = this.props.data         &&
+                                     this.props.data.hashtag ?
+                                     this.props.data.hashtag : {
+                                                                 yayCount: 0,
+                                                                 grrrCount: 0,
+                                                                 dunnoCount: 0,
+                                                                 mehCount: 0};
 
         let topCountsOfAllTimeResults     = this.props.topCountsOfAllTime.topCountsOfAllTime         &&
                                             this.props.topCountsOfAllTime.topCountsOfAllTime.results ?
@@ -217,10 +258,10 @@ class HashbumpContainer extends Component {
                   <Flex align='center' justify='center'>
                     <Box width={[1, 1/4, 1/3]} ml={[1, 0, 0]} mr={[1, 0, 0]}>
                       <Flex align='center' justify='center'>
-                        <BumpButton bumpType='yay' buttonImageSource={theme.yaySvgSource} bumpCount={currentHashtagInfo.yayCount} />
-                        <BumpButton bumpType='grrr' buttonImageSource={theme.grrrSvgSource} bumpCount={currentHashtagInfo.grrrCount} />
-                        <BumpButton bumpType='dunno' buttonImageSource={theme.dunnoSvgSource} bumpCount={currentHashtagInfo.dunnoCount} />
-                        <BumpButton bumpType='meh' buttonImageSource={theme.mehSvgSource} bumpCount={currentHashtagInfo.mehCount} />
+                        <BumpButton bumpHandler={this.bumpHandler} bumpType='yay' buttonImageSource={theme.yaySvgSource} bumpCount={currentHashtagCounts.yayCount} />
+                        <BumpButton bumpHandler={this.bumpHandler} bumpType='grrr' buttonImageSource={theme.grrrSvgSource} bumpCount={currentHashtagCounts.grrrCount} />
+                        <BumpButton bumpHandler={this.bumpHandler} bumpType='dunno' buttonImageSource={theme.dunnoSvgSource} bumpCount={currentHashtagCounts.dunnoCount} />
+                        <BumpButton bumpHandler={this.bumpHandler} bumpType='meh' buttonImageSource={theme.mehSvgSource} bumpCount={currentHashtagCounts.mehCount} />
                       </Flex>
                     </Box>      
                   </Flex>
@@ -238,6 +279,7 @@ export default compose(
     hashtagQuery,
     topCountsOfAllTimeQuery,
     topCountsOfTheLastWeekQuery,
+    bumpHashtagMutation,
     addHashtagMutation,
 )(HashbumpContainer);
 
