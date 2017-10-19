@@ -8869,7 +8869,7 @@ var debugs = {};
 var debugEnviron;
 exports.debuglog = function(set) {
   if (isUndefined(debugEnviron))
-    debugEnviron = Object({"HOST":"localhost","PORT":"8081","SSL_PORT":null,"NODE_ENV":"development","DEBUG":true}).NODE_DEBUG || '';
+    debugEnviron = Object({"HOST":"10.0.0.36","PORT":"8081","SSL_PORT":null,"NODE_ENV":"development","DEBUG":true}).NODE_DEBUG || '';
   set = set.toUpperCase();
   if (!debugs[set]) {
     if (new RegExp('\\b' + set + '\\b', 'i').test(debugEnviron)) {

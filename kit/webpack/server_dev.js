@@ -77,7 +77,7 @@ export default [
         SERVER: true,
         'process.env': {
           // Point the server host/port to the production server
-          HOST: JSON.stringify(process.env.HOST || 'localhost'),
+            HOST: JSON.stringify(process.env.HOST || 'localhost'),
           PORT: JSON.stringify(process.env.PORT || '8081'),
           SSL_PORT: process.env.SSL_PORT ? JSON.stringify(process.env.SSL_PORT) : null,
 
@@ -114,7 +114,7 @@ export default [
         SERVER: false,
         'process.env': {
           // Point the server host/port to the dev server
-          HOST: JSON.stringify(process.env.HOST || 'localhost'),
+          HOST: JSON.stringify(process.env.HOST || '10.0.0.36'),
           PORT: JSON.stringify(process.env.PORT || '8081'),
           SSL_PORT: process.env.SSL_PORT ? JSON.stringify(process.env.SSL_PORT) : null,
 
