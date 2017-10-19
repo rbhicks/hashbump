@@ -90,26 +90,38 @@ const Hashtag = new GraphQLObjectType({
   }
 });
 
-const TopCount = new GraphQLObjectType({
-    name: 'TopCount',
-    description: 'TopCount information. These are the highest counts for each count type. Currently, there are two kinds: all time and weekly.',
+
+const TopBumpCount = new GraphQLObjectType({
+    name: 'TopBumpCount',
+    description: 'Top Bump Count information. This is the highest bump counts for a bump count type.',
     fields: () => {
         return {
             name: {
                 type: GraphQLString,
-                resolve (topCount) {
-                    return topCount.name;
-                }
             },
             count: {
                 type: GraphQLInt,
-                resolve (topCount) {
-                    return topCount.count;
-                }
+            },
+            type: {
+                type: GraphQLString,
+            },
+        };
+    }
+});
+
+
+const TopBumpCounts = new GraphQLObjectType({
+    name: 'TopBumpCounts',
+    description: 'Top Bump Count information for all four types. Currently, this is used by two queries: of-all-time and today.',
+    fields: () => {
+        return {
+            results: {
+                type: new GraphQLList(TopBumpCount),
             }
         };
     }
 });
+
 
 const SuggestionsResult = new GraphQLObjectType({
     name: 'SuggestionsResult',
@@ -174,30 +186,48 @@ const Query = new GraphQLObjectType({
                 return dbConnection.models.hashtag.findOne({ where: args });
             }
         },        
-        topCount: {
-            type: TopCount,
-            args: {
-                bump: {
-                    type: new GraphQLNonNull(GraphQLString)
-                },
-                topCountType: {
-                    type: new GraphQLNonNull(GraphQLString)
-                }
-            },
+        topCountsOfAllTime: {
+            type: TopBumpCounts,
             resolve (root, args) {
-                let topCountQueryString = `select "name", "${args.bump}Count" as "count" from hashtags order by "${args.bump}Count" desc LIMIT 1;`;
 
-                if (args.topCountType == "today") {
-                    topCountQueryString = `select "name", "${args.bump}Count" as "count" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "${args.bump}Count" desc LIMIT 1;`;
-                }
+                // use backticks here -- ever though we're not interpolating -- so we don't have to escape the quotes
+                // also, in this case, it's easier to use a raw query
+                let topCountsOfAllTimeQueryString = `(select "name", "yayCount" as "count", 'yay' as "type" from hashtags order by "yayCount" desc limit 1) union \
+                                                     (select "name", "grrrCount" as "count", 'grrr' as "type" from hashtags order by "grrrCount" desc limit 1)  union \
+                                                     (select "name", "dunnoCount" as "count", 'dunno' as "type" from hashtags order by "dunnoCount" desc limit 1) union \
+                                                     (select "name", "mehCount" as "count", 'meh' as "type" from hashtags order by "mehCount" desc limit 1);`;
+
                 return dbConnection.query(
-                    topCountQueryString,
+                    topCountsOfAllTimeQueryString,
                     {type: Sequelize.QueryTypes.SELECT}
-                ).spread((results) => {
-                    return results;
+                ).then((results) => {
+                    const returnResults = {results: results};                    
+
+                    return returnResults;
                 });
             }
-        },        
+        },
+        topCountsOfTheLastWeek: {
+            type: TopBumpCounts,
+            resolve (root, args) {
+
+                // use backticks here -- ever though we're not interpolating -- so we don't have to escape the quotes
+                // also, in this case, it's easier to use a raw query
+                let topCountsOfTheLastWeekQueryString = `(select "name", "yayCount" as "count", 'yay' as "type" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "yayCount" desc limit 1) union \
+                                                         (select "name", "grrrCount" as "count", 'grrr' as "type" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "grrrCount" desc limit 1) union \
+                                                         (select "name", "dunnoCount" as "count", 'dunno' as "type" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "dunnoCount" desc limit 1) union \
+                                                         (select "name", "mehCount" as "count", 'meh' as "type" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "mehCount" desc limit 1);`;
+
+                return dbConnection.query(
+                    topCountsOfTheLastWeekQueryString,
+                    {type: Sequelize.QueryTypes.SELECT}
+                ).then((results) => {
+                    const returnResults = {results: results};                    
+
+                    return returnResults;
+                });
+            }
+        },
         suggestions: {
             type: Suggestions,
             args: {

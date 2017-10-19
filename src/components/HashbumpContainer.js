@@ -41,6 +41,37 @@ const hashtagQuery = graphql(gql`
     },
 });
 
+const topCountsOfAllTimeQuery = graphql(gql`
+  query topCountsOfAllTime {
+    topCountsOfAllTime
+    {
+      results {
+         name
+         count
+         type
+      }
+    }
+  }
+`, {
+    name: "topCountsOfAllTime",
+});
+
+const topCountsOfTheLastWeekQuery = graphql(gql`
+  query topCountsOfTheLastWeek {
+    topCountsOfTheLastWeek
+    {
+      results {
+         name
+         count
+         type
+      }
+    }
+  }
+`, {
+    name: "topCountsOfTheLastWeek",
+});
+
+
 const addHashtagMutation = graphql(gql`
   mutation addHashtag($name: String!) {
     addHashtag(name: $name) {
@@ -51,7 +82,10 @@ const addHashtagMutation = graphql(gql`
       mehCount
     }
   }
-`);
+`, {
+    name: "addHashtagMutation",
+});
+
 
 const AutoSuggest = graphql(gql`
   query suggestions($currentHashtag: String!, $finalizedSelection: Boolean!) {
@@ -101,6 +135,46 @@ class HashbumpContainer extends Component {
         const { selectedSuggestion } = this.props.selectedSuggestion;
         const { finalizedSelection } = this.props.finalizedSelection;
         const { currentHashtag }     = this.props.currentHashtag;
+
+        let topCountsOfAllTimeResults     = this.props.topCountsOfAllTime.topCountsOfAllTime         &&
+                                            this.props.topCountsOfAllTime.topCountsOfAllTime.results ?
+                                            this.props.topCountsOfAllTime.topCountsOfAllTime.results : [];
+        let topCountsOfTheLastWeekResults = this.props.topCountsOfTheLastWeek.topCountsOfTheLastWeek         &&
+                                            this.props.topCountsOfTheLastWeek.topCountsOfTheLastWeek.results ?
+                                            this.props.topCountsOfTheLastWeek.topCountsOfTheLastWeek.results : [];
+        
+        if (topCountsOfAllTimeResults.length == 4) {
+            topCountsOfAllTimeResults = {
+                [topCountsOfAllTimeResults[0].type]: {
+                    name: topCountsOfAllTimeResults[0].name, count: topCountsOfAllTimeResults[0].count,},
+                [topCountsOfAllTimeResults[1].type]: {
+                    name: topCountsOfAllTimeResults[1].name, count: topCountsOfAllTimeResults[1].count,},
+                [topCountsOfAllTimeResults[2].type]: {
+                    name: topCountsOfAllTimeResults[2].name, count: topCountsOfAllTimeResults[2].count,},
+                [topCountsOfAllTimeResults[3].type]: {
+                    name: topCountsOfAllTimeResults[3].name, count: topCountsOfAllTimeResults[3].count,},};}
+        else {
+            topCountsOfAllTimeResults = {
+                yay:   {name: "", count: 0,},
+                grrr:  {name: "", count: 0,},
+                dunno: {name: "", count: 0,},
+                meh:   {name: "", count: 0,},};}
+        if (topCountsOfTheLastWeekResults.length == 4) {
+            topCountsOfTheLastWeekResults = {
+                [topCountsOfTheLastWeekResults[0].type]: {
+                    name: topCountsOfTheLastWeekResults[0].name, count: topCountsOfTheLastWeekResults[0].count,},
+                [topCountsOfTheLastWeekResults[1].type]: {
+                    name: topCountsOfTheLastWeekResults[1].name, count: topCountsOfTheLastWeekResults[1].count,},
+                [topCountsOfTheLastWeekResults[2].type]: {
+                    name: topCountsOfTheLastWeekResults[2].name, count: topCountsOfTheLastWeekResults[2].count,},
+                [topCountsOfTheLastWeekResults[3].type]: {
+                    name: topCountsOfTheLastWeekResults[3].name, count: topCountsOfTheLastWeekResults[3].count,},};}
+        else {
+            topCountsOfTheLastWeekResults = {
+                yay:   {name: "", count: 0,},
+                grrr:  {name: "", count: 0,},
+                dunno: {name: "", count: 0,},
+                meh:   {name: "", count: 0,},};}        
         
         return (
             <Provider theme={theme}>
@@ -109,15 +183,15 @@ class HashbumpContainer extends Component {
                   <Header />
                   <Flex wrap>
                     <TopHashtags title='Top Hashtags Ever'
-                                 topYay='#anoctopusandamoose: 7'
-                                 topGrrr='#anoctopusandamoose: 11'
-                                 topDunno='#anoctopusandamoose: 13'
-                                 topMeh='#anoctopusandamoose: 17' />
-                    <TopHashtags title='Top Hashtags This Week'
-                                 topYay='#anoctopusandamoose: 17'
-                                 topGrrr='#anoctopusandamoose: 13'
-                                 topDunno='#anoctopusandamoose: 11'
-                                 topMeh='#anoctopusandamoose: 7' />
+                                 topYay={`#${topCountsOfAllTimeResults["yay"].name}: ${topCountsOfAllTimeResults["yay"].count}`}
+                                 topGrrr={`#${topCountsOfAllTimeResults["grrr"].name}: ${topCountsOfAllTimeResults["grrr"].count}`}
+                                 topDunno={`#${topCountsOfAllTimeResults["dunno"].name}: ${topCountsOfAllTimeResults["dunno"].count}`}
+                                 topMeh={`#${topCountsOfAllTimeResults["meh"].name}: ${topCountsOfAllTimeResults["meh"].count}`} />
+                    <TopHashtags title='Top Hashtags Today'
+                                 topYay={`#${topCountsOfTheLastWeekResults["yay"].name}: ${topCountsOfTheLastWeekResults["yay"].count}`}
+                                 topGrrr={`#${topCountsOfTheLastWeekResults["grrr"].name}: ${topCountsOfTheLastWeekResults["grrr"].count}`}
+                                 topDunno={`#${topCountsOfTheLastWeekResults["dunno"].name}: ${topCountsOfTheLastWeekResults["dunno"].count}`}
+                                 topMeh={`#${topCountsOfTheLastWeekResults["meh"].name}: ${topCountsOfTheLastWeekResults["meh"].count}`} />
                   </Flex>
                   <Flex align='center' justify='center'>
                     <AutoSuggest
@@ -150,5 +224,8 @@ export default compose(
                         finalizedSelection: state.finalizedSelection,
                         currentHashtag:     state.currentHashtag, })),
     hashtagQuery,
+    topCountsOfAllTimeQuery,
+    topCountsOfTheLastWeekQuery,
     addHashtagMutation,
 )(HashbumpContainer);
+
