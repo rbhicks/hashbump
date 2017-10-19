@@ -22,6 +22,7 @@ const dbConnection = new Sequelize(
     }
 );
 
+const operator = dbConnection.Op;
 const sequelize = dbConnection.define('hashtag', {
   name: {
     type: Sequelize.STRING,
@@ -56,54 +57,49 @@ const Hashtag = new GraphQLObjectType({
     return {
       name: {
         type: GraphQLString,
-        resolve (hashtag) {
-          return hashtag.name;
-        }
       },
       yayCount: {
         type: GraphQLInt,
-        resolve (hashtag) {
-          return hashtag.yayCount;
-        }
       },
       grrrCount: {
         type: GraphQLInt,
-        resolve (hashtag) {
-          return hashtag.grrrCount;
-        }
       },
       dunnoCount: {
         type: GraphQLInt,
-        resolve (hashtag) {
-          return hashtag.dunnoCount;
-        }
       },
       mehCount: {
         type: GraphQLInt,
-        resolve (hashtag) {
-          return hashtag.mehCount;
-        }
       }
     };
   }
 });
 
-const TopCount = new GraphQLObjectType({
-    name: 'TopCount',
-    description: 'TopCount information. These are the highest counts for each count type. Currently, there are two kinds: all time and weekly.',
+const TopBumpCount = new GraphQLObjectType({
+    name: 'TopBumpCount',
+    description: 'Top Bump Count information. This is the highest bump counts for a bump count type.',
     fields: () => {
         return {
             name: {
                 type: GraphQLString,
-                resolve (topCount) {
-                    return topCount.name;
-                }
             },
             count: {
                 type: GraphQLInt,
-                resolve (topCount) {
-                    return topCount.count;
-                }
+            },
+            type: {
+                type: GraphQLString,
+            },
+        };
+    }
+});
+
+
+const TopBumpCounts = new GraphQLObjectType({
+    name: 'TopBumpCounts',
+    description: 'Top Bump Count information for all four types. Currently, this is used by two queries: of-all-time and today.',
+    fields: () => {
+        return {
+            results: {
+                type: new GraphQLList(TopBumpCount),
             }
         };
     }
@@ -116,16 +112,7 @@ const SuggestionsResult = new GraphQLObjectType({
         return {
             name: {
                 type: GraphQLString,
-                resolve (suggestionsResult) {
-                    return suggestionsResult.name;
-                }
             },
-            selected: {
-                type: GraphQLBoolean,
-                resolve (suggestionsResult) {
-                    return suggestionsResult.selected;
-                }
-            }
         };
     }
 });
@@ -137,15 +124,6 @@ const Suggestions = new GraphQLObjectType({
         return {
             results: {
                 type: new GraphQLList(SuggestionsResult),
-                resolve (suggestions) {
-                    return suggestions.results;
-                }
-            },
-            partialValue: {
-                type: GraphQLString,
-                resolve (suggestions) {
-                    return suggestions.partialValue;
-                }
             }
         };
     }
@@ -186,65 +164,107 @@ const Query = new GraphQLObjectType({
                     type: GraphQLString
                 }
             },
-            resolve (root, args) {
-                return dbConnection.models.hashtag.findOne({ where: args });
-            }
-        },        
-        topCount: {
-            type: TopCount,
-            args: {
-                bump: {
-                    type: new GraphQLNonNull(GraphQLString)
-                },
-                topCountType: {
-                    type: new GraphQLNonNull(GraphQLString)
-                }
-            },
-            resolve (root, args) {
-                let topCountQueryString = `select "name", "${args.bump}Count" as "count" from hashtags order by "${args.bump}Count" desc LIMIT 1;`;
-
-                if (args.topCountType == "today") {
-                    topCountQueryString = `select "name", "${args.bump}Count" as "count" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "${args.bump}Count" desc LIMIT 1;`;
-                }
-                return dbConnection.query(
-                    topCountQueryString,
-                    {type: Sequelize.QueryTypes.SELECT}
-                ).spread((results) => {
-                    return results;
+            resolve (root, args) {                
+                return dbConnection.models.hashtag.findOne({
+                    where: args
+                }).then((results) => {
+                    if(args.name != "") {
+                        return results;                        
+                    }
+                    else {
+                        const blankHashtag = {
+                            name: "",
+                            yayCount: 0,
+                            grrrCount: 0,
+                            dunnoCount: 0,
+                            mehCount: 0};
+                        return blankHashtag;
+                    }
                 });
             }
         },        
+        topCountsOfAllTime: {
+            type: TopBumpCounts,
+            resolve (root, args) {
+
+                // use backticks here -- ever though we're not interpolating -- so we don't have to escape the quotes
+                // also, in this case, it's easier to use a raw query
+                let topCountsOfAllTimeQueryString = `(select "name", "yayCount" as "count", 'yay' as "type" from hashtags order by "yayCount" desc limit 1) union \
+                                                     (select "name", "grrrCount" as "count", 'grrr' as "type" from hashtags order by "grrrCount" desc limit 1)  union \
+                                                     (select "name", "dunnoCount" as "count", 'dunno' as "type" from hashtags order by "dunnoCount" desc limit 1) union \
+                                                     (select "name", "mehCount" as "count", 'meh' as "type" from hashtags order by "mehCount" desc limit 1);`;
+
+                return dbConnection.query(
+                    topCountsOfAllTimeQueryString,
+                    {type: Sequelize.QueryTypes.SELECT}
+                ).then((results) => {
+                    const returnResults = {results: results};                    
+
+                    return returnResults;
+                });
+            }
+        },
+        topCountsOfTheLastWeek: {
+            type: TopBumpCounts,
+            resolve (root, args) {
+
+                // use backticks here -- ever though we're not interpolating -- so we don't have to escape the quotes
+                // also, in this case, it's easier to use a raw query
+                let topCountsOfTheLastWeekQueryString = `(select "name", "yayCount" as "count", 'yay' as "type" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "yayCount" desc limit 1) union \
+                                                         (select "name", "grrrCount" as "count", 'grrr' as "type" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "grrrCount" desc limit 1) union \
+                                                         (select "name", "dunnoCount" as "count", 'dunno' as "type" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "dunnoCount" desc limit 1) union \
+                                                         (select "name", "mehCount" as "count", 'meh' as "type" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "mehCount" desc limit 1);`;
+
+                return dbConnection.query(
+                    topCountsOfTheLastWeekQueryString,
+                    {type: Sequelize.QueryTypes.SELECT}
+                ).then((results) => {
+                    const returnResults = {results: results};                    
+
+                    return returnResults;
+                });
+            }
+        },
         suggestions: {
             type: Suggestions,
             args: {
-                partialHashtag: {
+                currentHashtag: {
                     type: GraphQLString
+                },
+                finalizedSelection: {
+                    type: GraphQLBoolean
                 }
             },
             resolve (root, args) {
-                const sanititizedSuggestionString = args.suggestionString ? escape(args.suggestionString) : "";
-                const suggestionsQueryString = `select "name" from hashtags where "name" ilike '${sanititizedSuggestionString}%' order by "name" limit 10;`;
+                if(args.finalizedSelection) return [];
 
-                return dbConnection.query(
-                    suggestionsQueryString,
-                    {type: Sequelize.QueryTypes.SELECT}
-                ).spread((results) => {
+                const sanititizedSuggestionString = args.currentHashtag ? escape(args.currentHashtag) : "";
 
-                    console.log('#####################');
-                    console.log(results);
-                    console.log('#####################');
+                if (sanititizedSuggestionString !== "") {
 
-                    // @$#%@#$%@#$%(@#$%(@#$#%^#$&#$%^@#$%@#$%@#$#%#^#$&#$%^@#$%@#$
-                    // @$#%@#$%@#$%(@#$%(@#$#%^#$&#$%^@#$%@#$%@#$##%^#$&#$%^@#$%@#$
-                    // @$#%@#$%@#$%(@#$%(@#$#%^#$&#$%^@#$%@#$%@#$##%^#$&#$%^@#$%@#$
-                    // use map to populate the suggestions list with the proper
-                    // object types -- from the results list and the partialHashtag 
-                    // @$#%@#$%@#$%(@#$%(@#$#%^#$&#$%^@#$%@#$%@#$#%#^#$&#$%^@#$%@#$
-                    // @$#%@#$%@#$%(@#$%(@#$#%^#$&#$%^@#$%@#$%@#$##%^#$&#$%^@#$%@#$
-                    // @$#%@#$%@#$%(@#$%(@#$#%^#$&#$%^@#$%@#$%@#$##%^#$&#$%^@#$%@#$
-                    
-                    return results;
-                });
+                    return dbConnection.models.hashtag.findAll(
+                        {
+                            attributes: ['name'],
+                            order: ['name'],
+                            limit: 10,
+                            where: {
+                                name: {[operator.iLike]: `${sanititizedSuggestionString}%`, }
+                            },
+                        }, ).then((rawResults) => {
+                            
+                            const results = {results: []};
+                            
+                            rawResults.map((result, i) => {
+                                results.results[i] = {name:     result.dataValues.name};
+
+                            });
+
+                            return results;
+                        });
+                }
+                else {
+                    return [];
+                }
             }
         }
     };
@@ -263,9 +283,8 @@ const Mutation = new GraphQLObjectType({
             type: new GraphQLNonNull(GraphQLString)
           }
         },
-        resolve (source, args) {
+          resolve (source, args) {              
           const sanitizedName = args.name ? escape(args.name) : "";
-            
           return dbConnection.models.hashtag.create({
             name: sanitizedName
           });
@@ -282,10 +301,9 @@ const Mutation = new GraphQLObjectType({
           }
         },
           resolve (source, args) {
-            const sanitizedName = args.name ? escape(args.name) : "";
-              
+            const sanitizedName = args.name ? escape(args.name) : "";              
             return dbConnection.models.hashtag.findOne({ where: {name: sanitizedName} }).then( hashtag => {
-                    return hashtag.increment([`${args.bump}Count`], { by: 1 });
+                return hashtag.increment([`${args.bump}Count`], { by: 1 });
           });
         }
       }
