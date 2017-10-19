@@ -62,7 +62,7 @@ export default new WebpackConfig().extend({
       SERVER: true,
       'process.env': {
         // Point the server host/port to the dev server
-        HOST: JSON.stringify(process.env.HOST || 'hashbump.io'),
+        HOST: JSON.stringify(process.env.HOST || 'localhost'),
         PORT: JSON.stringify(process.env.PORT || '3000'),
         SSL_PORT: process.env.SSL_PORT ? JSON.stringify(process.env.SSL_PORT) : null,
 
