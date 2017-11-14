@@ -230,9 +230,9 @@ class HashbumpContainer extends Component {
         return (
             <Provider theme={theme}>
               <Flex align='center' justify='center'>
-                <Box width={[1, 1, 1/2]} bg={hashbumpColorGold}>
+                <Box width={[1, 2/3, 2/3, 2/3, 1/2]} bg={hashbumpColorGold}>
                   <Header />
-                  <Flex wrap ml={[2, 2, 2]}>
+                  <Flex wrap >
                     <TopHashtags title='Top Hashtags Ever'
                                  topYay={`${topCountsOfAllTimeResults["yay"].name}: ${topCountsOfAllTimeResults["yay"].count}`}
                                  topGrrr={`${topCountsOfAllTimeResults["grrr"].name}: ${topCountsOfAllTimeResults["grrr"].count}`}
@@ -254,7 +254,7 @@ class HashbumpContainer extends Component {
                        />
                   </Flex>
                   <Flex align='center' justify='center'>
-                    <Box width={[1, 1/4, 1/3]} ml={[1, 0, 0]} mr={[1, 0, 0]}>
+                    <Box width={[1, 1/4, 1/4, 1/4, 1/3]} ml={[1, 0, 0, 0, 0]} mr={[1, 0, 0, 0, 0]}>
                       <Flex align='center' justify='center'>
                         <BumpButton bumpHandler={this.bumpHandler} bumpType='yay' buttonImageSource={theme.yaySvgSource} bumpCount={currentHashtagCounts.yayCount} />
                         <BumpButton bumpHandler={this.bumpHandler} bumpType='grrr' buttonImageSource={theme.grrrSvgSource} bumpCount={currentHashtagCounts.grrrCount} />
