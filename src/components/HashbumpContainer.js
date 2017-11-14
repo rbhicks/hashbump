@@ -59,9 +59,9 @@ const topCountsOfAllTimeQuery = graphql(gql`
     name: "topCountsOfAllTime",
 });
 
-const topCountsOfTheLastWeekQuery = graphql(gql`
-  query topCountsOfTheLastWeek {
-    topCountsOfTheLastWeek
+const topCountsOfTodayQuery = graphql(gql`
+  query topCountsOfToday {
+    topCountsOfToday
     {
       results {
          name
@@ -71,7 +71,7 @@ const topCountsOfTheLastWeekQuery = graphql(gql`
     }
   }
 `, {
-    name: "topCountsOfTheLastWeek",
+    name: "topCountsOfToday",
 });
 
 const bumpHashtagMutation = graphql(gql`
@@ -190,9 +190,9 @@ class HashbumpContainer extends Component {
         let topCountsOfAllTimeResults     = this.props.topCountsOfAllTime.topCountsOfAllTime         &&
                                             this.props.topCountsOfAllTime.topCountsOfAllTime.results ?
                                             this.props.topCountsOfAllTime.topCountsOfAllTime.results : [];
-        let topCountsOfTheLastWeekResults = this.props.topCountsOfTheLastWeek.topCountsOfTheLastWeek         &&
-                                            this.props.topCountsOfTheLastWeek.topCountsOfTheLastWeek.results ?
-                                            this.props.topCountsOfTheLastWeek.topCountsOfTheLastWeek.results : [];
+        let topCountsOfTodayResults       = this.props.topCountsOfToday.topCountsOfToday             &&
+                                            this.props.topCountsOfToday.topCountsOfToday.results     ?
+                                            this.props.topCountsOfToday.topCountsOfToday.results     : [];
         
         if (topCountsOfAllTimeResults.length == 4) {
             topCountsOfAllTimeResults = {
@@ -210,18 +210,18 @@ class HashbumpContainer extends Component {
                 grrr:  {name: "", count: 0,},
                 dunno: {name: "", count: 0,},
                 meh:   {name: "", count: 0,},};}
-        if (topCountsOfTheLastWeekResults.length == 4) {
-            topCountsOfTheLastWeekResults = {
-                [topCountsOfTheLastWeekResults[0].type]: {
-                    name: topCountsOfTheLastWeekResults[0].name, count: topCountsOfTheLastWeekResults[0].count,},
-                [topCountsOfTheLastWeekResults[1].type]: {
-                    name: topCountsOfTheLastWeekResults[1].name, count: topCountsOfTheLastWeekResults[1].count,},
-                [topCountsOfTheLastWeekResults[2].type]: {
-                    name: topCountsOfTheLastWeekResults[2].name, count: topCountsOfTheLastWeekResults[2].count,},
-                [topCountsOfTheLastWeekResults[3].type]: {
-                    name: topCountsOfTheLastWeekResults[3].name, count: topCountsOfTheLastWeekResults[3].count,},};}
+        if (topCountsOfTodayResults.length == 4) {
+            topCountsOfTodayResults = {
+                [topCountsOfTodayResults[0].type]: {
+                    name: topCountsOfTodayResults[0].name, count: topCountsOfTodayResults[0].count,},
+                [topCountsOfTodayResults[1].type]: {
+                    name: topCountsOfTodayResults[1].name, count: topCountsOfTodayResults[1].count,},
+                [topCountsOfTodayResults[2].type]: {
+                    name: topCountsOfTodayResults[2].name, count: topCountsOfTodayResults[2].count,},
+                [topCountsOfTodayResults[3].type]: {
+                    name: topCountsOfTodayResults[3].name, count: topCountsOfTodayResults[3].count,},};}
         else {
-            topCountsOfTheLastWeekResults = {
+            topCountsOfTodayResults = {
                 yay:   {name: "", count: 0,},
                 grrr:  {name: "", count: 0,},
                 dunno: {name: "", count: 0,},
@@ -232,17 +232,17 @@ class HashbumpContainer extends Component {
               <Flex align='center' justify='center'>
                 <Box width={[1, 1, 1/2]} bg={hashbumpColorGold}>
                   <Header />
-                  <Flex wrap ml={2, 2, 2}>
+                  <Flex wrap ml={[2, 2, 2]}>
                     <TopHashtags title='Top Hashtags Ever'
                                  topYay={`${topCountsOfAllTimeResults["yay"].name}: ${topCountsOfAllTimeResults["yay"].count}`}
                                  topGrrr={`${topCountsOfAllTimeResults["grrr"].name}: ${topCountsOfAllTimeResults["grrr"].count}`}
                                  topDunno={`${topCountsOfAllTimeResults["dunno"].name}: ${topCountsOfAllTimeResults["dunno"].count}`}
                                  topMeh={`${topCountsOfAllTimeResults["meh"].name}: ${topCountsOfAllTimeResults["meh"].count}`} />
                     <TopHashtags title='Top Hashtags Today'
-                                 topYay={`${topCountsOfTheLastWeekResults["yay"].name}: ${topCountsOfTheLastWeekResults["yay"].count}`}
-                                 topGrrr={`${topCountsOfTheLastWeekResults["grrr"].name}: ${topCountsOfTheLastWeekResults["grrr"].count}`}
-                                 topDunno={`${topCountsOfTheLastWeekResults["dunno"].name}: ${topCountsOfTheLastWeekResults["dunno"].count}`}
-                                 topMeh={`${topCountsOfTheLastWeekResults["meh"].name}: ${topCountsOfTheLastWeekResults["meh"].count}`} />
+                                 topYay={`${topCountsOfTodayResults["yay"].name}: ${topCountsOfTodayResults["yay"].count}`}
+                                 topGrrr={`${topCountsOfTodayResults["grrr"].name}: ${topCountsOfTodayResults["grrr"].count}`}
+                                 topDunno={`${topCountsOfTodayResults["dunno"].name}: ${topCountsOfTodayResults["dunno"].count}`}
+                                 topMeh={`${topCountsOfTodayResults["meh"].name}: ${topCountsOfTodayResults["meh"].count}`} />
                   </Flex>
                   <Flex align='center' justify='center' mt={1}>
                     <AutoSuggest
@@ -276,7 +276,7 @@ export default compose(
                         currentHashtag:     state.currentHashtag, })),
     hashtagQuery,
     topCountsOfAllTimeQuery,
-    topCountsOfTheLastWeekQuery,
+    topCountsOfTodayQuery,
     bumpHashtagMutation,
     addHashtagMutation,
 )(HashbumpContainer);

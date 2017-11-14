@@ -204,19 +204,19 @@ const Query = new GraphQLObjectType({
                 });
             }
         },
-        topCountsOfTheLastWeek: {
+        topCountsOfToday: {
             type: TopBumpCounts,
             resolve (root, args) {
 
                 // use backticks here -- ever though we're not interpolating -- so we don't have to escape the quotes
                 // also, in this case, it's easier to use a raw query
-                let topCountsOfTheLastWeekQueryString = `(select "name", "yayCount" as "count", 'yay' as "type" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "yayCount" desc limit 1) union \
-                                                         (select "name", "grrrCount" as "count", 'grrr' as "type" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "grrrCount" desc limit 1) union \
-                                                         (select "name", "dunnoCount" as "count", 'dunno' as "type" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "dunnoCount" desc limit 1) union \
-                                                         (select "name", "mehCount" as "count", 'meh' as "type" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "mehCount" desc limit 1);`;
+                let topCountsOfTodayQueryString = `(select "name", "yayCount" as "count", 'yay' as "type" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "yayCount" desc limit 1) union \
+                                                   (select "name", "grrrCount" as "count", 'grrr' as "type" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "grrrCount" desc limit 1) union \
+                                                   (select "name", "dunnoCount" as "count", 'dunno' as "type" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "dunnoCount" desc limit 1) union \
+                                                   (select "name", "mehCount" as "count", 'meh' as "type" from hashtags where "updatedAt" >= now() - '1 day'::interval order by "mehCount" desc limit 1);`;
 
                 return dbConnection.query(
-                    topCountsOfTheLastWeekQueryString,
+                    topCountsOfTodayQueryString,
                     {type: Sequelize.QueryTypes.SELECT}
                 ).then((results) => {
                     const returnResults = {results: results};                    

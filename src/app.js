@@ -30,19 +30,11 @@ import currentHashtagReducer from 'src/reducers/currentHashtagReducer';
 // Main component -- i.e. the 'root' React component in our app
 import Main from 'src/components/main';
 
-// Init global styles.  These will be added to the resulting CSS automatically
-// without any class hashing.  Use this to include default or framework CSS.
 import './styles.global.css';
 
 // ----------------------
 
 /* REDUCERS */
-
-// Add our custom `counter` reducer, with the initial state as a zero count.
-// Note:  The initial state (3rd param) will automatically be wrapped in
-// `seamless-immutable` by the kit's Redux init code, so plain objects are
-// automatically immutable by default
-config.addReducer('counter', counterReducer, { count: 0 });
 
 config.addReducer('selectedSuggestion', selectedSuggestionReducer, { selectedSuggestion: '' });
 config.addReducer('finalizedSelection', finalizedSelectionReducer, { finalizedSelection: false });
@@ -86,8 +78,8 @@ if (SERVER) {
     Uncomment the next two lines to enable SSL!
   */
 
-  const cert = require('src/cert/self_signed');
-  config.enableSSL({ key: cert.key, cert: cert.cert });
+//  const cert = require('src/cert/self_signed');
+//  config.enableSSL({ key: cert.key, cert: cert.cert });
 
   // If wanted, you could also run an *SSL-only* server by uncommenting:
   // config.disableHTTP();
@@ -104,20 +96,6 @@ if (SERVER) {
   config.setGraphQLSchema(require('src/graphql/schema').default);
 
   /* CUSTOM ROUTES */
-
-  // We can add custom routes to the web server easily, by using
-  // `config.add<Get|Post|Put|Patch>Route()`.  Note:  These are server routes only.
-  config.addGetRoute('/test', async ctx => {
-    // For demo purposes, let's get a JSON dump of the current Redux state
-    // to see that we can expect its contents
-    const stateDump = JSON.stringify(ctx.store.getState());
-
-    // Display a simple message, along with the Redux dump.  Note that this
-    // won't contain a full `apollo` response, because it hasn't passed through
-    // the React handler -- but it *does* mean we can still manipulate the state
-    // from within our root, or fire action handlers!
-    ctx.body = `Hello from your ReactQL route. Redux dump: ${stateDump}`;
-  });
 
   /* CUSTOM 404 HANDLER */
 
