@@ -39,14 +39,14 @@ class Common {
 
   // Enables internal GraphQL server.  Default GraphQL and GraphiQL endpoints
   // can be overridden
-  enableGraphQLServer(endpoint = '/graphql', graphiQL = true) {
+  enableGraphQLServer(endpoint = '/graphql', graphiQL = false) {
     this.graphQLServer = true;
     this.graphQLEndpoint = endpoint;
     this.graphiQL = graphiQL;
   }
 
   // Set an external GraphQL URI for use with Apollo
-  setGraphQLEndpoint(uri, graphiQL = true) {
+  setGraphQLEndpoint(uri, graphiQL = false) {
     this.graphQLEndpoint = uri;
     this.graphiQL = graphiQL;
   }
